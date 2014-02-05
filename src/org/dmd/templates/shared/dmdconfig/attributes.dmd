@@ -1,0 +1,13 @@
+AttributeDefinition
+name			definedInTdlModule
+dmdID			1
+type			TdlModule
+description		Indicates the name of the TdlModule in which a definition is defined.
+
+AttributeDefinition
+name			dependsOnTdlModule
+dmdID			2
+type			TdlModule
+valueType       MULTI
+description		Indicates the TdlModule on which something depends.
+
