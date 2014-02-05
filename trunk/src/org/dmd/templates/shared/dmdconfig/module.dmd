@@ -1,0 +1,9 @@
+DSDefinitionModule
+name						TdlModule
+fileExtension				dmtdl
+dmdID						1
+moduleClassName				TdlModule
+moduleDependenceAttribute 	dependsOnTdlModule
+baseDefinition				TdlDefinition
+definedInModuleAttribute	definedInTdlModule
+supportDynamicSchemaLoading	true
