@@ -17,19 +17,18 @@ package org.dmd.templates.server.generated.dsd;
 
 // Generated from: org.dmd.util.codegen.ImportManager.getFormattedImports(ImportManager.java:82)
 // Called from: org.dmd.dmg.generators.DSDArtifactFormatter.generateParser(DSDArtifactFormatter.java:465)
-import java.util.Iterator;                                                      // To iterate over collections - (DSDArtifactFormatter.java:437)
 import org.dmd.dmc.DmcNameClashException;                                       // May be thrown when instantiating objects - (DSDArtifactFormatter.java:448)
 import org.dmd.dmc.DmcValueException;                                           // May be thrown when parsing objects - (DSDArtifactFormatter.java:447)
 import org.dmd.dmc.definitions.DsdParserInterface;                              // Standard parser interface - (DSDArtifactFormatter.java:431)
 import org.dmd.dmc.rules.DmcRuleExceptionSet;                                   // May be thrown by rule manager - (DSDArtifactFormatter.java:450)
 import org.dmd.dmc.rules.SourceInfo;                                            // To indicate the source of rule problems - (DSDArtifactFormatter.java:453)
 import org.dmd.dmc.util.DmcUncheckedObject;                                     // Basic parsing of objects - (DSDArtifactFormatter.java:430)
-import org.dmd.dms.SchemaDefinition;                                            // To support dynamic loading of schemas - (DSDArtifactFormatter.java:438)
 import org.dmd.dms.SchemaManager;                                               // Manages the schemas we use - (DSDArtifactFormatter.java:426)
 import org.dmd.dms.generated.dmw.StringIterableDMW;                             // To iterate over defFiles - (DSDArtifactFormatter.java:452)
 import org.dmd.dmv.shared.DmvRuleManager;                                       // The injected rule manager used for initializations - (DSDArtifactFormatter.java:451)
 import org.dmd.dmw.DmwObjectFactory;                                            // Constructs wrapped objects - (DSDArtifactFormatter.java:433)
 import org.dmd.dmw.DmwWrapper;                                                  // To handle factory created objects - (DSDArtifactFormatter.java:454)
+import org.dmd.templates.server.extended.Section;                               // A definition from the TdlModule Module - (DSDArtifactFormatter.java:715)
 import org.dmd.templates.server.extended.TdlDefinition;                         // The base definition from the TdlModule Module - (DSDArtifactFormatter.java:707)
 import org.dmd.templates.server.extended.TdlModule;                             // The kind of DDM we're reading - (DSDArtifactFormatter.java:458)
 import org.dmd.templates.server.generated.DmtdlSchemaAG;                        // The schema recognized by this parser - (DSDArtifactFormatter.java:446)
@@ -160,9 +159,6 @@ public class TdlModuleParser implements DsdParserInterface, DmcUncheckedOIFHandl
             
                 module.setDefinedInTdlModule(module);
                 definitions.addTdlModule(module);
-                if (module.getLoadSchemaClassHasValue()){
-                    loadSchemas(module);
-                }
             }
             else{
                 ResultException ex = new ResultException("Expecting a TdlModule module definition");
@@ -182,57 +178,13 @@ public class TdlModuleParser implements DsdParserInterface, DmcUncheckedOIFHandl
             definition.setDotName(module.getName() + "." + definition.getName() + "." + definition.getConstructionClassName());
             definition.setNameAndTypeName(definition.getName() + "." + definition.getConstructionClassName());
             
+            if (definition instanceof Section){
+                definitions.addSection((Section)definition);
+                module.addSection((Section)definition);
+            }
 
         }
 
-    }
-    // Generated from: org.dmd.dmg.generators.DSDArtifactFormatter.writeLoadSchemasFunction(DSDArtifactFormatter.java:645)
-    void loadSchemas(TdlModule module) throws ResultException {
-    	   Class<?> schemaClass = null;
-    	   SchemaDefinition sd	= null;
-    	   Iterator<String> it = module.getDMO().getLoadSchemaClass();
-        while(it.hasNext()){
-		       String cn = it.next();
-		       try {
-			       schemaClass = Class.forName(cn);
-            } catch (ClassNotFoundException e) {
-                ResultException ex = new ResultException(e);
-                ex.addError("Couldn't load schema class: " + cn);
-                ex.setLocationInfo(module.getFile(), module.getLineNumber());
-                throw(ex);
-            }
-
-            try {
-                Object obj = schemaClass.newInstance();
-
-                if (obj instanceof SchemaDefinition){
-                    sd = (SchemaDefinition) obj;
-                }
-                else{
-                    ResultException ex = new ResultException("The specified class is not a SchemaDefinition: " + cn);
-                    ex.setLocationInfo(module.getFile(), module.getLineNumber());
-                    throw(ex);
-                }
-            } catch (Exception e) {
-                ResultException ex = new ResultException(e);
-                ex.addError("Couldn't instantiate schema class: " + cn);
-                ex.setLocationInfo(module.getFile(), module.getLineNumber());
-                throw(ex);
-            }
-
-                try {
-                    if (schema.isSchema(sd.getInstance().getName().getNameString()) == null){
-                        schema.manageSchema(sd);
-                    }
-                } catch (DmcValueException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                } catch (DmcNameClashException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-
-        }
     }
 }
 

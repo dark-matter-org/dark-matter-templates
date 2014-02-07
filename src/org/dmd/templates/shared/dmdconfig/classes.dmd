@@ -10,185 +10,69 @@ must			dotName
 must			definedInTdlModule
 may				description
 description		The TdlDefinition provides a common base for all dark-matter
- Template Definition Language (TDL) definitions. 
+ Template Definition Language (TDL) definitions.
 
-//ClassDefinition
-//name 			GpbType
-//classType      	STRUCTURAL
-//dmdID			3
-//useWrapperType	EXTENDED
-//derivedFrom		GpbDefinition
-//isNamedBy		name
-//must			name
-//description		The GpbType class provides a common base for all things that can be used 
-// to represent the type of a GpbField. This includes the built-in scalar types associated with
-// Google Protocol Buffers, as well and enums and messages. Having a common base for types means
-// that we don't run into problems with generating internal types to represent enums and messages.
-//
-//ClassDefinition
-//name 			GpbScalarType
-//classType      	STRUCTURAL
-//dmdID			4
-//useWrapperType	EXTENDED
-//derivedFrom		GpbType
-//isNamedBy		name
-//must			name
-//may				defaultValue
-//may				sizeInBytes
-//may				javaType
-//may				cplusplusType
-//may				pythonType
-////may				basedOnMainElement
-//description		The GpbType class is use to define the types of attributes in the GPB
-// specification. All GpbMessages and GpbEnum will have GpbTypes generated for
-// them so that they can be used as types for GpbAttributes.
-// <p/>
-// GpbType definitions cannot be specified in .dmgpb files; they are strictly for
-// internal use. If you specify one in a .dmgpb file, you'll get an error.
-//
-//ClassDefinition
-//name 			GpbCompositeType
-//classType      	ABSTRACT
-//dmdID			5
-//useWrapperType	EXTENDED
-//derivedFrom		GpbType
-//isNamedBy		name
-//must			name
-//may				generateAs
-//description		The GpbCompositeType provides a common base for enumerations and messages
-// so that they can be referred to as a separate type of object that can be specified in
-// standalone blocks within a generate GpbprotoFile.
-//
-////ClassDefinition
-////name         	GpbElement
-////classType      	ABSTRACT
-////dmdID			4
-////useWrapperType	EXTENDED
-////derivedFrom     GpbDefinition
-////isNamedBy       name
-////must           	name
-////description		The GpbElement provides a common base for enums and messages so that
-//// we can specify a set of them to compose a GpbProtoFile.
-//
-////ClassDefinition
-////name         	GpbMainElement
-////classType      	ABSTRACT
-////dmdID			5
-////useWrapperType	EXTENDED
-////derivedFrom     GpbElement
-////isNamedBy       name
-////must           	name
-////description		The GpbElement provides a common base for enums and messages so that
-//
-//ClassDefinition
-//name         	GpbEnum
-//classType      	STRUCTURAL
-//dmdID			6
-//useWrapperType	EXTENDED
-//derivedFrom     GpbCompositeType
-//isNamedBy       name
-//must           	name
-//must           	enumValue
-//may             defaultValue
-//description    The GpbEnum allows for the definition of enumerations. One thing to be aware
-// of with enums is that, if you're generating C++, the names of enum elements must be globally
-// unique. The dark-matter GPB utility will warn you if you have clashing enum value names.
-// <p/>
-// May want to allow for mapping between DMS enum definitions and GpbEnums. Provide a basedOnEnum
-// attribute that refers to a DMS enum. A GpbDefinitionSet could use the schemaToLoad attribute
-// to specify a DMS schema from which definitions can be pulled.
-// <p/>
-// When you're defining a message type, you might want one of its fields to only have one of a
-// pre-defined list of values. For example, let's say you want to add a corpus field for each
-// SearchRequest, where the corpus can be UNIVERSAL, WEB, IMAGES, LOCAL, NEWS, PRODUCTS or VIDEO.
-// You can do this very simply by adding an enum to your message definition - a field with an enum
-// type can only have one of a specified set of constants as its value (if you try to provide a
-// different value, the parser will treat it like an unknown field). In the following
-// example we've added an enum called Corpus with all the possible values, and a field of type Corpus:
-//
-//ClassDefinition
-//name         	GpbField
-//classType      	STRUCTURAL
-//dmdID			7
-//useWrapperType	EXTENDED
-//derivedFrom     GpbDefinition
-//isNamedBy       name
-//must			name
-//must			gpbType
-//may             description
-//may				generateAs
-////may			    fieldRule
-////may			    tag
-//description		The GpbField class is used to represent a reusable, named field for use
-// within a GpbMessage. If the field has been parsed from an existing .proto file, it will
-// have the fieldRule and tag attributes. However, when specified as part of a .gpb file,
-// the fieldRule and tag won't be specified.
-//
-////ComplexTypeDefinition
-////name			GPBField
-////field			GPBFieldTypeEnum	fieldType       The type of GPB field
-////field			AttributeDefinition	attribute		The attribute to be stored in this field. The attribute type must specify the gpbFieldType .
-////field			Integer				fieldTag		Unique field ID excluding values 19000 to 19999 which are reserved.
-////description		The GPBField type is used to specify a mapping between the attributes
-////of an object and a Google Protocol Buffer field. An example might be:
-////<pre>
-////gpbField STRING firstName 1
-////</pre>
-////This mechanism allows for generation of GPB compatible dark-matter objects.
-//
-//
-//ClassDefinition
-//name         	GpbMessage
-//classType      	STRUCTURAL
-//dmdID			8
-//useWrapperType	EXTENDED
-//derivedFrom     GpbCompositeType
-//isNamedBy       name
-//must			name
-//may				field
-//may				embed
-//
-////ClassDefinition
-////name         	GpbModule
-////classType      	STRUCTURAL
-////dmdID			6
-////useWrapperType	EXTENDED
-////derivedFrom     GpbDefinition
-////isNamedBy       name
-////must			name
-////description		The GpbModule is used to define a named collection of definitions from
-//// which Google Protocol Buffer (GPB) .proto files can be composed and generated. GpbModule
-//// are referred to by GpbArtifacts
-//
-////ClassDefinition
-////name         	GpbArtifact
-////classType      	STRUCTURAL
-////dmdID			9
-////useWrapperType	EXTENDED
-////derivedFrom     GpbDefinition
-////isNamedBy       name
-////must			name
-////must			package
-////may				import
-////may				mainElements
-////description		The GpbArtifact defines an artifact to be generated by the dark-matter GPB 
-//// generation mechanisms; the artifacts in this case are .proto files.
-//
-//ClassDefinition
-//name         	GpbProtoFile
-//classType      	STRUCTURAL
-//dmdID			10
-//useWrapperType	EXTENDED
-//derivedFrom     GpbDefinition
-//isNamedBy       name
-//must			name
-//must			package
-//must			generatedFileName
-//may				import
-//may				mainElements
-//description		The GpbProtoFile is used to represent a single .proto file. It may be parsed
-// from an existing .proto file by the GpbDotProtoParser utility. 
+ClassDefinition
+name 			Section
+classType      	STRUCTURAL
+dmdID			3
+useWrapperType	EXTENDED
+derivedFrom		TdlDefinition
+isNamedBy		name
+must			name
+may				singleton
+may				contains
+may				startsWith
+may				endsWith
+may				startsWithText
+may				endsWithText
+may				value
+may				hasTemplate
+description		A Section represents part of a textual artifact that you want format.
+ The artifact could be an XHTML document, an XML document, a piece of code, a form
+ letter - whatever. The content of a Section may start with another Section or static
+ piece of text and, likewise, end with a Section or static piece of text.
+ <p/>
+ Sections can also contain other (sub) Sections. 
+ <p/>
+ Sections can also have named values that can be inserted into Templates. By specifying
+ values, you define a simple interface to the template.
 
+OnlyOneOfTheseAttributesAllowedRuleData
+ruleName			dmtdlStartsWith
+ruleTitle			A Section can only startWith another Section or with a static piece of text. 
+applyToClass		Section
+onePossibility		startsWith
+onePossibility		startsWithText
 
+OnlyOneOfTheseAttributesAllowedRuleData
+ruleName			dmtdlEndsWith
+ruleTitle			A Section can only endWith another Section or with a static piece of text. 
+applyToClass		Section
+onePossibility		endsWith
+onePossibility		endsWithText
 
-
+ClassDefinition
+name 			Template
+classType      	STRUCTURAL
+dmdID			4
+useWrapperType	EXTENDED
+isNamedBy		name
+must			name
+must			format
+description		The Template object provides a mechanism to define an arbitrary set of
+ text that allows for the insertion of the named values defined as part of the associated
+ Section definition.
+ <p/>
+ By convention, if a Section requires a Template, the Template is named sectionNameT. For example:
+ <pre>
+ Section
+ name Header
+ </pre>
+ would have a template as follows:
+ <pre>
+ Template
+ name HeaderT
+ </pre>
+ Templates are kept separate from the Section definitions so that their content can be
+ changed without regenerating code. Templates are loaded 

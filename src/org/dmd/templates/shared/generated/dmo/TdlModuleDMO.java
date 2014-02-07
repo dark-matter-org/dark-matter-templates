@@ -26,8 +26,10 @@ import org.dmd.dmc.DmcValueException;                                          /
 import org.dmd.dmc.types.DefinitionName;                                       // Naming attribute type - (GenUtility.java:370)
 import org.dmd.dms.generated.dmo.MetaDMSAG;                                    // Required for MODREC constructor - (GenUtility.java:228)
 import org.dmd.dms.generated.types.DmcTypeDefinitionNameSV;                    // Required type - (GenUtility.java:328)
+import org.dmd.dms.generated.types.DmcTypeIntegerSV;                           // Required type - (GenUtility.java:328)
 import org.dmd.dms.generated.types.DmcTypeModifierMV;                          // Required for MODREC constructor - (GenUtility.java:227)
 import org.dmd.dms.generated.types.DmcTypeStringMV;                            // Required type - (GenUtility.java:328)
+import org.dmd.dms.generated.types.DmcTypeStringSV;                            // Required type - (GenUtility.java:328)
 import org.dmd.templates.shared.generated.dmo.TdlDefinitionDMO;                // Base class - (GenUtility.java:355)
 import org.dmd.templates.shared.generated.dmo.TdlModuleDMO;                    // Type specific set/add - (GenUtility.java:307)
 import org.dmd.templates.shared.generated.types.DmcTypeTdlModuleREFMV;         // Reference type - (GenUtility.java:300)
@@ -35,6 +37,18 @@ import org.dmd.templates.shared.generated.types.TdlModuleREF;                  /
 
 // Generated from: org.dmd.dms.util.DmoFormatter.getClassHeader(DmoFormatter.java:677)
 /**
+ * A TdlModule is used to define a set of Sections that\n define the overall
+ * structure of a textual artifact. When run through the dmtdlgen\n utility,
+ * a set of classes are generated to represent these different artifact
+ * sections.\n <p/>\n By convention, you should place the .dmtdl files along
+ * with your other dark-matter \n config files e.g. in the dmconfig folder
+ * with your dark-matter schema or with \n your .dmg wrapper generation
+ * files. However, there is no restriction on where you\n place your .dmtdl
+ * files, but it's recommended that they exist in a separate subfolder.\n
+ * <p/>\n When the dmtdlgen utility is run, a folder (named generated) will
+ * be created at\n the same level as the dmconfig folder (or whatever you
+ * called it). This will contain\n a dmtdl subpackage that will contain the
+ * generated code that represents the \n various Sections that you've defined.
  * <P>
  * Generated from the dmtdl schema at version unknown
  * <P>
@@ -115,133 +129,6 @@ public class TdlModuleDMO  extends TdlDefinitionDMO  implements DmcNamedObjectIF
             return(0);
         
         return(objn.hashCode());
-    }
-
-    /**
-     * @return An Iterator of String objects.
-     */
-    @SuppressWarnings("unchecked")
-    // org.dmd.dms.util.GenUtility.formatMV(GenUtility.java:1112)
-    public Iterator<String> getLoadSchemaClass(){
-        DmcTypeStringMV attr = (DmcTypeStringMV) get(MetaDMSAG.__loadSchemaClass);
-        if (attr == null)
-            return( ((List<String>) Collections.EMPTY_LIST).iterator());
-
-        return(attr.getMV());
-    }
-
-    /**
-     * @return The nth String value.
-     */
-    // org.dmd.dms.util.GenUtility.formatMV(GenUtility.java:1124)
-    public String getNthLoadSchemaClass(int i){
-        DmcTypeStringMV attr = (DmcTypeStringMV) get(MetaDMSAG.__loadSchemaClass);
-        if (attr == null)
-            return(null);
-
-        return(attr.getMVnth(i));
-    }
-
-    /**
-     * Adds another loadSchemaClass to the specified value.
-     * @param value String
-     */
-    // org.dmd.dms.util.GenUtility.formatMV(GenUtility.java:1138)
-    public DmcAttribute<?> addLoadSchemaClass(String value) {
-        DmcAttribute<?> attr = get(MetaDMSAG.__loadSchemaClass);
-        if (attr == null)
-            attr = new DmcTypeStringMV(MetaDMSAG.__loadSchemaClass);
-        
-        try{
-            setLastValue(attr.add(value));
-            add(MetaDMSAG.__loadSchemaClass,attr);
-        }
-        catch(DmcValueException ex){
-            throw(new IllegalStateException("The type specific add() method shouldn't throw exceptions!",ex));
-        }
-        return(attr);
-    }
-
-    /**
-     * Returns true if we contain a valued keyed by the specified String.
-     * @param value String
-     */
-    // org.dmd.dms.util.GenUtility.formatMV(GenUtility.java:1213)
-    public boolean loadSchemaClassContains(String value) {
-        DmcAttribute<?> attr = get(MetaDMSAG.__loadSchemaClass);
-        if (attr == null)
-            return(false);
-        return(attr.contains(value));
-    }
-
-    /**
-     * Adds another loadSchemaClass value.
-     * @param value A value compatible with String
-     */
-    // org.dmd.dms.util.GenUtility.formatMV(GenUtility.java:1245)
-    public DmcAttribute<?> addLoadSchemaClass(Object value) throws DmcValueException {
-        DmcAttribute<?> attr = get(MetaDMSAG.__loadSchemaClass);
-        if (attr == null)
-            attr = new DmcTypeStringMV(MetaDMSAG.__loadSchemaClass);
-        
-        setLastValue(attr.add(value));
-        add(MetaDMSAG.__loadSchemaClass,attr);
-        return(attr);
-    }
-
-    /**
-     * Returns the number of values in loadSchemaClass
-     */
-    // org.dmd.dms.util.GenUtility.formatMV(GenUtility.java:1262)
-    public int getLoadSchemaClassSize(){
-        DmcAttribute<?> attr = get(MetaDMSAG.__loadSchemaClass);
-        if (attr == null){
-            if (MetaDMSAG.__loadSchemaClass.indexSize == 0)
-                return(0);
-            else
-                return(MetaDMSAG.__loadSchemaClass.indexSize);
-        }
-        return(attr.getMVSize());
-    }
-
-    /**
-     * Deletes a loadSchemaClass value.
-     * @param value The String to be deleted from set of attribute values.
-     */
-    // org.dmd.dms.util.GenUtility.formatMV(GenUtility.java:1320)
-    public DmcAttribute<?> delLoadSchemaClass(Object value) throws DmcValueException {
-        DmcAttribute<?> attr = get(MetaDMSAG.__loadSchemaClass);
-        
-        if ( (attr == null) && (getModifier()!= null))
-            delFromEmptyAttribute(new DmcTypeStringMV(MetaDMSAG.__loadSchemaClass), value);
-        else
-            attr = del(MetaDMSAG.__loadSchemaClass, value);
-        
-        return(attr);
-    }
-
-    /**
-     * Deletes a loadSchemaClass from the specified value.
-     * @param value String
-     */
-    // org.dmd.dms.util.GenUtility.formatMV(GenUtility.java:1336)
-    public DmcAttribute<?> delLoadSchemaClass(String value) {
-        DmcAttribute<?> attr = get(MetaDMSAG.__loadSchemaClass);
-        
-        if ( (attr == null) && (getModifier()!= null))
-            delFromEmptyAttribute(new DmcTypeStringMV(MetaDMSAG.__loadSchemaClass), value);
-        else
-            attr = del(MetaDMSAG.__loadSchemaClass, value);
-        
-        return(attr);
-    }
-
-    /**
-     * Removes the loadSchemaClass attribute value.
-     */
-    // org.dmd.dms.util.GenUtility.formatMV(GenUtility.java:1355)
-    public void remLoadSchemaClass(){
-         rem(MetaDMSAG.__loadSchemaClass);
     }
 
     /**
@@ -498,6 +385,156 @@ public class TdlModuleDMO  extends TdlDefinitionDMO  implements DmcNamedObjectIF
          rem(MetaDMSAG.__defFiles);
     }
 
+    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:784)
+    public String getTemplateFileSuffix(){
+        DmcTypeStringSV attr = (DmcTypeStringSV) get(DmtdlDMSAG.__templateFileSuffix);
+        if (attr == null)
+            return("dmt");
+
+        return(attr.getSV());
+    }
+
+    /**
+     * Sets templateFileSuffix to the specified value.
+     * @param value String
+     */
+    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:824)
+    public void setTemplateFileSuffix(String value) {
+        DmcAttribute<?> attr = get(DmtdlDMSAG.__templateFileSuffix);
+        if (attr == null)
+            attr = new DmcTypeStringSV(DmtdlDMSAG.__templateFileSuffix);
+        
+        try{
+            attr.set(value);
+            set(DmtdlDMSAG.__templateFileSuffix,attr);
+        }
+        catch(DmcValueException ex){
+            throw(new IllegalStateException("The type specific set() method shouldn't throw exceptions!",ex));
+        }
+    }
+
+    /**
+     * Sets templateFileSuffix to the specified value.
+     * @param value A value compatible with DmcTypeStringSV
+     */
+    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:877)
+    public void setTemplateFileSuffix(Object value) throws DmcValueException {
+        DmcTypeStringSV attr  = (DmcTypeStringSV) get(DmtdlDMSAG.__templateFileSuffix);
+        if (attr == null)
+            attr = new DmcTypeStringSV(DmtdlDMSAG.__templateFileSuffix);
+        
+        attr.set(value);
+        set(DmtdlDMSAG.__templateFileSuffix,attr);
+    }
+
+    /**
+     * Removes the templateFileSuffix attribute value.
+     */
+    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:897)
+    public void remTemplateFileSuffix(){
+         rem(DmtdlDMSAG.__templateFileSuffix);
+    }
+
+    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:784)
+    public Integer getMaxFastAddValues(){
+        DmcTypeIntegerSV attr = (DmcTypeIntegerSV) get(DmtdlDMSAG.__maxFastAddValues);
+        if (attr == null)
+            return(8);
+
+        return(attr.getSV());
+    }
+
+    /**
+     * Sets maxFastAddValues to the specified value.
+     * @param value Integer
+     */
+    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:824)
+    public void setMaxFastAddValues(Integer value) {
+        DmcAttribute<?> attr = get(DmtdlDMSAG.__maxFastAddValues);
+        if (attr == null)
+            attr = new DmcTypeIntegerSV(DmtdlDMSAG.__maxFastAddValues);
+        
+        try{
+            attr.set(value);
+            set(DmtdlDMSAG.__maxFastAddValues,attr);
+        }
+        catch(DmcValueException ex){
+            throw(new IllegalStateException("The type specific set() method shouldn't throw exceptions!",ex));
+        }
+    }
+
+    /**
+     * Sets maxFastAddValues to the specified value.
+     * @param value A value compatible with DmcTypeIntegerSV
+     */
+    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:877)
+    public void setMaxFastAddValues(Object value) throws DmcValueException {
+        DmcTypeIntegerSV attr  = (DmcTypeIntegerSV) get(DmtdlDMSAG.__maxFastAddValues);
+        if (attr == null)
+            attr = new DmcTypeIntegerSV(DmtdlDMSAG.__maxFastAddValues);
+        
+        attr.set(value);
+        set(DmtdlDMSAG.__maxFastAddValues,attr);
+    }
+
+    /**
+     * Removes the maxFastAddValues attribute value.
+     */
+    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:897)
+    public void remMaxFastAddValues(){
+         rem(DmtdlDMSAG.__maxFastAddValues);
+    }
+
+    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:784)
+    public String getInsertMarker(){
+        DmcTypeStringSV attr = (DmcTypeStringSV) get(DmtdlDMSAG.__insertMarker);
+        if (attr == null)
+            return("::");
+
+        return(attr.getSV());
+    }
+
+    /**
+     * Sets insertMarker to the specified value.
+     * @param value String
+     */
+    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:824)
+    public void setInsertMarker(String value) {
+        DmcAttribute<?> attr = get(DmtdlDMSAG.__insertMarker);
+        if (attr == null)
+            attr = new DmcTypeStringSV(DmtdlDMSAG.__insertMarker);
+        
+        try{
+            attr.set(value);
+            set(DmtdlDMSAG.__insertMarker,attr);
+        }
+        catch(DmcValueException ex){
+            throw(new IllegalStateException("The type specific set() method shouldn't throw exceptions!",ex));
+        }
+    }
+
+    /**
+     * Sets insertMarker to the specified value.
+     * @param value A value compatible with DmcTypeStringSV
+     */
+    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:877)
+    public void setInsertMarker(Object value) throws DmcValueException {
+        DmcTypeStringSV attr  = (DmcTypeStringSV) get(DmtdlDMSAG.__insertMarker);
+        if (attr == null)
+            attr = new DmcTypeStringSV(DmtdlDMSAG.__insertMarker);
+        
+        attr.set(value);
+        set(DmtdlDMSAG.__insertMarker,attr);
+    }
+
+    /**
+     * Removes the insertMarker attribute value.
+     */
+    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:897)
+    public void remInsertMarker(){
+         rem(DmtdlDMSAG.__insertMarker);
+    }
+
     /**
      * @return An Iterator of TdlModuleDMO objects.
      */
@@ -653,6 +690,106 @@ public class TdlModuleDMO  extends TdlDefinitionDMO  implements DmcNamedObjectIF
     // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:897)
     public void remName(){
          rem(MetaDMSAG.__name);
+    }
+
+    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:784)
+    public String getPackage(){
+        DmcTypeStringSV attr = (DmcTypeStringSV) get(DmtdlDMSAG.__package);
+        if (attr == null)
+            return(null);
+
+        return(attr.getSV());
+    }
+
+    /**
+     * Sets package to the specified value.
+     * @param value String
+     */
+    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:824)
+    public void setPackage(String value) {
+        DmcAttribute<?> attr = get(DmtdlDMSAG.__package);
+        if (attr == null)
+            attr = new DmcTypeStringSV(DmtdlDMSAG.__package);
+        
+        try{
+            attr.set(value);
+            set(DmtdlDMSAG.__package,attr);
+        }
+        catch(DmcValueException ex){
+            throw(new IllegalStateException("The type specific set() method shouldn't throw exceptions!",ex));
+        }
+    }
+
+    /**
+     * Sets package to the specified value.
+     * @param value A value compatible with DmcTypeStringSV
+     */
+    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:877)
+    public void setPackage(Object value) throws DmcValueException {
+        DmcTypeStringSV attr  = (DmcTypeStringSV) get(DmtdlDMSAG.__package);
+        if (attr == null)
+            attr = new DmcTypeStringSV(DmtdlDMSAG.__package);
+        
+        attr.set(value);
+        set(DmtdlDMSAG.__package,attr);
+    }
+
+    /**
+     * Removes the package attribute value.
+     */
+    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:897)
+    public void remPackage(){
+         rem(DmtdlDMSAG.__package);
+    }
+
+    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:784)
+    public String getTemplateFile(){
+        DmcTypeStringSV attr = (DmcTypeStringSV) get(DmtdlDMSAG.__templateFile);
+        if (attr == null)
+            return(null);
+
+        return(attr.getSV());
+    }
+
+    /**
+     * Sets templateFile to the specified value.
+     * @param value String
+     */
+    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:824)
+    public void setTemplateFile(String value) {
+        DmcAttribute<?> attr = get(DmtdlDMSAG.__templateFile);
+        if (attr == null)
+            attr = new DmcTypeStringSV(DmtdlDMSAG.__templateFile);
+        
+        try{
+            attr.set(value);
+            set(DmtdlDMSAG.__templateFile,attr);
+        }
+        catch(DmcValueException ex){
+            throw(new IllegalStateException("The type specific set() method shouldn't throw exceptions!",ex));
+        }
+    }
+
+    /**
+     * Sets templateFile to the specified value.
+     * @param value A value compatible with DmcTypeStringSV
+     */
+    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:877)
+    public void setTemplateFile(Object value) throws DmcValueException {
+        DmcTypeStringSV attr  = (DmcTypeStringSV) get(DmtdlDMSAG.__templateFile);
+        if (attr == null)
+            attr = new DmcTypeStringSV(DmtdlDMSAG.__templateFile);
+        
+        attr.set(value);
+        set(DmtdlDMSAG.__templateFile,attr);
+    }
+
+    /**
+     * Removes the templateFile attribute value.
+     */
+    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:897)
+    public void remTemplateFile(){
+         rem(DmtdlDMSAG.__templateFile);
     }
 
 

@@ -31,6 +31,7 @@ import org.dmd.dmc.DmcValueExceptionSet;                                        
 import org.dmd.dmc.definitions.DmcDefinitionSet;                                // Our base to provide definition set storage - (DSDArtifactFormatter.java:130)
 import org.dmd.dmc.types.DotName;                                               // To support the find method for definitions - (DSDArtifactFormatter.java:132)
 import org.dmd.dms.DSDefinition;                                                // The base of all definitions - (DSDArtifactFormatter.java:129)
+import org.dmd.templates.server.extended.Section;                               // A definition from the TdlModule Module - (DSDArtifactFormatter.java:281)
 import org.dmd.templates.server.extended.TdlDefinition;                         // A definition from the TdlModule Module - (DSDArtifactFormatter.java:277)
 import org.dmd.templates.server.extended.TdlModule;                             // A definition from the TdlModule Module - (DSDArtifactFormatter.java:281)
 import org.dmd.templates.server.generated.dsd.TdlModuleGlobalInterface;         // Interface for TdlModule definitions - (DSDArtifactFormatter.java:274)
@@ -43,6 +44,7 @@ public class TdlModuleDefinitionManager implements DmcNameClashResolverIF, DmcNa
 
     // Generated from: org.dmd.dmg.generators.DSDArtifactFormatter.dumpDefinitionManagerMembers(DSDArtifactFormatter.java:300)
     DmcDefinitionSet<TdlDefinition> TdlDefinitionDefs;
+    DmcDefinitionSet<Section> SectionDefs;
     DmcDefinitionSet<TdlModule> TdlModuleDefs;
 
     public TdlModuleDefinitionManager(){
@@ -52,6 +54,7 @@ public class TdlModuleDefinitionManager implements DmcNameClashResolverIF, DmcNa
 
         // Generated from: org.dmd.dmg.generators.DSDArtifactFormatter.initializeDefinitionManagerMembers(DSDArtifactFormatter.java:327)
         TdlDefinitionDefs = new DmcDefinitionSet<TdlDefinition>("TdlDefinition", allDefinitions);
+        SectionDefs = new DmcDefinitionSet<Section>("Section", allDefinitions);
         TdlModuleDefs = new DmcDefinitionSet<TdlModule>("TdlModule", allDefinitions);
 
     }
@@ -165,6 +168,24 @@ public class TdlModuleDefinitionManager implements DmcNameClashResolverIF, DmcNa
 
     public Iterator<TdlDefinition> getAllTdlDefinition(){
         return(TdlDefinitionDefs.values().iterator());
+    }
+
+    // Generated from: org.dmd.dms.DSDefinitionModule.getInterfaceMethodsImplementations(DSDefinitionModule.java:254)
+    public void addSection(Section def){
+        SectionDefs.add(def);
+        addTdlDefinition(def);
+    }
+
+    public int getSectionCount(){
+        return(SectionDefs.size());
+    }
+
+    public Section getSection(DotName name){
+        return(SectionDefs.getDefinition(name));
+    }
+
+    public Iterator<Section> getAllSection(){
+        return(SectionDefs.values().iterator());
     }
 
     // Generated from: org.dmd.dms.DSDefinitionModule.getInterfaceMethodsImplementations(DSDefinitionModule.java:254)

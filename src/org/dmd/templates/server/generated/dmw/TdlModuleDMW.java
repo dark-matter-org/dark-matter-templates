@@ -13,6 +13,7 @@ import org.dmd.dms.ClassDefinition;                                             
 import org.dmd.dms.generated.dmo.MetaDMSAG;                                     // Attribute defFiles from the meta schema - (BaseDMWGenerator.java:897)
 import org.dmd.dms.generated.dmw.StringIterableDMW;                             // For multi-valued String - (BaseDMWGenerator.java:2103)
 import org.dmd.dms.generated.types.DmcTypeModifierMV;                           // Required for MODREC constructor - (BaseDMWGenerator.java:1071)
+import org.dmd.templates.server.extended.Section;                               // A definition from the TdlModule Module - (DSDefinitionModule.java:174)
 import org.dmd.templates.server.extended.TdlDefinition;                         // Derived class - (BaseDMWGenerator.java:1248)
 import org.dmd.templates.server.extended.TdlModule;                             // Required for getModificationRecorder() - (BaseDMWGenerator.java:1076)
 import org.dmd.templates.server.generated.dmw.TdlModuleIterableDMW;             // For multi-valued TdlModule - (BaseDMWGenerator.java:1709)
@@ -24,6 +25,18 @@ import org.dmd.templates.shared.generated.types.TdlModuleREF;                   
 
 
 /**
+ * A TdlModule is used to define a set of Sections that\n define the overall
+ * structure of a textual artifact. When run through the dmtdlgen\n utility,
+ * a set of classes are generated to represent these different artifact
+ * sections.\n <p/>\n By convention, you should place the .dmtdl files along
+ * with your other dark-matter \n config files e.g. in the dmconfig folder
+ * with your dark-matter schema or with \n your .dmg wrapper generation
+ * files. However, there is no restriction on where you\n place your .dmtdl
+ * files, but it's recommended that they exist in a separate subfolder.\n
+ * <p/>\n When the dmtdlgen utility is run, a folder (named generated) will
+ * be created at\n the same level as the dmconfig folder (or whatever you
+ * called it). This will contain\n a dmtdl subpackage that will contain the
+ * generated code that represents the \n various Sections that you've defined.
  * <P>
  * Generated from the dmtdl schema at version unknown
  * <P>
@@ -35,6 +48,7 @@ abstract public class TdlModuleDMW extends TdlDefinition implements DmcDefinitio
     // Generated from: org.dmd.util.codegen.MemberManager.getFormattedMembers(MemberManager.java:59)
     // Called from: org.dmd.dmg.generators.DMWGenerator.dumpAdditionalWrapperDefinitions(DMWGenerator.java:203)
     DmcDefinitionSet<TdlDefinition>     TdlDefinitionDefs    = new DmcDefinitionSet<TdlDefinition>("TdlModule-allDefinitions");   // All definitions associated with this module
+    DmcDefinitionSet<Section>           SectionDefs          = new DmcDefinitionSet<Section>("TdlModule-SectionDefs");            // All Section definitions
     DmcDefinitionSet<TdlModule>         TdlModuleDefs        = new DmcDefinitionSet<TdlModule>("TdlModule-TdlModuleDefs");        // All TdlModule definitions
 
     // Generated from: org.dmd.dmg.generators.BaseDMWGenerator.dumpWrapper(BaseDMWGenerator.java:558)
@@ -407,117 +421,66 @@ abstract public class TdlModuleDMW extends TdlDefinition implements DmcDefinitio
         ((TdlModuleDMO) core).remDescription();
     }
 
-    /**
-     * @return The number of String items.
-     */
-    // org.dmd.dmg.generators.BaseDMWGenerator.formatMV(BaseDMWGenerator.java:1671)
-    public int getLoadSchemaClassSize(){
-        return(((TdlModuleDMO) core).getLoadSchemaClassSize());
+    // org.dmd.dmg.generators.BaseDMWGenerator.formatSV(BaseDMWGenerator.java:1474)
+    public String getInsertMarker(){
+        return(((TdlModuleDMO) core).getInsertMarker());
     }
 
     /**
-     * @return true if there are no StringDMO items.
+     * Sets insertMarker to the specified value.
+     * @param value A value compatible with DmcTypeString
      */
-    // org.dmd.dmg.generators.BaseDMWGenerator.formatMV(BaseDMWGenerator.java:1679)
-    public boolean getLoadSchemaClassIsEmpty(){
-        if (((TdlModuleDMO) core).getLoadSchemaClassSize() == 0)
-            return(true);
-        return(false);
+    // org.dmd.dmg.generators.BaseDMWGenerator.formatSV(BaseDMWGenerator.java:1584)
+    public void setInsertMarker(Object value) throws DmcValueException {
+        ((TdlModuleDMO) core).setInsertMarker(value);
     }
 
     /**
-     * @return true if there are any StringDMO items.
+     * Sets insertMarker to the specified value.
+     * @param value String
      */
-    // org.dmd.dmg.generators.BaseDMWGenerator.formatMV(BaseDMWGenerator.java:1689)
-    public boolean getLoadSchemaClassHasValue(){
-        if (((TdlModuleDMO) core).getLoadSchemaClassSize() == 0)
-            return(false);
-        return(true);
+    // org.dmd.dmg.generators.BaseDMWGenerator.formatSV(BaseDMWGenerator.java:1593)
+    public void setInsertMarker(String value){
+        ((TdlModuleDMO) core).setInsertMarker(value);
     }
 
     /**
-     * @return An Iterator of String objects.
+     * Removes the insertMarker attribute value.
      */
-    // org.dmd.dmg.generators.BaseDMWGenerator.formatMV(BaseDMWGenerator.java:2107)
-    public StringIterableDMW getLoadSchemaClassIterable(){
-        DmcAttribute<?> attr = core.get(MetaDMSAG.__loadSchemaClass);
-        if (attr == null)
-            return(StringIterableDMW.emptyList);
-        
-        return(new StringIterableDMW(((TdlModuleDMO) core).getLoadSchemaClass()));
+    // org.dmd.dmg.generators.BaseDMWGenerator.formatSV(BaseDMWGenerator.java:1619)
+    public void remInsertMarker(){
+        ((TdlModuleDMO) core).remInsertMarker();
+    }
+
+    // org.dmd.dmg.generators.BaseDMWGenerator.formatSV(BaseDMWGenerator.java:1474)
+    public Integer getMaxFastAddValues(){
+        return(((TdlModuleDMO) core).getMaxFastAddValues());
     }
 
     /**
-     * Adds another loadSchemaClass value.
-     * @param value A value compatible with String
+     * Sets maxFastAddValues to the specified value.
+     * @param value A value compatible with DmcTypeInteger
      */
-    // org.dmd.dmg.generators.BaseDMWGenerator.formatMV(BaseDMWGenerator.java:2133)
-    public void addLoadSchemaClass(Object value) throws DmcValueException {
-        ((TdlModuleDMO) core).addLoadSchemaClass(value);
+    // org.dmd.dmg.generators.BaseDMWGenerator.formatSV(BaseDMWGenerator.java:1584)
+    public void setMaxFastAddValues(Object value) throws DmcValueException {
+        ((TdlModuleDMO) core).setMaxFastAddValues(value);
     }
 
     /**
-     * Adds another loadSchemaClass value.
-     * @param value A value compatible with String
+     * Sets maxFastAddValues to the specified value.
+     * @param value Integer
      */
-    // org.dmd.dmg.generators.BaseDMWGenerator.formatMV(BaseDMWGenerator.java:2143)
-    public void addLoadSchemaClass(String value){
-        ((TdlModuleDMO) core).addLoadSchemaClass(value);
+    // org.dmd.dmg.generators.BaseDMWGenerator.formatSV(BaseDMWGenerator.java:1593)
+    public void setMaxFastAddValues(Integer value){
+        ((TdlModuleDMO) core).setMaxFastAddValues(value);
     }
 
     /**
-     * Returns true if the collection contains the loadSchemaClass value.
-     * @param value A value compatible with String
+     * Removes the maxFastAddValues attribute value.
      */
-    // org.dmd.dmg.generators.BaseDMWGenerator.formatMV(BaseDMWGenerator.java:2200)
-    public boolean loadSchemaClassContains(String value){
-        return(((TdlModuleDMO) core).loadSchemaClassContains(value));
-    }
-
-    /**
-     * @return A COPY of the collection of String objects.
-     */
-    // org.dmd.dmg.generators.BaseDMWGenerator.formatMV(BaseDMWGenerator.java:2244)
-    @SuppressWarnings("unchecked")
-    public ArrayList<String> getLoadSchemaClassCopy(){
-        DmcAttribute<?> attr = core.get(MetaDMSAG.__loadSchemaClass);
-        if (attr == null)
-            return(new ArrayList<String>());
-        
-        ArrayList<String> rc = new ArrayList<String>(attr.getMVSize());
-        
-        Iterator<String> it = (Iterator<String>) attr.getMV();
-        while(it.hasNext()){
-            rc.add(it.next());
-        }
-        
-        return(rc);
-    }
-
-    /**
-     * Deletes a loadSchemaClass value.
-     * @param value The String to be deleted from set of attribute values.
-     */
-    // org.dmd.dmg.generators.BaseDMWGenerator.formatMV(BaseDMWGenerator.java:2271)
-    public void delLoadSchemaClass(Object value) throws DmcValueException {
-        ((TdlModuleDMO) core).delLoadSchemaClass(value);
-    }
-
-    /**
-     * Deletes a loadSchemaClass value.
-     * @param value The String to be deleted from set of attribute values.
-     */
-    // org.dmd.dmg.generators.BaseDMWGenerator.formatMV(BaseDMWGenerator.java:2280)
-    public void delLoadSchemaClass(String value){
-        ((TdlModuleDMO) core).delLoadSchemaClass(value);
-    }
-
-    /**
-     * Removes the loadSchemaClass attribute value.
-     */
-    // org.dmd.dmg.generators.BaseDMWGenerator.formatMV(BaseDMWGenerator.java:2292)
-    public void remLoadSchemaClass(){
-        ((TdlModuleDMO) core).remLoadSchemaClass();
+    // org.dmd.dmg.generators.BaseDMWGenerator.formatSV(BaseDMWGenerator.java:1619)
+    public void remMaxFastAddValues(){
+        ((TdlModuleDMO) core).remMaxFastAddValues();
     }
 
     // org.dmd.dmg.generators.BaseDMWGenerator.formatSV(BaseDMWGenerator.java:1474)
@@ -551,6 +514,99 @@ abstract public class TdlModuleDMW extends TdlDefinition implements DmcDefinitio
         ((TdlModuleDMO) core).remName();
     }
 
+    // org.dmd.dmg.generators.BaseDMWGenerator.formatSV(BaseDMWGenerator.java:1474)
+    public String getPackage(){
+        return(((TdlModuleDMO) core).getPackage());
+    }
+
+    /**
+     * Sets package to the specified value.
+     * @param value A value compatible with DmcTypeString
+     */
+    // org.dmd.dmg.generators.BaseDMWGenerator.formatSV(BaseDMWGenerator.java:1584)
+    public void setPackage(Object value) throws DmcValueException {
+        ((TdlModuleDMO) core).setPackage(value);
+    }
+
+    /**
+     * Sets package to the specified value.
+     * @param value String
+     */
+    // org.dmd.dmg.generators.BaseDMWGenerator.formatSV(BaseDMWGenerator.java:1593)
+    public void setPackage(String value){
+        ((TdlModuleDMO) core).setPackage(value);
+    }
+
+    /**
+     * Removes the package attribute value.
+     */
+    // org.dmd.dmg.generators.BaseDMWGenerator.formatSV(BaseDMWGenerator.java:1619)
+    public void remPackage(){
+        ((TdlModuleDMO) core).remPackage();
+    }
+
+    // org.dmd.dmg.generators.BaseDMWGenerator.formatSV(BaseDMWGenerator.java:1474)
+    public String getTemplateFile(){
+        return(((TdlModuleDMO) core).getTemplateFile());
+    }
+
+    /**
+     * Sets templateFile to the specified value.
+     * @param value A value compatible with DmcTypeString
+     */
+    // org.dmd.dmg.generators.BaseDMWGenerator.formatSV(BaseDMWGenerator.java:1584)
+    public void setTemplateFile(Object value) throws DmcValueException {
+        ((TdlModuleDMO) core).setTemplateFile(value);
+    }
+
+    /**
+     * Sets templateFile to the specified value.
+     * @param value String
+     */
+    // org.dmd.dmg.generators.BaseDMWGenerator.formatSV(BaseDMWGenerator.java:1593)
+    public void setTemplateFile(String value){
+        ((TdlModuleDMO) core).setTemplateFile(value);
+    }
+
+    /**
+     * Removes the templateFile attribute value.
+     */
+    // org.dmd.dmg.generators.BaseDMWGenerator.formatSV(BaseDMWGenerator.java:1619)
+    public void remTemplateFile(){
+        ((TdlModuleDMO) core).remTemplateFile();
+    }
+
+    // org.dmd.dmg.generators.BaseDMWGenerator.formatSV(BaseDMWGenerator.java:1474)
+    public String getTemplateFileSuffix(){
+        return(((TdlModuleDMO) core).getTemplateFileSuffix());
+    }
+
+    /**
+     * Sets templateFileSuffix to the specified value.
+     * @param value A value compatible with DmcTypeString
+     */
+    // org.dmd.dmg.generators.BaseDMWGenerator.formatSV(BaseDMWGenerator.java:1584)
+    public void setTemplateFileSuffix(Object value) throws DmcValueException {
+        ((TdlModuleDMO) core).setTemplateFileSuffix(value);
+    }
+
+    /**
+     * Sets templateFileSuffix to the specified value.
+     * @param value String
+     */
+    // org.dmd.dmg.generators.BaseDMWGenerator.formatSV(BaseDMWGenerator.java:1593)
+    public void setTemplateFileSuffix(String value){
+        ((TdlModuleDMO) core).setTemplateFileSuffix(value);
+    }
+
+    /**
+     * Removes the templateFileSuffix attribute value.
+     */
+    // org.dmd.dmg.generators.BaseDMWGenerator.formatSV(BaseDMWGenerator.java:1619)
+    public void remTemplateFileSuffix(){
+        ((TdlModuleDMO) core).remTemplateFileSuffix();
+    }
+
     // Generated from: org.dmd.dms.DSDefinitionModule.getInterfaceMethodsImplementations(DSDefinitionModule.java:219)
     // Called from: org.dmd.dmg.generators.DMWGenerator.dumpAdditionalWrapperFunctions(DMWGenerator.java:211)
     /**
@@ -570,6 +626,24 @@ abstract public class TdlModuleDMW extends TdlDefinition implements DmcDefinitio
 
     public Iterator<TdlDefinition> getAllTdlDefinition(){
         return(TdlDefinitionDefs.values().iterator());
+    }
+
+    // Generated from: org.dmd.dms.DSDefinitionModule.getInterfaceMethodsImplementations(DSDefinitionModule.java:254)
+    public void addSection(Section def){
+        SectionDefs.add(def);
+        addTdlDefinition(def);
+    }
+
+    public int getSectionCount(){
+        return(SectionDefs.size());
+    }
+
+    public Section getSection(DotName name){
+        return(SectionDefs.getDefinition(name));
+    }
+
+    public Iterator<Section> getAllSection(){
+        return(SectionDefs.values().iterator());
     }
 
     // Generated from: org.dmd.dmg.generators.DMWGenerator.dumpAdditionalWrapperFunctions(DMWGenerator.java:221)

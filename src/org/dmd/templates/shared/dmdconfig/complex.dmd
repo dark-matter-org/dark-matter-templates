@@ -1,0 +1,9 @@
+
+ComplexTypeDefinition
+name Value
+requiredPart String			valueName   	"The name of the value that can be inserted into a Template"
+requiredPart String			description 	"A description of the value." quoted=true
+description	The Value type indicates a name for a value that can be referenced in a Template along
+ with a short description.
+
+ 

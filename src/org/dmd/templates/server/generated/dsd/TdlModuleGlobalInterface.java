@@ -19,6 +19,7 @@ package org.dmd.templates.server.generated.dsd;
 // Called from: org.dmd.dmg.generators.DSDArtifactFormatter.generateGlobalInterface(DSDArtifactFormatter.java:362)
 import java.util.Iterator;                                      // To provide iterators over definitions - (DSDArtifactFormatter.java:359)
 import org.dmd.dmc.types.DotName;                               // To support the find method for definitions - (DSDefinitionModule.java:163)
+import org.dmd.templates.server.extended.Section;               // A definition from the TdlModule Module - (DSDefinitionModule.java:174)
 import org.dmd.templates.server.extended.TdlDefinition;         // A definition from the TdlModule Module - (DSDefinitionModule.java:161)
 import org.dmd.templates.server.extended.TdlModule;             // A definition from the TdlModule Module - (DSDefinitionModule.java:174)
 
@@ -32,6 +33,11 @@ public interface TdlModuleGlobalInterface {
     public int getTdlDefinitionCount();
     public TdlDefinition getTdlDefinition(DotName name);
     public Iterator<TdlDefinition> getAllTdlDefinition();
+
+    public void addSection(Section def);
+    public int getSectionCount();
+    public Section getSection(DotName name);
+    public Iterator<Section> getAllSection();
 
     public void addTdlModule(TdlModule def);
     public int getTdlModuleCount();
