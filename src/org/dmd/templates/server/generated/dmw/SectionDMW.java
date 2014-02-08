@@ -2,23 +2,24 @@ package org.dmd.templates.server.generated.dmw;
 
 // Generated from: org.dmd.util.codegen.ImportManager.getFormattedImports(ImportManager.java:82)
 // Called from: org.dmd.dmg.generators.BaseDMWGenerator.dumpWrapper(BaseDMWGenerator.java:442)
-import java.util.ArrayList;                                               // To support getMVCopy() - (BaseDMWGenerator.java:1181)
-import java.util.Iterator;                                                // Support copy of MV objects - (BaseDMWGenerator.java:2240)
-import org.dmd.dmc.*;                                                     // If any attributes - (BaseDMWGenerator.java:1087)
-import org.dmd.dmc.definitions.DmcDefinitionIF;                           // The object is a domain specific definition - (BaseDMWGenerator.java:411)
-import org.dmd.dmc.types.DefinitionName;                                  // Is named by - (BaseDMWGenerator.java:1062)
-import org.dmd.dms.ClassDefinition;                                       // Passing derived class def up the hierarchy - (BaseDMWGenerator.java:1067)
-import org.dmd.dms.generated.dmo.MetaDMSAG;                               // Required for MODREC constructor - (BaseDMWGenerator.java:1072)
-import org.dmd.dms.generated.types.DmcTypeModifierMV;                     // Required for MODREC constructor - (BaseDMWGenerator.java:1071)
-import org.dmd.templates.server.extended.Section;                         // Required for getModificationRecorder() - (BaseDMWGenerator.java:1076)
-import org.dmd.templates.server.extended.TdlDefinition;                   // Derived class - (BaseDMWGenerator.java:1248)
-import org.dmd.templates.server.generated.dmw.SectionIterableDMW;         // For multi-valued Section - (BaseDMWGenerator.java:1709)
-import org.dmd.templates.server.generated.dmw.ValueIterableDMW;           // For multi-valued Value - (BaseDMWGenerator.java:2103)
-import org.dmd.templates.shared.generated.dmo.DmtdlDMSAG;                 // Attribute contains from the dmtdl schema - (BaseDMWGenerator.java:897)
-import org.dmd.templates.shared.generated.dmo.SectionDMO;                 // Class not auxiliary or abstract - (BaseDMWGenerator.java:1252)
-import org.dmd.templates.shared.generated.types.SectionREF;               // Is reference type REF - (BaseDMWGenerator.java:1115)
-import org.dmd.templates.shared.generated.types.TdlModuleREF;             // Required to access defined in module name - (DMWGenerator.java:180)
-import org.dmd.templates.shared.generated.types.Value;                    // Primitive type - (BaseDMWGenerator.java:1150)
+import java.util.ArrayList;                                                // Support for MULTI attribute - (BaseDMWGenerator.java:2226)
+import java.util.Iterator;                                                 // Support copy of MV objects - (BaseDMWGenerator.java:2240)
+import org.dmd.dmc.*;                                                      // If any attributes - (BaseDMWGenerator.java:1087)
+import org.dmd.dmc.definitions.DmcDefinitionIF;                            // The object is a domain specific definition - (BaseDMWGenerator.java:411)
+import org.dmd.dmc.types.DefinitionName;                                   // Is named by - (BaseDMWGenerator.java:1062)
+import org.dmd.dms.ClassDefinition;                                        // Passing derived class def up the hierarchy - (BaseDMWGenerator.java:1067)
+import org.dmd.dms.generated.dmo.MetaDMSAG;                                // Required for MODREC constructor - (BaseDMWGenerator.java:1072)
+import org.dmd.dms.generated.types.DmcTypeModifierMV;                      // Required for MODREC constructor - (BaseDMWGenerator.java:1071)
+import org.dmd.templates.server.extended.Section;                          // Required for getModificationRecorder() - (BaseDMWGenerator.java:1076)
+import org.dmd.templates.server.extended.TdlDefinition;                    // Derived class - (BaseDMWGenerator.java:1248)
+import org.dmd.templates.server.generated.dmw.ContainsIterableDMW;         // For multi-valued Contains - (BaseDMWGenerator.java:2103)
+import org.dmd.templates.server.generated.dmw.ValueIterableDMW;            // For multi-valued Value - (BaseDMWGenerator.java:2103)
+import org.dmd.templates.shared.generated.dmo.DmtdlDMSAG;                  // Attribute contains from the dmtdl schema - (BaseDMWGenerator.java:897)
+import org.dmd.templates.shared.generated.dmo.SectionDMO;                  // Class not auxiliary or abstract - (BaseDMWGenerator.java:1252)
+import org.dmd.templates.shared.generated.types.Contains;                  // Primitive type - (BaseDMWGenerator.java:1150)
+import org.dmd.templates.shared.generated.types.SectionREF;                // Is reference type REF - (BaseDMWGenerator.java:1115)
+import org.dmd.templates.shared.generated.types.TdlModuleREF;              // Required to access defined in module name - (DMWGenerator.java:180)
+import org.dmd.templates.shared.generated.types.Value;                     // Primitive type - (BaseDMWGenerator.java:1150)
 
 
 
@@ -98,7 +99,7 @@ abstract public class SectionDMW extends TdlDefinition implements DmcDefinitionI
     }
 
     /**
-     * @return The number of Section items.
+     * @return The number of Contains items.
      */
     // org.dmd.dmg.generators.BaseDMWGenerator.formatMV(BaseDMWGenerator.java:1671)
     public int getContainsSize(){
@@ -106,7 +107,7 @@ abstract public class SectionDMW extends TdlDefinition implements DmcDefinitionI
     }
 
     /**
-     * @return true if there are no SectionDMO items.
+     * @return true if there are no ContainsDMO items.
      */
     // org.dmd.dmg.generators.BaseDMWGenerator.formatMV(BaseDMWGenerator.java:1679)
     public boolean getContainsIsEmpty(){
@@ -116,7 +117,7 @@ abstract public class SectionDMW extends TdlDefinition implements DmcDefinitionI
     }
 
     /**
-     * @return true if there are any SectionDMO items.
+     * @return true if there are any ContainsDMO items.
      */
     // org.dmd.dmg.generators.BaseDMWGenerator.formatMV(BaseDMWGenerator.java:1689)
     public boolean getContainsHasValue(){
@@ -126,53 +127,80 @@ abstract public class SectionDMW extends TdlDefinition implements DmcDefinitionI
     }
 
     /**
-     * @return An Iterator of SectionDMO objects.
+     * @return An Iterator of Contains objects.
      */
-    // org.dmd.dmg.generators.BaseDMWGenerator.formatMV(BaseDMWGenerator.java:1716)
-    public SectionIterableDMW getContainsIterable(){
+    // org.dmd.dmg.generators.BaseDMWGenerator.formatMV(BaseDMWGenerator.java:2107)
+    public ContainsIterableDMW getContainsIterable(){
         DmcAttribute<?> attr = core.get(DmtdlDMSAG.__contains);
         if (attr == null)
-            return(SectionIterableDMW.emptyList);
+            return(ContainsIterableDMW.emptyList);
         
-        return(new SectionIterableDMW(((SectionDMO) core).getContains()));
+        return(new ContainsIterableDMW(((SectionDMO) core).getContains()));
     }
 
     /**
      * Adds another contains value.
-     * @param value A value compatible with Section
+     * @param value A value compatible with Contains
      */
-    // org.dmd.dmg.generators.BaseDMWGenerator.formatMV(BaseDMWGenerator.java:1773)
-    public DmcAttribute<?> addContains(Section value){
-        DmcAttribute<?> attr = ((SectionDMO) core).addContains(((SectionDMO)value.getDmcObject()));
-        return(attr);
+    // org.dmd.dmg.generators.BaseDMWGenerator.formatMV(BaseDMWGenerator.java:2133)
+    public void addContains(Object value) throws DmcValueException {
+        ((SectionDMO) core).addContains(value);
     }
 
     /**
-     * Deletes a contains value.
-     * @param value The Section to be deleted from set of attribute values.
+     * Adds another contains value.
+     * @param value A value compatible with Contains
      */
-    // org.dmd.dmg.generators.BaseDMWGenerator.formatMV(BaseDMWGenerator.java:1823)
-    public void delContains(Section value){
-        ((SectionDMO) core).delContains(value.getDMO());
+    // org.dmd.dmg.generators.BaseDMWGenerator.formatMV(BaseDMWGenerator.java:2143)
+    public void addContains(Contains value){
+        ((SectionDMO) core).addContains(value);
     }
 
     /**
-     * @return A COPY of the collection of Section objects.
+     * Returns true if the collection contains the contains value.
+     * @param value A value compatible with Contains
      */
-    // org.dmd.dmg.generators.BaseDMWGenerator.formatMV(BaseDMWGenerator.java:1887)
-    public ArrayList<Section> getContainsCopy(){
-        DmcAttribute<?> attr = ((SectionDMO) core).get(DmtdlDMSAG.__contains);
+    // org.dmd.dmg.generators.BaseDMWGenerator.formatMV(BaseDMWGenerator.java:2200)
+    public boolean containsContains(Contains value){
+        return(((SectionDMO) core).containsContains(value));
+    }
+
+    /**
+     * @return A COPY of the collection of Contains objects.
+     */
+    // org.dmd.dmg.generators.BaseDMWGenerator.formatMV(BaseDMWGenerator.java:2244)
+    @SuppressWarnings("unchecked")
+    public ArrayList<Contains> getContainsCopy(){
+        DmcAttribute<?> attr = core.get(DmtdlDMSAG.__contains);
         if (attr == null)
-            return(new ArrayList<Section>());
+            return(new ArrayList<Contains>());
         
-        ArrayList<Section> rc = new ArrayList<Section>(attr.getMVSize());
+        ArrayList<Contains> rc = new ArrayList<Contains>(attr.getMVSize());
         
-        SectionIterableDMW it = getContainsIterable();
+        Iterator<Contains> it = (Iterator<Contains>) attr.getMV();
         while(it.hasNext()){
             rc.add(it.next());
         }
         
         return(rc);
+    }
+
+    /**
+     * Deletes a contains value.
+     * @param value The Contains to be deleted from set of attribute values.
+     */
+    // org.dmd.dmg.generators.BaseDMWGenerator.formatMV(BaseDMWGenerator.java:2271)
+    public void delContains(Object value) throws DmcValueException {
+        ((SectionDMO) core).delContains(value);
+    }
+
+    /**
+     * Deletes a contains value.
+     * @param value The Contains to be deleted from set of attribute values.
+     */
+    // org.dmd.dmg.generators.BaseDMWGenerator.formatMV(BaseDMWGenerator.java:2280)
+    public void delContains(Contains value){
+        ((SectionDMO) core).delContains(value);
     }
 
     /**
@@ -184,87 +212,42 @@ abstract public class SectionDMW extends TdlDefinition implements DmcDefinitionI
     }
 
     /**
-     * @return The number of Section items.
+     * @return A Section object.
      */
-    // org.dmd.dmg.generators.BaseDMWGenerator.formatMV(BaseDMWGenerator.java:1671)
-    public int getEndsWithSize(){
-        return(((SectionDMO) core).getEndsWithSize());
-    }
-
-    /**
-     * @return true if there are no SectionDMO items.
-     */
-    // org.dmd.dmg.generators.BaseDMWGenerator.formatMV(BaseDMWGenerator.java:1679)
-    public boolean getEndsWithIsEmpty(){
-        if (((SectionDMO) core).getEndsWithSize() == 0)
-            return(true);
-        return(false);
-    }
-
-    /**
-     * @return true if there are any SectionDMO items.
-     */
-    // org.dmd.dmg.generators.BaseDMWGenerator.formatMV(BaseDMWGenerator.java:1689)
-    public boolean getEndsWithHasValue(){
-        if (((SectionDMO) core).getEndsWithSize() == 0)
-            return(false);
-        return(true);
-    }
-
-    /**
-     * @return An Iterator of SectionDMO objects.
-     */
-    // org.dmd.dmg.generators.BaseDMWGenerator.formatMV(BaseDMWGenerator.java:1716)
-    public SectionIterableDMW getEndsWithIterable(){
-        DmcAttribute<?> attr = core.get(DmtdlDMSAG.__endsWith);
-        if (attr == null)
-            return(SectionIterableDMW.emptyList);
+    // org.dmd.dmg.generators.BaseDMWGenerator.formatSV(BaseDMWGenerator.java:1434)
+    public Section getEndsWith(){
+        SectionREF ref = ((SectionDMO) core).getEndsWith();
+        if (ref == null)
+            return(null);
         
-        return(new SectionIterableDMW(((SectionDMO) core).getEndsWith()));
+        if (ref.getObject() == null)
+            return(null);
+        
+        return((Section)ref.getObject().getContainer());
     }
 
     /**
-     * Adds another endsWith value.
-     * @param value A value compatible with Section
+     * Sets the endsWith to the specified value.
+     * @param value A value compatible with SectionREF
      */
-    // org.dmd.dmg.generators.BaseDMWGenerator.formatMV(BaseDMWGenerator.java:1773)
-    public DmcAttribute<?> addEndsWith(Section value){
-        DmcAttribute<?> attr = ((SectionDMO) core).addEndsWith(((SectionDMO)value.getDmcObject()));
-        return(attr);
+    // org.dmd.dmg.generators.BaseDMWGenerator.formatSV(BaseDMWGenerator.java:1519)
+    public void setEndsWith(Section value) {
+        ((SectionDMO) core).setEndsWith(value.getDMO());
     }
 
     /**
-     * Deletes a endsWith value.
-     * @param value The Section to be deleted from set of attribute values.
+     * Sets the endsWith to the specified value.
+     * @param value A value compatible with SectionREF
      */
-    // org.dmd.dmg.generators.BaseDMWGenerator.formatMV(BaseDMWGenerator.java:1823)
-    public void delEndsWith(Section value){
-        ((SectionDMO) core).delEndsWith(value.getDMO());
-    }
-
-    /**
-     * @return A COPY of the collection of Section objects.
-     */
-    // org.dmd.dmg.generators.BaseDMWGenerator.formatMV(BaseDMWGenerator.java:1887)
-    public ArrayList<Section> getEndsWithCopy(){
-        DmcAttribute<?> attr = ((SectionDMO) core).get(DmtdlDMSAG.__endsWith);
-        if (attr == null)
-            return(new ArrayList<Section>());
-        
-        ArrayList<Section> rc = new ArrayList<Section>(attr.getMVSize());
-        
-        SectionIterableDMW it = getEndsWithIterable();
-        while(it.hasNext()){
-            rc.add(it.next());
-        }
-        
-        return(rc);
+    // org.dmd.dmg.generators.BaseDMWGenerator.formatSV(BaseDMWGenerator.java:1528)
+    public void setEndsWith(Object value) throws DmcValueException {
+        ((SectionDMO) core).setEndsWith(value);
     }
 
     /**
      * Removes the endsWith attribute value.
      */
-    // org.dmd.dmg.generators.BaseDMWGenerator.formatMV(BaseDMWGenerator.java:2292)
+    // org.dmd.dmg.generators.BaseDMWGenerator.formatSV(BaseDMWGenerator.java:1619)
     public void remEndsWith(){
         ((SectionDMO) core).remEndsWith();
     }
@@ -362,37 +345,6 @@ abstract public class SectionDMW extends TdlDefinition implements DmcDefinitionI
         ((SectionDMO) core).remName();
     }
 
-    // org.dmd.dmg.generators.BaseDMWGenerator.formatSV(BaseDMWGenerator.java:1474)
-    public Boolean isSingleton(){
-        return(((SectionDMO) core).isSingleton());
-    }
-
-    /**
-     * Sets singleton to the specified value.
-     * @param value A value compatible with DmcTypeBoolean
-     */
-    // org.dmd.dmg.generators.BaseDMWGenerator.formatSV(BaseDMWGenerator.java:1584)
-    public void setSingleton(Object value) throws DmcValueException {
-        ((SectionDMO) core).setSingleton(value);
-    }
-
-    /**
-     * Sets singleton to the specified value.
-     * @param value Boolean
-     */
-    // org.dmd.dmg.generators.BaseDMWGenerator.formatSV(BaseDMWGenerator.java:1593)
-    public void setSingleton(Boolean value){
-        ((SectionDMO) core).setSingleton(value);
-    }
-
-    /**
-     * Removes the singleton attribute value.
-     */
-    // org.dmd.dmg.generators.BaseDMWGenerator.formatSV(BaseDMWGenerator.java:1619)
-    public void remSingleton(){
-        ((SectionDMO) core).remSingleton();
-    }
-
     /**
      * @return A Section object.
      */
@@ -463,6 +415,37 @@ abstract public class SectionDMW extends TdlDefinition implements DmcDefinitionI
     // org.dmd.dmg.generators.BaseDMWGenerator.formatSV(BaseDMWGenerator.java:1619)
     public void remStartsWithText(){
         ((SectionDMO) core).remStartsWithText();
+    }
+
+    // org.dmd.dmg.generators.BaseDMWGenerator.formatSV(BaseDMWGenerator.java:1474)
+    public Boolean isUsesTemplate(){
+        return(((SectionDMO) core).isUsesTemplate());
+    }
+
+    /**
+     * Sets usesTemplate to the specified value.
+     * @param value A value compatible with DmcTypeBoolean
+     */
+    // org.dmd.dmg.generators.BaseDMWGenerator.formatSV(BaseDMWGenerator.java:1584)
+    public void setUsesTemplate(Object value) throws DmcValueException {
+        ((SectionDMO) core).setUsesTemplate(value);
+    }
+
+    /**
+     * Sets usesTemplate to the specified value.
+     * @param value Boolean
+     */
+    // org.dmd.dmg.generators.BaseDMWGenerator.formatSV(BaseDMWGenerator.java:1593)
+    public void setUsesTemplate(Boolean value){
+        ((SectionDMO) core).setUsesTemplate(value);
+    }
+
+    /**
+     * Removes the usesTemplate attribute value.
+     */
+    // org.dmd.dmg.generators.BaseDMWGenerator.formatSV(BaseDMWGenerator.java:1619)
+    public void remUsesTemplate(){
+        ((SectionDMO) core).remUsesTemplate();
     }
 
     /**

@@ -16,15 +16,16 @@
 package org.dmd.templates.server.generated.dsd;
 
 // Generated from: org.dmd.util.codegen.ImportManager.getFormattedImports(ImportManager.java:82)
-// Called from: org.dmd.dmg.generators.DSDArtifactFormatter.generateGlobalInterface(DSDArtifactFormatter.java:362)
-import java.util.Iterator;                                      // To provide iterators over definitions - (DSDArtifactFormatter.java:359)
-import org.dmd.dmc.types.DotName;                               // To support the find method for definitions - (DSDefinitionModule.java:163)
-import org.dmd.templates.server.extended.Section;               // A definition from the TdlModule Module - (DSDefinitionModule.java:174)
-import org.dmd.templates.server.extended.TdlDefinition;         // A definition from the TdlModule Module - (DSDefinitionModule.java:161)
-import org.dmd.templates.server.extended.TdlModule;             // A definition from the TdlModule Module - (DSDefinitionModule.java:174)
+// Called from: org.dmd.dmg.generators.DSDArtifactFormatter.generateGlobalInterface(DSDArtifactFormatter.java:364)
+import java.util.Iterator;                                        // To provide iterators over definitions - (DSDArtifactFormatter.java:361)
+import org.dmd.dmc.types.DotName;                                 // To support the find method for definitions - (DSDefinitionModule.java:163)
+import org.dmd.templates.server.extended.Section;                 // A definition from the TdlModule Module - (DSDefinitionModule.java:174)
+import org.dmd.templates.server.extended.TdlDefinition;           // A definition from the TdlModule Module - (DSDefinitionModule.java:161)
+import org.dmd.templates.server.extended.TdlModule;               // A definition from the TdlModule Module - (DSDefinitionModule.java:174)
+import org.dmd.templates.server.extended.TextualArtifact;         // A definition from the TdlModule Module - (DSDefinitionModule.java:174)
 
 
-// Generated from: org.dmd.dmg.generators.DSDArtifactFormatter.generateGlobalInterface(DSDArtifactFormatter.java:366)
+// Generated from: org.dmd.dmg.generators.DSDArtifactFormatter.generateGlobalInterface(DSDArtifactFormatter.java:368)
 /**
  * This interface is implemented by definition managers that store definitions from the TdlModule module.
  */
@@ -43,6 +44,11 @@ public interface TdlModuleGlobalInterface {
     public int getTdlModuleCount();
     public TdlModule getTdlModule(DotName name);
     public Iterator<TdlModule> getAllTdlModule();
+
+    public void addTextualArtifact(TextualArtifact def);
+    public int getTextualArtifactCount();
+    public TextualArtifact getTextualArtifact(DotName name);
+    public Iterator<TextualArtifact> getAllTextualArtifact();
 
 }
 

@@ -1,5 +1,5 @@
 Template
-name 		SchemaDocTemplate
+name 		Header
 format	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
  <html xmlns="http://www.w3.org/1999/xhtml">
  <head>
@@ -7,16 +7,24 @@ format	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.o
  <link rel="stylesheet" type="text/css" href="dmsstyle.css" />
  <title>The ::schemaName:: Schema</title>
  </head>
+ 
  <body>
- <div id="header"> <div class="headerBar"> </div> </div>
+ 
+ <div id="header">
+ 	<div class="headerBar">
+ 	</div> 
+ </div>
+ 
  <div id="main">
+ 
  <div id="content">
+ 
  <div class="schemaName"> ::schemaName:: </div>
 
-TemplateInterface
-name	header
+Template
+name	Header
 value	title
 
-TemplateInterface
-name	footer
+Template
+name	Footer
 

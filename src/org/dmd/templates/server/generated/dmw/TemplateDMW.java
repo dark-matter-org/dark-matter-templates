@@ -89,6 +89,37 @@ public class TemplateDMW extends DmwNamedObjectWrapper implements DmcNamedObject
     }
 
     // org.dmd.dmg.generators.BaseDMWGenerator.formatSV(BaseDMWGenerator.java:1474)
+    public String getFile(){
+        return(((TemplateDMO) core).getFile());
+    }
+
+    /**
+     * Sets file to the specified value.
+     * @param value A value compatible with DmcTypeString
+     */
+    // org.dmd.dmg.generators.BaseDMWGenerator.formatSV(BaseDMWGenerator.java:1584)
+    public void setFile(Object value) throws DmcValueException {
+        ((TemplateDMO) core).setFile(value);
+    }
+
+    /**
+     * Sets file to the specified value.
+     * @param value String
+     */
+    // org.dmd.dmg.generators.BaseDMWGenerator.formatSV(BaseDMWGenerator.java:1593)
+    public void setFile(String value){
+        ((TemplateDMO) core).setFile(value);
+    }
+
+    /**
+     * Removes the file attribute value.
+     */
+    // org.dmd.dmg.generators.BaseDMWGenerator.formatSV(BaseDMWGenerator.java:1619)
+    public void remFile(){
+        ((TemplateDMO) core).remFile();
+    }
+
+    // org.dmd.dmg.generators.BaseDMWGenerator.formatSV(BaseDMWGenerator.java:1474)
     public String getFormat(){
         return(((TemplateDMO) core).getFormat());
     }
@@ -117,6 +148,37 @@ public class TemplateDMW extends DmwNamedObjectWrapper implements DmcNamedObject
     // org.dmd.dmg.generators.BaseDMWGenerator.formatSV(BaseDMWGenerator.java:1619)
     public void remFormat(){
         ((TemplateDMO) core).remFormat();
+    }
+
+    // org.dmd.dmg.generators.BaseDMWGenerator.formatSV(BaseDMWGenerator.java:1474)
+    public Integer getLineNumber(){
+        return(((TemplateDMO) core).getLineNumber());
+    }
+
+    /**
+     * Sets lineNumber to the specified value.
+     * @param value A value compatible with DmcTypeInteger
+     */
+    // org.dmd.dmg.generators.BaseDMWGenerator.formatSV(BaseDMWGenerator.java:1584)
+    public void setLineNumber(Object value) throws DmcValueException {
+        ((TemplateDMO) core).setLineNumber(value);
+    }
+
+    /**
+     * Sets lineNumber to the specified value.
+     * @param value Integer
+     */
+    // org.dmd.dmg.generators.BaseDMWGenerator.formatSV(BaseDMWGenerator.java:1593)
+    public void setLineNumber(Integer value){
+        ((TemplateDMO) core).setLineNumber(value);
+    }
+
+    /**
+     * Removes the lineNumber attribute value.
+     */
+    // org.dmd.dmg.generators.BaseDMWGenerator.formatSV(BaseDMWGenerator.java:1619)
+    public void remLineNumber(){
+        ((TemplateDMO) core).remLineNumber();
     }
 
     // org.dmd.dmg.generators.BaseDMWGenerator.formatSV(BaseDMWGenerator.java:1474)

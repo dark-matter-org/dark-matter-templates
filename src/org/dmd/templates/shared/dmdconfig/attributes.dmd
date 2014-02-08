@@ -38,17 +38,21 @@ minLength        2
 maxLength        3
 
 AttributeDefinition
-name				singleton
+name				usesTemplate
 dmdID				5
 type				Boolean
-description			Indicates that there will only be one instance of the Section.
+nullReturnValue		true
+description			By default, all Sections require an associated template, however
+ if you set this to false, we don't look for an associated template. However, if 
+ a Section has specified values, it must always have a Template. We'll complain
+ if this is set to false, but the Section has values.
 
 AttributeDefinition
 name				contains
 dmdID				6
-type				Section
+type				Contains
 valueType			MULTI
-description			Indicates the other Sections contained by a Section.
+description			Indicates the other Sections contained by a Section and whether they occur one or many times.
 
 AttributeDefinition
 name				startsWith
@@ -67,7 +71,6 @@ AttributeDefinition
 name				endsWith
 dmdID				9
 type				Section
-valueType			MULTI
 description			Indicates the Sections that this section of artifact will end with.
 
 AttributeDefinition

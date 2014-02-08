@@ -16,14 +16,15 @@
 package org.dmd.templates.server.generated.dsd;
 
 // Generated from: org.dmd.util.codegen.ImportManager.getFormattedImports(ImportManager.java:82)
-// Called from: org.dmd.dmg.generators.DSDArtifactFormatter.generateScopedInterface(DSDArtifactFormatter.java:399)
-import java.util.Iterator;                                      // To provide iterators over definitions - (DSDArtifactFormatter.java:396)
-import org.dmd.dmc.types.DotName;                               // To support the find method for definitions - (DSDefinitionModule.java:163)
-import org.dmd.templates.server.extended.Section;               // A definition from the TdlModule Module - (DSDefinitionModule.java:174)
-import org.dmd.templates.server.extended.TdlDefinition;         // A definition from the TdlModule Module - (DSDefinitionModule.java:161)
+// Called from: org.dmd.dmg.generators.DSDArtifactFormatter.generateScopedInterface(DSDArtifactFormatter.java:401)
+import java.util.Iterator;                                        // To provide iterators over definitions - (DSDArtifactFormatter.java:398)
+import org.dmd.dmc.types.DotName;                                 // To support the find method for definitions - (DSDefinitionModule.java:163)
+import org.dmd.templates.server.extended.Section;                 // A definition from the TdlModule Module - (DSDefinitionModule.java:174)
+import org.dmd.templates.server.extended.TdlDefinition;           // A definition from the TdlModule Module - (DSDefinitionModule.java:161)
+import org.dmd.templates.server.extended.TextualArtifact;         // A definition from the TdlModule Module - (DSDefinitionModule.java:174)
 
 
-// Generated from: org.dmd.dmg.generators.DSDArtifactFormatter.generateScopedInterface(DSDArtifactFormatter.java:403)
+// Generated from: org.dmd.dmg.generators.DSDArtifactFormatter.generateScopedInterface(DSDArtifactFormatter.java:405)
 /**
  * This interface is implemented by the generated wrapper class for the TdlModule module.
  */
@@ -37,6 +38,11 @@ public interface TdlModuleScopedInterface {
     public int getSectionCount();
     public Section getSection(DotName name);
     public Iterator<Section> getAllSection();
+
+    public void addTextualArtifact(TextualArtifact def);
+    public int getTextualArtifactCount();
+    public TextualArtifact getTextualArtifact(DotName name);
+    public Iterator<TextualArtifact> getAllTextualArtifact();
 
 }
 

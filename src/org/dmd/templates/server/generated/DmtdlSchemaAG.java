@@ -36,6 +36,7 @@ public class DmtdlSchemaAG extends SchemaDefinition {
 
     public static ClassDefinition _TdlDefinition;
     public static ClassDefinition _Section;
+    public static ClassDefinition _TextualArtifact;
     public static ClassDefinition _Template;
     public static ClassDefinition _TdlModule;
 
@@ -43,7 +44,7 @@ public class DmtdlSchemaAG extends SchemaDefinition {
     public static AttributeDefinition _dependsOnTdlModule;
     public static AttributeDefinition _insertMarker;
     public static AttributeDefinition _format;
-    public static AttributeDefinition _singleton;
+    public static AttributeDefinition _usesTemplate;
     public static AttributeDefinition _contains;
     public static AttributeDefinition _startsWith;
     public static AttributeDefinition _startsWithText;
@@ -57,9 +58,11 @@ public class DmtdlSchemaAG extends SchemaDefinition {
     public static AttributeDefinition _maxFastAddValues;
 
 
+    public static ComplexTypeDefinition _Contains;
     public static ComplexTypeDefinition _Value;
 
 
+    public static EnumDefinition _CardinalityEnum;
 
 
     public static DSDefinitionModule _TdlModuleDSD;
@@ -143,7 +146,6 @@ public class DmtdlSchemaAG extends SchemaDefinition {
             _SectionOBJ.setUseWrapperType("EXTENDED");
             _SectionOBJ.setDmtREFImport("org.dmd.templates.shared.generated.types.SectionREF");
             _SectionOBJ.setDmwIteratorClass("SectionIterableDMW");
-            _SectionOBJ.addMay("dmtdl.singleton");
             _SectionOBJ.addMay("dmtdl.contains");
             _SectionOBJ.addMay("dmtdl.startsWith");
             _SectionOBJ.addMay("dmtdl.endsWith");
@@ -151,6 +153,7 @@ public class DmtdlSchemaAG extends SchemaDefinition {
             _SectionOBJ.addMay("dmtdl.endsWithText");
             _SectionOBJ.addMay("dmtdl.value");
             _SectionOBJ.addMay("dmtdl.hasTemplate");
+            _SectionOBJ.addMay("dmtdl.usesTemplate");
             _SectionOBJ.addMust("meta.name");
             _SectionOBJ.setDmwIteratorImport("org.dmd.templates.server.generated.dmw.SectionIterableDMW");
             _SectionOBJ.setPartOfDefinitionModule("dmtdl.TdlModule");
@@ -160,18 +163,43 @@ public class DmtdlSchemaAG extends SchemaDefinition {
             addClassDefList(_Section);
 
 // Generated from: org.dmd.dmg.util.SchemaFormatter.getObjectAsCode(SchemaFormatter.java:585)
+            ClassDefinitionDMO _TextualArtifactOBJ = new ClassDefinitionDMO();
+            _TextualArtifact = new ClassDefinition(_TextualArtifactOBJ,DmtdlDMSAG.__TextualArtifact);
+            _TextualArtifactOBJ.setName("TextualArtifact");
+            _TextualArtifactOBJ.setDmdID("-478596");
+            _TextualArtifactOBJ.setClassType("STRUCTURAL");
+            _TextualArtifactOBJ.setFile("/src/org/dmd/templates/shared/dmdconfig/classes.dmd");
+            _TextualArtifactOBJ.setLineNumber("59");
+            _TextualArtifactOBJ.addDescription("A TextualArtifact is the top level entity that is comprised of Sections\n and formatted via Templates.");
+            _TextualArtifactOBJ.setDerivedFrom("dmtdl.TdlDefinition");
+            _TextualArtifactOBJ.setIsNamedBy("meta.name");
+            _TextualArtifactOBJ.setUseWrapperType("EXTENDED");
+            _TextualArtifactOBJ.setDmtREFImport("org.dmd.templates.shared.generated.types.TextualArtifactREF");
+            _TextualArtifactOBJ.setDmwIteratorClass("TextualArtifactIterableDMW");
+            _TextualArtifactOBJ.addMust("meta.name");
+            _TextualArtifactOBJ.addMust("dmtdl.contains");
+            _TextualArtifactOBJ.setDmwIteratorImport("org.dmd.templates.server.generated.dmw.TextualArtifactIterableDMW");
+            _TextualArtifactOBJ.setPartOfDefinitionModule("dmtdl.TdlModule");
+            _TextualArtifactOBJ.setDotName("dmtdl.TextualArtifact.ClassDefinition");
+            _TextualArtifactOBJ.setNameAndTypeName("TextualArtifact.ClassDefinition");
+            _TextualArtifact.setDefinedIn(this);
+            addClassDefList(_TextualArtifact);
+
+// Generated from: org.dmd.dmg.util.SchemaFormatter.getObjectAsCode(SchemaFormatter.java:585)
             ClassDefinitionDMO _TemplateOBJ = new ClassDefinitionDMO();
             _Template = new ClassDefinition(_TemplateOBJ,DmtdlDMSAG.__Template);
             _TemplateOBJ.setName("Template");
-            _TemplateOBJ.setDmdID("-478596");
+            _TemplateOBJ.setDmdID("-478595");
             _TemplateOBJ.setClassType("STRUCTURAL");
             _TemplateOBJ.setFile("/src/org/dmd/templates/shared/dmdconfig/classes.dmd");
-            _TemplateOBJ.setLineNumber("78");
+            _TemplateOBJ.setLineNumber("92");
             _TemplateOBJ.addDescription("The Template object provides a mechanism to define an arbitrary set of\n text that allows for the insertion of the named values defined as part of the associated\n Section definition.\n <p/>\n By convention, if a Section requires a Template, the Template is named sectionNameT. For example:\n <pre>\n Section\n name Header\n </pre>\n would have a template as follows:\n <pre>\n Template\n name HeaderT\n </pre>\n Templates are kept separate from the Section definitions so that their content can be\n changed without regenerating code. Templates are loaded");
             _TemplateOBJ.setIsNamedBy("meta.name");
             _TemplateOBJ.setUseWrapperType("EXTENDED");
             _TemplateOBJ.setDmtREFImport("org.dmd.templates.shared.generated.types.TemplateREF");
             _TemplateOBJ.setDmwIteratorClass("TemplateIterableDMW");
+            _TemplateOBJ.addMay("meta.file");
+            _TemplateOBJ.addMay("meta.lineNumber");
             _TemplateOBJ.addMust("meta.name");
             _TemplateOBJ.addMust("dmtdl.format");
             _TemplateOBJ.setDmwIteratorImport("org.dmd.templates.server.generated.dmw.TemplateIterableDMW");
@@ -275,32 +303,33 @@ public class DmtdlSchemaAG extends SchemaDefinition {
             addAttributeDefList(_format);
 
 // Generated from: org.dmd.dmg.util.SchemaFormatter.getObjectAsCode(SchemaFormatter.java:585)
-            AttributeDefinitionDMO _singletonOBJ = new AttributeDefinitionDMO();
-            _singleton = new AttributeDefinition(_singletonOBJ);
-            _singletonOBJ.setType("meta.Boolean");
-            _singletonOBJ.setName("singleton");
-            _singletonOBJ.setDmdID("-478595");
-            _singletonOBJ.addDescription("Indicates that there will only be one instance of the Section.");
-            _singletonOBJ.setNameAndTypeName("singleton.AttributeDefinition");
-            _singletonOBJ.setDotName("dmtdl.singleton.AttributeDefinition");
-            _singleton.setDefinedIn(this);
-            _singletonOBJ.setFile("/src/org/dmd/templates/shared/dmdconfig/attributes.dmd");
-            _singletonOBJ.setLineNumber("45");
-            addAttributeDefList(_singleton);
+            AttributeDefinitionDMO _usesTemplateOBJ = new AttributeDefinitionDMO();
+            _usesTemplate = new AttributeDefinition(_usesTemplateOBJ);
+            _usesTemplateOBJ.setType("meta.Boolean");
+            _usesTemplateOBJ.setName("usesTemplate");
+            _usesTemplateOBJ.setDmdID("-478595");
+            _usesTemplateOBJ.addDescription("By default, all Sections require an associated template, however\n if you set this to false, we don't look for an associated template. However, if \n a Section has specified values, it must always have a Template. We'll complain\n if this is set to false, but the Section has values.");
+            _usesTemplateOBJ.setNullReturnValue("true");
+            _usesTemplateOBJ.setNameAndTypeName("usesTemplate.AttributeDefinition");
+            _usesTemplateOBJ.setDotName("dmtdl.usesTemplate.AttributeDefinition");
+            _usesTemplate.setDefinedIn(this);
+            _usesTemplateOBJ.setFile("/src/org/dmd/templates/shared/dmdconfig/attributes.dmd");
+            _usesTemplateOBJ.setLineNumber("49");
+            addAttributeDefList(_usesTemplate);
 
 // Generated from: org.dmd.dmg.util.SchemaFormatter.getObjectAsCode(SchemaFormatter.java:585)
             AttributeDefinitionDMO _containsOBJ = new AttributeDefinitionDMO();
             _contains = new AttributeDefinition(_containsOBJ);
-            _containsOBJ.setType("dmtdl.Section");
+            _containsOBJ.setType("dmtdl.Contains");
             _containsOBJ.setName("contains");
             _containsOBJ.setDmdID("-478594");
-            _containsOBJ.addDescription("Indicates the other Sections contained by a Section.");
+            _containsOBJ.addDescription("Indicates the other Sections contained by a Section and whether they occur one or many times.");
             _containsOBJ.setNameAndTypeName("contains.AttributeDefinition");
             _containsOBJ.setValueType("MULTI");
             _containsOBJ.setDotName("dmtdl.contains.AttributeDefinition");
             _contains.setDefinedIn(this);
             _containsOBJ.setFile("/src/org/dmd/templates/shared/dmdconfig/attributes.dmd");
-            _containsOBJ.setLineNumber("52");
+            _containsOBJ.setLineNumber("56");
             addAttributeDefList(_contains);
 
 // Generated from: org.dmd.dmg.util.SchemaFormatter.getObjectAsCode(SchemaFormatter.java:585)
@@ -314,7 +343,7 @@ public class DmtdlSchemaAG extends SchemaDefinition {
             _startsWithOBJ.setDotName("dmtdl.startsWith.AttributeDefinition");
             _startsWith.setDefinedIn(this);
             _startsWithOBJ.setFile("/src/org/dmd/templates/shared/dmdconfig/attributes.dmd");
-            _startsWithOBJ.setLineNumber("58");
+            _startsWithOBJ.setLineNumber("62");
             addAttributeDefList(_startsWith);
 
 // Generated from: org.dmd.dmg.util.SchemaFormatter.getObjectAsCode(SchemaFormatter.java:585)
@@ -329,7 +358,7 @@ public class DmtdlSchemaAG extends SchemaDefinition {
             _startsWithTextOBJ.setDotName("dmtdl.startsWithText.AttributeDefinition");
             _startsWithText.setDefinedIn(this);
             _startsWithTextOBJ.setFile("/src/org/dmd/templates/shared/dmdconfig/attributes.dmd");
-            _startsWithTextOBJ.setLineNumber("65");
+            _startsWithTextOBJ.setLineNumber("69");
             addAttributeDefList(_startsWithText);
 
 // Generated from: org.dmd.dmg.util.SchemaFormatter.getObjectAsCode(SchemaFormatter.java:585)
@@ -340,11 +369,10 @@ public class DmtdlSchemaAG extends SchemaDefinition {
             _endsWithOBJ.setDmdID("-478591");
             _endsWithOBJ.addDescription("Indicates the Sections that this section of artifact will end with.");
             _endsWithOBJ.setNameAndTypeName("endsWith.AttributeDefinition");
-            _endsWithOBJ.setValueType("MULTI");
             _endsWithOBJ.setDotName("dmtdl.endsWith.AttributeDefinition");
             _endsWith.setDefinedIn(this);
             _endsWithOBJ.setFile("/src/org/dmd/templates/shared/dmdconfig/attributes.dmd");
-            _endsWithOBJ.setLineNumber("72");
+            _endsWithOBJ.setLineNumber("75");
             addAttributeDefList(_endsWith);
 
 // Generated from: org.dmd.dmg.util.SchemaFormatter.getObjectAsCode(SchemaFormatter.java:585)
@@ -359,7 +387,7 @@ public class DmtdlSchemaAG extends SchemaDefinition {
             _endsWithTextOBJ.setDotName("dmtdl.endsWithText.AttributeDefinition");
             _endsWithText.setDefinedIn(this);
             _endsWithTextOBJ.setFile("/src/org/dmd/templates/shared/dmdconfig/attributes.dmd");
-            _endsWithTextOBJ.setLineNumber("79");
+            _endsWithTextOBJ.setLineNumber("82");
             addAttributeDefList(_endsWithText);
 
 // Generated from: org.dmd.dmg.util.SchemaFormatter.getObjectAsCode(SchemaFormatter.java:585)
@@ -374,7 +402,7 @@ public class DmtdlSchemaAG extends SchemaDefinition {
             _valueOBJ.setDotName("dmtdl.value.AttributeDefinition");
             _value.setDefinedIn(this);
             _valueOBJ.setFile("/src/org/dmd/templates/shared/dmdconfig/attributes.dmd");
-            _valueOBJ.setLineNumber("87");
+            _valueOBJ.setLineNumber("90");
             addAttributeDefList(_value);
 
 // Generated from: org.dmd.dmg.util.SchemaFormatter.getObjectAsCode(SchemaFormatter.java:585)
@@ -388,7 +416,7 @@ public class DmtdlSchemaAG extends SchemaDefinition {
             _templateFileOBJ.setDotName("dmtdl.templateFile.AttributeDefinition");
             _templateFile.setDefinedIn(this);
             _templateFileOBJ.setFile("/src/org/dmd/templates/shared/dmdconfig/attributes.dmd");
-            _templateFileOBJ.setLineNumber("94");
+            _templateFileOBJ.setLineNumber("97");
             addAttributeDefList(_templateFile);
 
 // Generated from: org.dmd.dmg.util.SchemaFormatter.getObjectAsCode(SchemaFormatter.java:585)
@@ -402,7 +430,7 @@ public class DmtdlSchemaAG extends SchemaDefinition {
             _packageOBJ.setDotName("dmtdl.package.AttributeDefinition");
             _package.setDefinedIn(this);
             _packageOBJ.setFile("/src/org/dmd/templates/shared/dmdconfig/attributes.dmd");
-            _packageOBJ.setLineNumber("100");
+            _packageOBJ.setLineNumber("103");
             addAttributeDefList(_package);
 
 // Generated from: org.dmd.dmg.util.SchemaFormatter.getObjectAsCode(SchemaFormatter.java:585)
@@ -417,7 +445,7 @@ public class DmtdlSchemaAG extends SchemaDefinition {
             _hasTemplateOBJ.setDotName("dmtdl.hasTemplate.AttributeDefinition");
             _hasTemplate.setDefinedIn(this);
             _hasTemplateOBJ.setFile("/src/org/dmd/templates/shared/dmdconfig/attributes.dmd");
-            _hasTemplateOBJ.setLineNumber("109");
+            _hasTemplateOBJ.setLineNumber("112");
             addAttributeDefList(_hasTemplate);
 
 // Generated from: org.dmd.dmg.util.SchemaFormatter.getObjectAsCode(SchemaFormatter.java:585)
@@ -432,7 +460,7 @@ public class DmtdlSchemaAG extends SchemaDefinition {
             _templateFileSuffixOBJ.setDotName("dmtdl.templateFileSuffix.AttributeDefinition");
             _templateFileSuffix.setDefinedIn(this);
             _templateFileSuffixOBJ.setFile("/src/org/dmd/templates/shared/dmdconfig/attributes.dmd");
-            _templateFileSuffixOBJ.setLineNumber("117");
+            _templateFileSuffixOBJ.setLineNumber("120");
             addAttributeDefList(_templateFileSuffix);
 
 // Generated from: org.dmd.dmg.util.SchemaFormatter.getObjectAsCode(SchemaFormatter.java:585)
@@ -447,7 +475,7 @@ public class DmtdlSchemaAG extends SchemaDefinition {
             _maxFastAddValuesOBJ.setDotName("dmtdl.maxFastAddValues.AttributeDefinition");
             _maxFastAddValues.setDefinedIn(this);
             _maxFastAddValuesOBJ.setFile("/src/org/dmd/templates/shared/dmdconfig/attributes.dmd");
-            _maxFastAddValuesOBJ.setLineNumber("129");
+            _maxFastAddValuesOBJ.setLineNumber("132");
             addAttributeDefList(_maxFastAddValues);
 
     }
@@ -459,6 +487,20 @@ public class DmtdlSchemaAG extends SchemaDefinition {
     // Generated from: org.dmd.dmg.util.SchemaFormatter.dumpInitFunction(SchemaFormatter.java:313)
     private void initComplexTypes() throws DmcValueException {
 // Generated from: org.dmd.dmg.util.SchemaFormatter.getObjectAsCode(SchemaFormatter.java:585)
+            ComplexTypeDefinitionDMO _ContainsOBJ = new ComplexTypeDefinitionDMO();
+            _Contains = new ComplexTypeDefinition(_ContainsOBJ);
+            _ContainsOBJ.setName("Contains");
+            _ContainsOBJ.addDescription("The Contains type indicates the number of times a Section will occur within a contain Section");
+            _ContainsOBJ.addRequiredPart("CardinalityEnum occurences \"The number of times a contained Section will occur.\"");
+            _ContainsOBJ.addRequiredPart("Section section \"The Section being referenced.\" quoted=true");
+            _ContainsOBJ.setNameAndTypeName("Contains.ComplexTypeDefinition");
+            _ContainsOBJ.setDotName("dmtdl.Contains.ComplexTypeDefinition");
+            _Contains.setDefinedIn(this);
+            _ContainsOBJ.setFile("/src/org/dmd/templates/shared/dmdconfig/complex.dmd");
+            _ContainsOBJ.setLineNumber("7");
+            addComplexTypeDefList(_Contains);
+
+// Generated from: org.dmd.dmg.util.SchemaFormatter.getObjectAsCode(SchemaFormatter.java:585)
             ComplexTypeDefinitionDMO _ValueOBJ = new ComplexTypeDefinitionDMO();
             _Value = new ComplexTypeDefinition(_ValueOBJ);
             _ValueOBJ.setName("Value");
@@ -469,7 +511,7 @@ public class DmtdlSchemaAG extends SchemaDefinition {
             _ValueOBJ.setDotName("dmtdl.Value.ComplexTypeDefinition");
             _Value.setDefinedIn(this);
             _ValueOBJ.setFile("/src/org/dmd/templates/shared/dmdconfig/complex.dmd");
-            _ValueOBJ.setLineNumber("8");
+            _ValueOBJ.setLineNumber("15");
             addComplexTypeDefList(_Value);
 
     }
@@ -480,6 +522,20 @@ public class DmtdlSchemaAG extends SchemaDefinition {
 
     // Generated from: org.dmd.dmg.util.SchemaFormatter.dumpInitFunction(SchemaFormatter.java:313)
     private void initEnums() throws DmcValueException {
+// Generated from: org.dmd.dmg.util.SchemaFormatter.getObjectAsCode(SchemaFormatter.java:585)
+            EnumDefinitionDMO _CardinalityEnumOBJ = new EnumDefinitionDMO();
+            _CardinalityEnum = new EnumDefinition(_CardinalityEnumOBJ);
+            _CardinalityEnumOBJ.setName("CardinalityEnum");
+            _CardinalityEnumOBJ.addEnumValue("0 ONE Indicates that a section will appear once.");
+            _CardinalityEnumOBJ.addEnumValue("1 MANY Indicates that a section will appear many times.");
+            _CardinalityEnumOBJ.addDescription("The CardinalityEnum indicates whether a Section will exist one or many times within another Section.");
+            _CardinalityEnumOBJ.setNameAndTypeName("CardinalityEnum.EnumDefinition");
+            _CardinalityEnumOBJ.setDotName("dmtdl.CardinalityEnum.EnumDefinition");
+            _CardinalityEnum.setDefinedIn(this);
+            _CardinalityEnumOBJ.setFile("/src/org/dmd/templates/shared/dmdconfig/types.dmd");
+            _CardinalityEnumOBJ.setLineNumber("5");
+            addEnumDefList(_CardinalityEnum);
+
     }
 
     // Generated from: org.dmd.dmg.util.SchemaFormatter.dumpInitFunction(SchemaFormatter.java:313)

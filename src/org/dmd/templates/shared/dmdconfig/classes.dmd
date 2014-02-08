@@ -20,7 +20,6 @@ useWrapperType	EXTENDED
 derivedFrom		TdlDefinition
 isNamedBy		name
 must			name
-may				singleton
 may				contains
 may				startsWith
 may				endsWith
@@ -28,6 +27,7 @@ may				startsWithText
 may				endsWithText
 may				value
 may				hasTemplate
+may				usesTemplate
 description		A Section represents part of a textual artifact that you want format.
  The artifact could be an XHTML document, an XML document, a piece of code, a form
  letter - whatever. The content of a Section may start with another Section or static
@@ -36,7 +36,16 @@ description		A Section represents part of a textual artifact that you want forma
  Sections can also contain other (sub) Sections. 
  <p/>
  Sections can also have named values that can be inserted into Templates. By specifying
- values, you define a simple interface to the template.
+ values, you define a set of values that can be accessed and embedded within the associated
+ Template.
+ <p/>
+ When a Section's format() method is called, it will dump the contents in the following order:
+ <ul>
+ <li> any starts with material </li>
+ <li> the formatted contents of the associated Template </li>
+ <li> the formatted contents of any contained Sections </li>
+ <li> any ends with material </li>
+ </ul>
 
 OnlyOneOfTheseAttributesAllowedRuleData
 ruleName			dmtdlStartsWith
@@ -44,6 +53,18 @@ ruleTitle			A Section can only startWith another Section or with a static piece 
 applyToClass		Section
 onePossibility		startsWith
 onePossibility		startsWithText
+
+ClassDefinition
+name 			TextualArtifact
+classType      	STRUCTURAL
+dmdID			4
+useWrapperType	EXTENDED
+derivedFrom		TdlDefinition
+isNamedBy		name
+must			name
+must			contains
+description		A TextualArtifact is the top level entity that is comprised of Sections
+ and formatted via Templates. 
 
 OnlyOneOfTheseAttributesAllowedRuleData
 ruleName			dmtdlEndsWith
@@ -55,11 +76,13 @@ onePossibility		endsWithText
 ClassDefinition
 name 			Template
 classType      	STRUCTURAL
-dmdID			4
+dmdID			5
 useWrapperType	EXTENDED
 isNamedBy		name
 must			name
 must			format
+may				file
+may				lineNumber
 description		The Template object provides a mechanism to define an arbitrary set of
  text that allows for the insertion of the named values defined as part of the associated
  Section definition.
