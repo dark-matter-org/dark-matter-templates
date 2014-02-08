@@ -15,6 +15,7 @@ public class DmtdlDMSAGCMAP {
         _CmAp.put(DmtdlDMSAG.__TdlDefinition.id,DmtdlDMSAG.__TdlDefinition);
         _CmAp.put(DmtdlDMSAG.__TdlModule.id,DmtdlDMSAG.__TdlModule);
         _CmAp.put(DmtdlDMSAG.__Template.id,DmtdlDMSAG.__Template);
+        _CmAp.put(DmtdlDMSAG.__TextualArtifact.id,DmtdlDMSAG.__TextualArtifact);
     }
 
 }

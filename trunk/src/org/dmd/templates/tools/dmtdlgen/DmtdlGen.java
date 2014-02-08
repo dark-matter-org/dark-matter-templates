@@ -6,6 +6,7 @@ import java.util.Iterator;
 
 import org.dmd.templates.server.extended.Section;
 import org.dmd.templates.server.extended.TdlModule;
+import org.dmd.templates.server.extended.TextualArtifact;
 import org.dmd.templates.server.generated.dsd.TdlModuleDefinitionManager;
 import org.dmd.templates.server.generated.dsd.TdlModuleGenUtility;
 import org.dmd.util.FileUpdateManager;
@@ -28,6 +29,11 @@ public class DmtdlGen extends TdlModuleGenUtility {
 		
 		String gendir = location.getConfigParentDirectory() + File.separator + "generated" + File.separator + "dmtdl";
 		createIfRequired(gendir);
+		
+		Iterator<TextualArtifact> artifacts = module.getAllTextualArtifact();
+		while(artifacts.hasNext()){
+			artifacts.next().generateTextualArtifactClass(gendir);
+		}
 		
 		Iterator<Section> sections = module.getAllSection();
 		while(sections.hasNext()){

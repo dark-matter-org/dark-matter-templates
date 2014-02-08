@@ -5,22 +5,20 @@ templateFile	schemaDocTemplates
 description		These Sections and their associated Templates are used to format dark-matter
  schema definitions.
 
-Section
+TextualArtifact
 name 		SchemaDoc
-startsWith	Header
-endsWith	Footer
-contains 	ClassList
+contains	one Header
+contains 	one ClassList
 //contains 	TypeList
 //contains 	ComplexTypeList
 //contains 	EnumList
 //contains 	RuleCategoryList
 //contains 	ClassDetails
-description The SchemaDoc interface defines the overall form of a schema documentation
- page.
+contains	one Footer
+description The SchemaDoc interface defines the overall form of a schema documentation page.
 
 Section
 name		Header
-singleton	true
 value		schemaName "The name of the schema being formatted"
 
 Section
@@ -29,10 +27,15 @@ name	Footer
 Section
 name			ClassList
 startsWith		ClassListHeader
-endsWithText </table> </div>
+contains		many ClassListEntry
+endsWithText	</table> </div>
 
 Section
 name		ClassListHeader
+
+Section
+name		ClassListEntry
+value		className "The name of the class"
 
 
 		

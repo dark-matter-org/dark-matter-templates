@@ -3,7 +3,7 @@ name       			dmtdl
 schemaBaseID		-478600
 schemaIDRange		50
 dependsOn			dmv
-//defFiles			types.dmd
+defFiles			types.dmd
 defFiles			complex.dmd
 defFiles    		attributes.dmd
 defFiles    		classes.dmd

@@ -21,11 +21,11 @@ public class DmtdlDMSAGAMAP {
         _SmAp.put(DmtdlDMSAG.__insertMarker.id,DmtdlDMSAG.__insertMarker);
         _SmAp.put(DmtdlDMSAG.__maxFastAddValues.id,DmtdlDMSAG.__maxFastAddValues);
         _SmAp.put(DmtdlDMSAG.__package.id,DmtdlDMSAG.__package);
-        _SmAp.put(DmtdlDMSAG.__singleton.id,DmtdlDMSAG.__singleton);
         _SmAp.put(DmtdlDMSAG.__startsWith.id,DmtdlDMSAG.__startsWith);
         _SmAp.put(DmtdlDMSAG.__startsWithText.id,DmtdlDMSAG.__startsWithText);
         _SmAp.put(DmtdlDMSAG.__templateFile.id,DmtdlDMSAG.__templateFile);
         _SmAp.put(DmtdlDMSAG.__templateFileSuffix.id,DmtdlDMSAG.__templateFileSuffix);
+        _SmAp.put(DmtdlDMSAG.__usesTemplate.id,DmtdlDMSAG.__usesTemplate);
         _SmAp.put(DmtdlDMSAG.__value.id,DmtdlDMSAG.__value);
     }
 

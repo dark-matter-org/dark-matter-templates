@@ -31,7 +31,8 @@ import org.dmd.dms.generated.types.DmcTypeModifierMV;                        // 
 import org.dmd.dms.generated.types.DmcTypeStringSV;                          // Required type - (GenUtility.java:328)
 import org.dmd.templates.shared.generated.dmo.SectionDMO;                    // Type specific set/add - (GenUtility.java:307)
 import org.dmd.templates.shared.generated.dmo.TdlDefinitionDMO;              // Base class - (GenUtility.java:355)
-import org.dmd.templates.shared.generated.types.DmcTypeSectionREFMV;         // Reference type - (GenUtility.java:300)
+import org.dmd.templates.shared.generated.types.Contains;                    // Primitive type and !auxiliary class - (GenUtility.java:271)
+import org.dmd.templates.shared.generated.types.DmcTypeContainsMV;           // Required type - (GenUtility.java:328)
 import org.dmd.templates.shared.generated.types.DmcTypeSectionREFSV;         // Reference type - (GenUtility.java:300)
 import org.dmd.templates.shared.generated.types.DmcTypeValueMV;              // Required type - (GenUtility.java:328)
 import org.dmd.templates.shared.generated.types.SectionREF;                  // Helper class - (GenUtility.java:335)
@@ -129,98 +130,40 @@ public class SectionDMO  extends TdlDefinitionDMO  implements DmcNamedObjectIF, 
         return(objn.hashCode());
     }
 
-    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:784)
-    public Boolean isSingleton(){
-        DmcTypeBooleanSV attr = (DmcTypeBooleanSV) get(DmtdlDMSAG.__singleton);
-        if (attr == null)
-            return(false);
-
-        return(attr.getSV());
-    }
-
     /**
-     * Sets singleton to the specified value.
-     * @param value Boolean
-     */
-    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:824)
-    public void setSingleton(Boolean value) {
-        DmcAttribute<?> attr = get(DmtdlDMSAG.__singleton);
-        if (attr == null)
-            attr = new DmcTypeBooleanSV(DmtdlDMSAG.__singleton);
-        
-        try{
-            attr.set(value);
-            set(DmtdlDMSAG.__singleton,attr);
-        }
-        catch(DmcValueException ex){
-            throw(new IllegalStateException("The type specific set() method shouldn't throw exceptions!",ex));
-        }
-    }
-
-    /**
-     * Sets singleton to the specified value.
-     * @param value A value compatible with DmcTypeBooleanSV
-     */
-    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:877)
-    public void setSingleton(Object value) throws DmcValueException {
-        DmcTypeBooleanSV attr  = (DmcTypeBooleanSV) get(DmtdlDMSAG.__singleton);
-        if (attr == null)
-            attr = new DmcTypeBooleanSV(DmtdlDMSAG.__singleton);
-        
-        attr.set(value);
-        set(DmtdlDMSAG.__singleton,attr);
-    }
-
-    /**
-     * Removes the singleton attribute value.
-     */
-    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:897)
-    public void remSingleton(){
-         rem(DmtdlDMSAG.__singleton);
-    }
-
-    /**
-     * @return An Iterator of SectionDMO objects.
+     * @return An Iterator of Contains objects.
      */
     @SuppressWarnings("unchecked")
-    // org.dmd.dms.util.GenUtility.formatMV(GenUtility.java:970)
-    public Iterator<SectionREF> getContains(){
-        DmcTypeSectionREFMV attr = (DmcTypeSectionREFMV) get(DmtdlDMSAG.__contains);
+    // org.dmd.dms.util.GenUtility.formatMV(GenUtility.java:1112)
+    public Iterator<Contains> getContains(){
+        DmcTypeContainsMV attr = (DmcTypeContainsMV) get(DmtdlDMSAG.__contains);
         if (attr == null)
-            return( ((List<SectionREF>) Collections.EMPTY_LIST).iterator() );
-
-        if (DmcOmni.instance().lazyResolution()){
-            if (attr.doLazyResolution(this)){
-                rem(attr.getAttributeInfo());
-                return( ((List<SectionREF>) Collections.EMPTY_LIST).iterator() );
-            }
-        }
+            return( ((List<Contains>) Collections.EMPTY_LIST).iterator());
 
         return(attr.getMV());
     }
 
     /**
-     * @return An Iterator of SectionREFs without attempting lazy resolution (if it's turned on).
+     * @return The nth Contains value.
      */
-    @SuppressWarnings("unchecked")
-    // org.dmd.dms.util.GenUtility.formatMV(GenUtility.java:990)
-    public Iterator<SectionREF> getContainsREFs(){
-        DmcTypeSectionREFMV attr = (DmcTypeSectionREFMV) get(DmtdlDMSAG.__contains);
+    // org.dmd.dms.util.GenUtility.formatMV(GenUtility.java:1124)
+    public Contains getNthContains(int i){
+        DmcTypeContainsMV attr = (DmcTypeContainsMV) get(DmtdlDMSAG.__contains);
         if (attr == null)
-            return( ((List<SectionREF>) Collections.EMPTY_LIST).iterator() );
+            return(null);
 
-        return(attr.getMV());
+        return(attr.getMVnth(i));
     }
 
     /**
      * Adds another contains to the specified value.
-     * @param value Section
+     * @param value Contains
      */
-    // org.dmd.dms.util.GenUtility.formatMV(GenUtility.java:1004)
-    public DmcAttribute<?> addContains(SectionDMO value) {
+    // org.dmd.dms.util.GenUtility.formatMV(GenUtility.java:1138)
+    public DmcAttribute<?> addContains(Contains value) {
         DmcAttribute<?> attr = get(DmtdlDMSAG.__contains);
         if (attr == null)
-            attr = new DmcTypeSectionREFMV(DmtdlDMSAG.__contains);
+            attr = new DmcTypeContainsMV(DmtdlDMSAG.__contains);
         
         try{
             setLastValue(attr.add(value));
@@ -233,14 +176,26 @@ public class SectionDMO  extends TdlDefinitionDMO  implements DmcNamedObjectIF, 
     }
 
     /**
+     * Returns true if we contain a valued keyed by the specified Contains.
+     * @param value Contains
+     */
+    // org.dmd.dms.util.GenUtility.formatMV(GenUtility.java:1213)
+    public boolean containsContains(Contains value) {
+        DmcAttribute<?> attr = get(DmtdlDMSAG.__contains);
+        if (attr == null)
+            return(false);
+        return(attr.contains(value));
+    }
+
+    /**
      * Adds another contains value.
-     * @param value A value compatible with Section
+     * @param value A value compatible with Contains
      */
     // org.dmd.dms.util.GenUtility.formatMV(GenUtility.java:1245)
     public DmcAttribute<?> addContains(Object value) throws DmcValueException {
         DmcAttribute<?> attr = get(DmtdlDMSAG.__contains);
         if (attr == null)
-            attr = new DmcTypeSectionREFMV(DmtdlDMSAG.__contains);
+            attr = new DmcTypeContainsMV(DmtdlDMSAG.__contains);
         
         setLastValue(attr.add(value));
         add(DmtdlDMSAG.__contains,attr);
@@ -264,14 +219,30 @@ public class SectionDMO  extends TdlDefinitionDMO  implements DmcNamedObjectIF, 
 
     /**
      * Deletes a contains value.
-     * @param value The Section to be deleted from set of attribute values.
+     * @param value The Contains to be deleted from set of attribute values.
      */
-    // org.dmd.dms.util.GenUtility.formatMV(GenUtility.java:1301)
-    public DmcAttribute<?> delContains(Object value){
+    // org.dmd.dms.util.GenUtility.formatMV(GenUtility.java:1320)
+    public DmcAttribute<?> delContains(Object value) throws DmcValueException {
         DmcAttribute<?> attr = get(DmtdlDMSAG.__contains);
         
         if ( (attr == null) && (getModifier()!= null))
-            delFromEmptyAttribute(new DmcTypeSectionREFMV(DmtdlDMSAG.__contains), value);
+            delFromEmptyAttribute(new DmcTypeContainsMV(DmtdlDMSAG.__contains), value);
+        else
+            attr = del(DmtdlDMSAG.__contains, value);
+        
+        return(attr);
+    }
+
+    /**
+     * Deletes a contains from the specified value.
+     * @param value Contains
+     */
+    // org.dmd.dms.util.GenUtility.formatMV(GenUtility.java:1336)
+    public DmcAttribute<?> delContains(Contains value) {
+        DmcAttribute<?> attr = get(DmtdlDMSAG.__contains);
+        
+        if ( (attr == null) && (getModifier()!= null))
+            delFromEmptyAttribute(new DmcTypeContainsMV(DmtdlDMSAG.__contains), value);
         else
             attr = del(DmtdlDMSAG.__contains, value);
         
@@ -358,109 +329,74 @@ public class SectionDMO  extends TdlDefinitionDMO  implements DmcNamedObjectIF, 
          rem(DmtdlDMSAG.__startsWith);
     }
 
-    /**
-     * @return An Iterator of SectionDMO objects.
-     */
-    @SuppressWarnings("unchecked")
-    // org.dmd.dms.util.GenUtility.formatMV(GenUtility.java:970)
-    public Iterator<SectionREF> getEndsWith(){
-        DmcTypeSectionREFMV attr = (DmcTypeSectionREFMV) get(DmtdlDMSAG.__endsWith);
+    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:655)
+    public SectionREF getEndsWith(){
+        DmcTypeSectionREFSV attr = (DmcTypeSectionREFSV) get(DmtdlDMSAG.__endsWith);
         if (attr == null)
-            return( ((List<SectionREF>) Collections.EMPTY_LIST).iterator() );
+            return(null);
 
         if (DmcOmni.instance().lazyResolution()){
             if (attr.doLazyResolution(this)){
                 rem(attr.getAttributeInfo());
-                return( ((List<SectionREF>) Collections.EMPTY_LIST).iterator() );
+                return(null);
             }
         }
 
-        return(attr.getMV());
+        return(attr.getSV());
     }
 
     /**
-     * @return An Iterator of SectionREFs without attempting lazy resolution (if it's turned on).
+     * Returns the reference to Section without attempting lazy resolution (if turned on).
      */
-    @SuppressWarnings("unchecked")
-    // org.dmd.dms.util.GenUtility.formatMV(GenUtility.java:990)
-    public Iterator<SectionREF> getEndsWithREFs(){
-        DmcTypeSectionREFMV attr = (DmcTypeSectionREFMV) get(DmtdlDMSAG.__endsWith);
+    public SectionREF getEndsWithREF(){
+        DmcTypeSectionREFSV attr = (DmcTypeSectionREFSV) get(DmtdlDMSAG.__endsWith);
         if (attr == null)
-            return( ((List<SectionREF>) Collections.EMPTY_LIST).iterator() );
+            return(null);
 
-        return(attr.getMV());
+        return(attr.getSV());
     }
 
     /**
-     * Adds another endsWith to the specified value.
-     * @param value Section
+     * Sets endsWith to the specified value.
+     * @param value SectionDMO
      */
-    // org.dmd.dms.util.GenUtility.formatMV(GenUtility.java:1004)
-    public DmcAttribute<?> addEndsWith(SectionDMO value) {
+    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:709)
+    public void setEndsWith(SectionDMO value) {
         DmcAttribute<?> attr = get(DmtdlDMSAG.__endsWith);
         if (attr == null)
-            attr = new DmcTypeSectionREFMV(DmtdlDMSAG.__endsWith);
+            attr = new DmcTypeSectionREFSV(DmtdlDMSAG.__endsWith);
+        else
+            ((DmcTypeSectionREFSV)attr).removeBackReferences();
         
         try{
-            setLastValue(attr.add(value));
-            add(DmtdlDMSAG.__endsWith,attr);
+            attr.set(value);
+            set(DmtdlDMSAG.__endsWith,attr);
         }
         catch(DmcValueException ex){
-            throw(new IllegalStateException("The type specific add() method shouldn't throw exceptions!",ex));
+            throw(new IllegalStateException("The type specific set() method shouldn't throw exceptions!",ex));
         }
-        return(attr);
     }
 
     /**
-     * Adds another endsWith value.
-     * @param value A value compatible with Section
+     * Sets endsWith to the specified value.
+     * @param value A value compatible with DmcTypeSectionREFSV
      */
-    // org.dmd.dms.util.GenUtility.formatMV(GenUtility.java:1245)
-    public DmcAttribute<?> addEndsWith(Object value) throws DmcValueException {
-        DmcAttribute<?> attr = get(DmtdlDMSAG.__endsWith);
+    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:877)
+    public void setEndsWith(Object value) throws DmcValueException {
+        DmcTypeSectionREFSV attr  = (DmcTypeSectionREFSV) get(DmtdlDMSAG.__endsWith);
         if (attr == null)
-            attr = new DmcTypeSectionREFMV(DmtdlDMSAG.__endsWith);
-        
-        setLastValue(attr.add(value));
-        add(DmtdlDMSAG.__endsWith,attr);
-        return(attr);
-    }
-
-    /**
-     * Returns the number of values in endsWith
-     */
-    // org.dmd.dms.util.GenUtility.formatMV(GenUtility.java:1262)
-    public int getEndsWithSize(){
-        DmcAttribute<?> attr = get(DmtdlDMSAG.__endsWith);
-        if (attr == null){
-            if (DmtdlDMSAG.__endsWith.indexSize == 0)
-                return(0);
-            else
-                return(DmtdlDMSAG.__endsWith.indexSize);
-        }
-        return(attr.getMVSize());
-    }
-
-    /**
-     * Deletes a endsWith value.
-     * @param value The Section to be deleted from set of attribute values.
-     */
-    // org.dmd.dms.util.GenUtility.formatMV(GenUtility.java:1301)
-    public DmcAttribute<?> delEndsWith(Object value){
-        DmcAttribute<?> attr = get(DmtdlDMSAG.__endsWith);
-        
-        if ( (attr == null) && (getModifier()!= null))
-            delFromEmptyAttribute(new DmcTypeSectionREFMV(DmtdlDMSAG.__endsWith), value);
+            attr = new DmcTypeSectionREFSV(DmtdlDMSAG.__endsWith);
         else
-            attr = del(DmtdlDMSAG.__endsWith, value);
+            attr.removeBackReferences();
         
-        return(attr);
+        attr.set(value);
+        set(DmtdlDMSAG.__endsWith,attr);
     }
 
     /**
      * Removes the endsWith attribute value.
      */
-    // org.dmd.dms.util.GenUtility.formatMV(GenUtility.java:1355)
+    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:897)
     public void remEndsWith(){
          rem(DmtdlDMSAG.__endsWith);
     }
@@ -740,6 +676,56 @@ public class SectionDMO  extends TdlDefinitionDMO  implements DmcNamedObjectIF, 
     // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:897)
     public void remHasTemplate(){
          rem(DmtdlDMSAG.__hasTemplate);
+    }
+
+    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:784)
+    public Boolean isUsesTemplate(){
+        DmcTypeBooleanSV attr = (DmcTypeBooleanSV) get(DmtdlDMSAG.__usesTemplate);
+        if (attr == null)
+            return(true);
+
+        return(attr.getSV());
+    }
+
+    /**
+     * Sets usesTemplate to the specified value.
+     * @param value Boolean
+     */
+    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:824)
+    public void setUsesTemplate(Boolean value) {
+        DmcAttribute<?> attr = get(DmtdlDMSAG.__usesTemplate);
+        if (attr == null)
+            attr = new DmcTypeBooleanSV(DmtdlDMSAG.__usesTemplate);
+        
+        try{
+            attr.set(value);
+            set(DmtdlDMSAG.__usesTemplate,attr);
+        }
+        catch(DmcValueException ex){
+            throw(new IllegalStateException("The type specific set() method shouldn't throw exceptions!",ex));
+        }
+    }
+
+    /**
+     * Sets usesTemplate to the specified value.
+     * @param value A value compatible with DmcTypeBooleanSV
+     */
+    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:877)
+    public void setUsesTemplate(Object value) throws DmcValueException {
+        DmcTypeBooleanSV attr  = (DmcTypeBooleanSV) get(DmtdlDMSAG.__usesTemplate);
+        if (attr == null)
+            attr = new DmcTypeBooleanSV(DmtdlDMSAG.__usesTemplate);
+        
+        attr.set(value);
+        set(DmtdlDMSAG.__usesTemplate,attr);
+    }
+
+    /**
+     * Removes the usesTemplate attribute value.
+     */
+    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:897)
+    public void remUsesTemplate(){
+         rem(DmtdlDMSAG.__usesTemplate);
     }
 
     // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:784)

@@ -1,5 +1,12 @@
 
 ComplexTypeDefinition
+name Contains
+requiredPart CardinalityEnum	occurences	"The number of times a contained Section will occur."
+requiredPart Section			section 	"The Section being referenced." quoted=true
+description	The Contains type indicates the number of times a Section will occur within a contain Section
+
+
+ComplexTypeDefinition
 name Value
 requiredPart String			valueName   	"The name of the value that can be inserted into a Template"
 requiredPart String			description 	"A description of the value." quoted=true

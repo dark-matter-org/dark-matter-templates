@@ -1,0 +1,5 @@
+EnumDefinition
+name            CardinalityEnum
+enumValue		0 ONE 	Indicates that a section will appear once.
+enumValue		1 MANY  Indicates that a section will appear many times.
+description		The CardinalityEnum indicates whether a Section will exist one or many times within another Section.
