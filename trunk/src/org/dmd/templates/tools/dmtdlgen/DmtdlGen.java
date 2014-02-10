@@ -40,6 +40,8 @@ public class DmtdlGen extends TdlModuleGenUtility {
 			sections.next().generateSectionClass(gendir);
 		}
 		
+		module.generateTemplateLoader(gendir);
+		
 		FileUpdateManager.instance().generationComplete();
 	}
 

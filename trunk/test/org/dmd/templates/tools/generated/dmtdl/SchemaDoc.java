@@ -14,7 +14,7 @@ import org.dmd.templates.tools.generated.dmtdl.Header;            // Is a contai
 public class SchemaDoc {
 
 
-    // Generated from: org.dmd.util.codegen.MemberManager.getFormattedMembers(MemberManager.java:60)
+    // Generated from: org.dmd.util.codegen.MemberManager.getFormattedMembers(MemberManager.java:64)
     // Called from: org.dmd.templates.server.extended.TextualArtifact.generateTextualArtifactClass(TextualArtifact.java:60)
     Header       _Header;            // A single instance of Header
     ClassList    _ClassList;         // A single instance of ClassList

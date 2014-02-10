@@ -83,11 +83,12 @@ must			name
 must			format
 may				file
 may				lineNumber
+may				description
 description		The Template object provides a mechanism to define an arbitrary set of
  text that allows for the insertion of the named values defined as part of the associated
  Section definition.
  <p/>
- By convention, if a Section requires a Template, the Template is named sectionNameT. For example:
+ By convention, the Template associated with a Section has the same name as the Section. For example:
  <pre>
  Section
  name Header
@@ -95,7 +96,8 @@ description		The Template object provides a mechanism to define an arbitrary set
  would have a template as follows:
  <pre>
  Template
- name HeaderT
+ name Header
  </pre>
  Templates are kept separate from the Section definitions so that their content can be
- changed without regenerating code. Templates are loaded 
+ changed without regenerating code. Templates are loaded using the generated TemplateParser
+ for a given TdlModule.
