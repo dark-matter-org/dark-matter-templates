@@ -44,6 +44,7 @@ public class TextualArtifact extends TextualArtifactDMW {
 			}
 			else{
 				imports.addImport("java.util.ArrayList", "Because we have multiple instances of some Sections");
+				imports.addImport("java.util.Iterator", "Because we have multiple instances of some Sections");
 				members.addMember("ArrayList<" + contained.getName().getNameString() + ">", "_" + contained.getName(), "new ArrayList<" + contained.getName().getNameString() + ">()", "Multiple instances of " + contained.getName());
 			}
 		}
@@ -65,6 +66,13 @@ public class TextualArtifact extends TextualArtifactDMW {
         out.write("");
 
         out.write(getFormatFunction());
+        
+		it = getContainsIterable();
+		while(it.hasNext()){
+			Contains c = it.getNext();
+			Section contained = (Section)c.getSection().getObject().getContainer();
+			out.write(contained.getAccessFunctions(this.getName().getNameString(), c.getOccurences()));
+		}
         
         out.write("}");
 

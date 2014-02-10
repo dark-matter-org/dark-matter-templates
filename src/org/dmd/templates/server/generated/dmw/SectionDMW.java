@@ -30,8 +30,13 @@ import org.dmd.templates.shared.generated.types.Value;                     // Pr
  * another Section or static\n piece of text and, likewise, end with a
  * Section or static piece of text.\n <p/>\n Sections can also contain other
  * (sub) Sections. \n <p/>\n Sections can also have named values that can be
- * inserted into Templates. By specifying\n values, you define a simple
- * interface to the template.
+ * inserted into Templates. By specifying\n values, you define a set of
+ * values that can be accessed and embedded within the associated\n
+ * Template.\n <p/>\n When a Section's format() method is called, it will
+ * dump the contents in the following order:\n <ul>\n <li> any starts with
+ * material </li>\n <li> the formatted contents of the associated Template
+ * </li>\n <li> the formatted contents of any contained Sections </li>\n <li>
+ * any ends with material </li>\n </ul>
  * <P>
  * Generated from the dmtdl schema at version unknown
  * <P>

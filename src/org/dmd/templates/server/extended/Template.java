@@ -6,11 +6,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import org.dmd.dmc.DmcValueException;
-import org.dmd.dms.ClassDefinition;                                // Used in derived constructors - (DMWGenerator.java:270)
-import org.dmd.templates.server.generated.dmw.TemplateDMW;         // The wrapper we're extending - (DMWGenerator.java:268)
+import org.dmd.dms.ClassDefinition;
+import org.dmd.templates.server.generated.dmw.TemplateDMW;
 import org.dmd.templates.server.util.FormattedArtifactIF;
-import org.dmd.templates.server.util.SectionIF;
-import org.dmd.templates.shared.generated.dmo.TemplateDMO;         // The wrapper we're extending - (DMWGenerator.java:269)
+import org.dmd.templates.server.util.ValueContainerIF;
+import org.dmd.templates.shared.generated.dmo.TemplateDMO;
 import org.dmd.util.exceptions.ResultException;
 
 
@@ -26,7 +26,7 @@ public class Template extends TemplateDMW {
         super(dmo,cd);
     }
     
-    public void format(SectionIF section, FormattedArtifactIF artifact) throws IOException {
+    public void format(ValueContainerIF section, FormattedArtifactIF artifact) throws IOException {
     	if (elements == null)
     		throw(new IllegalStateException("The Template has not been initialized yet!"));
 

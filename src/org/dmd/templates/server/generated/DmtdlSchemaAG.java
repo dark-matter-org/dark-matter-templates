@@ -56,6 +56,7 @@ public class DmtdlSchemaAG extends SchemaDefinition {
     public static AttributeDefinition _hasTemplate;
     public static AttributeDefinition _templateFileSuffix;
     public static AttributeDefinition _maxFastAddValues;
+    public static AttributeDefinition _commentFormat;
 
 
     public static ComplexTypeDefinition _Contains;
@@ -139,8 +140,8 @@ public class DmtdlSchemaAG extends SchemaDefinition {
             _SectionOBJ.setDmdID("-478597");
             _SectionOBJ.setClassType("STRUCTURAL");
             _SectionOBJ.setFile("/src/org/dmd/templates/shared/dmdconfig/classes.dmd");
-            _SectionOBJ.setLineNumber("40");
-            _SectionOBJ.addDescription("A Section represents part of a textual artifact that you want format.\n The artifact could be an XHTML document, an XML document, a piece of code, a form\n letter - whatever. The content of a Section may start with another Section or static\n piece of text and, likewise, end with a Section or static piece of text.\n <p/>\n Sections can also contain other (sub) Sections. \n <p/>\n Sections can also have named values that can be inserted into Templates. By specifying\n values, you define a simple interface to the template.");
+            _SectionOBJ.setLineNumber("49");
+            _SectionOBJ.addDescription("A Section represents part of a textual artifact that you want format.\n The artifact could be an XHTML document, an XML document, a piece of code, a form\n letter - whatever. The content of a Section may start with another Section or static\n piece of text and, likewise, end with a Section or static piece of text.\n <p/>\n Sections can also contain other (sub) Sections. \n <p/>\n Sections can also have named values that can be inserted into Templates. By specifying\n values, you define a set of values that can be accessed and embedded within the associated\n Template.\n <p/>\n When a Section's format() method is called, it will dump the contents in the following order:\n <ul>\n <li> any starts with material </li>\n <li> the formatted contents of the associated Template </li>\n <li> the formatted contents of any contained Sections </li>\n <li> any ends with material </li>\n </ul>");
             _SectionOBJ.setDerivedFrom("dmtdl.TdlDefinition");
             _SectionOBJ.setIsNamedBy("meta.name");
             _SectionOBJ.setUseWrapperType("EXTENDED");
@@ -169,7 +170,7 @@ public class DmtdlSchemaAG extends SchemaDefinition {
             _TextualArtifactOBJ.setDmdID("-478596");
             _TextualArtifactOBJ.setClassType("STRUCTURAL");
             _TextualArtifactOBJ.setFile("/src/org/dmd/templates/shared/dmdconfig/classes.dmd");
-            _TextualArtifactOBJ.setLineNumber("59");
+            _TextualArtifactOBJ.setLineNumber("68");
             _TextualArtifactOBJ.addDescription("A TextualArtifact is the top level entity that is comprised of Sections\n and formatted via Templates.");
             _TextualArtifactOBJ.setDerivedFrom("dmtdl.TdlDefinition");
             _TextualArtifactOBJ.setIsNamedBy("meta.name");
@@ -192,14 +193,15 @@ public class DmtdlSchemaAG extends SchemaDefinition {
             _TemplateOBJ.setDmdID("-478595");
             _TemplateOBJ.setClassType("STRUCTURAL");
             _TemplateOBJ.setFile("/src/org/dmd/templates/shared/dmdconfig/classes.dmd");
-            _TemplateOBJ.setLineNumber("92");
-            _TemplateOBJ.addDescription("The Template object provides a mechanism to define an arbitrary set of\n text that allows for the insertion of the named values defined as part of the associated\n Section definition.\n <p/>\n By convention, if a Section requires a Template, the Template is named sectionNameT. For example:\n <pre>\n Section\n name Header\n </pre>\n would have a template as follows:\n <pre>\n Template\n name HeaderT\n </pre>\n Templates are kept separate from the Section definitions so that their content can be\n changed without regenerating code. Templates are loaded");
+            _TemplateOBJ.setLineNumber("103");
+            _TemplateOBJ.addDescription("The Template object provides a mechanism to define an arbitrary set of\n text that allows for the insertion of the named values defined as part of the associated\n Section definition.\n <p/>\n By convention, the Template associated with a Section has the same name as the Section. For example:\n <pre>\n Section\n name Header\n </pre>\n would have a template as follows:\n <pre>\n Template\n name Header\n </pre>\n Templates are kept separate from the Section definitions so that their content can be\n changed without regenerating code. Templates are loaded using the generated TemplateParser\n for a given TdlModule.");
             _TemplateOBJ.setIsNamedBy("meta.name");
             _TemplateOBJ.setUseWrapperType("EXTENDED");
             _TemplateOBJ.setDmtREFImport("org.dmd.templates.shared.generated.types.TemplateREF");
             _TemplateOBJ.setDmwIteratorClass("TemplateIterableDMW");
             _TemplateOBJ.addMay("meta.file");
             _TemplateOBJ.addMay("meta.lineNumber");
+            _TemplateOBJ.addMay("meta.description");
             _TemplateOBJ.addMust("meta.name");
             _TemplateOBJ.addMust("dmtdl.format");
             _TemplateOBJ.setDmwIteratorImport("org.dmd.templates.server.generated.dmw.TemplateIterableDMW");
@@ -216,7 +218,7 @@ public class DmtdlSchemaAG extends SchemaDefinition {
             _TdlModuleOBJ.setInternallyGenerated("true");
             _TdlModuleOBJ.setClassType("STRUCTURAL");
             _TdlModuleOBJ.setFile("/src/org/dmd/templates/shared/dmdconfig/module.dmd");
-            _TdlModuleOBJ.setLineNumber("26");
+            _TdlModuleOBJ.setLineNumber("27");
             _TdlModuleOBJ.addDescription("A TdlModule is used to define a set of Sections that\n define the overall structure of a textual artifact. When run through the dmtdlgen\n utility, a set of classes are generated to represent these different artifact sections.\n <p/>\n By convention, you should place the .dmtdl files along with your other dark-matter \n config files e.g. in the dmconfig folder with your dark-matter schema or with \n your .dmg wrapper generation files. However, there is no restriction on where you\n place your .dmtdl files, but it's recommended that they exist in a separate subfolder.\n <p/>\n When the dmtdlgen utility is run, a folder (named generated) will be created at\n the same level as the dmconfig folder (or whatever you called it). This will contain\n a dmtdl subpackage that will contain the generated code that represents the \n various Sections that you've defined.");
             _TdlModuleOBJ.setDerivedFrom("dmtdl.TdlDefinition");
             _TdlModuleOBJ.setIsNamedBy("meta.name");
@@ -228,6 +230,7 @@ public class DmtdlSchemaAG extends SchemaDefinition {
             _TdlModuleOBJ.addMay("dmtdl.templateFileSuffix");
             _TdlModuleOBJ.addMay("dmtdl.maxFastAddValues");
             _TdlModuleOBJ.addMay("dmtdl.insertMarker");
+            _TdlModuleOBJ.addMay("dmtdl.commentFormat");
             _TdlModuleOBJ.addMay("dmtdl.dependsOnTdlModule");
             _TdlModuleOBJ.addMust("meta.name");
             _TdlModuleOBJ.addMust("dmtdl.package");
@@ -475,8 +478,26 @@ public class DmtdlSchemaAG extends SchemaDefinition {
             _maxFastAddValuesOBJ.setDotName("dmtdl.maxFastAddValues.AttributeDefinition");
             _maxFastAddValues.setDefinedIn(this);
             _maxFastAddValuesOBJ.setFile("/src/org/dmd/templates/shared/dmdconfig/attributes.dmd");
-            _maxFastAddValuesOBJ.setLineNumber("132");
+            _maxFastAddValuesOBJ.setLineNumber("133");
             addAttributeDefList(_maxFastAddValues);
+
+// Generated from: org.dmd.dmg.util.SchemaFormatter.getObjectAsCode(SchemaFormatter.java:585)
+            AttributeDefinitionDMO _commentFormatOBJ = new AttributeDefinitionDMO();
+            _commentFormat = new AttributeDefinition(_commentFormatOBJ);
+            _commentFormatOBJ.setPreserveNewlines("true");
+            _commentFormatOBJ.setType("meta.String");
+            _commentFormatOBJ.setName("commentFormat");
+            _commentFormatOBJ.setDmdID("-478583");
+            _commentFormatOBJ.addDescription("By specifying a commentFormat for your TdlModule, you allow the formatting\n mechanism to automatically indicate the Template that was used for format the output. This\n is useful when debugging your formatted output.");
+            _commentFormatOBJ.setNameAndTypeName("commentFormat.AttributeDefinition");
+            _commentFormatOBJ.addExampleUsage("Comment for XML :\n <pre>\n <!-- ::comment:: -->\n </pre>");
+            _commentFormatOBJ.addExampleUsage("Comment for Java :\n <pre>\n // ::comment:: \n </pre>");
+            _commentFormatOBJ.addExampleUsage("Multi-line comment for Java :\n <pre>\n /* ::comment:: */\n </pre>");
+            _commentFormatOBJ.setDotName("dmtdl.commentFormat.AttributeDefinition");
+            _commentFormat.setDefinedIn(this);
+            _commentFormatOBJ.setFile("/src/org/dmd/templates/shared/dmdconfig/attributes.dmd");
+            _commentFormatOBJ.setLineNumber("154");
+            addAttributeDefList(_commentFormat);
 
     }
 
@@ -555,12 +576,13 @@ public class DmtdlSchemaAG extends SchemaDefinition {
             _TdlModuleDSDOBJ.setDotName("dmtdl.TdlModule.DSDefinitionModule");
             _TdlModuleDSDOBJ.setFile("/src/org/dmd/templates/shared/dmdconfig/module.dmd");
             _TdlModuleDSDOBJ.setModuleDependenceAttribute("dmtdl.dependsOnTdlModule");
-            _TdlModuleDSDOBJ.setLineNumber("26");
+            _TdlModuleDSDOBJ.setLineNumber("27");
             _TdlModuleDSDOBJ.setBaseDefinition("dmtdl.TdlDefinition");
             _TdlModuleDSDOBJ.addDescription("A TdlModule is used to define a set of Sections that\n define the overall structure of a textual artifact. When run through the dmtdlgen\n utility, a set of classes are generated to represent these different artifact sections.\n <p/>\n By convention, you should place the .dmtdl files along with your other dark-matter \n config files e.g. in the dmconfig folder with your dark-matter schema or with \n your .dmg wrapper generation files. However, there is no restriction on where you\n place your .dmtdl files, but it's recommended that they exist in a separate subfolder.\n <p/>\n When the dmtdlgen utility is run, a folder (named generated) will be created at\n the same level as the dmconfig folder (or whatever you called it). This will contain\n a dmtdl subpackage that will contain the generated code that represents the \n various Sections that you've defined.");
             _TdlModuleDSDOBJ.addMay("dmtdl.templateFileSuffix");
             _TdlModuleDSDOBJ.addMay("dmtdl.maxFastAddValues");
             _TdlModuleDSDOBJ.addMay("dmtdl.insertMarker");
+            _TdlModuleDSDOBJ.addMay("dmtdl.commentFormat");
             _TdlModuleDSDOBJ.setNameAndTypeName("TdlModule.DSDefinitionModule");
             _TdlModuleDSDOBJ.addMust("dmtdl.package");
             _TdlModuleDSDOBJ.addMust("dmtdl.templateFile");

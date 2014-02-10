@@ -8,7 +8,6 @@ import org.dmd.dmc.DmcValueException;
 import org.dmd.dmc.DmcValueExceptionSet;
 import org.dmd.dmc.rules.DmcRuleExceptionSet;
 import org.dmd.templates.tools.dmtdlgen.DmtdlGen;
-import org.dmd.templates.tools.generated.dmtdl.DmschemadocTemplateLoader;
 import org.dmd.util.exceptions.ResultException;
 import org.junit.Before;
 import org.junit.Test;
@@ -34,5 +33,32 @@ public class DmtdlGenTest {
 		
 		util.run(args);
 		
+	}
+	
+	@Test
+	public void commentFormatTest(){
+		String pattern = ".*::comment::.*";
+		
+		String value = "<!-- ::comment:: -->";
+		
+		if (value.matches(pattern)){
+			System.out.println("Yeehaa");
+		}
+		else
+			System.out.println("Boooo!");
+		
+		value = "// ::comment::";
+		if (value.matches(pattern)){
+			System.out.println("Yeehaa");
+		}
+		else
+			System.out.println("Boooo!");
+		
+		value = "/*::comment::*/";
+		if (value.matches(pattern)){
+			System.out.println("Yeehaa");
+		}
+		else
+			System.out.println("Boooo!");
 	}
 }

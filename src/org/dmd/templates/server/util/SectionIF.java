@@ -6,13 +6,7 @@ import java.io.IOException;
  * The SectionIF interface is implemented by all classes generated as a result
  * of Section definitions in a .dmtdl module.
  */
-public interface SectionIF {
-
-	/**
-	 * @param name the name of the value.
-	 * @return The value or the empty string if it's not available.
-	 */
-	public String getValue(String name);
+public interface SectionIF extends ValueContainerIF {
 	
 	/**
 	 * Adds formatted text to the specified artifact. If this Section contains other

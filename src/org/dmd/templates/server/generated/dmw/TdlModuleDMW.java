@@ -46,7 +46,7 @@ import org.dmd.templates.shared.generated.types.TdlModuleREF;                   
  */
 abstract public class TdlModuleDMW extends TdlDefinition implements DmcDefinitionIF, DmcNamedObjectIF, TdlModuleScopedInterface {
 
-    // Generated from: org.dmd.util.codegen.MemberManager.getFormattedMembers(MemberManager.java:60)
+    // Generated from: org.dmd.util.codegen.MemberManager.getFormattedMembers(MemberManager.java:64)
     // Called from: org.dmd.dmg.generators.DMWGenerator.dumpAdditionalWrapperDefinitions(DMWGenerator.java:203)
     DmcDefinitionSet<TdlDefinition>       TdlDefinitionDefs      = new DmcDefinitionSet<TdlDefinition>("TdlModule-allDefinitions");          // All definitions associated with this module
     DmcDefinitionSet<Section>             SectionDefs            = new DmcDefinitionSet<Section>("TdlModule-SectionDefs");                   // All Section definitions
@@ -109,6 +109,37 @@ abstract public class TdlModuleDMW extends TdlDefinition implements DmcDefinitio
             return( getObjectName().equals( ((TdlModuleDMW) obj).getObjectName()) );
         }
         return(false);
+    }
+
+    // org.dmd.dmg.generators.BaseDMWGenerator.formatSV(BaseDMWGenerator.java:1474)
+    public String getCommentFormat(){
+        return(((TdlModuleDMO) core).getCommentFormat());
+    }
+
+    /**
+     * Sets commentFormat to the specified value.
+     * @param value A value compatible with DmcTypeString
+     */
+    // org.dmd.dmg.generators.BaseDMWGenerator.formatSV(BaseDMWGenerator.java:1584)
+    public void setCommentFormat(Object value) throws DmcValueException {
+        ((TdlModuleDMO) core).setCommentFormat(value);
+    }
+
+    /**
+     * Sets commentFormat to the specified value.
+     * @param value String
+     */
+    // org.dmd.dmg.generators.BaseDMWGenerator.formatSV(BaseDMWGenerator.java:1593)
+    public void setCommentFormat(String value){
+        ((TdlModuleDMO) core).setCommentFormat(value);
+    }
+
+    /**
+     * Removes the commentFormat attribute value.
+     */
+    // org.dmd.dmg.generators.BaseDMWGenerator.formatSV(BaseDMWGenerator.java:1619)
+    public void remCommentFormat(){
+        ((TdlModuleDMO) core).remCommentFormat();
     }
 
     /**

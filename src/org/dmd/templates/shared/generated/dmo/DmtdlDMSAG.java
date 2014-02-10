@@ -13,8 +13,10 @@ import org.dmd.dms.generated.enums.DataTypeEnum;                                
 import org.dmd.dms.generated.enums.OriginalTypeEnum;                                        // Have type/internal type definitions - (DmoCompactSchemaFormatter.java:1011)
 import org.dmd.dms.generated.enums.ValueTypeEnum;                                           // Have attribute definitions - (DmoCompactSchemaFormatter.java:1032)
 import org.dmd.dmv.shared.extended.rulesdmo.OnlyOneOfTheseAttributesAllowedRule;            // To instantiate rules of this type - (DmoCompactSchemaFormatter.java:1058)
+import org.dmd.dmv.shared.extended.rulesdmo.PatternMatchRule;                               // To instantiate rules of this type - (DmoCompactSchemaFormatter.java:1058)
 import org.dmd.dmv.shared.extended.rulesdmo.ValueLengthRule;                                // To instantiate rules of this type - (DmoCompactSchemaFormatter.java:1058)
 import org.dmd.dmv.shared.generated.dmo.OnlyOneOfTheseAttributesAllowedRuleDataDMO;         // To instantiate OnlyOneOfTheseAttributesAllowedRuleData rule data - (DmoCompactSchemaFormatter.java:1057)
+import org.dmd.dmv.shared.generated.dmo.PatternMatchRuleDataDMO;                            // To instantiate PatternMatchRuleData rule data - (DmoCompactSchemaFormatter.java:1057)
 import org.dmd.dmv.shared.generated.dmo.ValueLengthRuleDataDMO;                             // To instantiate ValueLengthRuleData rule data - (DmoCompactSchemaFormatter.java:1057)
 
 
@@ -35,6 +37,7 @@ public class DmtdlDMSAG implements DmcCompactSchemaIF {
 
     static int schemaMaxID = -478550;
 
+    public final static DmcAttributeInfo __commentFormat = new DmcAttributeInfo("dmtdl", "commentFormat", -478583, "String", ValueTypeEnum.SINGLE, DataTypeEnum.PERSISTENT);
     public final static DmcAttributeInfo __contains = new DmcAttributeInfo("dmtdl", "contains", -478594, "Contains", ValueTypeEnum.MULTI, DataTypeEnum.PERSISTENT);
     public final static DmcAttributeInfo __definedInTdlModule = new DmcAttributeInfo("dmtdl", "definedInTdlModule", -478599, "TdlModule", ValueTypeEnum.SINGLE, DataTypeEnum.PERSISTENT);
     public final static DmcAttributeInfo __dependsOnTdlModule = new DmcAttributeInfo("dmtdl", "dependsOnTdlModule", -478598, "TdlModule", ValueTypeEnum.MULTI, DataTypeEnum.PERSISTENT);
@@ -70,6 +73,7 @@ public class DmtdlDMSAG implements DmcCompactSchemaIF {
     public final static DmcClassInfo __Template = new DmcClassInfo("Template","org.dmd.templates.shared.generated.dmo.TemplateDMO", -478595, ClassTypeEnum.STRUCTURAL, DataTypeEnum.PERSISTENT,null,MetaDMSAG.__name);
 
     // Generated from: org.dmd.dms.util.DmoCompactSchemaFormatter.dumpSchema(DmoCompactSchemaFormatter.java:246)
+    public final static PatternMatchRule __dmtdlCommentFormat;
     public final static OnlyOneOfTheseAttributesAllowedRule __dmtdlEndsWith;
     public final static ValueLengthRule __dmtdlInsertMarkerLength;
     public final static OnlyOneOfTheseAttributesAllowedRule __dmtdlStartsWith;
@@ -135,6 +139,7 @@ public class DmtdlDMSAG implements DmcCompactSchemaIF {
         __Template.addMust(__format);
         __Template.addMay(MetaDMSAG.__file);
         __Template.addMay(MetaDMSAG.__lineNumber);
+        __Template.addMay(MetaDMSAG.__description);
 
         __TdlModule.addMust(MetaDMSAG.__name);
         __TdlModule.addMust(__package);
@@ -144,6 +149,7 @@ public class DmtdlDMSAG implements DmcCompactSchemaIF {
         __TdlModule.addMay(__templateFileSuffix);
         __TdlModule.addMay(__maxFastAddValues);
         __TdlModule.addMay(__insertMarker);
+        __TdlModule.addMay(__commentFormat);
         __TdlModule.addMay(__dependsOnTdlModule);
 
     }
@@ -154,6 +160,18 @@ public class DmtdlDMSAG implements DmcCompactSchemaIF {
 
         // Generated from: org.dmd.dms.util.DmoCompactSchemaFormatter.dumpSchema(DmoCompactSchemaFormatter.java:363)
         try{
+            PatternMatchRuleDataDMO _dmtdlCommentFormatData = new PatternMatchRuleDataDMO();
+            _dmtdlCommentFormatData      .setRuleName("dmtdlCommentFormat");
+            _dmtdlCommentFormatData      .setRuleTitle("The commentFormat must contain the value insertion ::comment::");
+            _dmtdlCommentFormatData      .setMatchesPattern(".*::comment::.*");
+            _dmtdlCommentFormatData      .setFile("/src/org/dmd/templates/shared/dmdconfig/attributes.dmd");
+            _dmtdlCommentFormatData      .setDefinedIn("dmtdl");
+            _dmtdlCommentFormatData      .setLineNumber("159");
+
+            __dmtdlCommentFormat = new PatternMatchRule(_dmtdlCommentFormatData);
+
+            _RmAp.add(__dmtdlCommentFormat);
+
             OnlyOneOfTheseAttributesAllowedRuleDataDMO _dmtdlEndsWithData = new OnlyOneOfTheseAttributesAllowedRuleDataDMO();
             _dmtdlEndsWithData           .setRuleName("dmtdlEndsWith");
             _dmtdlEndsWithData           .setApplyToClass("Section");
@@ -162,7 +180,7 @@ public class DmtdlDMSAG implements DmcCompactSchemaIF {
             _dmtdlEndsWithData           .addOnePossibility("endsWithText");
             _dmtdlEndsWithData           .setFile("/src/org/dmd/templates/shared/dmdconfig/classes.dmd");
             _dmtdlEndsWithData           .setDefinedIn("dmtdl");
-            _dmtdlEndsWithData           .setLineNumber("66");
+            _dmtdlEndsWithData           .setLineNumber("75");
 
             __dmtdlEndsWith = new OnlyOneOfTheseAttributesAllowedRule(_dmtdlEndsWithData);
 
@@ -190,7 +208,7 @@ public class DmtdlDMSAG implements DmcCompactSchemaIF {
             _dmtdlStartsWithData         .addOnePossibility("startsWithText");
             _dmtdlStartsWithData         .setFile("/src/org/dmd/templates/shared/dmdconfig/classes.dmd");
             _dmtdlStartsWithData         .setDefinedIn("dmtdl");
-            _dmtdlStartsWithData         .setLineNumber("47");
+            _dmtdlStartsWithData         .setLineNumber("56");
 
             __dmtdlStartsWith = new OnlyOneOfTheseAttributesAllowedRule(_dmtdlStartsWithData);
 

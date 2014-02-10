@@ -11,7 +11,7 @@ import org.dmd.templates.server.util.SectionIF;                   // Standard in
 
 
 // Generated from: org.dmd.templates.server.extended.Section.generateSectionClass(Section.java:97)
-public class ClassListEntry implements SectionIF {
+public class HtmlHead implements SectionIF {
 
 
     // Generated from: org.dmd.util.codegen.MemberManager.getFormattedMembers(MemberManager.java:64)
@@ -19,17 +19,17 @@ public class ClassListEntry implements SectionIF {
     TreeMap<String,String>    values    = new TreeMap<String,String>();   // Required to store our values
 
 
-    public ClassListEntry(){
+    public HtmlHead(){
     }
 
     /**
-     * Constructs a new ClassListEntry section.
-     * @param className_ The name of the class
+     * Constructs a new HtmlHead section.
+     * @param schemaName_ The name of the schema
      * Generated from: org.dmd.templates.server.extended.Section.generateSectionClass(Section.java:121)
      */
-    public ClassListEntry(String className_){
-        if (className_ != null)
-            values.put("className", className_);
+    public HtmlHead(String schemaName_){
+        if (schemaName_ != null)
+            values.put("schemaName", schemaName_);
 
     }
 
@@ -43,7 +43,7 @@ public class ClassListEntry implements SectionIF {
     // Generated from: org.dmd.templates.server.extended.Section.getFormatFunction(Section.java:200)
     public void format(FormattedArtifactIF artifact) throws IOException {
 
-        DmschemadocTemplateLoader.ClassListEntry.format(this,artifact);
+        DmschemadocTemplateLoader.HtmlHead.format(this,artifact);
 
     }
 

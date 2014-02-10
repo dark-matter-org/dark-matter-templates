@@ -2,10 +2,13 @@ package org.dmd.templates.server.generated.dmw;
 
 // Generated from: org.dmd.util.codegen.ImportManager.getFormattedImports(ImportManager.java:82)
 // Called from: org.dmd.dmg.generators.BaseDMWGenerator.dumpWrapper(BaseDMWGenerator.java:442)
+import java.util.ArrayList;                                        // Support for MULTI attribute - (BaseDMWGenerator.java:2226)
+import java.util.Iterator;                                         // Support copy of MV objects - (BaseDMWGenerator.java:2240)
 import org.dmd.dmc.*;                                              // If any attributes - (BaseDMWGenerator.java:1087)
 import org.dmd.dmc.types.DefinitionName;                           // Is named by - (BaseDMWGenerator.java:1062)
 import org.dmd.dms.ClassDefinition;                                // Passing derived class def up the hierarchy - (BaseDMWGenerator.java:1067)
-import org.dmd.dms.generated.dmo.MetaDMSAG;                        // Required for MODREC constructor - (BaseDMWGenerator.java:1072)
+import org.dmd.dms.generated.dmo.MetaDMSAG;                        // Attribute description from the meta schema - (BaseDMWGenerator.java:897)
+import org.dmd.dms.generated.dmw.StringIterableDMW;                // For multi-valued String - (BaseDMWGenerator.java:2103)
 import org.dmd.dms.generated.types.DmcTypeModifierMV;              // Required for MODREC constructor - (BaseDMWGenerator.java:1071)
 import org.dmd.dmw.DmwNamedObjectWrapper;                          // Named object wrapper - (BaseDMWGenerator.java:1242)
 import org.dmd.templates.server.extended.Template;                 // Required for getModificationRecorder() - (BaseDMWGenerator.java:1076)
@@ -16,12 +19,13 @@ import org.dmd.templates.shared.generated.dmo.TemplateDMO;         // Class not 
 /**
  * The Template object provides a mechanism to define an arbitrary set of\n
  * text that allows for the insertion of the named values defined as part of
- * the associated\n Section definition.\n <p/>\n By convention, if a Section
- * requires a Template, the Template is named sectionNameT. For example:\n
+ * the associated\n Section definition.\n <p/>\n By convention, the Template
+ * associated with a Section has the same name as the Section. For example:\n
  * <pre>\n Section\n name Header\n </pre>\n would have a template as
- * follows:\n <pre>\n Template\n name HeaderT\n </pre>\n Templates are kept
+ * follows:\n <pre>\n Template\n name Header\n </pre>\n Templates are kept
  * separate from the Section definitions so that their content can be\n
- * changed without regenerating code. Templates are loaded
+ * changed without regenerating code. Templates are loaded using the
+ * generated TemplateParser\n for a given TdlModule.
  * <P>
  * Generated from the dmtdl schema at version unknown
  * <P>
@@ -86,6 +90,119 @@ public class TemplateDMW extends DmwNamedObjectWrapper implements DmcNamedObject
             return( getObjectName().equals( ((TemplateDMW) obj).getObjectName()) );
         }
         return(false);
+    }
+
+    /**
+     * @return The number of String items.
+     */
+    // org.dmd.dmg.generators.BaseDMWGenerator.formatMV(BaseDMWGenerator.java:1671)
+    public int getDescriptionSize(){
+        return(((TemplateDMO) core).getDescriptionSize());
+    }
+
+    /**
+     * @return true if there are no StringDMO items.
+     */
+    // org.dmd.dmg.generators.BaseDMWGenerator.formatMV(BaseDMWGenerator.java:1679)
+    public boolean getDescriptionIsEmpty(){
+        if (((TemplateDMO) core).getDescriptionSize() == 0)
+            return(true);
+        return(false);
+    }
+
+    /**
+     * @return true if there are any StringDMO items.
+     */
+    // org.dmd.dmg.generators.BaseDMWGenerator.formatMV(BaseDMWGenerator.java:1689)
+    public boolean getDescriptionHasValue(){
+        if (((TemplateDMO) core).getDescriptionSize() == 0)
+            return(false);
+        return(true);
+    }
+
+    /**
+     * @return An Iterator of String objects.
+     */
+    // org.dmd.dmg.generators.BaseDMWGenerator.formatMV(BaseDMWGenerator.java:2107)
+    public StringIterableDMW getDescriptionIterable(){
+        DmcAttribute<?> attr = core.get(MetaDMSAG.__description);
+        if (attr == null)
+            return(StringIterableDMW.emptyList);
+        
+        return(new StringIterableDMW(((TemplateDMO) core).getDescription()));
+    }
+
+    /**
+     * Adds another description value.
+     * @param value A value compatible with String
+     */
+    // org.dmd.dmg.generators.BaseDMWGenerator.formatMV(BaseDMWGenerator.java:2133)
+    public void addDescription(Object value) throws DmcValueException {
+        ((TemplateDMO) core).addDescription(value);
+    }
+
+    /**
+     * Adds another description value.
+     * @param value A value compatible with String
+     */
+    // org.dmd.dmg.generators.BaseDMWGenerator.formatMV(BaseDMWGenerator.java:2143)
+    public void addDescription(String value){
+        ((TemplateDMO) core).addDescription(value);
+    }
+
+    /**
+     * Returns true if the collection contains the description value.
+     * @param value A value compatible with String
+     */
+    // org.dmd.dmg.generators.BaseDMWGenerator.formatMV(BaseDMWGenerator.java:2200)
+    public boolean descriptionContains(String value){
+        return(((TemplateDMO) core).descriptionContains(value));
+    }
+
+    /**
+     * @return A COPY of the collection of String objects.
+     */
+    // org.dmd.dmg.generators.BaseDMWGenerator.formatMV(BaseDMWGenerator.java:2244)
+    @SuppressWarnings("unchecked")
+    public ArrayList<String> getDescriptionCopy(){
+        DmcAttribute<?> attr = core.get(MetaDMSAG.__description);
+        if (attr == null)
+            return(new ArrayList<String>());
+        
+        ArrayList<String> rc = new ArrayList<String>(attr.getMVSize());
+        
+        Iterator<String> it = (Iterator<String>) attr.getMV();
+        while(it.hasNext()){
+            rc.add(it.next());
+        }
+        
+        return(rc);
+    }
+
+    /**
+     * Deletes a description value.
+     * @param value The String to be deleted from set of attribute values.
+     */
+    // org.dmd.dmg.generators.BaseDMWGenerator.formatMV(BaseDMWGenerator.java:2271)
+    public void delDescription(Object value) throws DmcValueException {
+        ((TemplateDMO) core).delDescription(value);
+    }
+
+    /**
+     * Deletes a description value.
+     * @param value The String to be deleted from set of attribute values.
+     */
+    // org.dmd.dmg.generators.BaseDMWGenerator.formatMV(BaseDMWGenerator.java:2280)
+    public void delDescription(String value){
+        ((TemplateDMO) core).delDescription(value);
+    }
+
+    /**
+     * Removes the description attribute value.
+     */
+    // org.dmd.dmg.generators.BaseDMWGenerator.formatMV(BaseDMWGenerator.java:2292)
+    public void remDescription(){
+        ((TemplateDMO) core).remDescription();
     }
 
     // org.dmd.dmg.generators.BaseDMWGenerator.formatSV(BaseDMWGenerator.java:1474)
