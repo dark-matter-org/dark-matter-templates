@@ -10,6 +10,8 @@ import org.dmd.templates.server.extended.Template;
  */
 public class TemplateMediator {
 	
+	static ValueContainer	commentContainer = new ValueContainer();
+	
 	String 		name;
 	Template	template;
 
@@ -37,9 +39,24 @@ public class TemplateMediator {
 	 * @param artifact
 	 * @throws IOException
 	 */
-	public void format(SectionIF section, FormattedArtifactIF artifact) throws IOException {
+	public void format(ValueContainerIF section, FormattedArtifactIF artifact) throws IOException {
 		if (template == null)
 			return;
+		template.format(section, artifact);
+	}
+	
+	/**
+	 * If the template has been loaded, we format the information in the Section and
+	 * write it to the artifact. Otherwise we do nothing.
+	 * @param section
+	 * @param artifact
+	 * @throws IOException
+	 */
+	public void formatWithComment(ValueContainerIF section, FormattedArtifactIF artifact, Template commentTemplate) throws IOException {
+		if (template == null)
+			return;
+		commentContainer.setValue("comment", "Formatted by template: " + template.getName() + " - " + template.getFile() + " : " + template.getLineNumber() + "\n");
+		commentTemplate.format(commentContainer, artifact);
 		template.format(section, artifact);
 	}
 }

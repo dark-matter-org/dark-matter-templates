@@ -8,7 +8,8 @@ import org.dmd.dmc.DmcNameClashException;
 import org.dmd.dmc.DmcValueException;
 import org.dmd.dms.SchemaManager;
 import org.dmd.templates.server.generated.DmtdlSchemaAG;
-import org.dmd.templates.tools.generated.dmtdl.Header;
+import org.dmd.templates.server.util.FormattedStringBuffer;
+import org.dmd.templates.tools.generated.dmtdl.HtmlHead;
 import org.dmd.util.exceptions.ResultException;
 import org.junit.Before;
 import org.junit.Test;
@@ -93,8 +94,8 @@ public class TemplateTest {
 	}
 	
 	@Test
-	public void testWithSection() throws ResultException {
-		Header header = new Header("meta");
+	public void testWithSection() throws ResultException, IOException {
+		HtmlHead header = new HtmlHead("meta");
 		Template t = new Template();
 		t.setFile("Junit");
 		t.setLineNumber(1);
@@ -103,7 +104,11 @@ public class TemplateTest {
 		t.setFormat("<title> The ::schemaName:: Schema </title>");
 		t.initialize("::");
 		
+		FormattedStringBuffer	fsb = new FormattedStringBuffer();
 		
+		header.format(fsb,t);
+		
+		assertEquals("Format should be applied", "<title> The meta Schema </title>", fsb.getBuffer().toString());
 		
 	}
 	

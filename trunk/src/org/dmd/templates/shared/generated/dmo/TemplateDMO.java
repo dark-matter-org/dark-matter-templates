@@ -17,6 +17,7 @@ package org.dmd.templates.shared.generated.dmo;
 
 // Generated from: org.dmd.dms.util.GenUtility.formatImports(GenUtility.java:396)
 import java.io.Serializable;                                        // Always required - (GenUtility.java:224)
+import java.util.*;                                                 // Always required if we have any MV attributes - (GenUtility.java:221)
 import org.dmd.dmc.DmcAttribute;                                    // Named object - (GenUtility.java:376)
 import org.dmd.dmc.DmcNamedObjectIF;                                // Named object - (GenUtility.java:375)
 import org.dmd.dmc.DmcObject;                                       // Structural class - (GenUtility.java:351)
@@ -27,18 +28,20 @@ import org.dmd.dms.generated.dmo.MetaDMSAG;                         // Required 
 import org.dmd.dms.generated.types.DmcTypeDefinitionNameSV;         // Required type - (GenUtility.java:328)
 import org.dmd.dms.generated.types.DmcTypeIntegerSV;                // Required type - (GenUtility.java:328)
 import org.dmd.dms.generated.types.DmcTypeModifierMV;               // Required for MODREC constructor - (GenUtility.java:227)
+import org.dmd.dms.generated.types.DmcTypeStringMV;                 // Required type - (GenUtility.java:328)
 import org.dmd.dms.generated.types.DmcTypeStringSV;                 // Required type - (GenUtility.java:328)
 
 // Generated from: org.dmd.dms.util.DmoFormatter.getClassHeader(DmoFormatter.java:677)
 /**
  * The Template object provides a mechanism to define an arbitrary set of\n
  * text that allows for the insertion of the named values defined as part of
- * the associated\n Section definition.\n <p/>\n By convention, if a Section
- * requires a Template, the Template is named sectionNameT. For example:\n
+ * the associated\n Section definition.\n <p/>\n By convention, the Template
+ * associated with a Section has the same name as the Section. For example:\n
  * <pre>\n Section\n name Header\n </pre>\n would have a template as
- * follows:\n <pre>\n Template\n name HeaderT\n </pre>\n Templates are kept
+ * follows:\n <pre>\n Template\n name Header\n </pre>\n Templates are kept
  * separate from the Section definitions so that their content can be\n
- * changed without regenerating code. Templates are loaded
+ * changed without regenerating code. Templates are loaded using the
+ * generated TemplateParser\n for a given TdlModule.
  * <P>
  * Generated from the dmtdl schema at version unknown
  * <P>
@@ -219,6 +222,133 @@ public class TemplateDMO  extends DmcObject  implements DmcNamedObjectIF, Serial
     // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:897)
     public void remLineNumber(){
          rem(MetaDMSAG.__lineNumber);
+    }
+
+    /**
+     * @return An Iterator of String objects.
+     */
+    @SuppressWarnings("unchecked")
+    // org.dmd.dms.util.GenUtility.formatMV(GenUtility.java:1112)
+    public Iterator<String> getDescription(){
+        DmcTypeStringMV attr = (DmcTypeStringMV) get(MetaDMSAG.__description);
+        if (attr == null)
+            return( ((List<String>) Collections.EMPTY_LIST).iterator());
+
+        return(attr.getMV());
+    }
+
+    /**
+     * @return The nth String value.
+     */
+    // org.dmd.dms.util.GenUtility.formatMV(GenUtility.java:1124)
+    public String getNthDescription(int i){
+        DmcTypeStringMV attr = (DmcTypeStringMV) get(MetaDMSAG.__description);
+        if (attr == null)
+            return(null);
+
+        return(attr.getMVnth(i));
+    }
+
+    /**
+     * Adds another description to the specified value.
+     * @param value String
+     */
+    // org.dmd.dms.util.GenUtility.formatMV(GenUtility.java:1138)
+    public DmcAttribute<?> addDescription(String value) {
+        DmcAttribute<?> attr = get(MetaDMSAG.__description);
+        if (attr == null)
+            attr = new DmcTypeStringMV(MetaDMSAG.__description);
+        
+        try{
+            setLastValue(attr.add(value));
+            add(MetaDMSAG.__description,attr);
+        }
+        catch(DmcValueException ex){
+            throw(new IllegalStateException("The type specific add() method shouldn't throw exceptions!",ex));
+        }
+        return(attr);
+    }
+
+    /**
+     * Returns true if we contain a valued keyed by the specified String.
+     * @param value String
+     */
+    // org.dmd.dms.util.GenUtility.formatMV(GenUtility.java:1213)
+    public boolean descriptionContains(String value) {
+        DmcAttribute<?> attr = get(MetaDMSAG.__description);
+        if (attr == null)
+            return(false);
+        return(attr.contains(value));
+    }
+
+    /**
+     * Adds another description value.
+     * @param value A value compatible with String
+     */
+    // org.dmd.dms.util.GenUtility.formatMV(GenUtility.java:1245)
+    public DmcAttribute<?> addDescription(Object value) throws DmcValueException {
+        DmcAttribute<?> attr = get(MetaDMSAG.__description);
+        if (attr == null)
+            attr = new DmcTypeStringMV(MetaDMSAG.__description);
+        
+        setLastValue(attr.add(value));
+        add(MetaDMSAG.__description,attr);
+        return(attr);
+    }
+
+    /**
+     * Returns the number of values in description
+     */
+    // org.dmd.dms.util.GenUtility.formatMV(GenUtility.java:1262)
+    public int getDescriptionSize(){
+        DmcAttribute<?> attr = get(MetaDMSAG.__description);
+        if (attr == null){
+            if (MetaDMSAG.__description.indexSize == 0)
+                return(0);
+            else
+                return(MetaDMSAG.__description.indexSize);
+        }
+        return(attr.getMVSize());
+    }
+
+    /**
+     * Deletes a description value.
+     * @param value The String to be deleted from set of attribute values.
+     */
+    // org.dmd.dms.util.GenUtility.formatMV(GenUtility.java:1320)
+    public DmcAttribute<?> delDescription(Object value) throws DmcValueException {
+        DmcAttribute<?> attr = get(MetaDMSAG.__description);
+        
+        if ( (attr == null) && (getModifier()!= null))
+            delFromEmptyAttribute(new DmcTypeStringMV(MetaDMSAG.__description), value);
+        else
+            attr = del(MetaDMSAG.__description, value);
+        
+        return(attr);
+    }
+
+    /**
+     * Deletes a description from the specified value.
+     * @param value String
+     */
+    // org.dmd.dms.util.GenUtility.formatMV(GenUtility.java:1336)
+    public DmcAttribute<?> delDescription(String value) {
+        DmcAttribute<?> attr = get(MetaDMSAG.__description);
+        
+        if ( (attr == null) && (getModifier()!= null))
+            delFromEmptyAttribute(new DmcTypeStringMV(MetaDMSAG.__description), value);
+        else
+            attr = del(MetaDMSAG.__description, value);
+        
+        return(attr);
+    }
+
+    /**
+     * Removes the description attribute value.
+     */
+    // org.dmd.dms.util.GenUtility.formatMV(GenUtility.java:1355)
+    public void remDescription(){
+         rem(MetaDMSAG.__description);
     }
 
     // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:784)

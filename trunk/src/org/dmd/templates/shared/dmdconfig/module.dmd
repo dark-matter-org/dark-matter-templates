@@ -11,6 +11,7 @@ must						templateFile
 may							templateFileSuffix
 may							maxFastAddValues
 may							insertMarker
+may							commentFormat
 description					A TdlModule is used to define a set of Sections that
  define the overall structure of a textual artifact. When run through the dmtdlgen
  utility, a set of classes are generated to represent these different artifact sections.

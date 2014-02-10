@@ -535,6 +535,56 @@ public class TdlModuleDMO  extends TdlDefinitionDMO  implements DmcNamedObjectIF
          rem(DmtdlDMSAG.__insertMarker);
     }
 
+    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:784)
+    public String getCommentFormat(){
+        DmcTypeStringSV attr = (DmcTypeStringSV) get(DmtdlDMSAG.__commentFormat);
+        if (attr == null)
+            return(null);
+
+        return(attr.getSV());
+    }
+
+    /**
+     * Sets commentFormat to the specified value.
+     * @param value String
+     */
+    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:824)
+    public void setCommentFormat(String value) {
+        DmcAttribute<?> attr = get(DmtdlDMSAG.__commentFormat);
+        if (attr == null)
+            attr = new DmcTypeStringSV(DmtdlDMSAG.__commentFormat);
+        
+        try{
+            attr.set(value);
+            set(DmtdlDMSAG.__commentFormat,attr);
+        }
+        catch(DmcValueException ex){
+            throw(new IllegalStateException("The type specific set() method shouldn't throw exceptions!",ex));
+        }
+    }
+
+    /**
+     * Sets commentFormat to the specified value.
+     * @param value A value compatible with DmcTypeStringSV
+     */
+    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:877)
+    public void setCommentFormat(Object value) throws DmcValueException {
+        DmcTypeStringSV attr  = (DmcTypeStringSV) get(DmtdlDMSAG.__commentFormat);
+        if (attr == null)
+            attr = new DmcTypeStringSV(DmtdlDMSAG.__commentFormat);
+        
+        attr.set(value);
+        set(DmtdlDMSAG.__commentFormat,attr);
+    }
+
+    /**
+     * Removes the commentFormat attribute value.
+     */
+    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:897)
+    public void remCommentFormat(){
+         rem(DmtdlDMSAG.__commentFormat);
+    }
+
     /**
      * @return An Iterator of TdlModuleDMO objects.
      */

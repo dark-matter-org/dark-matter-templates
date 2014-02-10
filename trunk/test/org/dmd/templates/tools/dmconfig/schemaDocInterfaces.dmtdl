@@ -7,22 +7,33 @@ description		These Sections and their associated Templates are used to format da
 
 TextualArtifact
 name 		SchemaDoc
-contains	one Header
-contains 	one ClassList
+contains	one DocType
+contains	one	HtmlContent
+//contains 	one ClassList
 //contains 	TypeList
 //contains 	ComplexTypeList
 //contains 	EnumList
 //contains 	RuleCategoryList
 //contains 	ClassDetails
-contains	one Footer
+//contains	one Footer
 description The SchemaDoc interface defines the overall form of a schema documentation page.
 
 Section
-name		Header
-value		schemaName "The name of the schema being formatted"
+name		DocType
+description	Standard front matter for an XHTML document.
 
 Section
-name	Footer
+name		HtmlContent
+endsWith	HtmlEnd
+description	The main html content.
+
+Section
+name		HtmlEnd
+description	Just the end tag for now.
+
+Section
+name		HtmlHead
+value		schemaName	"The name of the schema"
 
 Section
 name			ClassList

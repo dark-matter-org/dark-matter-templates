@@ -130,3 +130,33 @@ description			For most Sections, there aren't usually too many values, so the ge
  <p/>
  By default, the most values we'll provide arguments for in a fastAdd() function will be 8.
  If you want to allow more values, just bump this number up.
+
+AttributeDefinition
+name				commentFormat
+dmdID				17
+type				String
+preserveNewlines	true
+description			By specifying a commentFormat for your TdlModule, you allow the formatting
+ mechanism to automatically indicate the Template that was used for format the output. This
+ is useful when debugging your formatted output.
+exampleUsage Comment for XML :
+ <pre>
+ <!-- ::comment:: -->
+ </pre>
+exampleUsage Comment for Java :
+ <pre>
+ // ::comment:: 
+ </pre>
+exampleUsage Multi-line comment for Java :
+ <pre>
+ /* ::comment:: */
+ </pre>
+
+PatternMatchRuleData
+ruleName	dmtdlCommentFormat
+ruleTitle	The commentFormat must contain the value insertion ::comment::
+matchesPattern .*::comment::.*
+
+
+
+

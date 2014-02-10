@@ -44,8 +44,10 @@ public class DmschemadocTemplateLoader implements DmcUncheckedOIFHandlerIF {
     public static TemplateMediator      ClassList          = new TemplateMediator("ClassList");         // Mediator for the ClassList template
     public static TemplateMediator      ClassListEntry     = new TemplateMediator("ClassListEntry");    // Mediator for the ClassListEntry template
     public static TemplateMediator      ClassListHeader    = new TemplateMediator("ClassListHeader");   // Mediator for the ClassListHeader template
-    public static TemplateMediator      Footer             = new TemplateMediator("Footer");            // Mediator for the Footer template
-    public static TemplateMediator      Header             = new TemplateMediator("Header");            // Mediator for the Header template
+    public static TemplateMediator      DocType            = new TemplateMediator("DocType");           // Mediator for the DocType template
+    public static TemplateMediator      HtmlContent        = new TemplateMediator("HtmlContent");       // Mediator for the HtmlContent template
+    public static TemplateMediator      HtmlEnd            = new TemplateMediator("HtmlEnd");           // Mediator for the HtmlEnd template
+    public static TemplateMediator      HtmlHead           = new TemplateMediator("HtmlHead");          // Mediator for the HtmlHead template
 
     // Generated from: org.dmd.templates.server.extended.TdlModule.generateTemplateLoader(TdlModule.java:87)
     /**
@@ -71,8 +73,10 @@ public class DmschemadocTemplateLoader implements DmcUncheckedOIFHandlerIF {
         mediators.put("ClassList",ClassList);
         mediators.put("ClassListEntry",ClassListEntry);
         mediators.put("ClassListHeader",ClassListHeader);
-        mediators.put("Footer",Footer);
-        mediators.put("Header",Header);
+        mediators.put("DocType",DocType);
+        mediators.put("HtmlContent",HtmlContent);
+        mediators.put("HtmlEnd",HtmlEnd);
+        mediators.put("HtmlHead",HtmlHead);
         
         factory      = new DmwObjectFactory(schema);
         
