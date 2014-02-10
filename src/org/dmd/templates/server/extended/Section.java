@@ -6,6 +6,7 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 
 import org.dmd.dms.ClassDefinition;                               // Used in derived constructors - (DMWGenerator.java:270)
+import org.dmd.dms.util.GenUtility;
 import org.dmd.templates.server.generated.dmw.ContainsIterableDMW;
 import org.dmd.templates.server.generated.dmw.SectionDMW;         // The wrapper we're extending - (DMWGenerator.java:268)
 import org.dmd.templates.server.generated.dmw.ValueIterableDMW;
@@ -201,6 +202,10 @@ public class Section extends SectionDMW {
     	if (getStartsWithText() != null){
         	sb.append("        artifact.addText(\"" + getStartsWithText().replaceAll("\\\"", "\\\\\"") + "\");\n");
     	}
+    	
+    	String loader = GenUtility.capTheName(getDefinedInTdlModule().getName().getNameString()) + "TemplateLoader";
+    	sb.append("\n");
+    	sb.append("        " + loader + "." + getName() + ".format(this,artifact);\n");
     	
 		ContainsIterableDMW it = getContainsIterable();
 		while(it.hasNext()){

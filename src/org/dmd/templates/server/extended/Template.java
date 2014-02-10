@@ -2,11 +2,13 @@ package org.dmd.templates.server.extended;
 
 // Generated from: org.dmd.util.codegen.ImportManager.getFormattedImports(ImportManager.java:82)
 // Called from: org.dmd.dmg.generators.DMWGenerator.dumpExtendedClass(DMWGenerator.java:276)
+import java.io.IOException;
 import java.util.ArrayList;
 
 import org.dmd.dmc.DmcValueException;
 import org.dmd.dms.ClassDefinition;                                // Used in derived constructors - (DMWGenerator.java:270)
 import org.dmd.templates.server.generated.dmw.TemplateDMW;         // The wrapper we're extending - (DMWGenerator.java:268)
+import org.dmd.templates.server.util.FormattedArtifactIF;
 import org.dmd.templates.server.util.SectionIF;
 import org.dmd.templates.shared.generated.dmo.TemplateDMO;         // The wrapper we're extending - (DMWGenerator.java:269)
 import org.dmd.util.exceptions.ResultException;
@@ -24,8 +26,16 @@ public class Template extends TemplateDMW {
         super(dmo,cd);
     }
     
-    public void format(SectionIF section, StringBuffer sb){
-    	
+    public void format(SectionIF section, FormattedArtifactIF artifact) throws IOException {
+    	if (elements == null)
+    		throw(new IllegalStateException("The Template has not been initialized yet!"));
+
+    	for(Element element: elements){
+    		if (element.valueName == null)
+    			artifact.addText(element.text);
+    		else
+    			artifact.addText(section.getValue(element.valueName));
+    	}
     }
     
     /**
@@ -117,6 +127,9 @@ public class Template extends TemplateDMW {
     	return(elements.size());
     }
     
+    /**
+     * The Element stores either a text chunk or a the name of a value to be inserted.
+     */
     class Element {
     	String text;
     	String valueName;
