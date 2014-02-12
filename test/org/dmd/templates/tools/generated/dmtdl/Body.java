@@ -6,24 +6,25 @@ import java.io.IOException;                                       // Thrown by f
 import org.dmd.templates.server.extended.Template;                // The Template - (Section.java:85)
 import org.dmd.templates.server.util.FormattedArtifactIF;         // Common interface for gathering formatted output - (Section.java:86)
 import org.dmd.templates.server.util.SectionIF;                   // Standard interface used by Templates - (Section.java:84)
-import org.dmd.templates.tools.generated.dmtdl.Body;              // Is a contained section - (Section.java:59)
-import org.dmd.templates.tools.generated.dmtdl.HtmlHead;          // Is a contained section - (Section.java:59)
+import org.dmd.templates.server.util.TemplateMediator;            // To access commentContainer - (Section.java:90)
+import org.dmd.templates.tools.generated.dmtdl.DivHeader;         // Is a contained section - (Section.java:59)
+import org.dmd.templates.tools.generated.dmtdl.DivMain;           // Is a contained section - (Section.java:59)
 
 
 
 // Generated from: org.dmd.templates.server.extended.Section.generateSectionClass(Section.java:106)
-public class HtmlContent implements SectionIF {
+public class Body implements SectionIF {
 
 
     // Generated from: org.dmd.util.codegen.MemberManager.getFormattedMembers(MemberManager.java:64)
     // Called from: org.dmd.templates.server.extended.Section.generateSectionClass(Section.java:109)
-    HtmlHead    _HtmlHead;         // A single static instance of HtmlHead
-    Body        _Body;             // A single static instance of Body
+    DivHeader    _DivHeader;         // A single static instance of DivHeader
+    DivMain      _DivMain;           // A single static instance of DivMain
 
 
-    public HtmlContent(){
-        _HtmlHead = new HtmlHead(); // Static Section
-        _Body = new Body(); // Static Section
+    public Body(){
+        _DivHeader = new DivHeader(); // Static Section
+        _DivMain = new DivMain(); // Static Section
     }
 
     public String getValue(String name){
@@ -32,14 +33,17 @@ public class HtmlContent implements SectionIF {
 
     // Generated from: org.dmd.templates.server.extended.Section.getFormatFunction(Section.java:247)
     public void format(FormattedArtifactIF artifact) throws IOException {
+        TemplateMediator.commentContainer.setValue("comment", "Body starts with text");
+        DmschemadocTemplateLoader._Comment.format(TemplateMediator.commentContainer, artifact);
+        artifact.addText("<body>\n");
 
-        DmschemadocTemplateLoader.HtmlContent.format(this,artifact, DmschemadocTemplateLoader._Comment);
+        DmschemadocTemplateLoader.Body.format(this,artifact, DmschemadocTemplateLoader._Comment);
 
-        _HtmlHead.format(artifact);
+        _DivHeader.format(artifact);
 
-        _Body.format(artifact);
+        _DivMain.format(artifact);
 
-        artifact.addText("</html>\n");
+        artifact.addText("</body>\n");
     }
 
     // Generated from: org.dmd.templates.server.extended.Section.getFormatFunction(Section.java:310)
@@ -47,12 +51,12 @@ public class HtmlContent implements SectionIF {
         template.format(this, artifact);
     }
 
-    public HtmlHead getHtmlHead(){
-        return(_HtmlHead);
+    public DivHeader getDivHeader(){
+        return(_DivHeader);
     }
 
-    public Body getBody(){
-        return(_Body);
+    public DivMain getDivMain(){
+        return(_DivMain);
     }
 
 }

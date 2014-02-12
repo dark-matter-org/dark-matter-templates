@@ -157,6 +157,21 @@ ruleName	dmtdlCommentFormat
 ruleTitle	The commentFormat must contain the value insertion ::comment::
 matchesPattern .*::comment::.*
 
+AttributeDefinition
+name				debugOn
+dmdID				18
+type				Boolean
+nullReturnValue		true
+description			Although it's useful to have debug comments prepended to your generated
+ artifact, there are times when you don't want that information dumped for particular Templates.
+ For example, if your artifact must start with a particular text sequence. So, if
+ you've specified a commentFormat for your TdlModule  but you don't want the debug
+ comment for a particular Template, just set the debug attribute to false.
+exampleUsage Turning off the debug comment
+ Template
+ name   FirstPart
+ format <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+ debug  false
 
 
 

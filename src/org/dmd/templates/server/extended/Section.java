@@ -4,6 +4,8 @@ package org.dmd.templates.server.extended;
 // Called from: org.dmd.dmg.generators.DMWGenerator.dumpExtendedClass(DMWGenerator.java:276)
 import java.io.BufferedWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.TreeMap;
 
 import org.dmd.dms.ClassDefinition;
 import org.dmd.dms.util.GenUtility;
@@ -58,10 +60,13 @@ public class Section extends SectionDMW {
     			if (c.getOccurences() == CardinalityEnum.ONE){
     				members.addMember(contained.getName().getNameString(), "_" + contained.getName(), "A single instance of " + contained.getName());
     			}
-    			else{
+    			else if (c.getOccurences() == CardinalityEnum.MANY){
     				imports.addImport("java.util.ArrayList", "Because we have multiple instances of some Sections");
     				imports.addImport("java.util.Iterator", "Because we have multiple instances of some Sections");
     				members.addMember("ArrayList<" + contained.getName().getNameString() + ">", "_" + contained.getName(), "new ArrayList<" + contained.getName().getNameString() + ">()", "Multiple instances of " + contained.getName());
+    			}
+    			else{
+    				members.addMember(contained.getName().getNameString(), "_" + contained.getName(), "A single static instance of " + contained.getName());
     			}
     		}
     	}
@@ -80,6 +85,10 @@ public class Section extends SectionDMW {
     	imports.addImport("org.dmd.templates.server.extended.Template", "The Template");
     	imports.addImport("org.dmd.templates.server.util.FormattedArtifactIF", "Common interface for gathering formatted output");
     	imports.addImport("java.io.IOException", "Thrown by formatting");
+    	
+    	if ((getDefinedInTdlModule().getCommentFormat() != null) && (getStartsWithText() != null)){
+        	imports.addImport("org.dmd.templates.server.util.TemplateMediator", "To access commentContainer");    		
+    	}
     	
         if (getValueHasValue()){
         	imports.addImport("java.util.TreeMap", "To store values");
@@ -100,9 +109,14 @@ public class Section extends SectionDMW {
         out.write(members.getFormattedMembers() + "\n");
         out.write("\n");
         
+        ///////////////////////////////////////////////////////////////////////
+        
         out.write("    public " + getName() + "(){\n");
+        out.write(getStaticSectionConstruction());
         out.write("    }\n\n");
         out.write("");
+        
+        ///////////////////////////////////////////////////////////////////////
         
         if (getValueHasValue()){
         	ValueIterableDMW values = null;
@@ -145,21 +159,18 @@ public class Section extends SectionDMW {
 	            out.write("");
 	        }
 	        
-	        if (getStartsWith() != null){
-	        	
-	        }
-	        
-	        if (getStartsWithText() != null){
-	        	
-	        }
-	        
-	        if (getEndsWith() != null){
-	        	
-	        }
-	        
-	        if (getEndsWithText() != null){
-	        	
-	        }
+            // Create the individual set() functions for values.
+            values = getValueIterable();
+            while(values.hasNext()){
+            	Value value = values.getNext();
+            	String fn = "set" + GenUtility.capTheName(value.getValueName());
+            	
+	            out.write("    public " + getName() + " " + fn + "(String " + value.getValueName() + "_){\n");
+            	out.write("        if (" + value.getValueName() + "_ != null)\n");
+	            out.write("            values.put(\"" + value.getValueName() + "\", " + value.getValueName() + "_);\n");
+	            out.write("        return(this);\n");
+	            out.write("    }\n\n");
+            }	            
 	        
             out.write("    public String getValue(String name){\n");
             out.write("        String rc = values.get(name);\n");
@@ -179,12 +190,20 @@ public class Section extends SectionDMW {
         
         out.write(getFormatFunction());
         
+        if (getStartsWith() != null){
+			out.write(getStartsWith().getAccessFunctions(this.getName().getNameString(), CardinalityEnum.STATIC));        	
+        }
+        
 		ContainsIterableDMW it = getContainsIterable();
 		while(it.hasNext()){
 			Contains c = it.getNext();
 			Section contained = (Section)c.getSection().getObject().getContainer();
 			out.write(contained.getAccessFunctions(this.getName().getNameString(), c.getOccurences()));
 		}
+
+        if (getEndsWith() != null){
+			out.write(getEndsWith().getAccessFunctions(this.getName().getNameString(), CardinalityEnum.STATIC));        	
+        }
         
         out.write("}");
         
@@ -194,7 +213,35 @@ public class Section extends SectionDMW {
 
     }
     
+    /**
+     * Creates the static instantiations of the starts with, ends with and static contained Sections.
+     * @return
+     */
+    String getStaticSectionConstruction(){
+    	StringBuffer sb = new StringBuffer();
+    	
+    	if (getStartsWith() != null){
+    		sb.append("        _" + getStartsWith().getName() + " = new " + getStartsWith().getName() + "(); // Starts with\n");
+    	}
+    	
+		ContainsIterableDMW it = getContainsIterable();
+		while(it.hasNext()){
+			Contains c = it.getNext();
+			Section contained = (Section)c.getSection().getObject().getContainer();
+			if (c.getOccurences() == CardinalityEnum.STATIC){
+	    		sb.append("        _" + contained.getName() + " = new " + contained.getName() + "(); // Static Section\n");
+			}
+		}
+    	
+    	if (getEndsWith() != null){
+    		sb.append("        _" + getEndsWith().getName() + " = new " + getEndsWith().getName() + "(); // Ends with\n");
+    	}
+    	
+    	return(sb.toString());
+    }
+    
     String getFormatFunction(){
+
     	StringBuffer sb = new StringBuffer();
     	
     	sb.append("    // Generated from: " + DebugInfo.getWhereWeAreNow() + "\n");
@@ -204,18 +251,25 @@ public class Section extends SectionDMW {
     	// Starts with
     	
     	if (getStartsWith() != null){
-    		sb.append("        if (_" + getStartsWith().getName() + " != null)\n");
-    		sb.append("            _" + getStartsWith().getName() + ".format(artifact);\n");    		
+    		sb.append("        _" + getStartsWith().getName() + ".format(artifact);\n");    		
     	}
     	
     	if (getStartsWithText() != null){
-        	sb.append("        artifact.addText(\"" + getStartsWithText().replaceAll("\\\"", "\\\\\"") + "\");\n");
+    		if (getDefinedInTdlModule().getCommentFormat() != null){
+    			sb.append("        TemplateMediator.commentContainer.setValue(\"comment\", \"" + getName() + " starts with text\");\n");
+    			sb.append("        DmschemadocTemplateLoader._Comment.format(TemplateMediator.commentContainer, artifact);\n");
+    		}
+        	sb.append("        artifact.addText(\"" + getStartsWithText().replaceAll("\\\"", "\\\\\"") + "\\n\");\n");
     	}
     	
     	String loader = GenUtility.capTheName(getDefinedInTdlModule().getName().getNameString()) + "TemplateLoader";
+    	String comment = "";
+    	if (getDefinedInTdlModule().getCommentFormat() != null)
+    		comment = ", " + loader + "._Comment";
+
     	sb.append("\n");
-    	sb.append("        " + loader + "." + getName() + ".format(this,artifact);\n");
-    	
+    	sb.append("        " + loader + "." + getName() + ".format(this,artifact" + comment + ");\n");
+
 		ContainsIterableDMW it = getContainsIterable();
 		while(it.hasNext()){
 			Contains c = it.getNext();
@@ -226,12 +280,15 @@ public class Section extends SectionDMW {
 	    		sb.append("        if (_" + contained.getName() + " != null)\n");
 	    		sb.append("            _" + contained.getName() + ".format(artifact);\n");
 	    	}
-	    	else{
+	    	else if (c.getOccurences() == CardinalityEnum.MANY){
 	    		sb.append("        if (_" + contained.getName() + " != null){\n");
 	        	sb.append("            for(" + contained.getName() + " entry: _" + contained.getName() + "){\n");
 	    		sb.append("                entry.format(artifact);\n");
 	        	sb.append("            }\n");
 	        	sb.append("        }\n");
+	    	}
+	    	else{
+	    		sb.append("        _" + contained.getName() + ".format(artifact);\n");
 	    	}
 		}
 		
@@ -240,12 +297,11 @@ public class Section extends SectionDMW {
     	
     	// Ends with
     	if (getEndsWith() != null){
-    		sb.append("        if (_" + getEndsWith().getName() + " != null)\n");
-    		sb.append("            _" + getEndsWith().getName() + ".format(artifact);\n");    		
+    		sb.append("        _" + getEndsWith().getName() + ".format(artifact);\n");    		
     	}
     	
     	if (getEndsWithText() != null){
-        	sb.append("        artifact.addText(\"" + getEndsWithText().replaceAll("\\\"", "\\\\\"") + "\");\n");
+        	sb.append("        artifact.addText(\"" + getEndsWithText().replaceAll("\\\"", "\\\\\"") + "\\n\");\n");
     	}
     	
     	
@@ -293,7 +349,7 @@ public class Section extends SectionDMW {
         		}
         	}
     	}
-    	else{
+    	else if (cardinality == CardinalityEnum.MANY){
     		sb.append("    public " + getName() + " add" + getName() + "(){\n");
         	sb.append("        if (_" + getName() + " == null)\n");
         	sb.append("            _" + getName() + " = new ArrayList<" + getName() + ">();\n");
@@ -317,6 +373,13 @@ public class Section extends SectionDMW {
                 	sb.append("    }\n\n");
         		}
         	}
+    	}
+    	else {
+    		// STATIC - you can retrieve it, but it's added automatically
+    		
+    		sb.append("    public " + getName() + " get" + getName() + "(){\n");
+        	sb.append("        return(_" + getName() + ");\n");
+        	sb.append("    }\n\n");
     	}
 
     	return(sb.toString());
@@ -377,5 +440,99 @@ public class Section extends SectionDMW {
     	
     	return(fastAddArgs);
     }
+    
+    /**
+     * 
+     * @param cardinality
+     * @param indent
+     * @param hint
+     */
+    public void getFormatHint(CardinalityEnum cardinality, String indent, StringBuffer hint){
+		hint.append("     * " + indent);
+
+		switch(cardinality){
+    	case MANY:
+    		hint.append("[] ");
+    		break;
+    	case ONE:
+    		hint.append("++ ");
+    		break;
+    	case STATIC:
+    		hint.append("-- ");
+    		break;
+    	}
+		
+		String values = "";
+		if (getValueHasValue())
+			values = "<-";
+		hint.append(getName().getNameString() + "  " + values + "\n");
+    	
+    	if (getStartsWith() != null){
+    		getStartsWith().getFormatHint(CardinalityEnum.STATIC, indent + "  ", hint);
+    	}
+    	
+		ContainsIterableDMW it = getContainsIterable();
+		while(it.hasNext()){
+			Contains c = it.getNext();
+			Section contained = (Section)c.getSection().getObject().getContainer();
+			contained.getFormatHint(c.getOccurences(), indent + "  ", hint);
+		}    	
+    	
+    	if (getEndsWith() != null){
+    		getEndsWith().getFormatHint(CardinalityEnum.STATIC, indent + "  ", hint);
+    	}
+    }
+    
+    /**
+     * 
+     * @param depth the depth from the top level of the artifact - starts at 0
+     * @param cardinality the cardinality of this section with the enclosing section
+     * @param callStructure
+     * @param sections
+     */
+    void getStaticAccessToStructure(int depth, CardinalityEnum cardinality, String callStructure, TreeMap<String,ArrayList<String>> sections){
+    	if (cardinality == CardinalityEnum.STATIC){
+    		if (getValueHasValue()){
+    			// We have an unbroken static access chain to the top and have values that can be set
+    			ArrayList<String> callPath = sections.get(getName().getNameString());
+    			if (callPath == null){
+    				callPath = new ArrayList<String>();
+    				sections.put(getName().getNameString(), callPath);
+    			}
+    			callPath.add(callStructure + ".get" + getName() + "()");
+    		}
+    		
+        	if (getStartsWith() != null){
+        		getStartsWith().getStaticAccessToStructure(depth+1, CardinalityEnum.STATIC, callStructure + ".get" + getName() + "()", sections);
+        	}
+        	
+        	boolean nonStaticDirectlyBelowMe = false;
+    		ContainsIterableDMW it = getContainsIterable();
+    		while(it.hasNext()){
+    			Contains c = it.getNext();
+    			Section contained = (Section)c.getSection().getObject().getContainer();
+    			contained.getStaticAccessToStructure(depth+1, c.getOccurences(), callStructure + ".get" + getName() + "()", sections);
+    			if (c.getOccurences() != CardinalityEnum.STATIC)
+    				nonStaticDirectlyBelowMe = true;
+    		} 
+    		
+    		if (nonStaticDirectlyBelowMe){
+    			ArrayList<String> callPath = sections.get(getName().getNameString());
+    			if (callPath == null){
+    				callPath = new ArrayList<String>();
+    				sections.put(getName().getNameString(), callPath);
+    			}
+    			callPath.add(callStructure + ".get" + getName() + "()");
+    		}
+        	
+        	if (getEndsWith() != null){
+        		getEndsWith().getStaticAccessToStructure(depth+1, CardinalityEnum.STATIC, callStructure + ".get" + getName() + "()", sections);
+        	}
+    		
+    	}
+    	
+    }
+
+
 }
 

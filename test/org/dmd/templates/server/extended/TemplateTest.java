@@ -110,6 +110,7 @@ public class TemplateTest {
 		
 		assertEquals("Format should be applied", "<title> The meta Schema </title>", fsb.getBuffer().toString());
 		
+		System.out.println(fsb.toString());
 	}
 	
 }

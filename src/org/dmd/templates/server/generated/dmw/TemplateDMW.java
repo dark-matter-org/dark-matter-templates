@@ -92,6 +92,37 @@ public class TemplateDMW extends DmwNamedObjectWrapper implements DmcNamedObject
         return(false);
     }
 
+    // org.dmd.dmg.generators.BaseDMWGenerator.formatSV(BaseDMWGenerator.java:1474)
+    public Boolean isDebugOn(){
+        return(((TemplateDMO) core).isDebugOn());
+    }
+
+    /**
+     * Sets debugOn to the specified value.
+     * @param value A value compatible with DmcTypeBoolean
+     */
+    // org.dmd.dmg.generators.BaseDMWGenerator.formatSV(BaseDMWGenerator.java:1584)
+    public void setDebugOn(Object value) throws DmcValueException {
+        ((TemplateDMO) core).setDebugOn(value);
+    }
+
+    /**
+     * Sets debugOn to the specified value.
+     * @param value Boolean
+     */
+    // org.dmd.dmg.generators.BaseDMWGenerator.formatSV(BaseDMWGenerator.java:1593)
+    public void setDebugOn(Boolean value){
+        ((TemplateDMO) core).setDebugOn(value);
+    }
+
+    /**
+     * Removes the debugOn attribute value.
+     */
+    // org.dmd.dmg.generators.BaseDMWGenerator.formatSV(BaseDMWGenerator.java:1619)
+    public void remDebugOn(){
+        ((TemplateDMO) core).remDebugOn();
+    }
+
     /**
      * @return The number of String items.
      */

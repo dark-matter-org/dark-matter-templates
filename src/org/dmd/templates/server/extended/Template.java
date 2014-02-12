@@ -36,6 +36,9 @@ public class Template extends TemplateDMW {
     		else
     			artifact.addText(section.getValue(element.valueName));
     	}
+    	
+    	if (elements.size() > 0)
+    		artifact.addText("\n");
     }
     
     /**
@@ -53,7 +56,7 @@ public class Template extends TemplateDMW {
     	if (getFormat() == null)
     		throw(new IllegalStateException("A Template should never have a null format"));
     	
-    	String format = getFormat();
+    	String format = getFormat().replaceAll("\\\\n","\\\n");
     	
     	boolean wantIM 	= false;
     	int		IMstart = 0;
@@ -135,7 +138,9 @@ public class Template extends TemplateDMW {
     	String valueName;
     	
     	Element(String t, String v){
-    		text = t;
+    		if (t != null){
+    			text = t;
+    		}
     		valueName = v;
     	}
     }

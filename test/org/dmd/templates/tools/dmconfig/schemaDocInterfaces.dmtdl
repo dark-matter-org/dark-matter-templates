@@ -2,51 +2,86 @@ TdlModule
 name 			dmschemadoc
 package			org.dmd.templates.tools
 templateFile	schemaDocTemplates
+commentFormat	<!-- ::comment:: -->
 description		These Sections and their associated Templates are used to format dark-matter
  schema definitions.
 
 TextualArtifact
-name 		SchemaDoc
-contains	one DocType
-contains	one	HtmlContent
-//contains 	one ClassList
-//contains 	TypeList
-//contains 	ComplexTypeList
-//contains 	EnumList
-//contains 	RuleCategoryList
-//contains 	ClassDetails
-//contains	one Footer
-description The SchemaDoc interface defines the overall form of a schema documentation page.
+name 			SchemaDoc
+contains		static DocType
+contains		static HtmlContent
+description 	The SchemaDoc interface defines the overall form of a schema documentation page.
 
 Section
-name		DocType
-description	Standard front matter for an XHTML document.
+name			DocType
+description		Standard front matter for an XHTML document.
 
 Section
-name		HtmlContent
-endsWith	HtmlEnd
-description	The main html content.
+name			HtmlContent
+contains		static HtmlHead
+contains		static Body
+endsWithText	</html>
+description		The main html content.
 
 Section
-name		HtmlEnd
-description	Just the end tag for now.
+name			HtmlHead
+value			schemaName	"The name of the schema"
 
 Section
-name		HtmlHead
-value		schemaName	"The name of the schema"
+name			Body
+startsWithText	<body>
+contains		static DivHeader
+contains		static DivMain
+endsWithText	</body> 
+description		The body of the document.
 
 Section
-name			ClassList
-startsWith		ClassListHeader
+name			DivHeader
+description		Colored bar across the top
+
+Section
+name			DivMain
+startsWithText	<div id="main">
+contains		static DivContent
+endsWithText	</div> <!-- main -->
+description		Contains the main content of the page.
+
+Section
+name			DivContent
+startsWithText	<div id="content">
+contains		static SchemaTitle
+contains		static DivSummary 
+endsWithText	</div> <!-- content -->
+
+Section
+name			SchemaTitle
+value			schemaName "Just the name of the schema"
+
+
+Section
+name			DivSummary
+startsWithText	<div class="summary">
+contains		one ClassSummary
+endsWithText	</div> <!-- summary -->
+
+///////////////////////////////////////////////////////////////////////////////
+
+Section
+name			ClassSummary
+startsWith		ClassListStart
 contains		many ClassListEntry
-endsWithText	</table> </div>
+endsWithText	ClassListEnd
+value			classCount "The number of classes in ClassListStart"
 
 Section
-name		ClassListHeader
+name			ClassListStart
 
 Section
-name		ClassListEntry
-value		className "The name of the class"
+name			ClassListEntry
+value			className "The name of the class"
+
+Section
+name			ClassListEnd
 
 
 		

@@ -1,7 +1,7 @@
 package org.dmd.templates.tools.generated.dmtdl;
 
 // Generated from: org.dmd.util.codegen.ImportManager.getFormattedImports(ImportManager.java:82)
-// Called from: org.dmd.templates.server.extended.TdlModule.generateTemplateLoader(TdlModule.java:79)
+// Called from: org.dmd.templates.server.extended.TdlModule.generateTemplateLoader(TdlModule.java:84)
 import java.io.IOException;                                              // May occur when finding/reading the templates - (TdlModule.java:35)
 import java.util.ArrayList;                                              // To store file search paths - (TdlModule.java:34)
 import java.util.TreeMap;                                                // To store SectionInfo - (TdlModule.java:33)
@@ -28,28 +28,36 @@ import org.dmd.util.parsing.DmcUncheckedOIFParser;                       // Basi
 
 
 
-// Generated from: org.dmd.templates.server.extended.TdlModule.generateTemplateLoader(TdlModule.java:82)
+// Generated from: org.dmd.templates.server.extended.TdlModule.generateTemplateLoader(TdlModule.java:87)
 public class DmschemadocTemplateLoader implements DmcUncheckedOIFHandlerIF {
 
     // Generated from: org.dmd.util.codegen.MemberManager.getFormattedMembers(MemberManager.java:64)
-    // Called from: org.dmd.templates.server.extended.TdlModule.generateTemplateLoader(TdlModule.java:85)
-    SchemaManager                       schema;                                                         // Manages the schema for this DSD
-    DmcUncheckedOIFParser               parser             = new DmcUncheckedOIFParser(this);           // Parses objects from the config file
-    DmwObjectFactory                    factory;                                                        // Instantiates wrapped objects
-    DmvRuleManager                      rules              = new DmvRuleManager();                      // Rule manager
-    ConfigFinder                        finder             = new ConfigFinder("dmt");                   // Config finder for template files ending with .dmt
-    ConfigLocation                      location;                                                       // The location of the config being parsed
-    TreeMap<String,TemplateMediator>    mediators          = new TreeMap<String,TemplateMediator>();    // The mediators by name
-                                                                                                        // 
-    public static TemplateMediator      ClassList          = new TemplateMediator("ClassList");         // Mediator for the ClassList template
-    public static TemplateMediator      ClassListEntry     = new TemplateMediator("ClassListEntry");    // Mediator for the ClassListEntry template
-    public static TemplateMediator      ClassListHeader    = new TemplateMediator("ClassListHeader");   // Mediator for the ClassListHeader template
-    public static TemplateMediator      DocType            = new TemplateMediator("DocType");           // Mediator for the DocType template
-    public static TemplateMediator      HtmlContent        = new TemplateMediator("HtmlContent");       // Mediator for the HtmlContent template
-    public static TemplateMediator      HtmlEnd            = new TemplateMediator("HtmlEnd");           // Mediator for the HtmlEnd template
-    public static TemplateMediator      HtmlHead           = new TemplateMediator("HtmlHead");          // Mediator for the HtmlHead template
+    // Called from: org.dmd.templates.server.extended.TdlModule.generateTemplateLoader(TdlModule.java:90)
+    SchemaManager                       schema;                                                       // Manages the schema for this DSD
+    DmcUncheckedOIFParser               parser            = new DmcUncheckedOIFParser(this);          // Parses objects from the config file
+    DmwObjectFactory                    factory;                                                      // Instantiates wrapped objects
+    DmvRuleManager                      rules             = new DmvRuleManager();                     // Rule manager
+    ConfigFinder                        finder            = new ConfigFinder("dmt");                  // Config finder for template files ending with .dmt
+    ConfigLocation                      location;                                                     // The location of the config being parsed
+    TreeMap<String,TemplateMediator>    mediators         = new TreeMap<String,TemplateMediator>();   // The mediators by name
+                                                                                                      // 
+    public static TemplateMediator      Body              = new TemplateMediator("Body");             // Mediator for the Body template
+    public static TemplateMediator      ClassListEnd      = new TemplateMediator("ClassListEnd");     // Mediator for the ClassListEnd template
+    public static TemplateMediator      ClassListEntry    = new TemplateMediator("ClassListEntry");   // Mediator for the ClassListEntry template
+    public static TemplateMediator      ClassListStart    = new TemplateMediator("ClassListStart");   // Mediator for the ClassListStart template
+    public static TemplateMediator      ClassSummary      = new TemplateMediator("ClassSummary");     // Mediator for the ClassSummary template
+    public static TemplateMediator      DivContent        = new TemplateMediator("DivContent");       // Mediator for the DivContent template
+    public static TemplateMediator      DivHeader         = new TemplateMediator("DivHeader");        // Mediator for the DivHeader template
+    public static TemplateMediator      DivMain           = new TemplateMediator("DivMain");          // Mediator for the DivMain template
+    public static TemplateMediator      DivSummary        = new TemplateMediator("DivSummary");       // Mediator for the DivSummary template
+    public static TemplateMediator      DocType           = new TemplateMediator("DocType");          // Mediator for the DocType template
+    public static TemplateMediator      HtmlContent       = new TemplateMediator("HtmlContent");      // Mediator for the HtmlContent template
+    public static TemplateMediator      HtmlHead          = new TemplateMediator("HtmlHead");         // Mediator for the HtmlHead template
+    public static TemplateMediator      SchemaTitle       = new TemplateMediator("SchemaTitle");      // Mediator for the SchemaTitle template
+                                                                                                      // 
+    public static Template              _Comment;                                                     // Used to display debug comments in formatted output
 
-    // Generated from: org.dmd.templates.server.extended.TdlModule.generateTemplateLoader(TdlModule.java:87)
+    // Generated from: org.dmd.templates.server.extended.TdlModule.generateTemplateLoader(TdlModule.java:92)
     /**
      * Creates a new template loader for templates associated with the dmschemadoc TdlModule.
      * @param paths the paths that we'll search for the template definition file.
@@ -70,19 +78,31 @@ public class DmschemadocTemplateLoader implements DmcUncheckedOIFHandlerIF {
         
         finder.setSourceInfo(paths);
 
-        mediators.put("ClassList",ClassList);
+        mediators.put("Body",Body);
+        mediators.put("ClassListEnd",ClassListEnd);
         mediators.put("ClassListEntry",ClassListEntry);
-        mediators.put("ClassListHeader",ClassListHeader);
+        mediators.put("ClassListStart",ClassListStart);
+        mediators.put("ClassSummary",ClassSummary);
+        mediators.put("DivContent",DivContent);
+        mediators.put("DivHeader",DivHeader);
+        mediators.put("DivMain",DivMain);
+        mediators.put("DivSummary",DivSummary);
         mediators.put("DocType",DocType);
         mediators.put("HtmlContent",HtmlContent);
-        mediators.put("HtmlEnd",HtmlEnd);
         mediators.put("HtmlHead",HtmlHead);
+        mediators.put("SchemaTitle",SchemaTitle);
         
         factory      = new DmwObjectFactory(schema);
         
+        _Comment = new Template();
+        _Comment.setFile("DmschemadocTemplateLoader");
+        _Comment.setLineNumber(1);
+        _Comment.setFormat("\n<!-- ::comment:: -->");
+        _Comment.initialize("::");
+        
     }
 
-// Generated from: org.dmd.templates.server.extended.TdlModule.generateTemplateLoader(TdlModule.java:121)
+// Generated from: org.dmd.templates.server.extended.TdlModule.generateTemplateLoader(TdlModule.java:136)
     /**
      * We attempt to find and load the schemaDocTemplates.dmt file.
      */
@@ -103,7 +123,7 @@ public class DmschemadocTemplateLoader implements DmcUncheckedOIFHandlerIF {
         parser.parseFile(location.getFileName());
     }
 
-    // Generated from: org.dmd.templates.server.extended.TdlModule.generateTemplateLoader(TdlModule.java:143)
+    // Generated from: org.dmd.templates.server.extended.TdlModule.generateTemplateLoader(TdlModule.java:158)
     @Override
     public void handleObject(DmcUncheckedObject uco, String infile, int lineNumber) throws ResultException, DmcValueException, DmcRuleExceptionSet, DmcNameClashException {
         Template template = null;

@@ -7,6 +7,9 @@ import java.util.ArrayList;
 import org.dmd.dmc.DmcNameClashException;
 import org.dmd.dmc.DmcValueException;
 import org.dmd.dmc.rules.DmcRuleExceptionSet;
+import org.dmd.templates.server.util.FormattedStringBuffer;
+import org.dmd.templates.tools.generated.dmtdl.ClassSummary;
+import org.dmd.templates.tools.generated.dmtdl.DivContent;
 import org.dmd.templates.tools.generated.dmtdl.DmschemadocTemplateLoader;
 import org.dmd.templates.tools.generated.dmtdl.SchemaDoc;
 import org.dmd.util.exceptions.ResultException;
@@ -31,8 +34,21 @@ public class DmtdlUsageTest {
 		DmschemadocTemplateLoader	loader = new DmschemadocTemplateLoader(paths);
 		loader.findAndLoadTemplate();
 		
-		SchemaDoc doc = new SchemaDoc();
 		
+		
+		SchemaDoc doc = new SchemaDoc();
+		doc.getHtmlContent().getHtmlHead().setSchemaName("meta");
+		DivContent content = doc.getHtmlContent().getBody().getDivMain().getDivContent();
+		
+		content.getSchemaTitle().setSchemaName("meta");
+		ClassSummary csummary = content.getDivSummary().addClassSummary();
+		csummary.setClassCount("5");
+		
+		FormattedStringBuffer fsb = new FormattedStringBuffer();
+		
+		doc.format(fsb);
+				
+		System.out.println(fsb.toString());
 		
 		
 	}

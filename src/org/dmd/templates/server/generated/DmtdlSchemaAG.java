@@ -57,6 +57,7 @@ public class DmtdlSchemaAG extends SchemaDefinition {
     public static AttributeDefinition _templateFileSuffix;
     public static AttributeDefinition _maxFastAddValues;
     public static AttributeDefinition _commentFormat;
+    public static AttributeDefinition _debugOn;
 
 
     public static ComplexTypeDefinition _Contains;
@@ -193,7 +194,7 @@ public class DmtdlSchemaAG extends SchemaDefinition {
             _TemplateOBJ.setDmdID("-478595");
             _TemplateOBJ.setClassType("STRUCTURAL");
             _TemplateOBJ.setFile("/src/org/dmd/templates/shared/dmdconfig/classes.dmd");
-            _TemplateOBJ.setLineNumber("103");
+            _TemplateOBJ.setLineNumber("104");
             _TemplateOBJ.addDescription("The Template object provides a mechanism to define an arbitrary set of\n text that allows for the insertion of the named values defined as part of the associated\n Section definition.\n <p/>\n By convention, the Template associated with a Section has the same name as the Section. For example:\n <pre>\n Section\n name Header\n </pre>\n would have a template as follows:\n <pre>\n Template\n name Header\n </pre>\n Templates are kept separate from the Section definitions so that their content can be\n changed without regenerating code. Templates are loaded using the generated TemplateParser\n for a given TdlModule.");
             _TemplateOBJ.setIsNamedBy("meta.name");
             _TemplateOBJ.setUseWrapperType("EXTENDED");
@@ -201,6 +202,7 @@ public class DmtdlSchemaAG extends SchemaDefinition {
             _TemplateOBJ.setDmwIteratorClass("TemplateIterableDMW");
             _TemplateOBJ.addMay("meta.file");
             _TemplateOBJ.addMay("meta.lineNumber");
+            _TemplateOBJ.addMay("dmtdl.debugOn");
             _TemplateOBJ.addMay("meta.description");
             _TemplateOBJ.addMust("meta.name");
             _TemplateOBJ.addMust("dmtdl.format");
@@ -499,6 +501,22 @@ public class DmtdlSchemaAG extends SchemaDefinition {
             _commentFormatOBJ.setLineNumber("154");
             addAttributeDefList(_commentFormat);
 
+// Generated from: org.dmd.dmg.util.SchemaFormatter.getObjectAsCode(SchemaFormatter.java:585)
+            AttributeDefinitionDMO _debugOnOBJ = new AttributeDefinitionDMO();
+            _debugOn = new AttributeDefinition(_debugOnOBJ);
+            _debugOnOBJ.setType("meta.Boolean");
+            _debugOnOBJ.setName("debugOn");
+            _debugOnOBJ.setDmdID("-478582");
+            _debugOnOBJ.addDescription("Although it's useful to have debug comments prepended to your generated\n artifact, there are times when you don't want that information dumped for particular Templates.\n For example, if your artifact must start with a particular text sequence. So, if\n you've specified a commentFormat for your TdlModule  but you don't want the debug\n comment for a particular Template, just set the debug attribute to false.");
+            _debugOnOBJ.setNullReturnValue("true");
+            _debugOnOBJ.setNameAndTypeName("debugOn.AttributeDefinition");
+            _debugOnOBJ.addExampleUsage("Turning off the debug comment\n Template\n name   FirstPart\n format <!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">\n debug  false");
+            _debugOnOBJ.setDotName("dmtdl.debugOn.AttributeDefinition");
+            _debugOn.setDefinedIn(this);
+            _debugOnOBJ.setFile("/src/org/dmd/templates/shared/dmdconfig/attributes.dmd");
+            _debugOnOBJ.setLineNumber("175");
+            addAttributeDefList(_debugOn);
+
     }
 
     // Generated from: org.dmd.dmg.util.SchemaFormatter.dumpInitFunction(SchemaFormatter.java:313)
@@ -547,14 +565,15 @@ public class DmtdlSchemaAG extends SchemaDefinition {
             EnumDefinitionDMO _CardinalityEnumOBJ = new EnumDefinitionDMO();
             _CardinalityEnum = new EnumDefinition(_CardinalityEnumOBJ);
             _CardinalityEnumOBJ.setName("CardinalityEnum");
-            _CardinalityEnumOBJ.addEnumValue("0 ONE Indicates that a section will appear once.");
+            _CardinalityEnumOBJ.addEnumValue("0 ONE Indicates that a section may appear once. You have to manually add the Section.");
             _CardinalityEnumOBJ.addEnumValue("1 MANY Indicates that a section will appear many times.");
-            _CardinalityEnumOBJ.addDescription("The CardinalityEnum indicates whether a Section will exist one or many times within another Section.");
+            _CardinalityEnumOBJ.addEnumValue("2 STATIC Indicates that a section is static and will be automatically added.");
+            _CardinalityEnumOBJ.addDescription("The CardinalityEnum indicates whether a Section will exist one or many times within another Section,\n or whther the Section is static and always added automatically.");
             _CardinalityEnumOBJ.setNameAndTypeName("CardinalityEnum.EnumDefinition");
             _CardinalityEnumOBJ.setDotName("dmtdl.CardinalityEnum.EnumDefinition");
             _CardinalityEnum.setDefinedIn(this);
             _CardinalityEnumOBJ.setFile("/src/org/dmd/templates/shared/dmdconfig/types.dmd");
-            _CardinalityEnumOBJ.setLineNumber("5");
+            _CardinalityEnumOBJ.setLineNumber("7");
             addEnumDefList(_CardinalityEnum);
 
     }
