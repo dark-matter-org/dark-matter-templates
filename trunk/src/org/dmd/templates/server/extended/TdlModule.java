@@ -69,6 +69,11 @@ public class TdlModule extends TdlModuleDMW {
 			members.addMember("public static TemplateMediator",		section.getName().getNameString(), "new TemplateMediator(\"" + section.getName() + "\")", "Mediator for the " + section.getName() + " template");
 		}
 		
+		if (getCommentFormat() != null){
+			members.addSpacer();
+			members.addMember("public static Template",                	"_Comment", "Used to display debug comments in formatted output");
+		}
+		
 		String cn = GenUtility.capTheName(getName().getNameString() + "TemplateLoader");
 		
 		
@@ -114,6 +119,16 @@ public class TdlModule extends TdlModuleDMW {
 		out.write("        \n");
 		out.write("        factory      = new DmwObjectFactory(schema);\n");
 		out.write("        \n");
+		
+		if (getCommentFormat() != null){
+			out.write("        _Comment = new Template();\n");
+			out.write("        _Comment.setFile(\"" + cn + "\");\n");
+			out.write("        _Comment.setLineNumber(1);\n");
+			out.write("        _Comment.setFormat(\"\\n" + getCommentFormat() + "\");\n");
+			out.write("        _Comment.initialize(\"::\");\n");
+			out.write("        \n");
+		}
+		
 		out.write("    }\n\n");
 		
 		

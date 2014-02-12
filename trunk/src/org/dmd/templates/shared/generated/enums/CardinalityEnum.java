@@ -21,7 +21,8 @@ import org.dmd.dmc.DmcEnumIF;
 
 /**
  * The CardinalityEnum indicates whether a Section will exist one or many
- * times within another Section.
+ * times within another Section,\n or whther the Section is static and always
+ * added automatically.
  * <P>
  * Generated from the dmtdl schema at version unknown
  * <P>
@@ -30,9 +31,11 @@ import org.dmd.dmc.DmcEnumIF;
  */
 public enum CardinalityEnum implements DmcEnumIF
 {
-    ONE(0,"Indicates that a section will appear once."),
+    ONE(0,"Indicates that a section may appear once. You have to manually add the Section."),
 
-    MANY(1,"Indicates that a section will appear many times.");
+    MANY(1,"Indicates that a section will appear many times."),
+
+    STATIC(2,"Indicates that a section is static and will be automatically added.");
 
     // Maps our integer value to the enumeration value
     private static final Map<Integer,CardinalityEnum> lookup = new HashMap<Integer,CardinalityEnum>();

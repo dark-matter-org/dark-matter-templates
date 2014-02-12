@@ -39,6 +39,7 @@ public class DmtdlDMSAG implements DmcCompactSchemaIF {
 
     public final static DmcAttributeInfo __commentFormat = new DmcAttributeInfo("dmtdl", "commentFormat", -478583, "String", ValueTypeEnum.SINGLE, DataTypeEnum.PERSISTENT);
     public final static DmcAttributeInfo __contains = new DmcAttributeInfo("dmtdl", "contains", -478594, "Contains", ValueTypeEnum.MULTI, DataTypeEnum.PERSISTENT);
+    public final static DmcAttributeInfo __debugOn = new DmcAttributeInfo("dmtdl", "debugOn", -478582, "Boolean", ValueTypeEnum.SINGLE, DataTypeEnum.PERSISTENT);
     public final static DmcAttributeInfo __definedInTdlModule = new DmcAttributeInfo("dmtdl", "definedInTdlModule", -478599, "TdlModule", ValueTypeEnum.SINGLE, DataTypeEnum.PERSISTENT);
     public final static DmcAttributeInfo __dependsOnTdlModule = new DmcAttributeInfo("dmtdl", "dependsOnTdlModule", -478598, "TdlModule", ValueTypeEnum.MULTI, DataTypeEnum.PERSISTENT);
     public final static DmcAttributeInfo __endsWith = new DmcAttributeInfo("dmtdl", "endsWith", -478591, "Section", ValueTypeEnum.SINGLE, DataTypeEnum.PERSISTENT);
@@ -139,6 +140,7 @@ public class DmtdlDMSAG implements DmcCompactSchemaIF {
         __Template.addMust(__format);
         __Template.addMay(MetaDMSAG.__file);
         __Template.addMay(MetaDMSAG.__lineNumber);
+        __Template.addMay(__debugOn);
         __Template.addMay(MetaDMSAG.__description);
 
         __TdlModule.addMust(MetaDMSAG.__name);

@@ -25,6 +25,7 @@ import org.dmd.dmc.DmcSliceInfo;                                    // Required 
 import org.dmd.dmc.DmcValueException;                               // Any attributes - (GenUtility.java:241)
 import org.dmd.dmc.types.DefinitionName;                            // Naming attribute type - (GenUtility.java:370)
 import org.dmd.dms.generated.dmo.MetaDMSAG;                         // Required for MODREC constructor - (GenUtility.java:228)
+import org.dmd.dms.generated.types.DmcTypeBooleanSV;                // Required type - (GenUtility.java:328)
 import org.dmd.dms.generated.types.DmcTypeDefinitionNameSV;         // Required type - (GenUtility.java:328)
 import org.dmd.dms.generated.types.DmcTypeIntegerSV;                // Required type - (GenUtility.java:328)
 import org.dmd.dms.generated.types.DmcTypeModifierMV;               // Required for MODREC constructor - (GenUtility.java:227)
@@ -222,6 +223,56 @@ public class TemplateDMO  extends DmcObject  implements DmcNamedObjectIF, Serial
     // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:897)
     public void remLineNumber(){
          rem(MetaDMSAG.__lineNumber);
+    }
+
+    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:784)
+    public Boolean isDebugOn(){
+        DmcTypeBooleanSV attr = (DmcTypeBooleanSV) get(DmtdlDMSAG.__debugOn);
+        if (attr == null)
+            return(true);
+
+        return(attr.getSV());
+    }
+
+    /**
+     * Sets debugOn to the specified value.
+     * @param value Boolean
+     */
+    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:824)
+    public void setDebugOn(Boolean value) {
+        DmcAttribute<?> attr = get(DmtdlDMSAG.__debugOn);
+        if (attr == null)
+            attr = new DmcTypeBooleanSV(DmtdlDMSAG.__debugOn);
+        
+        try{
+            attr.set(value);
+            set(DmtdlDMSAG.__debugOn,attr);
+        }
+        catch(DmcValueException ex){
+            throw(new IllegalStateException("The type specific set() method shouldn't throw exceptions!",ex));
+        }
+    }
+
+    /**
+     * Sets debugOn to the specified value.
+     * @param value A value compatible with DmcTypeBooleanSV
+     */
+    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:877)
+    public void setDebugOn(Object value) throws DmcValueException {
+        DmcTypeBooleanSV attr  = (DmcTypeBooleanSV) get(DmtdlDMSAG.__debugOn);
+        if (attr == null)
+            attr = new DmcTypeBooleanSV(DmtdlDMSAG.__debugOn);
+        
+        attr.set(value);
+        set(DmtdlDMSAG.__debugOn,attr);
+    }
+
+    /**
+     * Removes the debugOn attribute value.
+     */
+    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:897)
+    public void remDebugOn(){
+         rem(DmtdlDMSAG.__debugOn);
     }
 
     /**

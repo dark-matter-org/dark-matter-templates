@@ -83,6 +83,7 @@ must			name
 must			format
 may				file
 may				lineNumber
+may				debugOn
 may				description
 description		The Template object provides a mechanism to define an arbitrary set of
  text that allows for the insertion of the named values defined as part of the associated
