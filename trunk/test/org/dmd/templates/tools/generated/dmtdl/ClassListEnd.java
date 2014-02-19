@@ -24,14 +24,14 @@ public class ClassListEnd implements SectionIF {
         return("");
     }
 
-    // Generated from: org.dmd.templates.server.extended.Section.getFormatFunction(Section.java:247)
+    // Generated from: org.dmd.templates.server.extended.Section.getFormatFunction(Section.java:249)
     public void format(FormattedArtifactIF artifact) throws IOException {
 
         DmschemadocTemplateLoader.ClassListEnd.format(this,artifact, DmschemadocTemplateLoader._Comment);
 
     }
 
-    // Generated from: org.dmd.templates.server.extended.Section.getFormatFunction(Section.java:310)
+    // Generated from: org.dmd.templates.server.extended.Section.getFormatFunction(Section.java:312)
     public void format(FormattedArtifactIF artifact, Template template) throws IOException {
         template.format(this, artifact);
     }

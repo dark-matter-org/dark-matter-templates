@@ -146,6 +146,8 @@ public class Section extends SectionDMW {
 	            }
 	            out.write("){\n");
 	            
+	            out.write(getStaticSectionConstruction());
+
 	            values = getValueIterable();
 	            while(values.hasNext()){
 	            	Value value = values.getNext();

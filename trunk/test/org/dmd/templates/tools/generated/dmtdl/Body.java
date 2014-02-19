@@ -31,7 +31,7 @@ public class Body implements SectionIF {
         return("");
     }
 
-    // Generated from: org.dmd.templates.server.extended.Section.getFormatFunction(Section.java:247)
+    // Generated from: org.dmd.templates.server.extended.Section.getFormatFunction(Section.java:249)
     public void format(FormattedArtifactIF artifact) throws IOException {
         TemplateMediator.commentContainer.setValue("comment", "Body starts with text");
         DmschemadocTemplateLoader._Comment.format(TemplateMediator.commentContainer, artifact);
@@ -46,7 +46,7 @@ public class Body implements SectionIF {
         artifact.addText("</body>\n");
     }
 
-    // Generated from: org.dmd.templates.server.extended.Section.getFormatFunction(Section.java:310)
+    // Generated from: org.dmd.templates.server.extended.Section.getFormatFunction(Section.java:312)
     public void format(FormattedArtifactIF artifact, Template template) throws IOException {
         template.format(this, artifact);
     }
