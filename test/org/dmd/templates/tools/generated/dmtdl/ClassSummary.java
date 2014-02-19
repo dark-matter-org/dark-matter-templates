@@ -35,6 +35,7 @@ public class ClassSummary implements SectionIF {
      * Generated from: org.dmd.templates.server.extended.Section.generateSectionClass(Section.java:135)
      */
     public ClassSummary(String classCount_){
+        _ClassListStart = new ClassListStart(); // Starts with
         if (classCount_ != null)
             values.put("classCount", classCount_);
 
@@ -53,7 +54,7 @@ public class ClassSummary implements SectionIF {
         return(rc);
     }
 
-    // Generated from: org.dmd.templates.server.extended.Section.getFormatFunction(Section.java:247)
+    // Generated from: org.dmd.templates.server.extended.Section.getFormatFunction(Section.java:249)
     public void format(FormattedArtifactIF artifact) throws IOException {
         _ClassListStart.format(artifact);
 
@@ -68,7 +69,7 @@ public class ClassSummary implements SectionIF {
         artifact.addText("ClassListEnd\n");
     }
 
-    // Generated from: org.dmd.templates.server.extended.Section.getFormatFunction(Section.java:310)
+    // Generated from: org.dmd.templates.server.extended.Section.getFormatFunction(Section.java:312)
     public void format(FormattedArtifactIF artifact, Template template) throws IOException {
         template.format(this, artifact);
     }
