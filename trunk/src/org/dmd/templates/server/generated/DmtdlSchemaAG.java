@@ -130,7 +130,6 @@ public class DmtdlSchemaAG extends SchemaDefinition {
             _TdlDefinitionOBJ.setDmwIteratorImport("org.dmd.templates.server.generated.dmw.TdlDefinitionIterableDMW");
             _TdlDefinitionOBJ.setPartOfDefinitionModule("dmtdl.TdlModule");
             _TdlDefinitionOBJ.setDotName("dmtdl.TdlDefinition.ClassDefinition");
-            _TdlDefinitionOBJ.setNameAndTypeName("TdlDefinition.ClassDefinition");
             _TdlDefinition.setDefinedIn(this);
             addClassDefList(_TdlDefinition);
 
@@ -160,7 +159,6 @@ public class DmtdlSchemaAG extends SchemaDefinition {
             _SectionOBJ.setDmwIteratorImport("org.dmd.templates.server.generated.dmw.SectionIterableDMW");
             _SectionOBJ.setPartOfDefinitionModule("dmtdl.TdlModule");
             _SectionOBJ.setDotName("dmtdl.Section.ClassDefinition");
-            _SectionOBJ.setNameAndTypeName("Section.ClassDefinition");
             _Section.setDefinedIn(this);
             addClassDefList(_Section);
 
@@ -183,7 +181,6 @@ public class DmtdlSchemaAG extends SchemaDefinition {
             _TextualArtifactOBJ.setDmwIteratorImport("org.dmd.templates.server.generated.dmw.TextualArtifactIterableDMW");
             _TextualArtifactOBJ.setPartOfDefinitionModule("dmtdl.TdlModule");
             _TextualArtifactOBJ.setDotName("dmtdl.TextualArtifact.ClassDefinition");
-            _TextualArtifactOBJ.setNameAndTypeName("TextualArtifact.ClassDefinition");
             _TextualArtifact.setDefinedIn(this);
             addClassDefList(_TextualArtifact);
 
@@ -208,7 +205,6 @@ public class DmtdlSchemaAG extends SchemaDefinition {
             _TemplateOBJ.addMust("dmtdl.format");
             _TemplateOBJ.setDmwIteratorImport("org.dmd.templates.server.generated.dmw.TemplateIterableDMW");
             _TemplateOBJ.setDotName("dmtdl.Template.ClassDefinition");
-            _TemplateOBJ.setNameAndTypeName("Template.ClassDefinition");
             _Template.setDefinedIn(this);
             addClassDefList(_Template);
 
@@ -241,7 +237,6 @@ public class DmtdlSchemaAG extends SchemaDefinition {
             _TdlModuleOBJ.setDsdModuleDefinition("dmtdl.TdlModule");
             _TdlModuleOBJ.setPartOfDefinitionModule("dmtdl.TdlModule");
             _TdlModuleOBJ.setDotName("dmtdl.TdlModule.ClassDefinition");
-            _TdlModuleOBJ.setNameAndTypeName("TdlModule.ClassDefinition");
             _TdlModule.setDefinedIn(this);
             addClassDefList(_TdlModule);
 
@@ -255,7 +250,6 @@ public class DmtdlSchemaAG extends SchemaDefinition {
             _definedInTdlModuleOBJ.setName("definedInTdlModule");
             _definedInTdlModuleOBJ.setDmdID("-478599");
             _definedInTdlModuleOBJ.addDescription("Indicates the name of the TdlModule in which a definition is defined.");
-            _definedInTdlModuleOBJ.setNameAndTypeName("definedInTdlModule.AttributeDefinition");
             _definedInTdlModuleOBJ.setDotName("dmtdl.definedInTdlModule.AttributeDefinition");
             _definedInTdlModule.setDefinedIn(this);
             _definedInTdlModuleOBJ.setFile("/src/org/dmd/templates/shared/dmdconfig/attributes.dmd");
@@ -269,7 +263,6 @@ public class DmtdlSchemaAG extends SchemaDefinition {
             _dependsOnTdlModuleOBJ.setName("dependsOnTdlModule");
             _dependsOnTdlModuleOBJ.setDmdID("-478598");
             _dependsOnTdlModuleOBJ.addDescription("Indicates the TdlModule on which something depends.");
-            _dependsOnTdlModuleOBJ.setNameAndTypeName("dependsOnTdlModule.AttributeDefinition");
             _dependsOnTdlModuleOBJ.setValueType("MULTI");
             _dependsOnTdlModuleOBJ.setDotName("dmtdl.dependsOnTdlModule.AttributeDefinition");
             _dependsOnTdlModule.setDefinedIn(this);
@@ -285,7 +278,6 @@ public class DmtdlSchemaAG extends SchemaDefinition {
             _insertMarkerOBJ.setDmdID("-478597");
             _insertMarkerOBJ.addDescription("The character sequence that's used to indicate the start and end of\n where a value is inserted in a Template. The default insertMarker is double colon ::.\n We make this configurable because you never know the exact nature of the format you're\n trying to create. If double colons are a construct in that format, you'll have to choose\n some other character sequence to indicate where data is inserted.");
             _insertMarkerOBJ.setNullReturnValue("::");
-            _insertMarkerOBJ.setNameAndTypeName("insertMarker.AttributeDefinition");
             _insertMarkerOBJ.setDotName("dmtdl.insertMarker.AttributeDefinition");
             _insertMarker.setDefinedIn(this);
             _insertMarkerOBJ.setFile("/src/org/dmd/templates/shared/dmdconfig/attributes.dmd");
@@ -300,7 +292,6 @@ public class DmtdlSchemaAG extends SchemaDefinition {
             _formatOBJ.setName("format");
             _formatOBJ.setDmdID("-478596");
             _formatOBJ.addDescription("Indicates the matrix of text into which various parts of a dark-matter object\n may be embedded.");
-            _formatOBJ.setNameAndTypeName("format.AttributeDefinition");
             _formatOBJ.setDotName("dmtdl.format.AttributeDefinition");
             _format.setDefinedIn(this);
             _formatOBJ.setFile("/src/org/dmd/templates/shared/dmdconfig/attributes.dmd");
@@ -315,7 +306,6 @@ public class DmtdlSchemaAG extends SchemaDefinition {
             _usesTemplateOBJ.setDmdID("-478595");
             _usesTemplateOBJ.addDescription("By default, all Sections require an associated template, however\n if you set this to false, we don't look for an associated template. However, if \n a Section has specified values, it must always have a Template. We'll complain\n if this is set to false, but the Section has values.");
             _usesTemplateOBJ.setNullReturnValue("true");
-            _usesTemplateOBJ.setNameAndTypeName("usesTemplate.AttributeDefinition");
             _usesTemplateOBJ.setDotName("dmtdl.usesTemplate.AttributeDefinition");
             _usesTemplate.setDefinedIn(this);
             _usesTemplateOBJ.setFile("/src/org/dmd/templates/shared/dmdconfig/attributes.dmd");
@@ -329,7 +319,6 @@ public class DmtdlSchemaAG extends SchemaDefinition {
             _containsOBJ.setName("contains");
             _containsOBJ.setDmdID("-478594");
             _containsOBJ.addDescription("Indicates the other Sections contained by a Section and whether they occur one or many times.");
-            _containsOBJ.setNameAndTypeName("contains.AttributeDefinition");
             _containsOBJ.setValueType("MULTI");
             _containsOBJ.setDotName("dmtdl.contains.AttributeDefinition");
             _contains.setDefinedIn(this);
@@ -344,7 +333,6 @@ public class DmtdlSchemaAG extends SchemaDefinition {
             _startsWithOBJ.setName("startsWith");
             _startsWithOBJ.setDmdID("-478593");
             _startsWithOBJ.addDescription("Indicates the Sections that this section of artifact will start with.");
-            _startsWithOBJ.setNameAndTypeName("startsWith.AttributeDefinition");
             _startsWithOBJ.setDotName("dmtdl.startsWith.AttributeDefinition");
             _startsWith.setDefinedIn(this);
             _startsWithOBJ.setFile("/src/org/dmd/templates/shared/dmdconfig/attributes.dmd");
@@ -359,7 +347,6 @@ public class DmtdlSchemaAG extends SchemaDefinition {
             _startsWithTextOBJ.setName("startsWithText");
             _startsWithTextOBJ.setDmdID("-478592");
             _startsWithTextOBJ.addDescription("If the text that the section will start with is static, it can be specified via this attribute.");
-            _startsWithTextOBJ.setNameAndTypeName("startsWithText.AttributeDefinition");
             _startsWithTextOBJ.setDotName("dmtdl.startsWithText.AttributeDefinition");
             _startsWithText.setDefinedIn(this);
             _startsWithTextOBJ.setFile("/src/org/dmd/templates/shared/dmdconfig/attributes.dmd");
@@ -373,7 +360,6 @@ public class DmtdlSchemaAG extends SchemaDefinition {
             _endsWithOBJ.setName("endsWith");
             _endsWithOBJ.setDmdID("-478591");
             _endsWithOBJ.addDescription("Indicates the Sections that this section of artifact will end with.");
-            _endsWithOBJ.setNameAndTypeName("endsWith.AttributeDefinition");
             _endsWithOBJ.setDotName("dmtdl.endsWith.AttributeDefinition");
             _endsWith.setDefinedIn(this);
             _endsWithOBJ.setFile("/src/org/dmd/templates/shared/dmdconfig/attributes.dmd");
@@ -388,7 +374,6 @@ public class DmtdlSchemaAG extends SchemaDefinition {
             _endsWithTextOBJ.setName("endsWithText");
             _endsWithTextOBJ.setDmdID("-478590");
             _endsWithTextOBJ.addDescription("If the text that the section will end with is static, it can be specified via this attribute.");
-            _endsWithTextOBJ.setNameAndTypeName("endsWithText.AttributeDefinition");
             _endsWithTextOBJ.setDotName("dmtdl.endsWithText.AttributeDefinition");
             _endsWithText.setDefinedIn(this);
             _endsWithTextOBJ.setFile("/src/org/dmd/templates/shared/dmdconfig/attributes.dmd");
@@ -402,7 +387,6 @@ public class DmtdlSchemaAG extends SchemaDefinition {
             _valueOBJ.setName("value");
             _valueOBJ.setDmdID("-478589");
             _valueOBJ.addDescription("The name and description of a value that can be inserted into a Template. This name will be used\n when generating the interface of the Section being formatted.");
-            _valueOBJ.setNameAndTypeName("value.AttributeDefinition");
             _valueOBJ.setValueType("MULTI");
             _valueOBJ.setDotName("dmtdl.value.AttributeDefinition");
             _value.setDefinedIn(this);
@@ -417,7 +401,6 @@ public class DmtdlSchemaAG extends SchemaDefinition {
             _templateFileOBJ.setName("templateFile");
             _templateFileOBJ.setDmdID("-478588");
             _templateFileOBJ.addDescription("The name of the associated file that contains the Template definitions for each \n of the Sections (if they require a Template).");
-            _templateFileOBJ.setNameAndTypeName("templateFile.AttributeDefinition");
             _templateFileOBJ.setDotName("dmtdl.templateFile.AttributeDefinition");
             _templateFile.setDefinedIn(this);
             _templateFileOBJ.setFile("/src/org/dmd/templates/shared/dmdconfig/attributes.dmd");
@@ -431,7 +414,6 @@ public class DmtdlSchemaAG extends SchemaDefinition {
             _packageOBJ.setName("package");
             _packageOBJ.setDmdID("-478587");
             _packageOBJ.addDescription("The name of the package in which you're placing the artifact generation code.");
-            _packageOBJ.setNameAndTypeName("package.AttributeDefinition");
             _packageOBJ.setDotName("dmtdl.package.AttributeDefinition");
             _package.setDefinedIn(this);
             _packageOBJ.setFile("/src/org/dmd/templates/shared/dmdconfig/attributes.dmd");
@@ -446,7 +428,6 @@ public class DmtdlSchemaAG extends SchemaDefinition {
             _hasTemplateOBJ.setDmdID("-478586");
             _hasTemplateOBJ.addDescription("Indicates whether or not a Section has an associated Template; by default, \n all Sections require a Template. If, for some reason, a Section doesn't require a Template,\n just set this attribute to false.");
             _hasTemplateOBJ.setNullReturnValue("true");
-            _hasTemplateOBJ.setNameAndTypeName("hasTemplate.AttributeDefinition");
             _hasTemplateOBJ.setDotName("dmtdl.hasTemplate.AttributeDefinition");
             _hasTemplate.setDefinedIn(this);
             _hasTemplateOBJ.setFile("/src/org/dmd/templates/shared/dmdconfig/attributes.dmd");
@@ -461,7 +442,6 @@ public class DmtdlSchemaAG extends SchemaDefinition {
             _templateFileSuffixOBJ.setDmdID("-478585");
             _templateFileSuffixOBJ.addDescription("The suffix of the template file. By default, the suffix will be .dmt, but,\n if that suffix clashes with some other file type you're using, you can change it.");
             _templateFileSuffixOBJ.setNullReturnValue("dmt");
-            _templateFileSuffixOBJ.setNameAndTypeName("templateFileSuffix.AttributeDefinition");
             _templateFileSuffixOBJ.setDotName("dmtdl.templateFileSuffix.AttributeDefinition");
             _templateFileSuffix.setDefinedIn(this);
             _templateFileSuffixOBJ.setFile("/src/org/dmd/templates/shared/dmdconfig/attributes.dmd");
@@ -476,7 +456,6 @@ public class DmtdlSchemaAG extends SchemaDefinition {
             _maxFastAddValuesOBJ.setDmdID("-478584");
             _maxFastAddValuesOBJ.addDescription("For most Sections, there aren't usually too many values, so the generated\n code will provide a fastAdd() method for sub Sections with each of the values being provided\n via an argument. That way, you don't have create the sub Section, hang on to it and populate\n it value by value. However, creating methods with lots of arguments can get a bit messy.\n <p/>\n By default, the most values we'll provide arguments for in a fastAdd() function will be 8.\n If you want to allow more values, just bump this number up.");
             _maxFastAddValuesOBJ.setNullReturnValue("8");
-            _maxFastAddValuesOBJ.setNameAndTypeName("maxFastAddValues.AttributeDefinition");
             _maxFastAddValuesOBJ.setDotName("dmtdl.maxFastAddValues.AttributeDefinition");
             _maxFastAddValues.setDefinedIn(this);
             _maxFastAddValuesOBJ.setFile("/src/org/dmd/templates/shared/dmdconfig/attributes.dmd");
@@ -491,7 +470,6 @@ public class DmtdlSchemaAG extends SchemaDefinition {
             _commentFormatOBJ.setName("commentFormat");
             _commentFormatOBJ.setDmdID("-478583");
             _commentFormatOBJ.addDescription("By specifying a commentFormat for your TdlModule, you allow the formatting\n mechanism to automatically indicate the Template that was used for format the output. This\n is useful when debugging your formatted output.");
-            _commentFormatOBJ.setNameAndTypeName("commentFormat.AttributeDefinition");
             _commentFormatOBJ.addExampleUsage("Comment for XML :\n <pre>\n <!-- ::comment:: -->\n </pre>");
             _commentFormatOBJ.addExampleUsage("Comment for Java :\n <pre>\n // ::comment:: \n </pre>");
             _commentFormatOBJ.addExampleUsage("Multi-line comment for Java :\n <pre>\n /* ::comment:: */\n </pre>");
@@ -509,7 +487,6 @@ public class DmtdlSchemaAG extends SchemaDefinition {
             _debugOnOBJ.setDmdID("-478582");
             _debugOnOBJ.addDescription("Although it's useful to have debug comments prepended to your generated\n artifact, there are times when you don't want that information dumped for particular Templates.\n For example, if your artifact must start with a particular text sequence. So, if\n you've specified a commentFormat for your TdlModule  but you don't want the debug\n comment for a particular Template, just set the debug attribute to false.");
             _debugOnOBJ.setNullReturnValue("true");
-            _debugOnOBJ.setNameAndTypeName("debugOn.AttributeDefinition");
             _debugOnOBJ.addExampleUsage("Turning off the debug comment\n Template\n name   FirstPart\n format <!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">\n debug  false");
             _debugOnOBJ.setDotName("dmtdl.debugOn.AttributeDefinition");
             _debugOn.setDefinedIn(this);
@@ -532,7 +509,6 @@ public class DmtdlSchemaAG extends SchemaDefinition {
             _ContainsOBJ.addDescription("The Contains type indicates the number of times a Section will occur within a contain Section");
             _ContainsOBJ.addRequiredPart("CardinalityEnum occurences \"The number of times a contained Section will occur.\"");
             _ContainsOBJ.addRequiredPart("Section section \"The Section being referenced.\" quoted=true");
-            _ContainsOBJ.setNameAndTypeName("Contains.ComplexTypeDefinition");
             _ContainsOBJ.setDotName("dmtdl.Contains.ComplexTypeDefinition");
             _Contains.setDefinedIn(this);
             _ContainsOBJ.setFile("/src/org/dmd/templates/shared/dmdconfig/complex.dmd");
@@ -546,7 +522,6 @@ public class DmtdlSchemaAG extends SchemaDefinition {
             _ValueOBJ.addDescription("The Value type indicates a name for a value that can be referenced in a Template along\n with a short description.");
             _ValueOBJ.addRequiredPart("String valueName \"The name of the value that can be inserted into a Template\"");
             _ValueOBJ.addRequiredPart("String description \"A description of the value.\" quoted=true");
-            _ValueOBJ.setNameAndTypeName("Value.ComplexTypeDefinition");
             _ValueOBJ.setDotName("dmtdl.Value.ComplexTypeDefinition");
             _Value.setDefinedIn(this);
             _ValueOBJ.setFile("/src/org/dmd/templates/shared/dmdconfig/complex.dmd");
@@ -569,7 +544,6 @@ public class DmtdlSchemaAG extends SchemaDefinition {
             _CardinalityEnumOBJ.addEnumValue("1 MANY Indicates that a section will appear many times.");
             _CardinalityEnumOBJ.addEnumValue("2 STATIC Indicates that a section is static and will be automatically added.");
             _CardinalityEnumOBJ.addDescription("The CardinalityEnum indicates whether a Section will exist one or many times within another Section,\n or whther the Section is static and always added automatically.");
-            _CardinalityEnumOBJ.setNameAndTypeName("CardinalityEnum.EnumDefinition");
             _CardinalityEnumOBJ.setDotName("dmtdl.CardinalityEnum.EnumDefinition");
             _CardinalityEnum.setDefinedIn(this);
             _CardinalityEnumOBJ.setFile("/src/org/dmd/templates/shared/dmdconfig/types.dmd");
@@ -593,8 +567,8 @@ public class DmtdlSchemaAG extends SchemaDefinition {
             _TdlModuleDSDOBJ.setFileExtension("dmtdl");
             _TdlModuleDSDOBJ.setDefinedInModuleAttribute("dmtdl.definedInTdlModule");
             _TdlModuleDSDOBJ.setDotName("dmtdl.TdlModule.DSDefinitionModule");
-            _TdlModuleDSDOBJ.setFile("/src/org/dmd/templates/shared/dmdconfig/module.dmd");
             _TdlModuleDSDOBJ.setModuleDependenceAttribute("dmtdl.dependsOnTdlModule");
+            _TdlModuleDSDOBJ.setFile("/src/org/dmd/templates/shared/dmdconfig/module.dmd");
             _TdlModuleDSDOBJ.setLineNumber("27");
             _TdlModuleDSDOBJ.setBaseDefinition("dmtdl.TdlDefinition");
             _TdlModuleDSDOBJ.addDescription("A TdlModule is used to define a set of Sections that\n define the overall structure of a textual artifact. When run through the dmtdlgen\n utility, a set of classes are generated to represent these different artifact sections.\n <p/>\n By convention, you should place the .dmtdl files along with your other dark-matter \n config files e.g. in the dmconfig folder with your dark-matter schema or with \n your .dmg wrapper generation files. However, there is no restriction on where you\n place your .dmtdl files, but it's recommended that they exist in a separate subfolder.\n <p/>\n When the dmtdlgen utility is run, a folder (named generated) will be created at\n the same level as the dmconfig folder (or whatever you called it). This will contain\n a dmtdl subpackage that will contain the generated code that represents the \n various Sections that you've defined.");
@@ -602,7 +576,6 @@ public class DmtdlSchemaAG extends SchemaDefinition {
             _TdlModuleDSDOBJ.addMay("dmtdl.maxFastAddValues");
             _TdlModuleDSDOBJ.addMay("dmtdl.insertMarker");
             _TdlModuleDSDOBJ.addMay("dmtdl.commentFormat");
-            _TdlModuleDSDOBJ.setNameAndTypeName("TdlModule.DSDefinitionModule");
             _TdlModuleDSDOBJ.addMust("dmtdl.package");
             _TdlModuleDSDOBJ.addMust("dmtdl.templateFile");
             _TdlModuleDSD.setDefinedIn(this);

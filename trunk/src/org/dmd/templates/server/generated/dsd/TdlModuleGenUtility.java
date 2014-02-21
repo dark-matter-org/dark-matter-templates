@@ -64,7 +64,6 @@ public abstract class TdlModuleGenUtility implements TdlModuleGeneratorInterface
     public void run(String[] args) throws ResultException, DmcValueException, IOException, DmcRuleExceptionSet, DmcNameClashException, DmcValueExceptionSet {
 
         commandLine.parseArgs(args);
-        
 
         initialize();
 
