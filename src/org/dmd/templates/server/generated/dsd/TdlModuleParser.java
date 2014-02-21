@@ -168,7 +168,6 @@ public class TdlModuleParser implements DsdParserInterface, DmcUncheckedOIFHandl
                 module = (TdlModule)definition;
             
                 definition.setDotName(module.getName() + "." + definition.getConstructionClassName());
-                definition.setNameAndTypeName(module.getName() + "." + definition.getConstructionClassName());
             
                 module.setDefinedInTdlModule(module);
                 definitions.addTdlModule(module);
@@ -189,7 +188,6 @@ public class TdlModuleParser implements DsdParserInterface, DmcUncheckedOIFHandl
             
             definition.setDefinedInTdlModule(module);
             definition.setDotName(module.getName() + "." + definition.getName() + "." + definition.getConstructionClassName());
-            definition.setNameAndTypeName(definition.getName() + "." + definition.getConstructionClassName());
             
             if (definition instanceof Section){
                 definitions.addSection((Section)definition);
