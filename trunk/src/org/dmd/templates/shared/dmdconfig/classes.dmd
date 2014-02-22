@@ -28,7 +28,7 @@ may				endsWithText
 may				value
 may				hasTemplate
 may				usesTemplate
-description		A Section represents part of a textual artifact that you want format.
+description		A Section represents part of a textual artifact that you want to format.
  The artifact could be an XHTML document, an XML document, a piece of code, a form
  letter - whatever. The content of a Section may start with another Section or static
  piece of text and, likewise, end with a Section or static piece of text.
