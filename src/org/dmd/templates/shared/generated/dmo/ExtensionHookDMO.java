@@ -16,16 +16,20 @@
 package org.dmd.templates.shared.generated.dmo;
 
 // Generated from: org.dmd.dms.util.GenUtility.formatImports(GenUtility.java:396)
-import java.io.Serializable;                                               // Always required - (GenUtility.java:224)
-import org.dmd.dmc.DmcAttribute;                                           // Named object - (GenUtility.java:376)
-import org.dmd.dmc.DmcNamedObjectIF;                                       // Named object - (GenUtility.java:375)
-import org.dmd.dmc.DmcSliceInfo;                                           // Required for object slicing - (GenUtility.java:229)
-import org.dmd.dmc.DmcValueException;                                      // Any attributes - (GenUtility.java:241)
-import org.dmd.dmc.types.DefinitionName;                                   // Naming attribute type - (GenUtility.java:370)
-import org.dmd.dms.generated.dmo.MetaDMSAG;                                // Required for MODREC constructor - (GenUtility.java:228)
-import org.dmd.dms.generated.types.DmcTypeDefinitionNameSV;                // Required type - (GenUtility.java:328)
-import org.dmd.dms.generated.types.DmcTypeModifierMV;                      // Required for MODREC constructor - (GenUtility.java:227)
-import org.dmd.templates.shared.generated.dmo.ContainedElementDMO;         // Base class - (GenUtility.java:355)
+import java.io.Serializable;                                                 // Always required - (GenUtility.java:224)
+import org.dmd.dmc.DmcAttribute;                                             // Named object - (GenUtility.java:376)
+import org.dmd.dmc.DmcNamedObjectIF;                                         // Named object - (GenUtility.java:375)
+import org.dmd.dmc.DmcOmni;                                                  // Lazy resolution - (GenUtility.java:320)
+import org.dmd.dmc.DmcSliceInfo;                                             // Required for object slicing - (GenUtility.java:229)
+import org.dmd.dmc.DmcValueException;                                        // Any attributes - (GenUtility.java:241)
+import org.dmd.dmc.types.DefinitionName;                                     // Naming attribute type - (GenUtility.java:370)
+import org.dmd.dms.generated.dmo.MetaDMSAG;                                  // Required for MODREC constructor - (GenUtility.java:228)
+import org.dmd.dms.generated.types.DmcTypeDefinitionNameSV;                  // Required type - (GenUtility.java:328)
+import org.dmd.dms.generated.types.DmcTypeModifierMV;                        // Required for MODREC constructor - (GenUtility.java:227)
+import org.dmd.templates.shared.generated.dmo.ContainedElementDMO;           // Base class - (GenUtility.java:355)
+import org.dmd.templates.shared.generated.dmo.SectionDMO;                    // Type specific set/add - (GenUtility.java:307)
+import org.dmd.templates.shared.generated.types.DmcTypeSectionREFSV;         // Reference type - (GenUtility.java:300)
+import org.dmd.templates.shared.generated.types.SectionREF;                  // Helper class - (GenUtility.java:335)
 
 // Generated from: org.dmd.dms.util.DmoFormatter.getClassHeader(DmoFormatter.java:677)
 /**
@@ -40,7 +44,17 @@ import org.dmd.templates.shared.generated.dmo.ContainedElementDMO;         // Ba
  * play;\n although you can use this for your own purposes to allow others to
  * extend the\n content of your generated artifacts - there's nothing
  * dark-matter specific about \n the mechanism.\n <p/>\n When defining your
- * Sections, you may include ExtensionHook instances
+ * Sections, you may indicate that they contain ExtensionHooks.  This\n will
+ * result in the generation of an ExtensionHook interface for the template
+ * definition module.\n Other designers who have extended your DSL then
+ * create a class that implements the ExtensionHook\n interface and have it
+ * dynamically loaded when the artifact generator is invoked (this is
+ * usually\n done via commandline arguments that are passed to the generated
+ * TemplateLoader). It's up to the\n designer of the base DSL to provide
+ * these mechanisms.\n <p/>\n When formatting the artifact, the base DSL
+ * designer will call the method on a Section\n (in the appropriate sequence)
+ * to have the TemplateLoader call any registered classes that\n implement
+ * the ExtensionHook interface.
  * <P>
  * Generated from the dmtdl schema at version unknown
  * <P>
@@ -171,6 +185,78 @@ public class ExtensionHookDMO  extends ContainedElementDMO  implements DmcNamedO
     // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:897)
     public void remName(){
          rem(MetaDMSAG.__name);
+    }
+
+    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:655)
+    public SectionREF getUsesSection(){
+        DmcTypeSectionREFSV attr = (DmcTypeSectionREFSV) get(DmtdlDMSAG.__usesSection);
+        if (attr == null)
+            return(null);
+
+        if (DmcOmni.instance().lazyResolution()){
+            if (attr.doLazyResolution(this)){
+                rem(attr.getAttributeInfo());
+                return(null);
+            }
+        }
+
+        return(attr.getSV());
+    }
+
+    /**
+     * Returns the reference to Section without attempting lazy resolution (if turned on).
+     */
+    public SectionREF getUsesSectionREF(){
+        DmcTypeSectionREFSV attr = (DmcTypeSectionREFSV) get(DmtdlDMSAG.__usesSection);
+        if (attr == null)
+            return(null);
+
+        return(attr.getSV());
+    }
+
+    /**
+     * Sets usesSection to the specified value.
+     * @param value SectionDMO
+     */
+    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:709)
+    public void setUsesSection(SectionDMO value) {
+        DmcAttribute<?> attr = get(DmtdlDMSAG.__usesSection);
+        if (attr == null)
+            attr = new DmcTypeSectionREFSV(DmtdlDMSAG.__usesSection);
+        else
+            ((DmcTypeSectionREFSV)attr).removeBackReferences();
+        
+        try{
+            attr.set(value);
+            set(DmtdlDMSAG.__usesSection,attr);
+        }
+        catch(DmcValueException ex){
+            throw(new IllegalStateException("The type specific set() method shouldn't throw exceptions!",ex));
+        }
+    }
+
+    /**
+     * Sets usesSection to the specified value.
+     * @param value A value compatible with DmcTypeSectionREFSV
+     */
+    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:877)
+    public void setUsesSection(Object value) throws DmcValueException {
+        DmcTypeSectionREFSV attr  = (DmcTypeSectionREFSV) get(DmtdlDMSAG.__usesSection);
+        if (attr == null)
+            attr = new DmcTypeSectionREFSV(DmtdlDMSAG.__usesSection);
+        else
+            attr.removeBackReferences();
+        
+        attr.set(value);
+        set(DmtdlDMSAG.__usesSection,attr);
+    }
+
+    /**
+     * Removes the usesSection attribute value.
+     */
+    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:897)
+    public void remUsesSection(){
+         rem(DmtdlDMSAG.__usesSection);
     }
 
 

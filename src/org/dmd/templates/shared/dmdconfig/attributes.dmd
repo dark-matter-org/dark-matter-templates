@@ -173,5 +173,10 @@ exampleUsage Turning off the debug comment
  format <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
  debug  false
 
+AttributeDefinition
+name				usesSection
+dmdID				19
+type				Section
+description			The Section type that will be used to format the contents of an ExtensionHook.
 
 

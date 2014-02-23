@@ -55,18 +55,22 @@ public class Section extends SectionDMW {
     		ContainsIterableDMW it = getContainsIterable();
     		while(it.hasNext()){
     			Contains c = it.getNext();
-    			Section contained = (Section)c.getSection().getObject().getContainer();
-    			imports.addImport(contained.getClassImport(), "Is a contained section");
-    			if (c.getOccurences() == CardinalityEnum.ONE){
-    				members.addMember(contained.getName().getNameString(), "_" + contained.getName(), "A single instance of " + contained.getName());
-    			}
-    			else if (c.getOccurences() == CardinalityEnum.MANY){
-    				imports.addImport("java.util.ArrayList", "Because we have multiple instances of some Sections");
-    				imports.addImport("java.util.Iterator", "Because we have multiple instances of some Sections");
-    				members.addMember("ArrayList<" + contained.getName().getNameString() + ">", "_" + contained.getName(), "new ArrayList<" + contained.getName().getNameString() + ">()", "Multiple instances of " + contained.getName());
-    			}
-    			else{
-    				members.addMember(contained.getName().getNameString(), "_" + contained.getName(), "A single static instance of " + contained.getName());
+    			ContainedElement ce = (ContainedElement) c.getElement().getObject().getContainer();
+    			
+    			if (ce instanceof Section){
+	    			Section contained = (Section)ce;
+	    			imports.addImport(contained.getClassImport(), "Is a contained section");
+	    			if (c.getOccurences() == CardinalityEnum.ONE){
+	    				members.addMember(contained.getName().getNameString(), "_" + contained.getName(), "A single instance of " + contained.getName());
+	    			}
+	    			else if (c.getOccurences() == CardinalityEnum.MANY){
+	    				imports.addImport("java.util.ArrayList", "Because we have multiple instances of some Sections");
+	    				imports.addImport("java.util.Iterator", "Because we have multiple instances of some Sections");
+	    				members.addMember("ArrayList<" + contained.getName().getNameString() + ">", "_" + contained.getName(), "new ArrayList<" + contained.getName().getNameString() + ">()", "Multiple instances of " + contained.getName());
+	    			}
+	    			else{
+	    				members.addMember(contained.getName().getNameString(), "_" + contained.getName(), "A single static instance of " + contained.getName());
+	    			}
     			}
     		}
     	}
@@ -199,8 +203,12 @@ public class Section extends SectionDMW {
 		ContainsIterableDMW it = getContainsIterable();
 		while(it.hasNext()){
 			Contains c = it.getNext();
-			Section contained = (Section)c.getSection().getObject().getContainer();
-			out.write(contained.getAccessFunctions(this.getName().getNameString(), c.getOccurences()));
+			ContainedElement ce = (ContainedElement) c.getElement().getObject().getContainer();
+			
+			if (ce instanceof Section){
+				Section contained = (Section)ce;
+				out.write(contained.getAccessFunctions(this.getName().getNameString(), c.getOccurences()));
+			}
 		}
 
         if (getEndsWith() != null){
@@ -229,9 +237,13 @@ public class Section extends SectionDMW {
 		ContainsIterableDMW it = getContainsIterable();
 		while(it.hasNext()){
 			Contains c = it.getNext();
-			Section contained = (Section)c.getSection().getObject().getContainer();
-			if (c.getOccurences() == CardinalityEnum.STATIC){
-	    		sb.append("        _" + contained.getName() + " = new " + contained.getName() + "(); // Static Section\n");
+			ContainedElement ce = (ContainedElement) c.getElement().getObject().getContainer();
+			
+			if (ce instanceof Section){
+				Section contained = (Section)ce;
+				if (c.getOccurences() == CardinalityEnum.STATIC){
+		    		sb.append("        _" + contained.getName() + " = new " + contained.getName() + "(); // Static Section\n");
+				}
 			}
 		}
     	
@@ -275,23 +287,27 @@ public class Section extends SectionDMW {
 		ContainsIterableDMW it = getContainsIterable();
 		while(it.hasNext()){
 			Contains c = it.getNext();
-			Section contained = (Section)c.getSection().getObject().getContainer();
-	    	sb.append("\n");
-	    	
-	    	if (c.getOccurences() == CardinalityEnum.ONE){
-	    		sb.append("        if (_" + contained.getName() + " != null)\n");
-	    		sb.append("            _" + contained.getName() + ".format(artifact);\n");
-	    	}
-	    	else if (c.getOccurences() == CardinalityEnum.MANY){
-	    		sb.append("        if (_" + contained.getName() + " != null){\n");
-	        	sb.append("            for(" + contained.getName() + " entry: _" + contained.getName() + "){\n");
-	    		sb.append("                entry.format(artifact);\n");
-	        	sb.append("            }\n");
-	        	sb.append("        }\n");
-	    	}
-	    	else{
-	    		sb.append("        _" + contained.getName() + ".format(artifact);\n");
-	    	}
+			ContainedElement ce = (ContainedElement) c.getElement().getObject().getContainer();
+			
+			if (ce instanceof Section){
+				Section contained = (Section)ce;
+		    	sb.append("\n");
+		    	
+		    	if (c.getOccurences() == CardinalityEnum.ONE){
+		    		sb.append("        if (_" + contained.getName() + " != null)\n");
+		    		sb.append("            _" + contained.getName() + ".format(artifact);\n");
+		    	}
+		    	else if (c.getOccurences() == CardinalityEnum.MANY){
+		    		sb.append("        if (_" + contained.getName() + " != null){\n");
+		        	sb.append("            for(" + contained.getName() + " entry: _" + contained.getName() + "){\n");
+		    		sb.append("                entry.format(artifact);\n");
+		        	sb.append("            }\n");
+		        	sb.append("        }\n");
+		    	}
+		    	else{
+		    		sb.append("        _" + contained.getName() + ".format(artifact);\n");
+		    	}
+			}
 		}
 		
     	sb.append("\n");
@@ -476,8 +492,12 @@ public class Section extends SectionDMW {
 		ContainsIterableDMW it = getContainsIterable();
 		while(it.hasNext()){
 			Contains c = it.getNext();
-			Section contained = (Section)c.getSection().getObject().getContainer();
-			contained.getFormatHint(c.getOccurences(), indent + "  ", hint);
+			ContainedElement ce = (ContainedElement) c.getElement().getObject().getContainer();
+			
+			if (ce instanceof Section){
+				Section contained = (Section)ce;
+				contained.getFormatHint(c.getOccurences(), indent + "  ", hint);
+			}
 		}    	
     	
     	if (getEndsWith() != null){
@@ -512,10 +532,14 @@ public class Section extends SectionDMW {
     		ContainsIterableDMW it = getContainsIterable();
     		while(it.hasNext()){
     			Contains c = it.getNext();
-    			Section contained = (Section)c.getSection().getObject().getContainer();
-    			contained.getStaticAccessToStructure(depth+1, c.getOccurences(), callStructure + ".get" + getName() + "()", sections);
-    			if (c.getOccurences() != CardinalityEnum.STATIC)
-    				nonStaticDirectlyBelowMe = true;
+    			ContainedElement ce = (ContainedElement) c.getElement().getObject().getContainer();
+    			
+    			if (ce instanceof Section){
+	    			Section contained = (Section)ce;
+	    			contained.getStaticAccessToStructure(depth+1, c.getOccurences(), callStructure + ".get" + getName() + "()", sections);
+	    			if (c.getOccurences() != CardinalityEnum.STATIC)
+	    				nonStaticDirectlyBelowMe = true;
+    			}
     		} 
     		
     		if (nonStaticDirectlyBelowMe){
