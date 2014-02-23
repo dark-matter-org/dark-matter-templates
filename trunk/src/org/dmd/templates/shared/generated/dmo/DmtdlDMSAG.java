@@ -58,7 +58,9 @@ public class DmtdlDMSAG implements DmcCompactSchemaIF {
 
     // Generated from: org.dmd.dms.util.DmoCompactSchemaFormatter.dumpSchema(DmoCompactSchemaFormatter.java:176)
     public final static DmcTypeInfo __type_CardinalityEnum = new DmcTypeInfo("CardinalityEnum", OriginalTypeEnum.ENUM);
+    public final static DmcTypeInfo __type_ContainedElement = new DmcTypeInfo("ContainedElement", OriginalTypeEnum.REFERENCE);
     public final static DmcTypeInfo __type_Contains = new DmcTypeInfo("Contains", OriginalTypeEnum.COMPLEXTYPE);
+    public final static DmcTypeInfo __type_ExtensionHook = new DmcTypeInfo("ExtensionHook", OriginalTypeEnum.REFERENCE);
     public final static DmcTypeInfo __type_Section = new DmcTypeInfo("Section", OriginalTypeEnum.REFERENCE);
     public final static DmcTypeInfo __type_TdlDefinition = new DmcTypeInfo("TdlDefinition", OriginalTypeEnum.REFERENCE);
     public final static DmcTypeInfo __type_TdlModule = new DmcTypeInfo("TdlModule", OriginalTypeEnum.REFERENCE);
@@ -68,10 +70,12 @@ public class DmtdlDMSAG implements DmcCompactSchemaIF {
 
     // Generated from: org.dmd.dms.util.DmoCompactSchemaFormatter.dumpSchema(DmoCompactSchemaFormatter.java:217)
     public final static DmcClassInfo __TdlDefinition = new DmcClassInfo("TdlDefinition","org.dmd.templates.shared.generated.dmo.TdlDefinitionDMO", -478598, ClassTypeEnum.ABSTRACT, DataTypeEnum.PERSISTENT,MetaDMSAG.__DSDefinition,MetaDMSAG.__name);
-    public final static DmcClassInfo __Section = new DmcClassInfo("Section","org.dmd.templates.shared.generated.dmo.SectionDMO", -478597, ClassTypeEnum.STRUCTURAL, DataTypeEnum.PERSISTENT,__TdlDefinition,MetaDMSAG.__name);
+    public final static DmcClassInfo __ContainedElement = new DmcClassInfo("ContainedElement","org.dmd.templates.shared.generated.dmo.ContainedElementDMO", -478597, ClassTypeEnum.ABSTRACT, DataTypeEnum.PERSISTENT,__TdlDefinition,MetaDMSAG.__name);
+    public final static DmcClassInfo __ExtensionHook = new DmcClassInfo("ExtensionHook","org.dmd.templates.shared.generated.dmo.ExtensionHookDMO", -478594, ClassTypeEnum.STRUCTURAL, DataTypeEnum.PERSISTENT,__ContainedElement,MetaDMSAG.__name);
+    public final static DmcClassInfo __Section = new DmcClassInfo("Section","org.dmd.templates.shared.generated.dmo.SectionDMO", -478596, ClassTypeEnum.STRUCTURAL, DataTypeEnum.PERSISTENT,__ContainedElement,MetaDMSAG.__name);
     public final static DmcClassInfo __TdlModule = new DmcClassInfo("TdlModule","org.dmd.templates.shared.generated.dmo.TdlModuleDMO", -478599, ClassTypeEnum.STRUCTURAL, DataTypeEnum.PERSISTENT,__TdlDefinition,MetaDMSAG.__name);
-    public final static DmcClassInfo __TextualArtifact = new DmcClassInfo("TextualArtifact","org.dmd.templates.shared.generated.dmo.TextualArtifactDMO", -478596, ClassTypeEnum.STRUCTURAL, DataTypeEnum.PERSISTENT,__TdlDefinition,MetaDMSAG.__name);
-    public final static DmcClassInfo __Template = new DmcClassInfo("Template","org.dmd.templates.shared.generated.dmo.TemplateDMO", -478595, ClassTypeEnum.STRUCTURAL, DataTypeEnum.PERSISTENT,null,MetaDMSAG.__name);
+    public final static DmcClassInfo __TextualArtifact = new DmcClassInfo("TextualArtifact","org.dmd.templates.shared.generated.dmo.TextualArtifactDMO", -478595, ClassTypeEnum.STRUCTURAL, DataTypeEnum.PERSISTENT,__TdlDefinition,MetaDMSAG.__name);
+    public final static DmcClassInfo __Template = new DmcClassInfo("Template","org.dmd.templates.shared.generated.dmo.TemplateDMO", -478593, ClassTypeEnum.STRUCTURAL, DataTypeEnum.PERSISTENT,null,MetaDMSAG.__name);
 
     // Generated from: org.dmd.dms.util.DmoCompactSchemaFormatter.dumpSchema(DmoCompactSchemaFormatter.java:246)
     public final static PatternMatchRule __dmtdlCommentFormat;
@@ -123,6 +127,8 @@ public class DmtdlDMSAG implements DmcCompactSchemaIF {
         __TdlDefinition.addMust(__definedInTdlModule);
         __TdlDefinition.addMay(MetaDMSAG.__description);
 
+        __ContainedElement.addMust(MetaDMSAG.__name);
+
         __Section.addMust(MetaDMSAG.__name);
         __Section.addMay(__contains);
         __Section.addMay(__startsWith);
@@ -135,6 +141,8 @@ public class DmtdlDMSAG implements DmcCompactSchemaIF {
 
         __TextualArtifact.addMust(MetaDMSAG.__name);
         __TextualArtifact.addMust(__contains);
+
+        __ExtensionHook.addMust(MetaDMSAG.__name);
 
         __Template.addMust(MetaDMSAG.__name);
         __Template.addMust(__format);
@@ -182,7 +190,7 @@ public class DmtdlDMSAG implements DmcCompactSchemaIF {
             _dmtdlEndsWithData           .addOnePossibility("endsWithText");
             _dmtdlEndsWithData           .setFile("/src/org/dmd/templates/shared/dmdconfig/classes.dmd");
             _dmtdlEndsWithData           .setDefinedIn("dmtdl");
-            _dmtdlEndsWithData           .setLineNumber("75");
+            _dmtdlEndsWithData           .setLineNumber("84");
 
             __dmtdlEndsWith = new OnlyOneOfTheseAttributesAllowedRule(_dmtdlEndsWithData);
 
@@ -210,7 +218,7 @@ public class DmtdlDMSAG implements DmcCompactSchemaIF {
             _dmtdlStartsWithData         .addOnePossibility("startsWithText");
             _dmtdlStartsWithData         .setFile("/src/org/dmd/templates/shared/dmdconfig/classes.dmd");
             _dmtdlStartsWithData         .setDefinedIn("dmtdl");
-            _dmtdlStartsWithData         .setLineNumber("56");
+            _dmtdlStartsWithData         .setLineNumber("65");
 
             __dmtdlStartsWith = new OnlyOneOfTheseAttributesAllowedRule(_dmtdlStartsWithData);
 

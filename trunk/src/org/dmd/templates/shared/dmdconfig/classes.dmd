@@ -13,11 +13,20 @@ description		The TdlDefinition provides a common base for all dark-matter
  Template Definition Language (TDL) definitions.
 
 ClassDefinition
-name 			Section
-classType      	STRUCTURAL
+name 			ContainedElement
+classType      	ABSTRACT
 dmdID			3
 useWrapperType	EXTENDED
 derivedFrom		TdlDefinition
+isNamedBy		name
+must			name
+
+ClassDefinition
+name 			Section
+classType      	STRUCTURAL
+dmdID			4
+useWrapperType	EXTENDED
+derivedFrom		ContainedElement
 isNamedBy		name
 must			name
 may				contains
@@ -57,7 +66,7 @@ onePossibility		startsWithText
 ClassDefinition
 name 			TextualArtifact
 classType      	STRUCTURAL
-dmdID			4
+dmdID			5
 useWrapperType	EXTENDED
 derivedFrom		TdlDefinition
 isNamedBy		name
@@ -74,9 +83,32 @@ onePossibility		endsWith
 onePossibility		endsWithText
 
 ClassDefinition
+name 			ExtensionHook
+classType      	STRUCTURAL
+dmdID			6
+useWrapperType	EXTENDED
+derivedFrom		ContainedElement
+isNamedBy		name
+must			name
+description		The dark-matter Domain Specific Definition (DSD) mechanisms allow for the
+ extension of objects using auxliary classes and arbitrary name value pairs (via the nvp attribute).
+ These mechanisms are useful because they allow you to augment an existing Domain Specific Language
+ (DSL) with your own information that can be used to facilitate generation of other types
+ of artifacts.
+ <p/>
+ However, you might also want that additional information to show up in the documentation
+ produced as part of the base DSL. That's where the ExtensionHook mechanism comes into play;
+ although you can use this for your own purposes to allow others to extend the
+ content of your generated artifacts - there's nothing dark-matter specific about 
+ the mechanism.
+ <p/>
+ When defining your Sections, you may include ExtensionHook instances
+ 
+
+ClassDefinition
 name 			Template
 classType      	STRUCTURAL
-dmdID			5
+dmdID			7
 useWrapperType	EXTENDED
 isNamedBy		name
 must			name
@@ -102,3 +134,6 @@ description		The Template object provides a mechanism to define an arbitrary set
  Templates are kept separate from the Section definitions so that their content can be
  changed without regenerating code. Templates are loaded using the generated TemplateParser
  for a given TdlModule.
+
+
+

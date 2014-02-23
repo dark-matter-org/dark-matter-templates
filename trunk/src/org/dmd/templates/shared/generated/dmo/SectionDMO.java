@@ -29,8 +29,8 @@ import org.dmd.dms.generated.types.DmcTypeBooleanSV;                         // 
 import org.dmd.dms.generated.types.DmcTypeDefinitionNameSV;                  // Required type - (GenUtility.java:328)
 import org.dmd.dms.generated.types.DmcTypeModifierMV;                        // Required for MODREC constructor - (GenUtility.java:227)
 import org.dmd.dms.generated.types.DmcTypeStringSV;                          // Required type - (GenUtility.java:328)
+import org.dmd.templates.shared.generated.dmo.ContainedElementDMO;           // Base class - (GenUtility.java:355)
 import org.dmd.templates.shared.generated.dmo.SectionDMO;                    // Type specific set/add - (GenUtility.java:307)
-import org.dmd.templates.shared.generated.dmo.TdlDefinitionDMO;              // Base class - (GenUtility.java:355)
 import org.dmd.templates.shared.generated.types.Contains;                    // Primitive type and !auxiliary class - (GenUtility.java:271)
 import org.dmd.templates.shared.generated.types.DmcTypeContainsMV;           // Required type - (GenUtility.java:328)
 import org.dmd.templates.shared.generated.types.DmcTypeSectionREFSV;         // Reference type - (GenUtility.java:300)
@@ -40,7 +40,7 @@ import org.dmd.templates.shared.generated.types.Value;                       // 
 
 // Generated from: org.dmd.dms.util.DmoFormatter.getClassHeader(DmoFormatter.java:677)
 /**
- * A Section represents part of a textual artifact that you want format.\n
+ * A Section represents part of a textual artifact that you want to format.\n
  * The artifact could be an XHTML document, an XML document, a piece of code,
  * a form\n letter - whatever. The content of a Section may start with
  * another Section or static\n piece of text and, likewise, end with a
@@ -60,7 +60,7 @@ import org.dmd.templates.shared.generated.types.Value;                       // 
  * Generated from: org.dmd.dms.util.DmoFormatter.dumpDMO(DmoFormatter.java:133)
  */
 @SuppressWarnings("serial")
-public class SectionDMO  extends TdlDefinitionDMO  implements DmcNamedObjectIF, Serializable  {
+public class SectionDMO  extends ContainedElementDMO  implements DmcNamedObjectIF, Serializable  {
 
     public final static String constructionClassName = "Section";
 

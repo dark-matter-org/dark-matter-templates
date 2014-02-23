@@ -30,6 +30,7 @@ import org.dmd.dms.generated.dmw.StringIterableDMW;                             
 import org.dmd.dmv.shared.DmvRuleManager;                                       // The injected rule manager used for initializations - (DSDArtifactFormatter.java:451)
 import org.dmd.dmw.DmwObjectFactory;                                            // Constructs wrapped objects - (DSDArtifactFormatter.java:433)
 import org.dmd.dmw.DmwWrapper;                                                  // To handle factory created objects - (DSDArtifactFormatter.java:454)
+import org.dmd.templates.server.extended.ExtensionHook;                         // A definition from the TdlModule Module - (DSDArtifactFormatter.java:737)
 import org.dmd.templates.server.extended.Section;                               // A definition from the TdlModule Module - (DSDArtifactFormatter.java:737)
 import org.dmd.templates.server.extended.TdlDefinition;                         // The base definition from the TdlModule Module - (DSDArtifactFormatter.java:729)
 import org.dmd.templates.server.extended.TdlModule;                             // The kind of DDM we're reading - (DSDArtifactFormatter.java:458)
@@ -189,7 +190,11 @@ public class TdlModuleParser implements DsdParserInterface, DmcUncheckedOIFHandl
             definition.setDefinedInTdlModule(module);
             definition.setDotName(module.getName() + "." + definition.getName() + "." + definition.getConstructionClassName());
             
-            if (definition instanceof Section){
+            if (definition instanceof ExtensionHook){
+                definitions.addExtensionHook((ExtensionHook)definition);
+                module.addExtensionHook((ExtensionHook)definition);
+            }
+            else if (definition instanceof Section){
                 definitions.addSection((Section)definition);
                 module.addSection((Section)definition);
             }

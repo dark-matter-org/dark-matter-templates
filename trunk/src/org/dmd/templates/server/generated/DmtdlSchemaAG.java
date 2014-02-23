@@ -35,8 +35,10 @@ import org.dmd.templates.shared.generated.dmo.DmtdlDMSAG;
 public class DmtdlSchemaAG extends SchemaDefinition {
 
     public static ClassDefinition _TdlDefinition;
+    public static ClassDefinition _ContainedElement;
     public static ClassDefinition _Section;
     public static ClassDefinition _TextualArtifact;
+    public static ClassDefinition _ExtensionHook;
     public static ClassDefinition _Template;
     public static ClassDefinition _TdlModule;
 
@@ -134,15 +136,35 @@ public class DmtdlSchemaAG extends SchemaDefinition {
             addClassDefList(_TdlDefinition);
 
 // Generated from: org.dmd.dmg.util.SchemaFormatter.getObjectAsCode(SchemaFormatter.java:585)
+            ClassDefinitionDMO _ContainedElementOBJ = new ClassDefinitionDMO();
+            _ContainedElement = new ClassDefinition(_ContainedElementOBJ,DmtdlDMSAG.__ContainedElement);
+            _ContainedElementOBJ.setName("ContainedElement");
+            _ContainedElementOBJ.setDmdID("-478597");
+            _ContainedElementOBJ.setClassType("ABSTRACT");
+            _ContainedElementOBJ.setFile("/src/org/dmd/templates/shared/dmdconfig/classes.dmd");
+            _ContainedElementOBJ.setLineNumber("23");
+            _ContainedElementOBJ.setDerivedFrom("dmtdl.TdlDefinition");
+            _ContainedElementOBJ.setIsNamedBy("meta.name");
+            _ContainedElementOBJ.setUseWrapperType("EXTENDED");
+            _ContainedElementOBJ.setDmtREFImport("org.dmd.templates.shared.generated.types.ContainedElementREF");
+            _ContainedElementOBJ.setDmwIteratorClass("ContainedElementIterableDMW");
+            _ContainedElementOBJ.addMust("meta.name");
+            _ContainedElementOBJ.setDmwIteratorImport("org.dmd.templates.server.generated.dmw.ContainedElementIterableDMW");
+            _ContainedElementOBJ.setPartOfDefinitionModule("dmtdl.TdlModule");
+            _ContainedElementOBJ.setDotName("dmtdl.ContainedElement.ClassDefinition");
+            _ContainedElement.setDefinedIn(this);
+            addClassDefList(_ContainedElement);
+
+// Generated from: org.dmd.dmg.util.SchemaFormatter.getObjectAsCode(SchemaFormatter.java:585)
             ClassDefinitionDMO _SectionOBJ = new ClassDefinitionDMO();
             _Section = new ClassDefinition(_SectionOBJ,DmtdlDMSAG.__Section);
             _SectionOBJ.setName("Section");
-            _SectionOBJ.setDmdID("-478597");
+            _SectionOBJ.setDmdID("-478596");
             _SectionOBJ.setClassType("STRUCTURAL");
             _SectionOBJ.setFile("/src/org/dmd/templates/shared/dmdconfig/classes.dmd");
-            _SectionOBJ.setLineNumber("49");
-            _SectionOBJ.addDescription("A Section represents part of a textual artifact that you want format.\n The artifact could be an XHTML document, an XML document, a piece of code, a form\n letter - whatever. The content of a Section may start with another Section or static\n piece of text and, likewise, end with a Section or static piece of text.\n <p/>\n Sections can also contain other (sub) Sections. \n <p/>\n Sections can also have named values that can be inserted into Templates. By specifying\n values, you define a set of values that can be accessed and embedded within the associated\n Template.\n <p/>\n When a Section's format() method is called, it will dump the contents in the following order:\n <ul>\n <li> any starts with material </li>\n <li> the formatted contents of the associated Template </li>\n <li> the formatted contents of any contained Sections </li>\n <li> any ends with material </li>\n </ul>");
-            _SectionOBJ.setDerivedFrom("dmtdl.TdlDefinition");
+            _SectionOBJ.setLineNumber("58");
+            _SectionOBJ.addDescription("A Section represents part of a textual artifact that you want to format.\n The artifact could be an XHTML document, an XML document, a piece of code, a form\n letter - whatever. The content of a Section may start with another Section or static\n piece of text and, likewise, end with a Section or static piece of text.\n <p/>\n Sections can also contain other (sub) Sections. \n <p/>\n Sections can also have named values that can be inserted into Templates. By specifying\n values, you define a set of values that can be accessed and embedded within the associated\n Template.\n <p/>\n When a Section's format() method is called, it will dump the contents in the following order:\n <ul>\n <li> any starts with material </li>\n <li> the formatted contents of the associated Template </li>\n <li> the formatted contents of any contained Sections </li>\n <li> any ends with material </li>\n </ul>");
+            _SectionOBJ.setDerivedFrom("dmtdl.ContainedElement");
             _SectionOBJ.setIsNamedBy("meta.name");
             _SectionOBJ.setUseWrapperType("EXTENDED");
             _SectionOBJ.setDmtREFImport("org.dmd.templates.shared.generated.types.SectionREF");
@@ -166,10 +188,10 @@ public class DmtdlSchemaAG extends SchemaDefinition {
             ClassDefinitionDMO _TextualArtifactOBJ = new ClassDefinitionDMO();
             _TextualArtifact = new ClassDefinition(_TextualArtifactOBJ,DmtdlDMSAG.__TextualArtifact);
             _TextualArtifactOBJ.setName("TextualArtifact");
-            _TextualArtifactOBJ.setDmdID("-478596");
+            _TextualArtifactOBJ.setDmdID("-478595");
             _TextualArtifactOBJ.setClassType("STRUCTURAL");
             _TextualArtifactOBJ.setFile("/src/org/dmd/templates/shared/dmdconfig/classes.dmd");
-            _TextualArtifactOBJ.setLineNumber("68");
+            _TextualArtifactOBJ.setLineNumber("77");
             _TextualArtifactOBJ.addDescription("A TextualArtifact is the top level entity that is comprised of Sections\n and formatted via Templates.");
             _TextualArtifactOBJ.setDerivedFrom("dmtdl.TdlDefinition");
             _TextualArtifactOBJ.setIsNamedBy("meta.name");
@@ -185,13 +207,34 @@ public class DmtdlSchemaAG extends SchemaDefinition {
             addClassDefList(_TextualArtifact);
 
 // Generated from: org.dmd.dmg.util.SchemaFormatter.getObjectAsCode(SchemaFormatter.java:585)
+            ClassDefinitionDMO _ExtensionHookOBJ = new ClassDefinitionDMO();
+            _ExtensionHook = new ClassDefinition(_ExtensionHookOBJ,DmtdlDMSAG.__ExtensionHook);
+            _ExtensionHookOBJ.setName("ExtensionHook");
+            _ExtensionHookOBJ.setDmdID("-478594");
+            _ExtensionHookOBJ.setClassType("STRUCTURAL");
+            _ExtensionHookOBJ.setFile("/src/org/dmd/templates/shared/dmdconfig/classes.dmd");
+            _ExtensionHookOBJ.setLineNumber("106");
+            _ExtensionHookOBJ.addDescription("The dark-matter Domain Specific Definition (DSD) mechanisms allow for the\n extension of objects using auxliary classes and arbitrary name value pairs (via the nvp attribute).\n These mechanisms are useful because they allow you to augment an existing Domain Specific Language\n (DSL) with your own information that can be used to facilitate generation of other types\n of artifacts.\n <p/>\n However, you might also want that additional information to show up in the documentation\n produced as part of the base DSL. That's where the ExtensionHook mechanism comes into play;\n although you can use this for your own purposes to allow others to extend the\n content of your generated artifacts - there's nothing dark-matter specific about \n the mechanism.\n <p/>\n When defining your Sections, you may include ExtensionHook instances");
+            _ExtensionHookOBJ.setDerivedFrom("dmtdl.ContainedElement");
+            _ExtensionHookOBJ.setIsNamedBy("meta.name");
+            _ExtensionHookOBJ.setUseWrapperType("EXTENDED");
+            _ExtensionHookOBJ.setDmtREFImport("org.dmd.templates.shared.generated.types.ExtensionHookREF");
+            _ExtensionHookOBJ.setDmwIteratorClass("ExtensionHookIterableDMW");
+            _ExtensionHookOBJ.addMust("meta.name");
+            _ExtensionHookOBJ.setDmwIteratorImport("org.dmd.templates.server.generated.dmw.ExtensionHookIterableDMW");
+            _ExtensionHookOBJ.setPartOfDefinitionModule("dmtdl.TdlModule");
+            _ExtensionHookOBJ.setDotName("dmtdl.ExtensionHook.ClassDefinition");
+            _ExtensionHook.setDefinedIn(this);
+            addClassDefList(_ExtensionHook);
+
+// Generated from: org.dmd.dmg.util.SchemaFormatter.getObjectAsCode(SchemaFormatter.java:585)
             ClassDefinitionDMO _TemplateOBJ = new ClassDefinitionDMO();
             _Template = new ClassDefinition(_TemplateOBJ,DmtdlDMSAG.__Template);
             _TemplateOBJ.setName("Template");
-            _TemplateOBJ.setDmdID("-478595");
+            _TemplateOBJ.setDmdID("-478593");
             _TemplateOBJ.setClassType("STRUCTURAL");
             _TemplateOBJ.setFile("/src/org/dmd/templates/shared/dmdconfig/classes.dmd");
-            _TemplateOBJ.setLineNumber("104");
+            _TemplateOBJ.setLineNumber("137");
             _TemplateOBJ.addDescription("The Template object provides a mechanism to define an arbitrary set of\n text that allows for the insertion of the named values defined as part of the associated\n Section definition.\n <p/>\n By convention, the Template associated with a Section has the same name as the Section. For example:\n <pre>\n Section\n name Header\n </pre>\n would have a template as follows:\n <pre>\n Template\n name Header\n </pre>\n Templates are kept separate from the Section definitions so that their content can be\n changed without regenerating code. Templates are loaded using the generated TemplateParser\n for a given TdlModule.");
             _TemplateOBJ.setIsNamedBy("meta.name");
             _TemplateOBJ.setUseWrapperType("EXTENDED");

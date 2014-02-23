@@ -11,6 +11,8 @@ import org.dmd.dmc.*;             // Basic DMC stuff - (DmoCompactSchemaFormatte
 public class DmtdlDMSAGCMAP {
 
     static protected void initCmAp(HashMap<Integer, DmcClassInfo> _CmAp){
+        _CmAp.put(DmtdlDMSAG.__ContainedElement.id,DmtdlDMSAG.__ContainedElement);
+        _CmAp.put(DmtdlDMSAG.__ExtensionHook.id,DmtdlDMSAG.__ExtensionHook);
         _CmAp.put(DmtdlDMSAG.__Section.id,DmtdlDMSAG.__Section);
         _CmAp.put(DmtdlDMSAG.__TdlDefinition.id,DmtdlDMSAG.__TdlDefinition);
         _CmAp.put(DmtdlDMSAG.__TdlModule.id,DmtdlDMSAG.__TdlModule);
