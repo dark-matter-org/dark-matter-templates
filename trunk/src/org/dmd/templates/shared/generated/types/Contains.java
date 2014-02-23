@@ -17,28 +17,28 @@ package org.dmd.templates.shared.generated.types;
 
 // Generated from: org.dmd.util.codegen.ImportManager.getFormattedImports(ImportManager.java:82)
 // Called from: org.dmd.dms.util.NewComplexTypeFormatter.dumpComplexType(NewComplexTypeFormatter.java:123)
-import java.io.Serializable;                                                          // To prevent serialization warnings - (NewComplexTypeFormatter.java:92)
-import java.util.ArrayList;                                                           // To store ParsedNameValuePairs - (NewComplexTypeFormatter.java:99)
-import org.dmd.dmc.DmcAttributeInfo;                                                  // For fake DmcAttributeInfo - (NewComplexTypeFormatter.java:97)
-import org.dmd.dmc.DmcContainerIF;                                                    // To support object references - (NewComplexTypeFormatter.java:109)
-import org.dmd.dmc.DmcInputStreamIF;                                                  // Standard serialization techniques - (NewComplexTypeFormatter.java:93)
-import org.dmd.dmc.DmcNameClashResolverIF;                                            // To support possible clashing object references - (NewComplexTypeFormatter.java:113)
-import org.dmd.dmc.DmcNameResolverIF;                                                 // To support object references - (NewComplexTypeFormatter.java:106)
-import org.dmd.dmc.DmcNameResolverWithClashSupportIF;                                 // To support possible clashing object references - (NewComplexTypeFormatter.java:111)
-import org.dmd.dmc.DmcNamedObjectIF;                                                  // To support object references - (NewComplexTypeFormatter.java:107)
-import org.dmd.dmc.DmcNamedObjectREF;                                                 // To support object references - (NewComplexTypeFormatter.java:108)
-import org.dmd.dmc.DmcObject;                                                         // To support possible clashing object references - (NewComplexTypeFormatter.java:114)
-import org.dmd.dmc.DmcOutputStreamIF;                                                 // Standard serialization techniques - (NewComplexTypeFormatter.java:94)
-import org.dmd.dmc.DmcValueException;                                                 // Standard value exception - (NewComplexTypeFormatter.java:118)
-import org.dmd.dmc.DmcValueExceptionSet;                                              // To support possible clashing object references - (NewComplexTypeFormatter.java:115)
-import org.dmd.dmc.util.ComplexTypeSplitter;                                          // For parsing initial input - (NewComplexTypeFormatter.java:98)
-import org.dmd.dmc.util.ParsedNameValuePair;                                          // To store values parsed from initial input - (NewComplexTypeFormatter.java:100)
-import org.dmd.dms.generated.enums.DataTypeEnum;                                      // For fake DmcAttributeInfo - (NewComplexTypeFormatter.java:95)
-import org.dmd.dms.generated.enums.ValueTypeEnum;                                     // For fake DmcAttributeInfo - (NewComplexTypeFormatter.java:96)
-import org.dmd.templates.shared.generated.enums.CardinalityEnum;                      // Primitive type - (NewComplexTypeFormatter.java:780)
-import org.dmd.templates.shared.generated.types.DmcTypeCardinalityEnumSTATIC;         // Internally generated type - (NewComplexTypeFormatter.java:797)
-import org.dmd.templates.shared.generated.types.DmcTypeSectionREFSTATIC;              // Internally generated type - (NewComplexTypeFormatter.java:797)
-import org.dmd.templates.shared.generated.types.SectionREF;                           // Object reference - (NewComplexTypeFormatter.java:772)
+import java.io.Serializable;                                                              // To prevent serialization warnings - (NewComplexTypeFormatter.java:92)
+import java.util.ArrayList;                                                               // To store ParsedNameValuePairs - (NewComplexTypeFormatter.java:99)
+import org.dmd.dmc.DmcAttributeInfo;                                                      // For fake DmcAttributeInfo - (NewComplexTypeFormatter.java:97)
+import org.dmd.dmc.DmcContainerIF;                                                        // To support object references - (NewComplexTypeFormatter.java:109)
+import org.dmd.dmc.DmcInputStreamIF;                                                      // Standard serialization techniques - (NewComplexTypeFormatter.java:93)
+import org.dmd.dmc.DmcNameClashResolverIF;                                                // To support possible clashing object references - (NewComplexTypeFormatter.java:113)
+import org.dmd.dmc.DmcNameResolverIF;                                                     // To support object references - (NewComplexTypeFormatter.java:106)
+import org.dmd.dmc.DmcNameResolverWithClashSupportIF;                                     // To support possible clashing object references - (NewComplexTypeFormatter.java:111)
+import org.dmd.dmc.DmcNamedObjectIF;                                                      // To support object references - (NewComplexTypeFormatter.java:107)
+import org.dmd.dmc.DmcNamedObjectREF;                                                     // To support object references - (NewComplexTypeFormatter.java:108)
+import org.dmd.dmc.DmcObject;                                                             // To support possible clashing object references - (NewComplexTypeFormatter.java:114)
+import org.dmd.dmc.DmcOutputStreamIF;                                                     // Standard serialization techniques - (NewComplexTypeFormatter.java:94)
+import org.dmd.dmc.DmcValueException;                                                     // Standard value exception - (NewComplexTypeFormatter.java:118)
+import org.dmd.dmc.DmcValueExceptionSet;                                                  // To support possible clashing object references - (NewComplexTypeFormatter.java:115)
+import org.dmd.dmc.util.ComplexTypeSplitter;                                              // For parsing initial input - (NewComplexTypeFormatter.java:98)
+import org.dmd.dmc.util.ParsedNameValuePair;                                              // To store values parsed from initial input - (NewComplexTypeFormatter.java:100)
+import org.dmd.dms.generated.enums.DataTypeEnum;                                          // For fake DmcAttributeInfo - (NewComplexTypeFormatter.java:95)
+import org.dmd.dms.generated.enums.ValueTypeEnum;                                         // For fake DmcAttributeInfo - (NewComplexTypeFormatter.java:96)
+import org.dmd.templates.shared.generated.enums.CardinalityEnum;                          // Primitive type - (NewComplexTypeFormatter.java:780)
+import org.dmd.templates.shared.generated.types.ContainedElementREF;                      // Object reference - (NewComplexTypeFormatter.java:772)
+import org.dmd.templates.shared.generated.types.DmcTypeCardinalityEnumSTATIC;             // Internally generated type - (NewComplexTypeFormatter.java:797)
+import org.dmd.templates.shared.generated.types.DmcTypeContainedElementREFSTATIC;         // Internally generated type - (NewComplexTypeFormatter.java:797)
 
 
 
@@ -58,10 +58,10 @@ public class Contains implements Serializable {
 
     final static DmcAttributeInfo occurencesAI = new DmcAttributeInfo("occurences",0,"CardinalityEnum",ValueTypeEnum.SINGLE,DataTypeEnum.UNKNOWN);
 
-    // The Section being referenced.
-    SectionREF sectionV;
+    // The Section or ExtensionHook being referenced.
+    ContainedElementREF elementV;
 
-    final static DmcAttributeInfo sectionAI = new DmcAttributeInfo("section",0,"Section",ValueTypeEnum.SINGLE,DataTypeEnum.UNKNOWN);
+    final static DmcAttributeInfo elementAI = new DmcAttributeInfo("element",0,"ContainedElement",ValueTypeEnum.SINGLE,DataTypeEnum.UNKNOWN);
 
     /**
      * Default constructor.
@@ -75,16 +75,16 @@ public class Contains implements Serializable {
     public Contains(Contains original){
     // Generated from: org.dmd.dms.util.NewComplexTypeFormatter.getCopyConstructorAssignments(NewComplexTypeFormatter.java:735)
         occurencesV =  original.occurencesV;
-        sectionV =  original.sectionV;
+        elementV =  original.elementV;
     }
 
     /**
      * All fields constructor.
      * Generated from: org.dmd.dms.util.NewComplexTypeFormatter.dumpComplexType(NewComplexTypeFormatter.java:161)
      */
-    public Contains(CardinalityEnum occurences_, SectionREF section_) throws DmcValueException {
+    public Contains(CardinalityEnum occurences_, ContainedElementREF element_) throws DmcValueException {
         occurencesV = DmcTypeCardinalityEnumSTATIC.instance.typeCheck(occurences_);
-        sectionV = DmcTypeSectionREFSTATIC.instance.typeCheck(section_);
+        elementV = DmcTypeContainedElementREFSTATIC.instance.typeCheck(element_);
     }
 
     /**
@@ -105,7 +105,7 @@ public class Contains implements Serializable {
             throw(new DmcValueException("Missing required values for complex type: Contains"));
 
         occurencesV = DmcTypeCardinalityEnumSTATIC.instance.typeCheck(nvp.get(0).getValue());
-        sectionV = DmcTypeSectionREFSTATIC.instance.typeCheck(nvp.get(1).getValue());
+        elementV = DmcTypeContainedElementREFSTATIC.instance.typeCheck(nvp.get(1).getValue());
     }
 
     /**
@@ -130,7 +130,7 @@ public class Contains implements Serializable {
         StringBuffer sb = new StringBuffer();
         sb.append(occurencesV.toString());
         sb.append(' ');
-        sb.append("\"" + sectionV.toString() + "\"");
+        sb.append(elementV.toString());
         return(sb.toString());
     }
 
@@ -138,8 +138,8 @@ public class Contains implements Serializable {
         return(occurencesV);
     }
 
-    public SectionREF getSection(){
-        return(sectionV);
+    public ContainedElementREF getElement(){
+        return(elementV);
     }
 
     // Generated from: org.dmd.dms.util.NewComplexTypeFormatter.dumpComplexType(NewComplexTypeFormatter.java:449)
@@ -147,15 +147,15 @@ public class Contains implements Serializable {
     public void resolve(DmcNameResolverIF resolver, String attrName) throws DmcValueException {
         DmcNamedObjectIF  obj = null;
 
-        if ((sectionV != null) && (!sectionV.isResolved())){
-            obj = resolver.findNamedObject(sectionV.getObjectName());
+        if ((elementV != null) && (!elementV.isResolved())){
+            obj = resolver.findNamedObject(elementV.getObjectName());
             if (obj == null)
-                throw(new DmcValueException("Could not resolve reference to: " + sectionV.getObjectName() + " via attribute: " + attrName));
+                throw(new DmcValueException("Could not resolve reference to: " + elementV.getObjectName() + " via attribute: " + attrName));
         
             if (obj instanceof DmcContainerIF)
-                ((DmcNamedObjectREF)sectionV).setObject((DmcNamedObjectIF) ((DmcContainerIF)obj).getDmcObject());
+                ((DmcNamedObjectREF)elementV).setObject((DmcNamedObjectIF) ((DmcContainerIF)obj).getDmcObject());
             else
-                ((DmcNamedObjectREF)sectionV).setObject(obj);
+                ((DmcNamedObjectREF)elementV).setObject(obj);
         }
         
     }
@@ -165,15 +165,15 @@ public class Contains implements Serializable {
     public void resolve(DmcNameResolverWithClashSupportIF resolver, DmcObject object, DmcNameClashResolverIF ncr, DmcAttributeInfo ai) throws DmcValueException, DmcValueExceptionSet {
         DmcNamedObjectIF  obj = null;
 
-        if ((sectionV != null) && (!sectionV.isResolved())){
-            obj = resolver.findNamedObjectMayClash(object, sectionV.getObjectName(), ncr, sectionAI);
+        if ((elementV != null) && (!elementV.isResolved())){
+            obj = resolver.findNamedObjectMayClash(object, elementV.getObjectName(), ncr, elementAI);
             if (obj == null)
-                throw(new DmcValueException("Could not resolve reference to: " + sectionV.getObjectName() + " via attribute: " + ai.name));
+                throw(new DmcValueException("Could not resolve reference to: " + elementV.getObjectName() + " via attribute: " + ai.name));
         
             if (obj instanceof DmcContainerIF)
-                ((DmcNamedObjectREF)sectionV).setObject((DmcNamedObjectIF) ((DmcContainerIF)obj).getDmcObject());
+                ((DmcNamedObjectREF)elementV).setObject((DmcNamedObjectIF) ((DmcContainerIF)obj).getDmcObject());
             else
-                ((DmcNamedObjectREF)sectionV).setObject(obj);
+                ((DmcNamedObjectREF)elementV).setObject(obj);
         }
         
     }

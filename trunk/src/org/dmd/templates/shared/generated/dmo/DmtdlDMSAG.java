@@ -53,6 +53,7 @@ public class DmtdlDMSAG implements DmcCompactSchemaIF {
     public final static DmcAttributeInfo __startsWithText = new DmcAttributeInfo("dmtdl", "startsWithText", -478592, "String", ValueTypeEnum.SINGLE, DataTypeEnum.PERSISTENT);
     public final static DmcAttributeInfo __templateFile = new DmcAttributeInfo("dmtdl", "templateFile", -478588, "String", ValueTypeEnum.SINGLE, DataTypeEnum.PERSISTENT);
     public final static DmcAttributeInfo __templateFileSuffix = new DmcAttributeInfo("dmtdl", "templateFileSuffix", -478585, "String", ValueTypeEnum.SINGLE, DataTypeEnum.PERSISTENT);
+    public final static DmcAttributeInfo __usesSection = new DmcAttributeInfo("dmtdl", "usesSection", -478581, "Section", ValueTypeEnum.SINGLE, DataTypeEnum.PERSISTENT);
     public final static DmcAttributeInfo __usesTemplate = new DmcAttributeInfo("dmtdl", "usesTemplate", -478595, "Boolean", ValueTypeEnum.SINGLE, DataTypeEnum.PERSISTENT);
     public final static DmcAttributeInfo __value = new DmcAttributeInfo("dmtdl", "value", -478589, "Value", ValueTypeEnum.MULTI, DataTypeEnum.PERSISTENT);
 
@@ -143,6 +144,7 @@ public class DmtdlDMSAG implements DmcCompactSchemaIF {
         __TextualArtifact.addMust(__contains);
 
         __ExtensionHook.addMust(MetaDMSAG.__name);
+        __ExtensionHook.addMust(__usesSection);
 
         __Template.addMust(MetaDMSAG.__name);
         __Template.addMust(__format);
