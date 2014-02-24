@@ -26,6 +26,54 @@ public class TdlModule extends TdlModuleDMW {
         super(dmo,cd);
     }
     
+    public void generateExtensionInterface(String outdir) throws IOException {
+    	if (getExtensionHookCount() == 0)
+    		return;
+    	
+		ImportManager imports = new ImportManager();
+
+		imports.addImport("java.util.ArrayList", "To hold formatted extensions");
+
+		Iterator<ExtensionHook>	hooks = getAllExtensionHook();
+		while(hooks.hasNext()){
+			ExtensionHook hook = hooks.next();
+			imports.addImport(hook.getUsesSection().getClassImport(), "Used by ExtensionHook - " + hook.getName());
+			imports.addImport(hook.getTargetObjectClass(), "The object formatted by ExtensionHook - " + hook.getName());
+		}
+		
+		String cn = GenUtility.capTheName(getName().getNameString() + "ExtensionHookIF");
+		
+		BufferedWriter 	out = FileUpdateManager.instance().getWriter(outdir, cn + ".java");
+
+		out.write("package " + getPackage() + ".generated.dmtdl;\n\n");
+
+		out.write(imports.getFormattedImports() + "\n");
+		out.write("\n");
+		
+		out.write("// Generated from: " + DebugInfo.getWhereWeAreNow() + "\n");
+		out.write("public interface " + cn + " {\n\n");
+		
+		hooks = getAllExtensionHook();
+		while(hooks.hasNext()){
+			ExtensionHook hook = hooks.next();
+			int lastDot = hook.getTargetObjectClass().lastIndexOf(".");
+			String toc = hook.getTargetObjectClass().substring(lastDot+1);
+			
+			out.write("    /**\n");
+			out.write("     * Create any other required " + hook.getUsesSection().getName() + " entries based on the " + toc + " object.\n");
+			out.write("     * @param target the object currently being formatted.\n");
+			out.write("     * @return null or a set of " + hook.getUsesSection().getName() + " Sections to be inserted in the artifact.\n");
+			out.write("     */\n");
+			out.write("    public ArrayList<" + hook.getUsesSection().getName() + "> perform" + hook.getName() + "(" + toc + " target);\n");
+			out.write("\n");
+		}
+		
+		out.write("\n");
+		out.write("}\n\n");
+		
+		out.close();
+    }
+        
     public void generateTemplateLoader(String outdir) throws IOException {
 		ImportManager imports = new ImportManager();
 		MemberManager members = new MemberManager();
@@ -54,13 +102,13 @@ public class TdlModule extends TdlModuleDMW {
 		imports.addImport("org.dmd.dms.generated.dmw.AttributeDefinitionIterableDMW", "To allow addition of preserve newline attributes");
 		imports.addImport("org.dmd.templates.server.util.TemplateMediator", "Allows us to access loaded templates");
 
-		members.addMember("SchemaManager",                	"schema", "Manages the schema for this DSD");
-		members.addMember("DmcUncheckedOIFParser",       	"parser", "new DmcUncheckedOIFParser(this)", "Parses objects from the config file");
-		members.addMember("DmwObjectFactory",             	"factory", "Instantiates wrapped objects");
-		members.addMember("DmvRuleManager", 				"rules", "new DmvRuleManager()", "Rule manager");
-		members.addMember("ConfigFinder", 					"finder", "new ConfigFinder(\"" + getTemplateFileSuffix() + "\")", "Config finder for template files ending with ." + getTemplateFileSuffix());
-		members.addMember("ConfigLocation",					"location", "The location of the config being parsed");
-		members.addMember("TreeMap<String,TemplateMediator>",				"mediators", "new TreeMap<String,TemplateMediator>()", "The mediators by name");
+		members.addMember("SchemaManager",                		"schema", "Manages the schema for this DSD");
+		members.addMember("DmcUncheckedOIFParser",       		"parser", "new DmcUncheckedOIFParser(this)", "Parses objects from the config file");
+		members.addMember("DmwObjectFactory",             		"factory", "Instantiates wrapped objects");
+		members.addMember("DmvRuleManager", 					"rules", "new DmvRuleManager()", "Rule manager");
+		members.addMember("ConfigFinder", 						"finder", "new ConfigFinder(\"" + getTemplateFileSuffix() + "\")", "Config finder for template files ending with ." + getTemplateFileSuffix());
+		members.addMember("ConfigLocation",						"location", "The location of the config being parsed");
+		members.addMember("TreeMap<String,TemplateMediator>",	"mediators", "new TreeMap<String,TemplateMediator>()", "The mediators by name");
 		members.addSpacer();
 		
 		Iterator<Section>	sections = getAllSection();

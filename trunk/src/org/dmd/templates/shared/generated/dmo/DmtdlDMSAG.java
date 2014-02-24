@@ -51,6 +51,7 @@ public class DmtdlDMSAG implements DmcCompactSchemaIF {
     public final static DmcAttributeInfo __package = new DmcAttributeInfo("dmtdl", "package", -478587, "String", ValueTypeEnum.SINGLE, DataTypeEnum.PERSISTENT);
     public final static DmcAttributeInfo __startsWith = new DmcAttributeInfo("dmtdl", "startsWith", -478593, "Section", ValueTypeEnum.SINGLE, DataTypeEnum.PERSISTENT);
     public final static DmcAttributeInfo __startsWithText = new DmcAttributeInfo("dmtdl", "startsWithText", -478592, "String", ValueTypeEnum.SINGLE, DataTypeEnum.PERSISTENT);
+    public final static DmcAttributeInfo __targetObjectClass = new DmcAttributeInfo("dmtdl", "targetObjectClass", -478580, "String", ValueTypeEnum.SINGLE, DataTypeEnum.PERSISTENT);
     public final static DmcAttributeInfo __templateFile = new DmcAttributeInfo("dmtdl", "templateFile", -478588, "String", ValueTypeEnum.SINGLE, DataTypeEnum.PERSISTENT);
     public final static DmcAttributeInfo __templateFileSuffix = new DmcAttributeInfo("dmtdl", "templateFileSuffix", -478585, "String", ValueTypeEnum.SINGLE, DataTypeEnum.PERSISTENT);
     public final static DmcAttributeInfo __usesSection = new DmcAttributeInfo("dmtdl", "usesSection", -478581, "Section", ValueTypeEnum.SINGLE, DataTypeEnum.PERSISTENT);
@@ -83,6 +84,7 @@ public class DmtdlDMSAG implements DmcCompactSchemaIF {
     public final static OnlyOneOfTheseAttributesAllowedRule __dmtdlEndsWith;
     public final static ValueLengthRule __dmtdlInsertMarkerLength;
     public final static OnlyOneOfTheseAttributesAllowedRule __dmtdlStartsWith;
+    public final static PatternMatchRule __dmtdlTargetObjectClass;
 
     static  HashMap<Integer, DmcClassInfo> _CmAp;
 
@@ -145,6 +147,7 @@ public class DmtdlDMSAG implements DmcCompactSchemaIF {
 
         __ExtensionHook.addMust(MetaDMSAG.__name);
         __ExtensionHook.addMust(__usesSection);
+        __ExtensionHook.addMust(__targetObjectClass);
 
         __Template.addMust(MetaDMSAG.__name);
         __Template.addMust(__format);
@@ -225,6 +228,18 @@ public class DmtdlDMSAG implements DmcCompactSchemaIF {
             __dmtdlStartsWith = new OnlyOneOfTheseAttributesAllowedRule(_dmtdlStartsWithData);
 
             _RmAp.add(__dmtdlStartsWith);
+
+            PatternMatchRuleDataDMO _dmtdlTargetObjectClassData = new PatternMatchRuleDataDMO();
+            _dmtdlTargetObjectClassData  .setRuleName("dmtdlTargetObjectClass");
+            _dmtdlTargetObjectClassData  .setRuleTitle("The targetObjectClass must be a valid, fully qualified, Java class name.");
+            _dmtdlTargetObjectClassData  .setMatchesPattern("([a-zA-Z_$][a-zA-Z0-9_$]*.)*[a-zA-Z_$][a-zA-Z0-9_$]*");
+            _dmtdlTargetObjectClassData  .setFile("/src/org/dmd/templates/shared/dmdconfig/attributes.dmd");
+            _dmtdlTargetObjectClassData  .setDefinedIn("dmtdl");
+            _dmtdlTargetObjectClassData  .setLineNumber("193");
+
+            __dmtdlTargetObjectClass = new PatternMatchRule(_dmtdlTargetObjectClassData);
+
+            _RmAp.add(__dmtdlTargetObjectClass);
 
         } catch(DmcValueException ex){
             throw(new IllegalStateException(ex));

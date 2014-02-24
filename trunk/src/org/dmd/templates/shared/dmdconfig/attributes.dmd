@@ -179,4 +179,15 @@ dmdID				19
 type				Section
 description			The Section type that will be used to format the contents of an ExtensionHook.
 
+AttributeDefinition
+name				targetObjectClass
+dmdID				20
+type				String
+description			The fully qualified name of the type of object that is being formatted when
+ an ExtensionHook is called.
+
+PatternMatchRuleData
+ruleName	dmtdlTargetObjectClass
+ruleTitle	The targetObjectClass must be a valid, fully qualified, Java class name.
+matchesPattern ([a-zA-Z_$][a-zA-Z0-9_$]*.)*[a-zA-Z_$][a-zA-Z0-9_$]*
 

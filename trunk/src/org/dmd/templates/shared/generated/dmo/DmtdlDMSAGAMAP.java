@@ -25,6 +25,7 @@ public class DmtdlDMSAGAMAP {
         _SmAp.put(DmtdlDMSAG.__package.id,DmtdlDMSAG.__package);
         _SmAp.put(DmtdlDMSAG.__startsWith.id,DmtdlDMSAG.__startsWith);
         _SmAp.put(DmtdlDMSAG.__startsWithText.id,DmtdlDMSAG.__startsWithText);
+        _SmAp.put(DmtdlDMSAG.__targetObjectClass.id,DmtdlDMSAG.__targetObjectClass);
         _SmAp.put(DmtdlDMSAG.__templateFile.id,DmtdlDMSAG.__templateFile);
         _SmAp.put(DmtdlDMSAG.__templateFileSuffix.id,DmtdlDMSAG.__templateFileSuffix);
         _SmAp.put(DmtdlDMSAG.__usesSection.id,DmtdlDMSAG.__usesSection);

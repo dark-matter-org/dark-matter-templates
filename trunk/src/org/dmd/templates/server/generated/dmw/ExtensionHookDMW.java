@@ -137,6 +137,37 @@ abstract public class ExtensionHookDMW extends ContainedElement implements DmcDe
         ((ExtensionHookDMO) core).remName();
     }
 
+    // org.dmd.dmg.generators.BaseDMWGenerator.formatSV(BaseDMWGenerator.java:1474)
+    public String getTargetObjectClass(){
+        return(((ExtensionHookDMO) core).getTargetObjectClass());
+    }
+
+    /**
+     * Sets targetObjectClass to the specified value.
+     * @param value A value compatible with DmcTypeString
+     */
+    // org.dmd.dmg.generators.BaseDMWGenerator.formatSV(BaseDMWGenerator.java:1584)
+    public void setTargetObjectClass(Object value) throws DmcValueException {
+        ((ExtensionHookDMO) core).setTargetObjectClass(value);
+    }
+
+    /**
+     * Sets targetObjectClass to the specified value.
+     * @param value String
+     */
+    // org.dmd.dmg.generators.BaseDMWGenerator.formatSV(BaseDMWGenerator.java:1593)
+    public void setTargetObjectClass(String value){
+        ((ExtensionHookDMO) core).setTargetObjectClass(value);
+    }
+
+    /**
+     * Removes the targetObjectClass attribute value.
+     */
+    // org.dmd.dmg.generators.BaseDMWGenerator.formatSV(BaseDMWGenerator.java:1619)
+    public void remTargetObjectClass(){
+        ((ExtensionHookDMO) core).remTargetObjectClass();
+    }
+
     /**
      * @return A Section object.
      */

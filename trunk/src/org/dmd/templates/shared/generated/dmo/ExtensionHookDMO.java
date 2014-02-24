@@ -26,6 +26,7 @@ import org.dmd.dmc.types.DefinitionName;                                     // 
 import org.dmd.dms.generated.dmo.MetaDMSAG;                                  // Required for MODREC constructor - (GenUtility.java:228)
 import org.dmd.dms.generated.types.DmcTypeDefinitionNameSV;                  // Required type - (GenUtility.java:328)
 import org.dmd.dms.generated.types.DmcTypeModifierMV;                        // Required for MODREC constructor - (GenUtility.java:227)
+import org.dmd.dms.generated.types.DmcTypeStringSV;                          // Required type - (GenUtility.java:328)
 import org.dmd.templates.shared.generated.dmo.ContainedElementDMO;           // Base class - (GenUtility.java:355)
 import org.dmd.templates.shared.generated.dmo.SectionDMO;                    // Type specific set/add - (GenUtility.java:307)
 import org.dmd.templates.shared.generated.types.DmcTypeSectionREFSV;         // Reference type - (GenUtility.java:300)
@@ -257,6 +258,56 @@ public class ExtensionHookDMO  extends ContainedElementDMO  implements DmcNamedO
     // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:897)
     public void remUsesSection(){
          rem(DmtdlDMSAG.__usesSection);
+    }
+
+    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:784)
+    public String getTargetObjectClass(){
+        DmcTypeStringSV attr = (DmcTypeStringSV) get(DmtdlDMSAG.__targetObjectClass);
+        if (attr == null)
+            return(null);
+
+        return(attr.getSV());
+    }
+
+    /**
+     * Sets targetObjectClass to the specified value.
+     * @param value String
+     */
+    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:824)
+    public void setTargetObjectClass(String value) {
+        DmcAttribute<?> attr = get(DmtdlDMSAG.__targetObjectClass);
+        if (attr == null)
+            attr = new DmcTypeStringSV(DmtdlDMSAG.__targetObjectClass);
+        
+        try{
+            attr.set(value);
+            set(DmtdlDMSAG.__targetObjectClass,attr);
+        }
+        catch(DmcValueException ex){
+            throw(new IllegalStateException("The type specific set() method shouldn't throw exceptions!",ex));
+        }
+    }
+
+    /**
+     * Sets targetObjectClass to the specified value.
+     * @param value A value compatible with DmcTypeStringSV
+     */
+    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:877)
+    public void setTargetObjectClass(Object value) throws DmcValueException {
+        DmcTypeStringSV attr  = (DmcTypeStringSV) get(DmtdlDMSAG.__targetObjectClass);
+        if (attr == null)
+            attr = new DmcTypeStringSV(DmtdlDMSAG.__targetObjectClass);
+        
+        attr.set(value);
+        set(DmtdlDMSAG.__targetObjectClass,attr);
+    }
+
+    /**
+     * Removes the targetObjectClass attribute value.
+     */
+    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:897)
+    public void remTargetObjectClass(){
+         rem(DmtdlDMSAG.__targetObjectClass);
     }
 
 

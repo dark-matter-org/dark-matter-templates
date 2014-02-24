@@ -61,6 +61,7 @@ public class DmtdlSchemaAG extends SchemaDefinition {
     public static AttributeDefinition _commentFormat;
     public static AttributeDefinition _debugOn;
     public static AttributeDefinition _usesSection;
+    public static AttributeDefinition _targetObjectClass;
 
 
     public static ComplexTypeDefinition _Contains;
@@ -214,7 +215,7 @@ public class DmtdlSchemaAG extends SchemaDefinition {
             _ExtensionHookOBJ.setDmdID("-478594");
             _ExtensionHookOBJ.setClassType("STRUCTURAL");
             _ExtensionHookOBJ.setFile("/src/org/dmd/templates/shared/dmdconfig/classes.dmd");
-            _ExtensionHookOBJ.setLineNumber("116");
+            _ExtensionHookOBJ.setLineNumber("117");
             _ExtensionHookOBJ.addDescription("The dark-matter Domain Specific Definition (DSD) mechanisms allow for the\n extension of objects using auxliary classes and arbitrary name value pairs (via the nvp attribute).\n These mechanisms are useful because they allow you to augment an existing Domain Specific Language\n (DSL) with your own information that can be used to facilitate generation of other types\n of artifacts.\n <p/>\n However, you might also want that additional information to show up in the documentation\n produced as part of the base DSL. That's where the ExtensionHook mechanism comes into play;\n although you can use this for your own purposes to allow others to extend the\n content of your generated artifacts - there's nothing dark-matter specific about \n the mechanism.\n <p/>\n When defining your Sections, you may indicate that they contain ExtensionHooks.  This\n will result in the generation of an ExtensionHook interface for the template definition module.\n Other designers who have extended your DSL then create a class that implements the ExtensionHook\n interface and have it dynamically loaded when the artifact generator is invoked (this is usually\n done via commandline arguments that are passed to the generated TemplateLoader). It's up to the\n designer of the base DSL to provide these mechanisms.\n <p/>\n When formatting the artifact, the base DSL designer will call the method on a Section\n (in the appropriate sequence) to have the TemplateLoader call any registered classes that\n implement the ExtensionHook interface.");
             _ExtensionHookOBJ.setDerivedFrom("dmtdl.ContainedElement");
             _ExtensionHookOBJ.setIsNamedBy("meta.name");
@@ -223,6 +224,7 @@ public class DmtdlSchemaAG extends SchemaDefinition {
             _ExtensionHookOBJ.setDmwIteratorClass("ExtensionHookIterableDMW");
             _ExtensionHookOBJ.addMust("meta.name");
             _ExtensionHookOBJ.addMust("dmtdl.usesSection");
+            _ExtensionHookOBJ.addMust("dmtdl.targetObjectClass");
             _ExtensionHookOBJ.setDmwIteratorImport("org.dmd.templates.server.generated.dmw.ExtensionHookIterableDMW");
             _ExtensionHookOBJ.setPartOfDefinitionModule("dmtdl.TdlModule");
             _ExtensionHookOBJ.setDotName("dmtdl.ExtensionHook.ClassDefinition");
@@ -236,7 +238,7 @@ public class DmtdlSchemaAG extends SchemaDefinition {
             _TemplateOBJ.setDmdID("-478593");
             _TemplateOBJ.setClassType("STRUCTURAL");
             _TemplateOBJ.setFile("/src/org/dmd/templates/shared/dmdconfig/classes.dmd");
-            _TemplateOBJ.setLineNumber("147");
+            _TemplateOBJ.setLineNumber("148");
             _TemplateOBJ.addDescription("The Template object provides a mechanism to define an arbitrary set of\n text that allows for the insertion of the named values defined as part of the associated\n Section definition.\n <p/>\n By convention, the Template associated with a Section has the same name as the Section. For example:\n <pre>\n Section\n name Header\n </pre>\n would have a template as follows:\n <pre>\n Template\n name Header\n </pre>\n Templates are kept separate from the Section definitions so that their content can be\n changed without regenerating code. Templates are loaded using the generated TemplateParser\n for a given TdlModule.");
             _TemplateOBJ.setIsNamedBy("meta.name");
             _TemplateOBJ.setUseWrapperType("EXTENDED");
@@ -551,6 +553,19 @@ public class DmtdlSchemaAG extends SchemaDefinition {
             _usesSectionOBJ.setFile("/src/org/dmd/templates/shared/dmdconfig/attributes.dmd");
             _usesSectionOBJ.setLineNumber("181");
             addAttributeDefList(_usesSection);
+
+// Generated from: org.dmd.dmg.util.SchemaFormatter.getObjectAsCode(SchemaFormatter.java:585)
+            AttributeDefinitionDMO _targetObjectClassOBJ = new AttributeDefinitionDMO();
+            _targetObjectClass = new AttributeDefinition(_targetObjectClassOBJ);
+            _targetObjectClassOBJ.setType("meta.String");
+            _targetObjectClassOBJ.setName("targetObjectClass");
+            _targetObjectClassOBJ.setDmdID("-478580");
+            _targetObjectClassOBJ.addDescription("The fully qualified name of the type of object that is being formatted when\n an ExtensionHook is called.");
+            _targetObjectClassOBJ.setDotName("dmtdl.targetObjectClass.AttributeDefinition");
+            _targetObjectClass.setDefinedIn(this);
+            _targetObjectClassOBJ.setFile("/src/org/dmd/templates/shared/dmdconfig/attributes.dmd");
+            _targetObjectClassOBJ.setLineNumber("188");
+            addAttributeDefList(_targetObjectClass);
 
     }
 
