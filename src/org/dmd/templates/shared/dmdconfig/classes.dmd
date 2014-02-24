@@ -91,6 +91,7 @@ derivedFrom		ContainedElement
 isNamedBy		name
 must			name
 must			usesSection
+must			targetObjectClass
 description		The dark-matter Domain Specific Definition (DSD) mechanisms allow for the
  extension of objects using auxliary classes and arbitrary name value pairs (via the nvp attribute).
  These mechanisms are useful because they allow you to augment an existing Domain Specific Language

@@ -21,15 +21,20 @@ public class DmtdlGen extends TdlModuleGenUtility {
 
 	@Override
 	public void parsingComplete(TdlModule module, ConfigLocation location, TdlModuleDefinitionManager definitions) throws ResultException {
-		onlySectionsInArtifact(module);
+		// Nothing to do
 	}
 	
+	@Override
+	public void objectResolutionComplete(TdlModule module, ConfigLocation location, TdlModuleDefinitionManager definitions) throws ResultException {
+		onlySectionsInArtifact(module);
+	}
+
 	/**
 	 * Checks that TextualArtifacts only refer to Sections, not ExtensionHooks.
-	 * @param module
+	 * @param module the module being processed.
 	 * @throws ResultException
 	 */
-	void onlySectionsInArtifact(TdlModule module) throws ResultException{
+	void onlySectionsInArtifact(TdlModule module) throws ResultException {
 		ResultException ex = null;
 
 		Iterator<TextualArtifact> artifacts = module.getAllTextualArtifact();
@@ -73,6 +78,8 @@ public class DmtdlGen extends TdlModuleGenUtility {
 		}
 		
 		module.generateTemplateLoader(gendir);
+		
+		module.generateExtensionInterface(gendir);
 		
 		FileUpdateManager.instance().generationComplete();
 	}

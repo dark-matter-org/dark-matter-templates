@@ -85,6 +85,8 @@ name			ClassListEnd
 
 
 ExtensionHook
-name			ClassAttributesExt
-description		Allows for insertion of additional content in a ClassDefinition's
+name				ClassAttributesExt
+usesSection			ClassListEntry
+targetObjectClass	org.dmd.templates.server.extended.ContainedElement
+description			Allows for insertion of additional content in a ClassDefinition's
  attributes 		

@@ -1,38 +1,38 @@
 package org.dmd.templates.tools.generated.dmtdl;
 
 // Generated from: org.dmd.util.codegen.ImportManager.getFormattedImports(ImportManager.java:82)
-// Called from: org.dmd.templates.server.extended.TdlModule.generateTemplateLoader(TdlModule.java:84)
-import java.io.IOException;                                              // May occur when finding/reading the templates - (TdlModule.java:35)
-import java.util.ArrayList;                                              // To store file search paths - (TdlModule.java:34)
-import java.util.TreeMap;                                                // To store SectionInfo - (TdlModule.java:33)
-import org.dmd.dmc.DmcNameClashException;                                // May be thrown when instantiating objects - (TdlModule.java:42)
-import org.dmd.dmc.DmcValueException;                                    // May be thrown when parsing objects - (TdlModule.java:41)
-import org.dmd.dmc.rules.DmcRuleExceptionSet;                            // May be thrown by rule manager - (TdlModule.java:44)
-import org.dmd.dmc.rules.SourceInfo;                                     // To indicate the source of rule problems - (TdlModule.java:46)
-import org.dmd.dmc.util.DmcUncheckedObject;                              // Basic parsing of objects - (TdlModule.java:39)
-import org.dmd.dms.AttributeDefinition;                                  // To allow addition of preserve newline attributes - (TdlModule.java:53)
-import org.dmd.dms.SchemaManager;                                        // Manages the schemas we use - (TdlModule.java:36)
-import org.dmd.dms.generated.dmw.AttributeDefinitionIterableDMW;         // To allow addition of preserve newline attributes - (TdlModule.java:54)
-import org.dmd.dmv.shared.DmvRuleManager;                                // The injected rule manager used for initializations - (TdlModule.java:45)
-import org.dmd.dmw.DmwObjectFactory;                                     // Constructs wrapped objects - (TdlModule.java:40)
-import org.dmd.dmw.DmwWrapper;                                           // To handle factory created objects - (TdlModule.java:47)
-import org.dmd.templates.server.extended.Template;                       // The Template - (TdlModule.java:48)
-import org.dmd.templates.server.generated.DmtdlSchemaAG;                 // The dmtdl schema - (TdlModule.java:49)
-import org.dmd.templates.server.util.TemplateMediator;                   // Allows us to access loaded templates - (TdlModule.java:55)
-import org.dmd.util.exceptions.ResultException;                          // May be thrown by schema management - (TdlModule.java:43)
-import org.dmd.util.parsing.ConfigFinder;                                // Finds configs we may need to parse - (TdlModule.java:50)
-import org.dmd.util.parsing.ConfigLocation;                              // Handle to a discovered configuration - (TdlModule.java:51)
-import org.dmd.util.parsing.ConfigVersion;                               // Handle to a particular config version - (TdlModule.java:52)
-import org.dmd.util.parsing.DmcUncheckedOIFHandlerIF;                    // Basic parsing of objects - (TdlModule.java:38)
-import org.dmd.util.parsing.DmcUncheckedOIFParser;                       // Basic parsing of objects - (TdlModule.java:37)
+// Called from: org.dmd.templates.server.extended.TdlModule.generateTemplateLoader(TdlModule.java:132)
+import java.io.IOException;                                              // May occur when finding/reading the templates - (TdlModule.java:83)
+import java.util.ArrayList;                                              // To store file search paths - (TdlModule.java:82)
+import java.util.TreeMap;                                                // To store SectionInfo - (TdlModule.java:81)
+import org.dmd.dmc.DmcNameClashException;                                // May be thrown when instantiating objects - (TdlModule.java:90)
+import org.dmd.dmc.DmcValueException;                                    // May be thrown when parsing objects - (TdlModule.java:89)
+import org.dmd.dmc.rules.DmcRuleExceptionSet;                            // May be thrown by rule manager - (TdlModule.java:92)
+import org.dmd.dmc.rules.SourceInfo;                                     // To indicate the source of rule problems - (TdlModule.java:94)
+import org.dmd.dmc.util.DmcUncheckedObject;                              // Basic parsing of objects - (TdlModule.java:87)
+import org.dmd.dms.AttributeDefinition;                                  // To allow addition of preserve newline attributes - (TdlModule.java:101)
+import org.dmd.dms.SchemaManager;                                        // Manages the schemas we use - (TdlModule.java:84)
+import org.dmd.dms.generated.dmw.AttributeDefinitionIterableDMW;         // To allow addition of preserve newline attributes - (TdlModule.java:102)
+import org.dmd.dmv.shared.DmvRuleManager;                                // The injected rule manager used for initializations - (TdlModule.java:93)
+import org.dmd.dmw.DmwObjectFactory;                                     // Constructs wrapped objects - (TdlModule.java:88)
+import org.dmd.dmw.DmwWrapper;                                           // To handle factory created objects - (TdlModule.java:95)
+import org.dmd.templates.server.extended.Template;                       // The Template - (TdlModule.java:96)
+import org.dmd.templates.server.generated.DmtdlSchemaAG;                 // The dmtdl schema - (TdlModule.java:97)
+import org.dmd.templates.server.util.TemplateMediator;                   // Allows us to access loaded templates - (TdlModule.java:103)
+import org.dmd.util.exceptions.ResultException;                          // May be thrown by schema management - (TdlModule.java:91)
+import org.dmd.util.parsing.ConfigFinder;                                // Finds configs we may need to parse - (TdlModule.java:98)
+import org.dmd.util.parsing.ConfigLocation;                              // Handle to a discovered configuration - (TdlModule.java:99)
+import org.dmd.util.parsing.ConfigVersion;                               // Handle to a particular config version - (TdlModule.java:100)
+import org.dmd.util.parsing.DmcUncheckedOIFHandlerIF;                    // Basic parsing of objects - (TdlModule.java:86)
+import org.dmd.util.parsing.DmcUncheckedOIFParser;                       // Basic parsing of objects - (TdlModule.java:85)
 
 
 
-// Generated from: org.dmd.templates.server.extended.TdlModule.generateTemplateLoader(TdlModule.java:87)
+// Generated from: org.dmd.templates.server.extended.TdlModule.generateTemplateLoader(TdlModule.java:135)
 public class DmschemadocTemplateLoader implements DmcUncheckedOIFHandlerIF {
 
     // Generated from: org.dmd.util.codegen.MemberManager.getFormattedMembers(MemberManager.java:64)
-    // Called from: org.dmd.templates.server.extended.TdlModule.generateTemplateLoader(TdlModule.java:90)
+    // Called from: org.dmd.templates.server.extended.TdlModule.generateTemplateLoader(TdlModule.java:138)
     SchemaManager                       schema;                                                       // Manages the schema for this DSD
     DmcUncheckedOIFParser               parser            = new DmcUncheckedOIFParser(this);          // Parses objects from the config file
     DmwObjectFactory                    factory;                                                      // Instantiates wrapped objects
@@ -57,7 +57,7 @@ public class DmschemadocTemplateLoader implements DmcUncheckedOIFHandlerIF {
                                                                                                       // 
     public static Template              _Comment;                                                     // Used to display debug comments in formatted output
 
-    // Generated from: org.dmd.templates.server.extended.TdlModule.generateTemplateLoader(TdlModule.java:92)
+    // Generated from: org.dmd.templates.server.extended.TdlModule.generateTemplateLoader(TdlModule.java:140)
     /**
      * Creates a new template loader for templates associated with the dmschemadoc TdlModule.
      * @param paths the paths that we'll search for the template definition file.
@@ -102,7 +102,7 @@ public class DmschemadocTemplateLoader implements DmcUncheckedOIFHandlerIF {
         
     }
 
-// Generated from: org.dmd.templates.server.extended.TdlModule.generateTemplateLoader(TdlModule.java:136)
+// Generated from: org.dmd.templates.server.extended.TdlModule.generateTemplateLoader(TdlModule.java:184)
     /**
      * We attempt to find and load the schemaDocTemplates.dmt file.
      */
@@ -123,7 +123,7 @@ public class DmschemadocTemplateLoader implements DmcUncheckedOIFHandlerIF {
         parser.parseFile(location.getFileName());
     }
 
-    // Generated from: org.dmd.templates.server.extended.TdlModule.generateTemplateLoader(TdlModule.java:158)
+    // Generated from: org.dmd.templates.server.extended.TdlModule.generateTemplateLoader(TdlModule.java:206)
     @Override
     public void handleObject(DmcUncheckedObject uco, String infile, int lineNumber) throws ResultException, DmcValueException, DmcRuleExceptionSet, DmcNameClashException {
         Template template = null;
