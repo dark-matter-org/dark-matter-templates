@@ -35,10 +35,10 @@ import org.dmd.dmc.util.ComplexTypeSplitter;                                    
 import org.dmd.dmc.util.ParsedNameValuePair;                                              // To store values parsed from initial input - (NewComplexTypeFormatter.java:100)
 import org.dmd.dms.generated.enums.DataTypeEnum;                                          // For fake DmcAttributeInfo - (NewComplexTypeFormatter.java:95)
 import org.dmd.dms.generated.enums.ValueTypeEnum;                                         // For fake DmcAttributeInfo - (NewComplexTypeFormatter.java:96)
-import org.dmd.templates.shared.generated.enums.CardinalityEnum;                          // Primitive type - (NewComplexTypeFormatter.java:780)
-import org.dmd.templates.shared.generated.types.ContainedElementREF;                      // Object reference - (NewComplexTypeFormatter.java:772)
-import org.dmd.templates.shared.generated.types.DmcTypeCardinalityEnumSTATIC;             // Internally generated type - (NewComplexTypeFormatter.java:797)
-import org.dmd.templates.shared.generated.types.DmcTypeContainedElementREFSTATIC;         // Internally generated type - (NewComplexTypeFormatter.java:797)
+import org.dmd.templates.shared.generated.enums.CardinalityEnum;                          // Primitive type - (NewComplexTypeFormatter.java:818)
+import org.dmd.templates.shared.generated.types.ContainedElementREF;                      // Object reference - (NewComplexTypeFormatter.java:810)
+import org.dmd.templates.shared.generated.types.DmcTypeCardinalityEnumSTATIC;             // Internally generated type - (NewComplexTypeFormatter.java:835)
+import org.dmd.templates.shared.generated.types.DmcTypeContainedElementREFSTATIC;         // Internally generated type - (NewComplexTypeFormatter.java:835)
 
 
 
@@ -56,12 +56,12 @@ public class Contains implements Serializable {
     // The number of times a contained Section will occur.
     CardinalityEnum occurencesV;
 
-    final static DmcAttributeInfo occurencesAI = new DmcAttributeInfo("occurences",0,"CardinalityEnum",ValueTypeEnum.SINGLE,DataTypeEnum.UNKNOWN);
+    final static DmcAttributeInfo occurencesAI = new DmcAttributeInfo("occurences",0,"CardinalityEnum",ValueTypeEnum.SINGLE,DataTypeEnum.UNKNOWN, 0, false);
 
     // The Section or ExtensionHook being referenced.
     ContainedElementREF elementV;
 
-    final static DmcAttributeInfo elementAI = new DmcAttributeInfo("element",0,"ContainedElement",ValueTypeEnum.SINGLE,DataTypeEnum.UNKNOWN);
+    final static DmcAttributeInfo elementAI = new DmcAttributeInfo("element",0,"ContainedElement",ValueTypeEnum.SINGLE,DataTypeEnum.UNKNOWN, 0, false);
 
     /**
      * Default constructor.
@@ -73,7 +73,7 @@ public class Contains implements Serializable {
      * Copy constructor.
      */
     public Contains(Contains original){
-    // Generated from: org.dmd.dms.util.NewComplexTypeFormatter.getCopyConstructorAssignments(NewComplexTypeFormatter.java:735)
+    // Generated from: org.dmd.dms.util.NewComplexTypeFormatter.getCopyConstructorAssignments(NewComplexTypeFormatter.java:773)
         occurencesV =  original.occurencesV;
         elementV =  original.elementV;
     }
@@ -149,6 +149,8 @@ public class Contains implements Serializable {
 
         if ((elementV != null) && (!elementV.isResolved())){
             obj = resolver.findNamedObject(elementV.getObjectName());
+            if (elementAI.weakReference)
+                return;
             if (obj == null)
                 throw(new DmcValueException("Could not resolve reference to: " + elementV.getObjectName() + " via attribute: " + attrName));
         
@@ -160,13 +162,15 @@ public class Contains implements Serializable {
         
     }
 
-    // Generated from: org.dmd.dms.util.NewComplexTypeFormatter.dumpComplexType(NewComplexTypeFormatter.java:494)
+    // Generated from: org.dmd.dms.util.NewComplexTypeFormatter.dumpComplexType(NewComplexTypeFormatter.java:498)
     @SuppressWarnings({"unchecked", "rawtypes"})
     public void resolve(DmcNameResolverWithClashSupportIF resolver, DmcObject object, DmcNameClashResolverIF ncr, DmcAttributeInfo ai) throws DmcValueException, DmcValueExceptionSet {
         DmcNamedObjectIF  obj = null;
 
         if ((elementV != null) && (!elementV.isResolved())){
             obj = resolver.findNamedObjectMayClash(object, elementV.getObjectName(), ncr, elementAI);
+            if (elementAI.weakReference)
+                return;
             if (obj == null)
                 throw(new DmcValueException("Could not resolve reference to: " + elementV.getObjectName() + " via attribute: " + ai.name));
         

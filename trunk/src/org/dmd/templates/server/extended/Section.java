@@ -268,15 +268,16 @@ public class Section extends SectionDMW {
     		sb.append("        _" + getStartsWith().getName() + ".format(artifact);\n");    		
     	}
     	
+    	String loader = GenUtility.capTheName(getDefinedInTdlModule().getName().getNameString()) + "TemplateLoader";
+
     	if (getStartsWithText() != null){
     		if (getDefinedInTdlModule().getCommentFormat() != null){
     			sb.append("        TemplateMediator.commentContainer.setValue(\"comment\", \"" + getName() + " starts with text\");\n");
-    			sb.append("        DmschemadocTemplateLoader._Comment.format(TemplateMediator.commentContainer, artifact);\n");
+    			sb.append("        " + loader + "._Comment.format(TemplateMediator.commentContainer, artifact);\n");
     		}
         	sb.append("        artifact.addText(\"" + getStartsWithText().replaceAll("\\\"", "\\\\\"") + "\\n\");\n");
     	}
     	
-    	String loader = GenUtility.capTheName(getDefinedInTdlModule().getName().getNameString()) + "TemplateLoader";
     	String comment = "";
     	if (getDefinedInTdlModule().getCommentFormat() != null)
     		comment = ", " + loader + "._Comment";

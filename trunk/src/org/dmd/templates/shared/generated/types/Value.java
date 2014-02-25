@@ -27,7 +27,7 @@ import org.dmd.dmc.util.ComplexTypeSplitter;                    // For parsing i
 import org.dmd.dmc.util.ParsedNameValuePair;                    // To store values parsed from initial input - (NewComplexTypeFormatter.java:100)
 import org.dmd.dms.generated.enums.DataTypeEnum;                // For fake DmcAttributeInfo - (NewComplexTypeFormatter.java:95)
 import org.dmd.dms.generated.enums.ValueTypeEnum;               // For fake DmcAttributeInfo - (NewComplexTypeFormatter.java:96)
-import org.dmd.dms.generated.types.DmcTypeStringSTATIC;         // Standard type - (NewComplexTypeFormatter.java:797)
+import org.dmd.dms.generated.types.DmcTypeStringSTATIC;         // Standard type - (NewComplexTypeFormatter.java:835)
 
 
 
@@ -45,12 +45,12 @@ public class Value implements Serializable {
     // The name of the value that can be inserted into a Template
     String valueNameV;
 
-    final static DmcAttributeInfo valueNameAI = new DmcAttributeInfo("valueName",0,"String",ValueTypeEnum.SINGLE,DataTypeEnum.UNKNOWN);
+    final static DmcAttributeInfo valueNameAI = new DmcAttributeInfo("valueName",0,"String",ValueTypeEnum.SINGLE,DataTypeEnum.UNKNOWN, 0, false);
 
     // A description of the value.
     String descriptionV;
 
-    final static DmcAttributeInfo descriptionAI = new DmcAttributeInfo("description",0,"String",ValueTypeEnum.SINGLE,DataTypeEnum.UNKNOWN);
+    final static DmcAttributeInfo descriptionAI = new DmcAttributeInfo("description",0,"String",ValueTypeEnum.SINGLE,DataTypeEnum.UNKNOWN, 0, false);
 
     /**
      * Default constructor.
@@ -62,7 +62,7 @@ public class Value implements Serializable {
      * Copy constructor.
      */
     public Value(Value original){
-    // Generated from: org.dmd.dms.util.NewComplexTypeFormatter.getCopyConstructorAssignments(NewComplexTypeFormatter.java:735)
+    // Generated from: org.dmd.dms.util.NewComplexTypeFormatter.getCopyConstructorAssignments(NewComplexTypeFormatter.java:773)
         valueNameV =  original.valueNameV;
         descriptionV =  original.descriptionV;
     }
