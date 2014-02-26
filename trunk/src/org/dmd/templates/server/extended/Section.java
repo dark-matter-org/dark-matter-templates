@@ -4,7 +4,6 @@ package org.dmd.templates.server.extended;
 // Called from: org.dmd.dmg.generators.DMWGenerator.dumpExtendedClass(DMWGenerator.java:276)
 import java.io.BufferedWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.TreeMap;
 
 import org.dmd.dms.ClassDefinition;
@@ -12,6 +11,7 @@ import org.dmd.dms.util.GenUtility;
 import org.dmd.templates.server.generated.dmw.ContainsIterableDMW;
 import org.dmd.templates.server.generated.dmw.SectionDMW;
 import org.dmd.templates.server.generated.dmw.ValueIterableDMW;
+import org.dmd.templates.server.util.StaticAccessInfo;
 import org.dmd.templates.shared.generated.dmo.SectionDMO;
 import org.dmd.templates.shared.generated.enums.CardinalityEnum;
 import org.dmd.templates.shared.generated.types.Contains;
@@ -526,20 +526,34 @@ public class Section extends SectionDMW {
      * @param callStructure
      * @param sections
      */
-    void getStaticAccessToStructure(int depth, CardinalityEnum cardinality, String callStructure, TreeMap<String,ArrayList<String>> sections){
+    void getStaticAccessToStructure(int depth, CardinalityEnum cardinality, String callStructure, TreeMap<String,StaticAccessInfo> sections){
     	if (cardinality == CardinalityEnum.STATIC){
     		if (getValueHasValue()){
     			// We have an unbroken static access chain to the top and have values that can be set
-    			ArrayList<String> callPath = sections.get(getName().getNameString());
-    			if (callPath == null){
-    				callPath = new ArrayList<String>();
-    				sections.put(getName().getNameString(), callPath);
+    			StaticAccessInfo info = sections.get(getName().getNameString());
+    			if (info == null){
+    				info = new StaticAccessInfo(this);
+    				sections.put(getName().getNameString(), info);
     			}
-    			callPath.add(callStructure + ".get" + getName() + "()");
+    			
+    			if (depth == 0)
+    				info.addPath("_" + getName());
+    			else
+    				info.addPath(callStructure + ".get" + getName() + "()");
+    			
+//    			ArrayList<String> callPath = sections.get(getName().getNameString());
+//    			if (callPath == null){
+//    				callPath = new ArrayList<String>();
+//    				sections.put(getName().getNameString(), callPath);
+//    			}
+//    			callPath.add(callStructure + ".get" + getName() + "()");
     		}
     		
         	if (getStartsWith() != null){
-        		getStartsWith().getStaticAccessToStructure(depth+1, CardinalityEnum.STATIC, callStructure + ".get" + getName() + "()", sections);
+        		if (depth == 0)
+            		getStartsWith().getStaticAccessToStructure(depth+1, CardinalityEnum.STATIC, "_" + getName(), sections);
+        		else
+        			getStartsWith().getStaticAccessToStructure(depth+1, CardinalityEnum.STATIC, callStructure + ".get" + getName() + "()", sections);
         	}
         	
         	boolean nonStaticDirectlyBelowMe = false;
@@ -550,23 +564,40 @@ public class Section extends SectionDMW {
     			
     			if (ce instanceof Section){
 	    			Section contained = (Section)ce;
-	    			contained.getStaticAccessToStructure(depth+1, c.getOccurences(), callStructure + ".get" + getName() + "()", sections);
+	    			if (depth == 0)
+		    			contained.getStaticAccessToStructure(depth+1, c.getOccurences(), "_" + getName(), sections);
+	    			else
+	    				contained.getStaticAccessToStructure(depth+1, c.getOccurences(), callStructure + ".get" + getName() + "()", sections);
 	    			if (c.getOccurences() != CardinalityEnum.STATIC)
 	    				nonStaticDirectlyBelowMe = true;
     			}
     		} 
     		
     		if (nonStaticDirectlyBelowMe){
-    			ArrayList<String> callPath = sections.get(getName().getNameString());
-    			if (callPath == null){
-    				callPath = new ArrayList<String>();
-    				sections.put(getName().getNameString(), callPath);
+    			StaticAccessInfo info = sections.get(getName().getNameString());
+    			if (info == null){
+    				info = new StaticAccessInfo(this);
+    				sections.put(getName().getNameString(), info);
     			}
-    			callPath.add(callStructure + ".get" + getName() + "()");
+    			
+    			if (depth == 0)
+    				info.addPath("_" + getName());
+    			else
+    				info.addPath(callStructure + ".get" + getName() + "()");
+
+//    			ArrayList<String> callPath = sections.get(getName().getNameString());
+//    			if (callPath == null){
+//    				callPath = new ArrayList<String>();
+//    				sections.put(getName().getNameString(), callPath);
+//    			}
+//    			callPath.add(callStructure + ".get" + getName() + "()");
     		}
         	
         	if (getEndsWith() != null){
-        		getEndsWith().getStaticAccessToStructure(depth+1, CardinalityEnum.STATIC, callStructure + ".get" + getName() + "()", sections);
+        		if (depth == 0)
+            		getEndsWith().getStaticAccessToStructure(depth+1, CardinalityEnum.STATIC, "_" + getName(), sections);
+        		else
+        			getEndsWith().getStaticAccessToStructure(depth+1, CardinalityEnum.STATIC, callStructure + ".get" + getName() + "()", sections);
         	}
     		
     	}

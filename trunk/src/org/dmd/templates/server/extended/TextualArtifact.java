@@ -4,13 +4,13 @@ package org.dmd.templates.server.extended;
 // Called from: org.dmd.dmg.generators.DMWGenerator.dumpExtendedClass(DMWGenerator.java:276)
 import java.io.BufferedWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.TreeMap;
 
-import org.dmd.dms.ClassDefinition;                                       // Used in derived constructors - (DMWGenerator.java:270)
+import org.dmd.dms.ClassDefinition;
 import org.dmd.templates.server.generated.dmw.ContainsIterableDMW;
-import org.dmd.templates.server.generated.dmw.TextualArtifactDMW;         // The wrapper we're extending - (DMWGenerator.java:268)
-import org.dmd.templates.shared.generated.dmo.TextualArtifactDMO;         // The wrapper we're extending - (DMWGenerator.java:269)
+import org.dmd.templates.server.generated.dmw.TextualArtifactDMW;
+import org.dmd.templates.server.util.StaticAccessInfo;
+import org.dmd.templates.shared.generated.dmo.TextualArtifactDMO;
 import org.dmd.templates.shared.generated.enums.CardinalityEnum;
 import org.dmd.templates.shared.generated.types.Contains;
 import org.dmd.util.FileUpdateManager;
@@ -30,11 +30,18 @@ public class TextualArtifact extends TextualArtifactDMW {
     }
 
     public void generateTextualArtifactClass(String outdir) throws IOException {
-    	ImportManager 	imports = new ImportManager();
-    	MemberManager	members	= new MemberManager();
+    	ImportManager 				imports 		= new ImportManager();
+    	MemberManager				members			= new MemberManager();
+    	TreeMap<String,StaticAccessInfo>	staticSections	= new TreeMap<String,StaticAccessInfo>();
+    	
+    	getStaticAccessToStructure(staticSections);
     	
     	imports.addImport("org.dmd.templates.server.util.FormattedArtifactIF", "Common interface for gathering formatted output");
     	imports.addImport("java.io.IOException", "Thrown by formatting");
+    	
+    	for(StaticAccessInfo info: staticSections.values()){
+    		imports.addImport(info.getClassImport(), "To access static Section: " + info.getName());
+    	}
     	
 		ContainsIterableDMW it = getContainsIterable();
 		while(it.hasNext()){
@@ -77,8 +84,6 @@ public class TextualArtifact extends TextualArtifactDMW {
         out.write("    }\n\n");
         out.write("");
         
-getStaticAccessToStructure();
-
         out.write(getFormatFunction());
         
 		it = getContainsIterable();
@@ -93,7 +98,11 @@ getStaticAccessToStructure();
 				out.write(contained.getAccessFunctions(this.getName().getNameString(), c.getOccurences(), false));
 			}
 		}
-        
+		
+    	for(StaticAccessInfo info: staticSections.values()){
+    		out.write(info.getAccessFunctions());
+    	}
+    	        
         out.write("}");
 
         out.close();
@@ -199,9 +208,12 @@ getStaticAccessToStructure();
      * no point in accessing the static part of the artifact, only places where you "make a difference".
      * @return the methods needed to access the appropriate sections.
      */
-    String getStaticAccessToStructure(){
-    	StringBuffer sb = new StringBuffer();
-    	TreeMap<String,ArrayList<String>>	sections = new TreeMap<String, ArrayList<String>>();
+    void getStaticAccessToStructure(TreeMap<String,StaticAccessInfo>	sections){
+//    	StringBuffer sb = new StringBuffer();
+    	
+    	// Key: 
+//    	TreeMap<String,ArrayList<String>>	sections = new TreeMap<String, ArrayList<String>>();
+//    	TreeSet<StaticAccessInfo>	sections = new TreeSet<StaticAccessInfo>();
     	
 		ContainsIterableDMW it = getContainsIterable();
 		while(it.hasNext()){
@@ -214,17 +226,17 @@ getStaticAccessToStructure();
 			}
 		}
     	
-		for(String section: sections.keySet()){
-			ArrayList<String> callPaths = sections.get(section);
-			if (callPaths.size() == 1){
-				System.out.println(section + "  --  " + callPaths.get(0));
-			}
-			else{
-				
-			}
-		}
+//		for(String section: sections.keySet()){
+//			ArrayList<String> callPaths = sections.get(section);
+//			if (callPaths.size() == 1){
+//				System.out.println(section + "  --  " + callPaths.get(0));
+//			}
+//			else {
+//				
+//			}
+//		}
     	
-    	return(sb.toString());
+//    	return(sb.toString());
     }
     
 }
