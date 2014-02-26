@@ -46,7 +46,7 @@ public class DivSummary implements SectionIF {
         template.format(this, artifact);
     }
 
-    // Generated from: org.dmd.templates.server.extended.Section.getAccessFunctions(Section.java:348)
+    // Generated from: org.dmd.templates.server.extended.Section.getAccessFunctions(Section.java:349)
     public ClassSummary addClassSummary(){
         if (_ClassSummary != null)
             throw(new IllegalStateException("Multiple calls to add a ClassSummary Section. There should only be one of these in a DivSummary."));
@@ -54,12 +54,12 @@ public class DivSummary implements SectionIF {
         return(_ClassSummary);
     }
 
-    // Generated from: org.dmd.templates.server.extended.Section.getAccessFunctions(Section.java:356)
+    // Generated from: org.dmd.templates.server.extended.Section.getAccessFunctions(Section.java:357)
     public ClassSummary getClassSummary(){
         return(_ClassSummary);
     }
 
-    // Generated from: org.dmd.templates.server.extended.Section.getAccessFunctions(Section.java:363)
+    // Generated from: org.dmd.templates.server.extended.Section.getAccessFunctions(Section.java:364)
     public ClassSummary fastAddClassSummary(String classCount_){
         if (_ClassSummary != null)
             throw(new IllegalStateException("Multiple calls to add a ClassSummary Section. There should only be one of these in a DivSummary."));

@@ -78,7 +78,7 @@ public class ClassSummary implements SectionIF {
         return(_ClassListStart);
     }
 
-    // Generated from: org.dmd.templates.server.extended.Section.getAccessFunctions(Section.java:375)
+    // Generated from: org.dmd.templates.server.extended.Section.getAccessFunctions(Section.java:376)
     public ClassListEntry addClassListEntry(){
         if (_ClassListEntry == null)
             _ClassListEntry = new ArrayList<ClassListEntry>();
@@ -87,12 +87,12 @@ public class ClassSummary implements SectionIF {
         return(rc);
     }
 
-    // Generated from: org.dmd.templates.server.extended.Section.getAccessFunctions(Section.java:384)
+    // Generated from: org.dmd.templates.server.extended.Section.getAccessFunctions(Section.java:385)
     public Iterator<ClassListEntry> getClassListEntrySet(){
         return(_ClassListEntry.iterator());
     }
 
-    // Generated from: org.dmd.templates.server.extended.Section.getAccessFunctions(Section.java:391)
+    // Generated from: org.dmd.templates.server.extended.Section.getAccessFunctions(Section.java:392)
     public ClassListEntry fastAddClassListEntry(String className_){
         if (_ClassListEntry == null)
             _ClassListEntry = new ArrayList<ClassListEntry>();

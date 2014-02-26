@@ -9,7 +9,6 @@ import org.dmd.dmc.DmcValueException;
 import org.dmd.dmc.rules.DmcRuleExceptionSet;
 import org.dmd.templates.server.util.FormattedStringBuffer;
 import org.dmd.templates.tools.generated.dmtdl.ClassSummary;
-import org.dmd.templates.tools.generated.dmtdl.DivContent;
 import org.dmd.templates.tools.generated.dmtdl.DmschemadocTemplateLoader;
 import org.dmd.templates.tools.generated.dmtdl.SchemaDoc;
 import org.dmd.util.exceptions.ResultException;
@@ -34,14 +33,12 @@ public class DmtdlUsageTest {
 		DmschemadocTemplateLoader	loader = new DmschemadocTemplateLoader(paths);
 		loader.findAndLoadTemplate();
 		
-		
-		
 		SchemaDoc doc = new SchemaDoc();
-		doc.getHtmlContent().getHtmlHead().setSchemaName("meta");
-		DivContent content = doc.getHtmlContent().getBody().getDivMain().getDivContent();
+		doc.getHtmlHead().setSchemaName("meta");
 		
-		content.getSchemaTitle().setSchemaName("meta");
-		ClassSummary csummary = content.getDivSummary().addClassSummary();
+		doc.getSchemaTitle().setSchemaName("meta");
+
+		ClassSummary csummary = doc.getDivSummary().addClassSummary();
 		csummary.setClassCount("5");
 		
 		FormattedStringBuffer fsb = new FormattedStringBuffer();
