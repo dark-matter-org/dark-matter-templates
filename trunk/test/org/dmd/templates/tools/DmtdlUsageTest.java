@@ -41,6 +41,8 @@ public class DmtdlUsageTest {
 		ClassSummary csummary = doc.getDivSummary().addClassSummary();
 		csummary.setClassCount("5");
 		
+		csummary.extensionClassAttributesExt(null);
+		
 		FormattedStringBuffer fsb = new FormattedStringBuffer();
 		
 		doc.format(fsb);

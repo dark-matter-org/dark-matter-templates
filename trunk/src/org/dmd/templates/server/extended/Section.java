@@ -72,6 +72,10 @@ public class Section extends SectionDMW {
 	    				members.addMember(contained.getName().getNameString(), "_" + contained.getName(), "A single static instance of " + contained.getName());
 	    			}
     			}
+    			else{
+    				ExtensionHook hook = (ExtensionHook) ce;
+    				hook.getSectionImportsAndMembers(imports, members);
+    			}
     		}
     	}
     	
@@ -209,6 +213,10 @@ public class Section extends SectionDMW {
 				Section contained = (Section)ce;
 				out.write(contained.getAccessFunctions(this.getName().getNameString(), c.getOccurences(), true));
 			}
+			else if (ce instanceof ExtensionHook){
+				ExtensionHook hook = (ExtensionHook) ce;
+				out.write(hook.getExtensionFunction());
+			}
 		}
 
         if (getEndsWith() != null){
@@ -308,6 +316,10 @@ public class Section extends SectionDMW {
 		    	else{
 		    		sb.append("        _" + contained.getName() + ".format(artifact);\n");
 		    	}
+			}
+			else{
+				ExtensionHook hook = (ExtensionHook) ce;
+				sb.append(hook.getFormatFunction());
 			}
 		}
 		

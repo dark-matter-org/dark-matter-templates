@@ -1,21 +1,21 @@
 package org.dmd.templates.tools.generated.dmtdl;
 
 // Generated from: org.dmd.util.codegen.ImportManager.getFormattedImports(ImportManager.java:82)
-// Called from: org.dmd.templates.server.extended.Section.generateSectionClass(Section.java:108)
-import java.io.IOException;                                       // Thrown by formatting - (Section.java:91)
-import java.util.TreeMap;                                         // To store values - (Section.java:98)
-import org.dmd.templates.server.extended.Template;                // The Template - (Section.java:89)
-import org.dmd.templates.server.util.FormattedArtifactIF;         // Common interface for gathering formatted output - (Section.java:90)
-import org.dmd.templates.server.util.SectionIF;                   // Standard interface used by Templates - (Section.java:88)
+// Called from: org.dmd.templates.server.extended.Section.generateSectionClass(Section.java:112)
+import java.io.IOException;                                       // Thrown by formatting - (Section.java:95)
+import java.util.TreeMap;                                         // To store values - (Section.java:102)
+import org.dmd.templates.server.extended.Template;                // The Template - (Section.java:93)
+import org.dmd.templates.server.util.FormattedArtifactIF;         // Common interface for gathering formatted output - (Section.java:94)
+import org.dmd.templates.server.util.SectionIF;                   // Standard interface used by Templates - (Section.java:92)
 
 
 
-// Generated from: org.dmd.templates.server.extended.Section.generateSectionClass(Section.java:110)
+// Generated from: org.dmd.templates.server.extended.Section.generateSectionClass(Section.java:114)
 public class HtmlHead implements SectionIF {
 
 
     // Generated from: org.dmd.util.codegen.MemberManager.getFormattedMembers(MemberManager.java:64)
-    // Called from: org.dmd.templates.server.extended.Section.generateSectionClass(Section.java:113)
+    // Called from: org.dmd.templates.server.extended.Section.generateSectionClass(Section.java:117)
     TreeMap<String,String>    values    = new TreeMap<String,String>();   // Required to store our values
 
 
@@ -25,7 +25,7 @@ public class HtmlHead implements SectionIF {
     /**
      * Constructs a new HtmlHead section.
      * @param schemaName_ The name of the schema
-     * Generated from: org.dmd.templates.server.extended.Section.generateSectionClass(Section.java:139)
+     * Generated from: org.dmd.templates.server.extended.Section.generateSectionClass(Section.java:143)
      */
     public HtmlHead(String schemaName_){
         if (schemaName_ != null)
@@ -46,14 +46,14 @@ public class HtmlHead implements SectionIF {
         return(rc);
     }
 
-    // Generated from: org.dmd.templates.server.extended.Section.getFormatFunction(Section.java:261)
+    // Generated from: org.dmd.templates.server.extended.Section.getFormatFunction(Section.java:269)
     public void format(FormattedArtifactIF artifact) throws IOException {
 
         DmschemadocTemplateLoader.HtmlHead.format(this,artifact, DmschemadocTemplateLoader._Comment);
 
     }
 
-    // Generated from: org.dmd.templates.server.extended.Section.getFormatFunction(Section.java:329)
+    // Generated from: org.dmd.templates.server.extended.Section.getFormatFunction(Section.java:341)
     public void format(FormattedArtifactIF artifact, Template template) throws IOException {
         template.format(this, artifact);
     }
