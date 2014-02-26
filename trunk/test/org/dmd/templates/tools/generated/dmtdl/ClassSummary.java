@@ -69,7 +69,7 @@ public class ClassSummary implements SectionIF {
         artifact.addText("ClassListEnd\n");
     }
 
-    // Generated from: org.dmd.templates.server.extended.Section.getFormatFunction(Section.java:328)
+    // Generated from: org.dmd.templates.server.extended.Section.getFormatFunction(Section.java:329)
     public void format(FormattedArtifactIF artifact, Template template) throws IOException {
         template.format(this, artifact);
     }
@@ -78,6 +78,7 @@ public class ClassSummary implements SectionIF {
         return(_ClassListStart);
     }
 
+    // Generated from: org.dmd.templates.server.extended.Section.getAccessFunctions(Section.java:375)
     public ClassListEntry addClassListEntry(){
         if (_ClassListEntry == null)
             _ClassListEntry = new ArrayList<ClassListEntry>();
@@ -86,10 +87,12 @@ public class ClassSummary implements SectionIF {
         return(rc);
     }
 
+    // Generated from: org.dmd.templates.server.extended.Section.getAccessFunctions(Section.java:384)
     public Iterator<ClassListEntry> getClassListEntrySet(){
         return(_ClassListEntry.iterator());
     }
 
+    // Generated from: org.dmd.templates.server.extended.Section.getAccessFunctions(Section.java:391)
     public ClassListEntry fastAddClassListEntry(String className_){
         if (_ClassListEntry == null)
             _ClassListEntry = new ArrayList<ClassListEntry>();

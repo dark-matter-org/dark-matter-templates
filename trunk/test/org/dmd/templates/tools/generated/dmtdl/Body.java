@@ -46,7 +46,7 @@ public class Body implements SectionIF {
         artifact.addText("</body>\n");
     }
 
-    // Generated from: org.dmd.templates.server.extended.Section.getFormatFunction(Section.java:328)
+    // Generated from: org.dmd.templates.server.extended.Section.getFormatFunction(Section.java:329)
     public void format(FormattedArtifactIF artifact, Template template) throws IOException {
         template.format(this, artifact);
     }

@@ -17,6 +17,7 @@ import org.dmd.templates.tools.generated.dmtdl.HtmlContent;         // Is a cont
      * ++ : an optional Section
      * -- : a static Section
      * <- : values can be inserted
+     * xx : extension hook can be inserted
      * 
      * SchemaDoc
      *   -- DocType  
@@ -31,6 +32,8 @@ import org.dmd.templates.tools.generated.dmtdl.HtmlContent;         // Is a cont
      *             ++ ClassSummary  <-
      *               -- ClassListStart  
      *               [] ClassListEntry  <-
+     *               xx ClassAttributesExt
+     *                 [] ClassListEntry  <-
      */
 public class SchemaDoc {
 
@@ -41,12 +44,13 @@ public class SchemaDoc {
     HtmlContent    _HtmlContent;         // A single static instance of HtmlContent
 
 
+// Generated from: org.dmd.templates.server.extended.TextualArtifact.generateTextualArtifactClass(TextualArtifact.java:74)
     public SchemaDoc(){
         _DocType = new DocType(); // Static Section
         _HtmlContent = new HtmlContent(); // Static Section
     }
 
-    // Generated from: org.dmd.templates.server.extended.TextualArtifact.getFormatFunction(TextualArtifact.java:125)
+    // Generated from: org.dmd.templates.server.extended.TextualArtifact.getFormatFunction(TextualArtifact.java:126)
     public void format(FormattedArtifactIF artifact) throws IOException {
 
         _DocType.format(artifact);

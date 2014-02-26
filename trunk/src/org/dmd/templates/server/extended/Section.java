@@ -197,7 +197,7 @@ public class Section extends SectionDMW {
         out.write(getFormatFunction());
         
         if (getStartsWith() != null){
-			out.write(getStartsWith().getAccessFunctions(this.getName().getNameString(), CardinalityEnum.STATIC));        	
+			out.write(getStartsWith().getAccessFunctions(this.getName().getNameString(), CardinalityEnum.STATIC, true));        	
         }
         
 		ContainsIterableDMW it = getContainsIterable();
@@ -207,12 +207,12 @@ public class Section extends SectionDMW {
 			
 			if (ce instanceof Section){
 				Section contained = (Section)ce;
-				out.write(contained.getAccessFunctions(this.getName().getNameString(), c.getOccurences()));
+				out.write(contained.getAccessFunctions(this.getName().getNameString(), c.getOccurences(), true));
 			}
 		}
 
         if (getEndsWith() != null){
-			out.write(getEndsWith().getAccessFunctions(this.getName().getNameString(), CardinalityEnum.STATIC));        	
+			out.write(getEndsWith().getAccessFunctions(this.getName().getNameString(), CardinalityEnum.STATIC, true));        	
         }
         
         out.write("}");
@@ -339,12 +339,14 @@ public class Section extends SectionDMW {
      * Returns the access functions to be used when accessing this section
      * from the TextualArtifact or another Section.
      * @param cardinality the occurrence of this Section in the surrounding context.
+     * @param staticFunctions flag to indicate if we want the static access functions at this level.
      * @return the appropriate access functions
      */
-    String getAccessFunctions(String container, CardinalityEnum cardinality){
+    String getAccessFunctions(String container, CardinalityEnum cardinality, boolean staticFunctions){
     	StringBuffer sb = new StringBuffer();
     	
     	if (cardinality == CardinalityEnum.ONE){
+    		sb.append("    // Generated from: " + DebugInfo.getWhereWeAreNow() + "\n");
     		sb.append("    public " + getName() + " add" + getName() + "(){\n");
         	sb.append("        if (_" + getName() + " != null)\n");
         	sb.append("            throw(new IllegalStateException(\"Multiple calls to add a " + getName() + " Section. There should only be one of these in a " + container + ".\"));\n");
@@ -352,12 +354,14 @@ public class Section extends SectionDMW {
         	sb.append("        return(_" + getName() + ");\n");
         	sb.append("    }\n\n");
         	
+    		sb.append("    // Generated from: " + DebugInfo.getWhereWeAreNow() + "\n");
     		sb.append("    public " + getName() + " get" + getName() + "(){\n");
         	sb.append("        return(_" + getName() + ");\n");
         	sb.append("    }\n\n");
         	
         	if (getValueHasValue()){
         		if (getValueSize() <= getDefinedInTdlModule().getMaxFastAddValues()){
+            		sb.append("    // Generated from: " + DebugInfo.getWhereWeAreNow() + "\n");
             		sb.append("    public " + getName() + " fastAdd" + getName() + "(" + getFastAddArgVector() + "){\n");
                 	sb.append("        if (_" + getName() + " != null)\n");
                 	sb.append("            throw(new IllegalStateException(\"Multiple calls to add a " + getName() + " Section. There should only be one of these in a " + container + ".\"));\n");
@@ -369,6 +373,7 @@ public class Section extends SectionDMW {
         	}
     	}
     	else if (cardinality == CardinalityEnum.MANY){
+    		sb.append("    // Generated from: " + DebugInfo.getWhereWeAreNow() + "\n");
     		sb.append("    public " + getName() + " add" + getName() + "(){\n");
         	sb.append("        if (_" + getName() + " == null)\n");
         	sb.append("            _" + getName() + " = new ArrayList<" + getName() + ">();\n");
@@ -377,12 +382,14 @@ public class Section extends SectionDMW {
         	sb.append("        return(rc);\n");
         	sb.append("    }\n\n");
         	
+    		sb.append("    // Generated from: " + DebugInfo.getWhereWeAreNow() + "\n");
     		sb.append("    public Iterator<" + getName() + "> get" + getName() + "Set(){\n");
         	sb.append("        return(_" + getName() + ".iterator());\n");
         	sb.append("    }\n\n");
 
         	if (getValueHasValue()){
         		if (getValueSize() <= getDefinedInTdlModule().getMaxFastAddValues()){
+            		sb.append("    // Generated from: " + DebugInfo.getWhereWeAreNow() + "\n");
             		sb.append("    public " + getName() + " fastAdd" + getName() + "(" + getFastAddArgVector() + "){\n");
                 	sb.append("        if (_" + getName() + " == null)\n");
                 	sb.append("            _" + getName() + " = new ArrayList<" + getName() + ">();\n");
@@ -394,11 +401,13 @@ public class Section extends SectionDMW {
         	}
     	}
     	else {
-    		// STATIC - you can retrieve it, but it's added automatically
-    		
-    		sb.append("    public " + getName() + " get" + getName() + "(){\n");
-        	sb.append("        return(_" + getName() + ");\n");
-        	sb.append("    }\n\n");
+    		if (staticFunctions){
+	    		// STATIC - you can retrieve it, but it's added automatically
+	    		
+	    		sb.append("    public " + getName() + " get" + getName() + "(){\n");
+	        	sb.append("        return(_" + getName() + ");\n");
+	        	sb.append("    }\n\n");
+    		}
     	}
 
     	return(sb.toString());
@@ -498,6 +507,10 @@ public class Section extends SectionDMW {
 			if (ce instanceof Section){
 				Section contained = (Section)ce;
 				contained.getFormatHint(c.getOccurences(), indent + "  ", hint);
+			}
+			else if (ce instanceof ExtensionHook){
+				ExtensionHook hook = (ExtensionHook) ce;
+				hook.getFormatHint(indent + "  ", hint);
 			}
 		}    	
     	

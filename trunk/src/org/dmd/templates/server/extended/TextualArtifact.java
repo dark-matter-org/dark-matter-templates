@@ -29,7 +29,7 @@ public class TextualArtifact extends TextualArtifactDMW {
         super(dmo,cd);
     }
 
-    public void generateTextualArtifactClass(String outdir) throws IOException{
+    public void generateTextualArtifactClass(String outdir) throws IOException {
     	ImportManager 	imports = new ImportManager();
     	MemberManager	members	= new MemberManager();
     	
@@ -64,13 +64,14 @@ public class TextualArtifact extends TextualArtifactDMW {
 
         out.write(imports.getFormattedImports()  + "\n\n");
         
-        out.write("// Generated from: " + DebugInfo.getWhereWeAreNow() + "\n");
+        out.write("    // Generated from: " + DebugInfo.getWhereWeAreNow() + "\n");
         out.write(getFormatHint());
-        out.write("public class " + getName() + " {\n\n");
+        out.write("    public class " + getName() + " {\n\n");
         out.write("\n");
         out.write(members.getFormattedMembers() + "\n");
         out.write("\n");
 
+        out.write("    // Generated from: " + DebugInfo.getWhereWeAreNow() + "\n");
         out.write("    public " + getName() + "(){\n");
         out.write(getStaticSectionConstruction());
         out.write("    }\n\n");
@@ -87,7 +88,9 @@ getStaticAccessToStructure();
 			
 			if (ce instanceof Section){
 				Section contained = (Section)ce;
-				out.write(contained.getAccessFunctions(this.getName().getNameString(), c.getOccurences()));
+				// We don't get the static functions for the sections, instead, we insert only the 
+				// static access functions to access sections that can have content added
+				out.write(contained.getAccessFunctions(this.getName().getNameString(), c.getOccurences(), false));
 			}
 		}
         
@@ -167,6 +170,7 @@ getStaticAccessToStructure();
     	hint.append("     * ++ : an optional Section\n");
     	hint.append("     * -- : a static Section\n");
     	hint.append("     * <- : values can be inserted\n");
+    	hint.append("     * xx : extension hook can be inserted\n");
     	hint.append("     * \n");
     	hint.append("     * " + getName() + "\n");
     	
@@ -179,12 +183,22 @@ getStaticAccessToStructure();
 				Section contained = (Section)ce;
 				contained.getFormatHint(c.getOccurences(), "  ", hint);
 			}
+			// Note: artifacts don't contain extension hooks!
 		}
     	hint.append("     */\n");
     	
     	return(hint.toString());
     }
     
+    /**
+     * This method cycles over the contained elements and creates a set of member functions that
+     * will allow for direct access to unbroken chains of static sections that have either values
+     * that can be added or have sections beneath them with dynamic content. 
+     * <p/>
+     * Basically, there's no point in providing access to any section that can't be altered i.e.
+     * no point in accessing the static part of the artifact, only places where you "make a difference".
+     * @return the methods needed to access the appropriate sections.
+     */
     String getStaticAccessToStructure(){
     	StringBuffer sb = new StringBuffer();
     	TreeMap<String,ArrayList<String>>	sections = new TreeMap<String, ArrayList<String>>();
