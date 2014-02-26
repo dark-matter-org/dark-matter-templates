@@ -70,6 +70,7 @@ Section
 name			ClassSummary
 startsWith		ClassListStart
 contains		many ClassListEntry
+contains		many ClassAttributesExt
 endsWithText	ClassListEnd
 value			classCount "The number of classes in ClassListStart"
 

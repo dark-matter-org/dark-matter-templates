@@ -12,6 +12,7 @@ import org.dmd.templates.server.extended.TextualArtifact;
 import org.dmd.templates.server.generated.dmw.ContainsIterableDMW;
 import org.dmd.templates.server.generated.dsd.TdlModuleDefinitionManager;
 import org.dmd.templates.server.generated.dsd.TdlModuleGenUtility;
+import org.dmd.templates.shared.generated.enums.CardinalityEnum;
 import org.dmd.templates.shared.generated.types.Contains;
 import org.dmd.util.FileUpdateManager;
 import org.dmd.util.exceptions.ResultException;
@@ -27,6 +28,35 @@ public class DmtdlGen extends TdlModuleGenUtility {
 	@Override
 	public void objectResolutionComplete(TdlModule module, ConfigLocation location, TdlModuleDefinitionManager definitions) throws ResultException {
 		onlySectionsInArtifact(module);
+		extensionHooksAlwaysMany(module);
+	}
+	
+	/**
+	 * Checks that all extension hooks are indicated as "many" when they are referenced.
+	 * @throws ResultException  
+	 */
+	void extensionHooksAlwaysMany(TdlModule module) throws ResultException {
+		ResultException ex = null;
+
+		Iterator<Section> sections = module.getAllSection();
+		while(sections.hasNext()){
+			Section section = sections.next();
+			ContainsIterableDMW it = section.getContainsIterable();
+			while(it.hasNext()){
+    			Contains c = it.getNext();
+    			ContainedElement ce = (ContainedElement) c.getElement().getObject().getContainer();
+    			
+    			if (ce instanceof ExtensionHook){
+    				if (c.getOccurences() != CardinalityEnum.MANY){
+	    				if (ex == null)
+	    					ex = new ResultException();
+	    				ex.addError("Reference to ExtensionHook: " + ce.getName() + " should be specified as many, not " + c.getOccurences(),ce.getFile(),ce.getLineNumber());
+    				}
+    			}
+			}
+			if (ex != null)
+				throw(ex);
+		}
 	}
 
 	/**
