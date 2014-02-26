@@ -58,13 +58,14 @@ public class TdlModule extends TdlModuleDMW {
 			ExtensionHook hook = hooks.next();
 			int lastDot = hook.getTargetObjectClass().lastIndexOf(".");
 			String toc = hook.getTargetObjectClass().substring(lastDot+1);
+			String hn = GenUtility.capTheName(hook.getName().getNameString());
 			
 			out.write("    /**\n");
 			out.write("     * Create any other required " + hook.getUsesSection().getName() + " entries based on the " + toc + " object.\n");
 			out.write("     * @param target the object currently being formatted.\n");
 			out.write("     * @return null or a set of " + hook.getUsesSection().getName() + " Sections to be inserted in the artifact.\n");
 			out.write("     */\n");
-			out.write("    public ArrayList<" + hook.getUsesSection().getName() + "> perform" + hook.getName() + "(" + toc + " target);\n");
+			out.write("    public ArrayList<" + hook.getUsesSection().getName() + "> perform" + hn + "(" + toc + " target);\n");
 			out.write("\n");
 		}
 		
@@ -120,6 +121,12 @@ public class TdlModule extends TdlModuleDMW {
 		if (getCommentFormat() != null){
 			members.addSpacer();
 			members.addMember("public static Template",                	"_Comment", "Used to display debug comments in formatted output");
+		}
+		
+		if (getExtensionHookCount() > 0){
+			String extName = GenUtility.capTheName(getName().getNameString() + "ExtensionHookIF");
+			members.addSpacer();
+			members.addMember("public static ArrayList<" + extName + ">", "_extensionHooks", "new ArrayList<" + extName + ">()", "Used to access extension hook objects");
 		}
 		
 		String cn = GenUtility.capTheName(getName().getNameString() + "TemplateLoader");
@@ -181,7 +188,7 @@ public class TdlModule extends TdlModuleDMW {
 		
 		
 		String fn = getTemplateFile() + "." + getTemplateFileSuffix();
-		out.write("// Generated from: " + DebugInfo.getWhereWeAreNow() + "\n");
+		out.write("    // Generated from: " + DebugInfo.getWhereWeAreNow() + "\n");
 		out.write("    /**\n");
 		out.write("     * We attempt to find and load the " + fn + " file.\n");
 		out.write("     */\n");
@@ -202,7 +209,46 @@ public class TdlModule extends TdlModuleDMW {
 		out.write("        parser.parseFile(location.getFileName());\n");
 		out.write("    }\n\n");
 		
-
+		if (getExtensionHookCount() > 0){
+			String extName = GenUtility.capTheName(getName().getNameString() + "ExtensionHookIF");
+			
+			out.write("    // Generated from: " + DebugInfo.getWhereWeAreNow() + "\n");
+			out.write("    /**\n");
+			out.write("     * We attempt to load the classes that provide extension hooks.\n");
+			out.write("     */\n");
+			out.write("    public void loadExtensionHooks(ArrayList<String> hooks) throws ResultException {\n");
+			out.write("        Class<?> hookClass = null;\n");
+			out.write("        " + extName + " hook	= null;\n");
+			out.write("\n");
+			out.write("        for(String hc: hooks){\n");
+			out.write("		       try {\n");
+			out.write("                hookClass = Class.forName(hc);\n");
+			out.write("            } catch (ClassNotFoundException e) {\n");
+			out.write("                ResultException ex = new ResultException(e);\n");
+			out.write("                ex.addError(\"Couldn't load extension hook class: \" + hc);\n");
+			out.write("                throw(ex);\n");
+			out.write("            }\n");
+			out.write("\n");
+			out.write("            try {\n");
+			out.write("                Object obj = hookClass.newInstance();\n");
+			out.write("\n");
+			out.write("                if (obj instanceof " + extName + "){\n");
+			out.write("                    hook = (" + extName + ") obj;\n");
+			out.write("                    _extensionHooks.add(hook);\n");
+			out.write("                }\n");
+			out.write("                else{\n");
+			out.write("                    ResultException ex = new ResultException(\"The specified class does not implement the " + extName + " interface: \" + hc);\n");
+			out.write("                    throw(ex);\n");
+			out.write("                }\n");
+			out.write("            } catch (Exception e) {\n");
+			out.write("                ResultException ex = new ResultException(e);\n");
+			out.write("                ex.addError(\"Couldn't instantiate " + extName + " class: \" + hc);\n");
+			out.write("                throw(ex);\n");
+			out.write("            }\n");
+			out.write("        }\n");
+			out.write("    }\n\n");
+		}
+		
 		out.write("    // Generated from: " + DebugInfo.getWhereWeAreNow() + "\n");
 		out.write("    @Override\n");
 		out.write("    public void handleObject(DmcUncheckedObject uco, String infile, int lineNumber) throws ResultException, DmcValueException, DmcRuleExceptionSet, DmcNameClashException {\n");
