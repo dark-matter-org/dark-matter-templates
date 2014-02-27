@@ -29,6 +29,31 @@ public class DmtdlGen extends TdlModuleGenUtility {
 	public void objectResolutionComplete(TdlModule module, ConfigLocation location, TdlModuleDefinitionManager definitions) throws ResultException {
 		onlySectionsInArtifact(module);
 		extensionHooksAlwaysMany(module);
+		extensionHooksUseSectionWithValues(module);
+	}
+	
+	/**
+	 * Checks that ExtensionHooks refer to Sections that have values. Otherwise, what's the
+	 * point of having an extension hook.
+	 * @param module
+	 * @throws ResultException  
+	 */
+	void extensionHooksUseSectionWithValues(TdlModule module) throws ResultException {
+		ResultException ex = null;
+
+		Iterator<ExtensionHook> hooks = module.getAllExtensionHook();
+		while(hooks.hasNext()){
+			ExtensionHook hook = hooks.next();
+			
+			if (hook.getUsesSection().getValueIsEmpty()){
+				if (ex == null)
+					ex = new ResultException();
+				ex.addError("The Section used by ExtensionHook " + hook.getName() + " does not have any configurable values; it should.",hook.getFile(),hook.getLineNumber());
+				
+			}
+		}
+		if (ex != null)
+			throw(ex);
 	}
 	
 	/**
@@ -54,9 +79,9 @@ public class DmtdlGen extends TdlModuleGenUtility {
     				}
     			}
 			}
-			if (ex != null)
-				throw(ex);
 		}
+		if (ex != null)
+			throw(ex);
 	}
 
 	/**
