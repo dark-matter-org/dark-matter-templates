@@ -368,6 +368,9 @@ public class Section extends SectionDMW {
         	
     		sb.append("    // Generated from: " + DebugInfo.getWhereWeAreNow() + "\n");
     		sb.append("    public " + getName() + " get" + getName() + "(){\n");
+        	sb.append("        if (_" + getName() + " == null)\n");
+        	sb.append("            throw new IllegalStateException(\"The " + getName() + " Section is optional. You must add the section before you get it.\");\n");
+        	sb.append("\n");
         	sb.append("        return(_" + getName() + ");\n");
         	sb.append("    }\n\n");
         	
