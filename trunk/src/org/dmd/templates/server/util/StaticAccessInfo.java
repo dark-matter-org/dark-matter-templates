@@ -22,7 +22,11 @@ public class StaticAccessInfo implements Comparable<StaticAccessInfo> {
 	}
 	
 	public void addPath(String p){
-		callPaths.add(p);
+		if (callPaths.contains(p)){
+//			DebugInfo.debug("Tried to add duplicate call path: " + p + " to section " + section + "\n\n" + DebugInfo.getCurrentStack());
+		}
+		else
+			callPaths.add(p);
 	}
 
 	@Override
