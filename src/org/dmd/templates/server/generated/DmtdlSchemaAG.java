@@ -517,9 +517,6 @@ public class DmtdlSchemaAG extends SchemaDefinition {
             _commentFormatOBJ.setName("commentFormat");
             _commentFormatOBJ.setDmdID("-478583");
             _commentFormatOBJ.addDescription("By specifying a commentFormat for your TdlModule, you allow the formatting\n mechanism to automatically indicate the Template that was used for format the output. This\n is useful when debugging your formatted output.");
-            _commentFormatOBJ.addExampleUsage("Comment for XML :\n <pre>\n <!-- ::comment:: -->\n </pre>");
-            _commentFormatOBJ.addExampleUsage("Comment for Java :\n <pre>\n // ::comment:: \n </pre>");
-            _commentFormatOBJ.addExampleUsage("Multi-line comment for Java :\n <pre>\n /* ::comment:: */\n </pre>");
             _commentFormatOBJ.setDotName("dmtdl.commentFormat.AttributeDefinition");
             _commentFormat.setDefinedIn(this);
             _commentFormatOBJ.setFile("/src/org/dmd/templates/shared/dmdconfig/attributes.dmd");
@@ -534,7 +531,6 @@ public class DmtdlSchemaAG extends SchemaDefinition {
             _debugOnOBJ.setDmdID("-478582");
             _debugOnOBJ.addDescription("Although it's useful to have debug comments prepended to your generated\n artifact, there are times when you don't want that information dumped for particular Templates.\n For example, if your artifact must start with a particular text sequence. So, if\n you've specified a commentFormat for your TdlModule  but you don't want the debug\n comment for a particular Template, just set the debug attribute to false.");
             _debugOnOBJ.setNullReturnValue("true");
-            _debugOnOBJ.addExampleUsage("Turning off the debug comment\n Template\n name   FirstPart\n format <!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">\n debug  false");
             _debugOnOBJ.setDotName("dmtdl.debugOn.AttributeDefinition");
             _debugOn.setDefinedIn(this);
             _debugOnOBJ.setFile("/src/org/dmd/templates/shared/dmdconfig/attributes.dmd");
