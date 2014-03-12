@@ -117,6 +117,7 @@ public class DmtdlGen extends TdlModuleGenUtility {
 	public void generate(TdlModule module, ConfigLocation location, TdlModuleDefinitionManager definitions) throws IOException {
 		System.out.println("HERE");
 		
+		FileUpdateManager.instance().reportProgress(System.out);
 		FileUpdateManager.instance().generationStarting();
 		
 		String gendir = location.getConfigParentDirectory() + File.separator + "generated" + File.separator + "dmtdl";
@@ -155,6 +156,16 @@ public class DmtdlGen extends TdlModuleGenUtility {
 		File dir = new File(outdir);
 		if (!dir.exists())
 			dir.mkdirs();
+	}
+
+	@Override
+	public void generate(TdlModuleDefinitionManager definitions) throws IOException {
+		Iterator<TdlModule> modules = definitions.getAllTdlModule();
+		while(modules.hasNext()){
+			TdlModule module = modules.next();
+			ConfigLocation location = getLocation(module);
+			generate(module, location, definitions);
+		}
 	}
 
 

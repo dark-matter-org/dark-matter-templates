@@ -16,7 +16,7 @@
 package org.dmd.templates.server.generated.dsd;
 
 // Generated from: org.dmd.util.codegen.ImportManager.getFormattedImports(ImportManager.java:82)
-// Called from: org.dmd.dmg.generators.DSDArtifactFormatter.generateParser(DSDArtifactFormatter.java:468)
+// Called from: org.dmd.dmg.generators.DSDArtifactFormatter.generateParser(DSDArtifactFormatter.java:471)
 import org.dmd.dmc.DmcNameClashException;                                       // May be thrown when instantiating objects - (DSDArtifactFormatter.java:448)
 import org.dmd.dmc.DmcValueException;                                           // May be thrown when parsing objects - (DSDArtifactFormatter.java:447)
 import org.dmd.dmc.definitions.DsdParserInterface;                              // Standard parser interface - (DSDArtifactFormatter.java:431)
@@ -30,11 +30,11 @@ import org.dmd.dms.generated.dmw.StringIterableDMW;                             
 import org.dmd.dmv.shared.DmvRuleManager;                                       // The injected rule manager used for initializations - (DSDArtifactFormatter.java:451)
 import org.dmd.dmw.DmwObjectFactory;                                            // Constructs wrapped objects - (DSDArtifactFormatter.java:433)
 import org.dmd.dmw.DmwWrapper;                                                  // To handle factory created objects - (DSDArtifactFormatter.java:454)
-import org.dmd.templates.server.extended.ExtensionHook;                         // A definition from the TdlModule Module - (DSDArtifactFormatter.java:737)
-import org.dmd.templates.server.extended.Section;                               // A definition from the TdlModule Module - (DSDArtifactFormatter.java:737)
-import org.dmd.templates.server.extended.TdlDefinition;                         // The base definition from the TdlModule Module - (DSDArtifactFormatter.java:729)
+import org.dmd.templates.server.extended.ExtensionHook;                         // A definition from the TdlModule Module - (DSDArtifactFormatter.java:741)
+import org.dmd.templates.server.extended.Section;                               // A definition from the TdlModule Module - (DSDArtifactFormatter.java:741)
+import org.dmd.templates.server.extended.TdlDefinition;                         // The base definition from the TdlModule Module - (DSDArtifactFormatter.java:733)
 import org.dmd.templates.server.extended.TdlModule;                             // The kind of DDM we're reading - (DSDArtifactFormatter.java:458)
-import org.dmd.templates.server.extended.TextualArtifact;                       // A definition from the TdlModule Module - (DSDArtifactFormatter.java:737)
+import org.dmd.templates.server.extended.TextualArtifact;                       // A definition from the TdlModule Module - (DSDArtifactFormatter.java:741)
 import org.dmd.templates.server.generated.DmtdlSchemaAG;                        // The schema recognized by this parser - (DSDArtifactFormatter.java:446)
 import org.dmd.templates.server.generated.dsd.TdlModuleGlobalInterface;         // Interface to our definition storage - (DSDArtifactFormatter.java:434)
 import org.dmd.util.exceptions.ResultException;                                 // May be thrown by schema management - (DSDArtifactFormatter.java:449)
@@ -44,13 +44,13 @@ import org.dmd.util.parsing.DmcUncheckedOIFParser;                              
 
 
 
-// Generated from: org.dmd.dmg.generators.DSDArtifactFormatter.generateParser(DSDArtifactFormatter.java:471)
+// Generated from: org.dmd.dmg.generators.DSDArtifactFormatter.generateParser(DSDArtifactFormatter.java:474)
 public class TdlModuleParser implements DsdParserInterface, DmcUncheckedOIFHandlerIF {
 
     final static String fileExtension = "dmtdl";
 
     // Generated from: org.dmd.util.codegen.MemberManager.getFormattedMembers(MemberManager.java:64)
-    // Called from: org.dmd.dmg.generators.DSDArtifactFormatter.generateParser(DSDArtifactFormatter.java:485)
+    // Called from: org.dmd.dmg.generators.DSDArtifactFormatter.generateParser(DSDArtifactFormatter.java:488)
     SchemaManager               schema;                                             // Manages the schema for this DSD
     DmcUncheckedOIFParser       parser         = new DmcUncheckedOIFParser(this);   // Parses objects from the config file
     DmwObjectFactory            factory;                                            // Instantiates wrapped objects
@@ -59,7 +59,7 @@ public class TdlModuleParser implements DsdParserInterface, DmcUncheckedOIFHandl
     ConfigLocation              location;                                           // The location of the config being parsed
     TdlModule                   module;                                             // The DDM module
 
-    // Generated from: org.dmd.dmg.generators.DSDArtifactFormatter.generateParser(DSDArtifactFormatter.java:488)
+    // Generated from: org.dmd.dmg.generators.DSDArtifactFormatter.generateParser(DSDArtifactFormatter.java:491)
     public TdlModuleParser(TdlModuleGlobalInterface d, DmvRuleManager r) throws ResultException, DmcValueException, DmcNameClashException {
         schema = new SchemaManager();
         DmtdlSchemaAG sd = new DmtdlSchemaAG();
@@ -84,7 +84,7 @@ public class TdlModuleParser implements DsdParserInterface, DmcUncheckedOIFHandl
         return(fileExtension);
     }
 
-    // Generated from: org.dmd.dmg.generators.DSDArtifactFormatter.generateParser(DSDArtifactFormatter.java:513)
+    // Generated from: org.dmd.dmg.generators.DSDArtifactFormatter.generateParser(DSDArtifactFormatter.java:516)
     public TdlModule parseConfig(ConfigLocation l) throws ResultException, DmcValueException, DmcRuleExceptionSet, DmcNameClashException {
         location = l;
 
@@ -115,7 +115,7 @@ public class TdlModuleParser implements DsdParserInterface, DmcUncheckedOIFHandl
         return(module);
     }
 
-    // Generated from: org.dmd.dmg.generators.DSDArtifactFormatter.generateParser(DSDArtifactFormatter.java:546)
+    // Generated from: org.dmd.dmg.generators.DSDArtifactFormatter.generateParser(DSDArtifactFormatter.java:549)
     @Override
     public void handleObject(DmcUncheckedObject uco, String infile, int lineNumber) throws ResultException, DmcValueException, DmcRuleExceptionSet, DmcNameClashException {
         TdlDefinition definition = null;
@@ -180,7 +180,7 @@ public class TdlModuleParser implements DsdParserInterface, DmcUncheckedOIFHandl
             }
         }
         else{
-            // Generated from: org.dmd.dmg.generators.DSDArtifactFormatter.generateParser(DSDArtifactFormatter.java:620)
+            // Generated from: org.dmd.dmg.generators.DSDArtifactFormatter.generateParser(DSDArtifactFormatter.java:623)
             if (definition instanceof TdlModule){
                 ResultException ex = new ResultException("Multiple TdlModule definitions while parsing config: " + location.getFileName());
                 ex.setLocationInfo(infile, lineNumber);

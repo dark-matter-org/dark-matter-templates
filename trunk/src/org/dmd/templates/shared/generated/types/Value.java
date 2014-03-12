@@ -16,18 +16,18 @@
 package org.dmd.templates.shared.generated.types;
 
 // Generated from: org.dmd.util.codegen.ImportManager.getFormattedImports(ImportManager.java:82)
-// Called from: org.dmd.dms.util.NewComplexTypeFormatter.dumpComplexType(NewComplexTypeFormatter.java:123)
+// Called from: org.dmd.dms.util.NewComplexTypeFormatter.dumpComplexType(NewComplexTypeFormatter.java:126)
 import java.io.Serializable;                                    // To prevent serialization warnings - (NewComplexTypeFormatter.java:92)
 import java.util.ArrayList;                                     // To store ParsedNameValuePairs - (NewComplexTypeFormatter.java:99)
 import org.dmd.dmc.DmcAttributeInfo;                            // For fake DmcAttributeInfo - (NewComplexTypeFormatter.java:97)
 import org.dmd.dmc.DmcInputStreamIF;                            // Standard serialization techniques - (NewComplexTypeFormatter.java:93)
 import org.dmd.dmc.DmcOutputStreamIF;                           // Standard serialization techniques - (NewComplexTypeFormatter.java:94)
-import org.dmd.dmc.DmcValueException;                           // Standard value exception - (NewComplexTypeFormatter.java:118)
+import org.dmd.dmc.DmcValueException;                           // Standard value exception - (NewComplexTypeFormatter.java:121)
 import org.dmd.dmc.util.ComplexTypeSplitter;                    // For parsing initial input - (NewComplexTypeFormatter.java:98)
 import org.dmd.dmc.util.ParsedNameValuePair;                    // To store values parsed from initial input - (NewComplexTypeFormatter.java:100)
 import org.dmd.dms.generated.enums.DataTypeEnum;                // For fake DmcAttributeInfo - (NewComplexTypeFormatter.java:95)
 import org.dmd.dms.generated.enums.ValueTypeEnum;               // For fake DmcAttributeInfo - (NewComplexTypeFormatter.java:96)
-import org.dmd.dms.generated.types.DmcTypeStringSTATIC;         // Standard type - (NewComplexTypeFormatter.java:835)
+import org.dmd.dms.generated.types.DmcTypeStringSTATIC;         // Standard type - (NewComplexTypeFormatter.java:856)
 
 
 
@@ -36,7 +36,7 @@ import org.dmd.dms.generated.types.DmcTypeStringSTATIC;         // Standard type
  * The Value class.
  * This code was auto-generated and shouldn't be alterred manually.
  * 
- * Generated from: org.dmd.dms.util.NewComplexTypeFormatter.dumpComplexType(NewComplexTypeFormatter.java:130)
+ * Generated from: org.dmd.dms.util.NewComplexTypeFormatter.dumpComplexType(NewComplexTypeFormatter.java:133)
  */
 public class Value implements Serializable {
 
@@ -62,14 +62,14 @@ public class Value implements Serializable {
      * Copy constructor.
      */
     public Value(Value original){
-    // Generated from: org.dmd.dms.util.NewComplexTypeFormatter.getCopyConstructorAssignments(NewComplexTypeFormatter.java:773)
+    // Generated from: org.dmd.dms.util.NewComplexTypeFormatter.getCopyConstructorAssignments(NewComplexTypeFormatter.java:794)
         valueNameV =  original.valueNameV;
         descriptionV =  original.descriptionV;
     }
 
     /**
      * All fields constructor.
-     * Generated from: org.dmd.dms.util.NewComplexTypeFormatter.dumpComplexType(NewComplexTypeFormatter.java:161)
+     * Generated from: org.dmd.dms.util.NewComplexTypeFormatter.dumpComplexType(NewComplexTypeFormatter.java:164)
      */
     public Value(String valueName_, String description_) throws DmcValueException {
         valueNameV = DmcTypeStringSTATIC.instance.typeCheck(valueName_);
@@ -78,14 +78,14 @@ public class Value implements Serializable {
 
     /**
      * String based constructor.
-     * Generated from: org.dmd.dms.util.NewComplexTypeFormatter.dumpComplexType(NewComplexTypeFormatter.java:234)
+     * Generated from: org.dmd.dms.util.NewComplexTypeFormatter.dumpComplexType(NewComplexTypeFormatter.java:237)
      */
     public Value(String initialInput) throws DmcValueException {
         initialize(initialInput);
     }
     /**
      * Initialize content based on string form.
-     * Generated from: org.dmd.dms.util.NewComplexTypeFormatter.dumpComplexType(NewComplexTypeFormatter.java:242)
+     * Generated from: org.dmd.dms.util.NewComplexTypeFormatter.dumpComplexType(NewComplexTypeFormatter.java:245)
      */
     void initialize(String initialInput) throws DmcValueException {
         ArrayList<ParsedNameValuePair> nvp = ComplexTypeSplitter.parse(initialInput);
@@ -113,7 +113,7 @@ public class Value implements Serializable {
 
     /**
      * String form.
-     * Generated from: org.dmd.dms.util.NewComplexTypeFormatter.dumpComplexType(NewComplexTypeFormatter.java:341)
+     * Generated from: org.dmd.dms.util.NewComplexTypeFormatter.dumpComplexType(NewComplexTypeFormatter.java:344)
      */
     public String toString(){
         StringBuffer sb = new StringBuffer();
