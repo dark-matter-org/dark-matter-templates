@@ -2,8 +2,8 @@ package org.dmd.templates.server.util;
 
 import java.util.ArrayList;
 
-import org.dmd.dms.util.GenUtility;
 import org.dmd.templates.server.extended.Section;
+import org.dmd.util.codegen.Manipulator;
 import org.dmd.util.exceptions.DebugInfo;
 
 public class StaticAccessInfo implements Comparable<StaticAccessInfo> {
@@ -49,7 +49,7 @@ public class StaticAccessInfo implements Comparable<StaticAccessInfo> {
 	public String getAccessFunctions(){
 		StringBuffer sb = new StringBuffer();
 		sb.append("    // Generated from: " + DebugInfo.getWhereWeAreNow() + "\n");
-		String sn = GenUtility.capTheName(section.getName().getNameString());
+		String sn = Manipulator.capFirstChar(section.getName().getNameString());
 
 		if (callPaths.size() == 1){
 			sb.append("    /**\n");
