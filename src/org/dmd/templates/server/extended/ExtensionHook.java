@@ -3,11 +3,11 @@ package org.dmd.templates.server.extended;
 // Generated from: org.dmd.util.codegen.ImportManager.getFormattedImports(ImportManager.java:82)
 // Called from: org.dmd.dmg.generators.DMWGenerator.dumpExtendedClass(DMWGenerator.java:276)
 import org.dmd.dms.ClassDefinition;                                     // Used in derived constructors - (DMWGenerator.java:270)
-import org.dmd.dms.util.GenUtility;
 import org.dmd.templates.server.generated.dmw.ExtensionHookDMW;         // The wrapper we're extending - (DMWGenerator.java:268)
 import org.dmd.templates.shared.generated.dmo.ExtensionHookDMO;         // The wrapper we're extending - (DMWGenerator.java:269)
 import org.dmd.templates.shared.generated.enums.CardinalityEnum;
 import org.dmd.util.codegen.ImportManager;
+import org.dmd.util.codegen.Manipulator;
 import org.dmd.util.codegen.MemberManager;
 import org.dmd.util.exceptions.DebugInfo;
 
@@ -47,16 +47,16 @@ public class ExtensionHook extends ExtensionHookDMW {
     
     public String getExtensionFunction(){
     	StringBuffer sb = new StringBuffer();
-    	String loader = GenUtility.capTheName(getDefinedInTdlModule().getName().getNameString()) + "TemplateLoader";
-    	String hookInterface = GenUtility.capTheName(getDefinedInTdlModule().getName().getNameString()) + "ExtensionHookIF";
-    	String capped = GenUtility.capTheName(getName().getNameString());
+    	String loader = Manipulator.capFirstChar(getDefinedInTdlModule().getName().getNameString()) + "TemplateLoader";
+    	String hookInterface = Manipulator.capFirstChar(getDefinedInTdlModule().getName().getNameString()) + "ExtensionHookIF";
+    	String capped = Manipulator.capFirstChar(getName().getNameString());
     	int lastDot = getTargetObjectClass().lastIndexOf(".");
     	
     	if ( (lastDot == -1) || ((lastDot + 1) == getTargetObjectClass().length())){
     		throw(new IllegalStateException("The targetObjectClass for ExtensionHook: " + getName() + " is malformed - " + getFile() + ":" + getLineNumber()));
     	}
     	String cn = getTargetObjectClass().substring(lastDot+1);
-		String hn = GenUtility.capTheName(getName().getNameString());
+		String hn = Manipulator.capFirstChar(getName().getNameString());
 		String storage = "_" + getUsesSection().getName() + "_" + getName();
     	
 		sb.append("    // Generated from: " + DebugInfo.getWhereWeAreNow() + "\n");

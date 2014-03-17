@@ -7,11 +7,11 @@ import java.io.IOException;
 import java.util.Iterator;
 
 import org.dmd.dms.ClassDefinition;
-import org.dmd.dms.util.GenUtility;
 import org.dmd.templates.server.generated.dmw.TdlModuleDMW;
 import org.dmd.templates.shared.generated.dmo.TdlModuleDMO;
 import org.dmd.util.FileUpdateManager;
 import org.dmd.util.codegen.ImportManager;
+import org.dmd.util.codegen.Manipulator;
 import org.dmd.util.codegen.MemberManager;
 import org.dmd.util.exceptions.DebugInfo;
 
@@ -41,7 +41,7 @@ public class TdlModule extends TdlModuleDMW {
 			imports.addImport(hook.getTargetObjectClass(), "The object formatted by ExtensionHook - " + hook.getName());
 		}
 		
-		String cn = GenUtility.capTheName(getName().getNameString() + "ExtensionHookIF");
+		String cn = Manipulator.capFirstChar(getName().getNameString() + "ExtensionHookIF");
 		
 		BufferedWriter 	out = FileUpdateManager.instance().getWriter(outdir, cn + ".java");
 
@@ -58,7 +58,7 @@ public class TdlModule extends TdlModuleDMW {
 			ExtensionHook hook = hooks.next();
 			int lastDot = hook.getTargetObjectClass().lastIndexOf(".");
 			String toc = hook.getTargetObjectClass().substring(lastDot+1);
-			String hn = GenUtility.capTheName(hook.getName().getNameString());
+			String hn = Manipulator.capFirstChar(hook.getName().getNameString());
 			
 			out.write("    /**\n");
 			out.write("     * Create any other required " + hook.getUsesSection().getName() + " entries based on the " + toc + " object.\n");
@@ -124,12 +124,12 @@ public class TdlModule extends TdlModuleDMW {
 		}
 		
 		if (getExtensionHookCount() > 0){
-			String extName = GenUtility.capTheName(getName().getNameString() + "ExtensionHookIF");
+			String extName = Manipulator.capFirstChar(getName().getNameString() + "ExtensionHookIF");
 			members.addSpacer();
 			members.addMember("public static ArrayList<" + extName + ">", "_extensionHooks", "new ArrayList<" + extName + ">()", "Used to access extension hook objects");
 		}
 		
-		String cn = GenUtility.capTheName(getName().getNameString() + "TemplateLoader");
+		String cn = Manipulator.capFirstChar(getName().getNameString() + "TemplateLoader");
 		
 		
 		BufferedWriter 	out = FileUpdateManager.instance().getWriter(outdir, cn + ".java");
@@ -210,7 +210,7 @@ public class TdlModule extends TdlModuleDMW {
 		out.write("    }\n\n");
 		
 		if (getExtensionHookCount() > 0){
-			String extName = GenUtility.capTheName(getName().getNameString() + "ExtensionHookIF");
+			String extName = Manipulator.capFirstChar(getName().getNameString() + "ExtensionHookIF");
 			
 			out.write("    // Generated from: " + DebugInfo.getWhereWeAreNow() + "\n");
 			out.write("    /**\n");

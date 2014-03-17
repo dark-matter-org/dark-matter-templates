@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.util.TreeMap;
 
 import org.dmd.dms.ClassDefinition;
-import org.dmd.dms.util.GenUtility;
 import org.dmd.templates.server.generated.dmw.ContainsIterableDMW;
 import org.dmd.templates.server.generated.dmw.SectionDMW;
 import org.dmd.templates.server.generated.dmw.ValueIterableDMW;
@@ -18,6 +17,7 @@ import org.dmd.templates.shared.generated.types.Contains;
 import org.dmd.templates.shared.generated.types.Value;
 import org.dmd.util.FileUpdateManager;
 import org.dmd.util.codegen.ImportManager;
+import org.dmd.util.codegen.Manipulator;
 import org.dmd.util.codegen.MemberManager;
 import org.dmd.util.exceptions.DebugInfo;
 
@@ -173,7 +173,7 @@ public class Section extends SectionDMW {
             values = getValueIterable();
             while(values.hasNext()){
             	Value value = values.getNext();
-            	String fn = "set" + GenUtility.capTheName(value.getValueName());
+            	String fn = "set" + Manipulator.capFirstChar(value.getValueName());
             	
 	            out.write("    public " + getName() + " " + fn + "(String " + value.getValueName() + "_){\n");
             	out.write("        if (" + value.getValueName() + "_ != null)\n");
@@ -276,7 +276,7 @@ public class Section extends SectionDMW {
     		sb.append("        _" + getStartsWith().getName() + ".format(artifact);\n");    		
     	}
     	
-    	String loader = GenUtility.capTheName(getDefinedInTdlModule().getName().getNameString()) + "TemplateLoader";
+    	String loader = Manipulator.capFirstChar(getDefinedInTdlModule().getName().getNameString()) + "TemplateLoader";
 
     	if (getStartsWithText() != null){
     		if (getDefinedInTdlModule().getCommentFormat() != null){
