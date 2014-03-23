@@ -6,7 +6,7 @@ import java.util.ArrayList;                                                     
 import java.util.Iterator;                                                      // Support copy of MV objects - (BaseDMWGenerator.java:2240)
 import org.dmd.dmc.*;                                                           // If any attributes - (BaseDMWGenerator.java:1087)
 import org.dmd.dmc.definitions.DmcDefinitionIF;                                 // The object is a domain specific definition - (BaseDMWGenerator.java:411)
-import org.dmd.dmc.definitions.DmcDefinitionSet;                                // Our base to provide definition set storage - (DMWGenerator.java:170)
+import org.dmd.dmc.definitions.DmcDefinitionSet;                                // Our base to provide definition set storage - (DMWGenerator.java:171)
 import org.dmd.dmc.types.DefinitionName;                                        // Is named by - (BaseDMWGenerator.java:1062)
 import org.dmd.dmc.types.DotName;                                               // To support the find method for definitions - (DSDefinitionModule.java:163)
 import org.dmd.dms.ClassDefinition;                                             // Passing derived class def up the hierarchy - (BaseDMWGenerator.java:1067)
@@ -20,10 +20,10 @@ import org.dmd.templates.server.extended.TdlDefinition;                         
 import org.dmd.templates.server.extended.TdlModule;                             // Required for getModificationRecorder() - (BaseDMWGenerator.java:1076)
 import org.dmd.templates.server.extended.TextualArtifact;                       // A definition from the TdlModule Module - (DSDefinitionModule.java:174)
 import org.dmd.templates.server.generated.dmw.TdlModuleIterableDMW;             // For multi-valued TdlModule - (BaseDMWGenerator.java:1709)
-import org.dmd.templates.server.generated.dsd.TdlModuleScopedInterface;         // Required to manage module definition - (DMWGenerator.java:169)
+import org.dmd.templates.server.generated.dsd.TdlModuleScopedInterface;         // Required to manage module definition - (DMWGenerator.java:170)
 import org.dmd.templates.shared.generated.dmo.DmtdlDMSAG;                       // Attribute dependsOnTdlModule from the dmtdl schema - (BaseDMWGenerator.java:897)
 import org.dmd.templates.shared.generated.dmo.TdlModuleDMO;                     // Class not auxiliary or abstract - (BaseDMWGenerator.java:1252)
-import org.dmd.templates.shared.generated.types.TdlModuleREF;                   // Required to access defined in module name - (DMWGenerator.java:180)
+import org.dmd.templates.shared.generated.types.TdlModuleREF;                   // Required to access defined in module name - (DMWGenerator.java:181)
 
 
 
@@ -49,7 +49,7 @@ import org.dmd.templates.shared.generated.types.TdlModuleREF;                   
 abstract public class TdlModuleDMW extends TdlDefinition implements DmcDefinitionIF, DmcNamedObjectIF, TdlModuleScopedInterface {
 
     // Generated from: org.dmd.util.codegen.MemberManager.getFormattedMembers(MemberManager.java:64)
-    // Called from: org.dmd.dmg.generators.DMWGenerator.dumpAdditionalWrapperDefinitions(DMWGenerator.java:203)
+    // Called from: org.dmd.dmg.generators.DMWGenerator.dumpAdditionalWrapperDefinitions(DMWGenerator.java:204)
     DmcDefinitionSet<TdlDefinition>        TdlDefinitionDefs       = new DmcDefinitionSet<TdlDefinition>("TdlModule-allDefinitions");            // All definitions associated with this module
     DmcDefinitionSet<ContainedElement>     ContainedElementDefs    = new DmcDefinitionSet<ContainedElement>("TdlModule-ContainedElementDefs");   // All ContainedElement definitions
     DmcDefinitionSet<ExtensionHook>        ExtensionHookDefs       = new DmcDefinitionSet<ExtensionHook>("TdlModule-ExtensionHookDefs");         // All ExtensionHook definitions
@@ -645,7 +645,7 @@ abstract public class TdlModuleDMW extends TdlDefinition implements DmcDefinitio
     }
 
     // Generated from: org.dmd.dms.DSDefinitionModule.getInterfaceMethodsImplementations(DSDefinitionModule.java:219)
-    // Called from: org.dmd.dmg.generators.DMWGenerator.dumpAdditionalWrapperFunctions(DMWGenerator.java:211)
+    // Called from: org.dmd.dmg.generators.DMWGenerator.dumpAdditionalWrapperFunctions(DMWGenerator.java:212)
     /**
      * All definitions are added to the base definition collection.
      */
@@ -737,7 +737,7 @@ abstract public class TdlModuleDMW extends TdlDefinition implements DmcDefinitio
         return(TextualArtifactDefs.values().iterator());
     }
 
-    // Generated from: org.dmd.dmg.generators.DMWGenerator.dumpAdditionalWrapperFunctions(DMWGenerator.java:221)
+    // Generated from: org.dmd.dmg.generators.DMWGenerator.dumpAdditionalWrapperFunctions(DMWGenerator.java:222)
     /**
      * This method indicates the name of the module from which this definition was loaded.
      */

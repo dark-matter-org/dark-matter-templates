@@ -13,7 +13,7 @@ import org.dmd.templates.server.extended.ExtensionHook;                 // Requi
 import org.dmd.templates.server.extended.Section;                       // Is reference type - (BaseDMWGenerator.java:1107)
 import org.dmd.templates.shared.generated.dmo.ExtensionHookDMO;         // Class not auxiliary or abstract - (BaseDMWGenerator.java:1252)
 import org.dmd.templates.shared.generated.types.SectionREF;             // Is reference type REF - (BaseDMWGenerator.java:1115)
-import org.dmd.templates.shared.generated.types.TdlModuleREF;           // Required to access defined in module name - (DMWGenerator.java:180)
+import org.dmd.templates.shared.generated.types.TdlModuleREF;           // Required to access defined in module name - (DMWGenerator.java:181)
 
 
 
@@ -209,7 +209,7 @@ abstract public class ExtensionHookDMW extends ContainedElement implements DmcDe
         ((ExtensionHookDMO) core).remUsesSection();
     }
 
-    // Generated from: org.dmd.dmg.generators.DMWGenerator.dumpAdditionalWrapperFunctions(DMWGenerator.java:221)
+    // Generated from: org.dmd.dmg.generators.DMWGenerator.dumpAdditionalWrapperFunctions(DMWGenerator.java:222)
     /**
      * This method indicates the name of the module from which this definition was loaded.
      */

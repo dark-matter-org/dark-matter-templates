@@ -16,7 +16,7 @@ import org.dmd.templates.server.generated.dmw.ContainsIterableDMW;         // Fo
 import org.dmd.templates.shared.generated.dmo.DmtdlDMSAG;                  // Attribute contains from the dmtdl schema - (BaseDMWGenerator.java:897)
 import org.dmd.templates.shared.generated.dmo.TextualArtifactDMO;          // Class not auxiliary or abstract - (BaseDMWGenerator.java:1252)
 import org.dmd.templates.shared.generated.types.Contains;                  // Primitive type - (BaseDMWGenerator.java:1150)
-import org.dmd.templates.shared.generated.types.TdlModuleREF;              // Required to access defined in module name - (DMWGenerator.java:180)
+import org.dmd.templates.shared.generated.types.TdlModuleREF;              // Required to access defined in module name - (DMWGenerator.java:181)
 
 
 
@@ -233,7 +233,7 @@ abstract public class TextualArtifactDMW extends TdlDefinition implements DmcDef
         ((TextualArtifactDMO) core).remName();
     }
 
-    // Generated from: org.dmd.dmg.generators.DMWGenerator.dumpAdditionalWrapperFunctions(DMWGenerator.java:221)
+    // Generated from: org.dmd.dmg.generators.DMWGenerator.dumpAdditionalWrapperFunctions(DMWGenerator.java:222)
     /**
      * This method indicates the name of the module from which this definition was loaded.
      */

@@ -18,7 +18,7 @@ import org.dmd.templates.shared.generated.dmo.DmtdlDMSAG;                  // At
 import org.dmd.templates.shared.generated.dmo.SectionDMO;                  // Class not auxiliary or abstract - (BaseDMWGenerator.java:1252)
 import org.dmd.templates.shared.generated.types.Contains;                  // Primitive type - (BaseDMWGenerator.java:1150)
 import org.dmd.templates.shared.generated.types.SectionREF;                // Is reference type REF - (BaseDMWGenerator.java:1115)
-import org.dmd.templates.shared.generated.types.TdlModuleREF;              // Required to access defined in module name - (DMWGenerator.java:180)
+import org.dmd.templates.shared.generated.types.TdlModuleREF;              // Required to access defined in module name - (DMWGenerator.java:181)
 import org.dmd.templates.shared.generated.types.Value;                     // Primitive type - (BaseDMWGenerator.java:1150)
 
 
@@ -566,7 +566,7 @@ abstract public class SectionDMW extends ContainedElement implements DmcDefiniti
         ((SectionDMO) core).remValue();
     }
 
-    // Generated from: org.dmd.dmg.generators.DMWGenerator.dumpAdditionalWrapperFunctions(DMWGenerator.java:221)
+    // Generated from: org.dmd.dmg.generators.DMWGenerator.dumpAdditionalWrapperFunctions(DMWGenerator.java:222)
     /**
      * This method indicates the name of the module from which this definition was loaded.
      */

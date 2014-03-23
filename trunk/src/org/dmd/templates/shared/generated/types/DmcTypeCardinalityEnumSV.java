@@ -24,7 +24,7 @@ import org.dmd.templates.shared.generated.enums.CardinalityEnum;    // DmcType i
  * The DmcTypeCardinalityEnumSV provides storage for a single-valued CardinalityEnum
  * <P>
  * This code was auto-generated and shouldn't be altered manually!
- * Generated from: org.dmd.dms.util.GenUtility.dumpSVType(GenUtility.java:1969)
+ * Generated from: org.dmd.dms.util.GenUtility.dumpSVType(GenUtility.java:1985)
  *    Called from: org.dmd.dms.util.DmoTypeFormatter.dumpEnumType(DmoTypeFormatter.java:360)
  */
 @SuppressWarnings("serial")
@@ -49,14 +49,14 @@ public class DmcTypeCardinalityEnumSV extends DmcTypeCardinalityEnum implements 
     }
     
     @Override
-    // org.dmd.dms.util.GenUtility.dumpSVType(GenUtility.java:2001)
+    // org.dmd.dms.util.GenUtility.dumpSVType(GenUtility.java:2017)
     public DmcAttribute<CardinalityEnum> cloneIt(){
         DmcTypeCardinalityEnumSV rc = getNew();
         rc.value = value;
         return(rc);
     }
     
-    // org.dmd.dms.util.GenUtility.dumpSVType(GenUtility.java:2012)
+    // org.dmd.dms.util.GenUtility.dumpSVType(GenUtility.java:2028)
     public CardinalityEnum getSVCopy(){
         if (value == null)
             return(null);
@@ -64,7 +64,7 @@ public class DmcTypeCardinalityEnumSV extends DmcTypeCardinalityEnum implements 
     }
     
     @Override
-    // org.dmd.dms.util.GenUtility.dumpSVType(GenUtility.java:2024)
+    // org.dmd.dms.util.GenUtility.dumpSVType(GenUtility.java:2040)
     public CardinalityEnum set(Object v) throws DmcValueException {
         CardinalityEnum rc = typeCheck(v);
         // We only return a value if the value actually changed. This supports

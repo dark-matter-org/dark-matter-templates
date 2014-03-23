@@ -1,5 +1,5 @@
 TdlModule
-name 			dmschemadoc
+name 			schemaDocTemplates
 package			org.dmd.templates.tools
 templateFile	schemaDocTemplates
 commentFormat	<!-- ::comment:: -->
