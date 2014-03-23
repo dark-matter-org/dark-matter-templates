@@ -74,6 +74,7 @@ public class XmlAnalyzer {
 		StringBuffer	tagName			= null;
 		StringBuffer	attributeInfo	= null;
 		StringBuffer	bodyInfo		= null;
+		@SuppressWarnings("unused")
 		StringBuffer	commentInfo		= null;
 		String			lastString		= null;
 
@@ -359,6 +360,16 @@ public class XmlAnalyzer {
         case start:
         	// This is where we should be
         	break;
+		case lookingForEndBracketOfCloseTag:
+			break;
+		case parseBodyOrTag:
+			break;
+		case parsingComment:
+			break;
+		case startOrStopTag:
+			break;
+		default:
+			break;
         }
         
         if (!stack.isEmpty()){
