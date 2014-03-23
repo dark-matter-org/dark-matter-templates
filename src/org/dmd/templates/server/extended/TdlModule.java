@@ -153,6 +153,8 @@ public class TdlModule extends TdlModuleDMW {
 		out.write("        schema = new SchemaManager();\n");
 		out.write("        DmtdlSchemaAG sd = new DmtdlSchemaAG();\n");	
 		out.write("        schema.manageSchema(sd);\n");
+		out.write("        // Templates can be used to generate OIF files as well and we don't want the leading spaces on lines\n");
+		out.write("        parser.dropLineContinuations();\n");
 		out.write("        if (sd.getAttributeDefListSize() > 0){\n");
 		out.write("            AttributeDefinitionIterableDMW attrs = sd.getAttributeDefList();\n");
 		out.write("            while(attrs.hasNext()){\n");
