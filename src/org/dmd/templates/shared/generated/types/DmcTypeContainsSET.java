@@ -30,7 +30,7 @@ import org.dmd.templates.shared.generated.types.DmcTypeContains;    // DmcType i
  * The DmcTypeContainsSET provides storage for a set of Contains
  * <P>
  * This code was auto-generated and shouldn't be altered manually!
- * Generated from: org.dmd.dms.util.GenUtility.dumpSETType(GenUtility.java:2609)
+ * Generated from: org.dmd.dms.util.GenUtility.dumpSETType(GenUtility.java:2625)
  *    Called from: org.dmd.dms.util.DmoTypeFormatter.dumpTypes(DmoTypeFormatter.java:127)
  */
 @SuppressWarnings("serial")
@@ -63,7 +63,7 @@ public class DmcTypeContainsSET extends DmcTypeContains implements Serializable 
     }
     
     @Override
-    // org.dmd.dms.util.GenUtility.dumpSETType(GenUtility.java:2650)
+    // org.dmd.dms.util.GenUtility.dumpSETType(GenUtility.java:2666)
     public DmcAttribute<Contains> cloneIt(){
         synchronized(this){
             DmcTypeContainsSET rc = getNew();
@@ -82,7 +82,7 @@ public class DmcTypeContainsSET extends DmcTypeContains implements Serializable 
     }
     
     @Override
-    // org.dmd.dms.util.GenUtility.dumpSETType(GenUtility.java:2673)
+    // org.dmd.dms.util.GenUtility.dumpSETType(GenUtility.java:2689)
     public Contains add(Object v) throws DmcValueException {
         synchronized(this){
             Contains rc = typeCheck(v);
@@ -98,7 +98,7 @@ public class DmcTypeContainsSET extends DmcTypeContains implements Serializable 
     }
     
     @Override
-    // org.dmd.dms.util.GenUtility.dumpSETType(GenUtility.java:2690)
+    // org.dmd.dms.util.GenUtility.dumpSETType(GenUtility.java:2706)
     public Contains del(Object v){
         synchronized(this){
             Contains rc = null;
@@ -122,7 +122,7 @@ public class DmcTypeContainsSET extends DmcTypeContains implements Serializable 
     }
     
     @Override
-    // org.dmd.dms.util.GenUtility.dumpSETType(GenUtility.java:2715)
+    // org.dmd.dms.util.GenUtility.dumpSETType(GenUtility.java:2731)
     public Iterator<Contains> getMV(){
         synchronized(this){
             if (value == null)
@@ -135,7 +135,7 @@ public class DmcTypeContainsSET extends DmcTypeContains implements Serializable 
         }
     }
     
-    // org.dmd.dms.util.GenUtility.dumpSETType(GenUtility.java:2729)
+    // org.dmd.dms.util.GenUtility.dumpSETType(GenUtility.java:2745)
     public Set<Contains> getMVCopy(){
         synchronized(this){
             if (getAttributeInfo().valueType == ValueTypeEnum.HASHSET){
@@ -154,7 +154,7 @@ public class DmcTypeContainsSET extends DmcTypeContains implements Serializable 
     }
     
     @Override
-    // org.dmd.dms.util.GenUtility.dumpSETType(GenUtility.java:2749)
+    // org.dmd.dms.util.GenUtility.dumpSETType(GenUtility.java:2765)
     public int getMVSize(){
         synchronized(this){
             if (value == null)
@@ -164,7 +164,7 @@ public class DmcTypeContainsSET extends DmcTypeContains implements Serializable 
     }
     
     @Override
-    // org.dmd.dms.util.GenUtility.dumpSETType(GenUtility.java:2760)
+    // org.dmd.dms.util.GenUtility.dumpSETType(GenUtility.java:2776)
     public boolean contains(Object v){
         synchronized(this){
             if (value == null)

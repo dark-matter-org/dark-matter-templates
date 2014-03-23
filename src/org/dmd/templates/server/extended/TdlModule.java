@@ -107,7 +107,7 @@ public class TdlModule extends TdlModuleDMW {
 		members.addMember("DmcUncheckedOIFParser",       		"parser", "new DmcUncheckedOIFParser(this)", "Parses objects from the config file");
 		members.addMember("DmwObjectFactory",             		"factory", "Instantiates wrapped objects");
 		members.addMember("DmvRuleManager", 					"rules", "new DmvRuleManager()", "Rule manager");
-		members.addMember("ConfigFinder", 						"finder", "new ConfigFinder(\"" + getTemplateFileSuffix() + "\")", "Config finder for template files ending with ." + getTemplateFileSuffix());
+		members.addMember("ConfigFinder", 						"finder", "new ConfigFinder(\"." + getTemplateFileSuffix() + "\")", "Config finder for template files ending with ." + getTemplateFileSuffix());
 		members.addMember("ConfigLocation",						"location", "The location of the config being parsed");
 		members.addMember("TreeMap<String,TemplateMediator>",	"mediators", "new TreeMap<String,TemplateMediator>()", "The mediators by name");
 		members.addSpacer();
@@ -148,8 +148,9 @@ public class TdlModule extends TdlModuleDMW {
 		out.write("    /**\n");
 		out.write("     * Creates a new template loader for templates associated with the " + getName() + " TdlModule.\n");
 		out.write("     * @param paths the paths that we'll search for the template definition file.\n");
+		out.write("     * @param jars the prefixes of jars on the classpath that we'll search for configs\n");
 		out.write("     */\n");
-		out.write("    public " + cn + "(ArrayList<String> paths) throws ResultException, DmcValueException, DmcNameClashException {\n");
+		out.write("    public " + cn + "(ArrayList<String> paths, ArrayList<String> jars) throws ResultException, DmcValueException, DmcNameClashException {\n");
 		out.write("        schema = new SchemaManager();\n");
 		out.write("        DmtdlSchemaAG sd = new DmtdlSchemaAG();\n");	
 		out.write("        schema.manageSchema(sd);\n");
@@ -165,7 +166,7 @@ public class TdlModule extends TdlModuleDMW {
 		out.write("            }\n");
 		out.write("        }\n");
 		out.write("        \n");
-		out.write("        finder.setSourceInfo(paths);\n\n");
+		out.write("        finder.setSourceAndJarInfo(paths, jars);\n\n");
 		
 		sections = getAllSection();
 		while(sections.hasNext()){
@@ -208,7 +209,9 @@ public class TdlModule extends TdlModuleDMW {
 		out.write("        }\n");
 		out.write("\n");
 		out.write("        location = version.getLatestVersion();\n");
-		out.write("        parser.parseFile(location.getFileName());\n");
+		out.write("\n");
+		out.write("        // How we read the file will depend on whether or not it's in a JAR\n");
+		out.write("        parser.parseFile(location.getFileName(),location.isFromJAR());\n");
 		out.write("    }\n\n");
 		
 		if (getExtensionHookCount() > 0){

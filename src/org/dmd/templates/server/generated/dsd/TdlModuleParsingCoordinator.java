@@ -54,7 +54,7 @@ public class TdlModuleParsingCoordinator {
     TdlModuleGeneratorInterface               generator;                                                                  // Injected generator that we call when config loading is complete
     TreeMap<String, ModuleInfoBase>           loadedConfigs             = new TreeMap<String, ModuleInfoBase>();          // Stores all loaded configs based on the name of the file that was parsed.
     TdlModuleParser                           parserForTdlModule;                                                         // Parser for TdlModule definitions
-    ConfigFinder                              finderForTdlModule        = new ConfigFinder("dmtdl");                      // Config finder for TdlModule config files ending with .dmtdl
+    ConfigFinder                              finderForTdlModule        = new ConfigFinder(".dmtdl");                     // Config finder for TdlModule config files ending with .dmtdl
     TreeMap<DefinitionName, TdlModuleInfo>    loadedTdlModuleConfigs    = new TreeMap<DefinitionName, TdlModuleInfo>();   // The names/location of the TdlModule modules that have been loaded
 
 
