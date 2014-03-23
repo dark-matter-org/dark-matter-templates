@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Name: dark-matter-templates
+Specification-Title: dark-matter-templates
+Specification-Version: 1.0.0
+Specification-Vendor: dark-matter-templates committers
+Implementation-Title: org.dmd
+Implementation-Version: rev30
+Implementation-Vendor: dark-matter-templates committers

@@ -1,0 +1,93 @@
+TdlModule
+name 			dmschemadoc
+package			org.dmd.templates.tools
+templateFile	schemaDocTemplates
+commentFormat	<!-- ::comment:: -->
+description		These Sections and their associated Templates are used to format dark-matter
+ schema definitions.
+
+TextualArtifact
+name 			SchemaDoc
+contains		static DocType
+contains		static HtmlContent
+description 	The SchemaDoc interface defines the overall form of a schema documentation page.
+
+Section
+name			DocType
+description		Standard front matter for an XHTML document.
+
+Section
+name			HtmlContent
+contains		static HtmlHead
+contains		static Body
+endsWithText	</html>
+description		The main html content.
+
+Section
+name			HtmlHead
+value			schemaName	"The name of the schema"
+
+Section
+name			Body
+startsWithText	<body>
+contains		static DivHeader
+contains		static DivMain
+endsWithText	</body> 
+description		The body of the document.
+
+Section
+name			DivHeader
+description		Colored bar across the top
+
+Section
+name			DivMain
+startsWithText	<div id="main">
+contains		static DivContent
+endsWithText	</div> <!-- main -->
+description		Contains the main content of the page.
+
+Section
+name			DivContent
+startsWithText	<div id="content">
+contains		static SchemaTitle
+contains		static DivSummary 
+endsWithText	</div> <!-- content -->
+
+Section
+name			SchemaTitle
+value			schemaName "Just the name of the schema"
+
+
+Section
+name			DivSummary
+startsWithText	<div class="summary">
+contains		one ClassSummary
+endsWithText	</div> <!-- summary -->
+
+///////////////////////////////////////////////////////////////////////////////
+
+Section
+name			ClassSummary
+startsWith		ClassListStart
+contains		many ClassListEntry
+contains		many ClassAttributesExt
+endsWithText	ClassListEnd
+value			classCount "The number of classes in ClassListStart"
+
+Section
+name			ClassListStart
+
+Section
+name			ClassListEntry
+value			className "The name of the class"
+
+Section
+name			ClassListEnd
+
+
+ExtensionHook
+name				ClassAttributesExt
+usesSection			ClassListEntry
+targetObjectClass	org.dmd.templates.server.extended.ContainedElement
+description			Allows for insertion of additional content in a ClassDefinition's
+ attributes 		
