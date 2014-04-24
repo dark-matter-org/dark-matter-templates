@@ -104,7 +104,7 @@ public class Contains implements Serializable {
         ArrayList<ParsedNameValuePair> nvp = ComplexTypeSplitter.parse(initialInput);
 
         if (nvp.size() < requiredParts)
-            throw(new DmcValueException("Missing required values for complex type: Contains"));
+            throw(new DmcValueException("Missing required values for complex type: Contains\nValue: " + initialInput));
 
         occurencesV = DmcTypeCardinalityEnumSTATIC.instance.typeCheck(nvp.get(0).getValue());
         elementV = DmcTypeContainedElementREFSTATIC.instance.typeCheck(nvp.get(1).getValue());
