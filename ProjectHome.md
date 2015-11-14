@@ -1,0 +1,1 @@
+There are a variety of situations where being able to dump the contents of dark-matter objects (DMOs) is useful. Generating XHTML, XML or other simple text-based formats is simplified by using the inherent, schema driven aspects of DMOs.
