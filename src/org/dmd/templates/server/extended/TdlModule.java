@@ -255,7 +255,6 @@ public class TdlModule extends TdlModuleDMW {
 		}
 		
 		out.write("    // Generated from: " + DebugInfo.getWhereWeAreNow() + "\n");
-		out.write("    @Override\n");
 		out.write("    public void handleObject(DmcUncheckedObject uco, String infile, int lineNumber) throws ResultException, DmcValueException, DmcRuleExceptionSet, DmcNameClashException {\n");
 		out.write("        Template template = null;\n");
 		out.write("        DmwWrapper wrapper = null;\n");
