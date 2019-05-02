@@ -15,23 +15,23 @@
 //	---------------------------------------------------------------------------
 package org.dmd.templates.shared.generated.dmo;
 
-// Generated from: org.dmd.dms.util.GenUtility.formatImports(GenUtility.java:396)
-import java.io.Serializable;                                                   // Always required - (GenUtility.java:224)
-import java.util.*;                                                            // Always required if we have any MV attributes - (GenUtility.java:221)
-import org.dmd.dmc.DmcAttribute;                                               // Named object - (GenUtility.java:376)
-import org.dmd.dmc.DmcNamedObjectIF;                                           // Named object - (GenUtility.java:375)
-import org.dmd.dmc.DmcOmni;                                                    // Lazy resolution - (GenUtility.java:320)
-import org.dmd.dmc.DmcValueException;                                          // Any attributes - (GenUtility.java:241)
-import org.dmd.dmc.types.DefinitionName;                                       // Naming attribute type - (GenUtility.java:370)
-import org.dmd.dmc.types.DotName;                                              // Primitive type and !auxiliary class - (GenUtility.java:271)
-import org.dmd.dms.generated.dmo.DSDefinitionDMO;                              // Base class - (GenUtility.java:355)
-import org.dmd.dms.generated.dmo.MetaDMSAG;                                    // Attribute from meta schema - (GenUtility.java:194)
-import org.dmd.dms.generated.types.DmcTypeDefinitionNameSV;                    // Required type - (GenUtility.java:328)
-import org.dmd.dms.generated.types.DmcTypeDotNameSV;                           // Required type - (GenUtility.java:328)
-import org.dmd.dms.generated.types.DmcTypeStringMV;                            // Required type - (GenUtility.java:328)
-import org.dmd.templates.shared.generated.dmo.TdlModuleDMO;                    // Type specific set/add - (GenUtility.java:307)
-import org.dmd.templates.shared.generated.types.DmcTypeTdlModuleREFSV;         // Reference type - (GenUtility.java:300)
-import org.dmd.templates.shared.generated.types.TdlModuleREF;                  // Helper class - (GenUtility.java:335)
+// Generated from: org.dmd.dms.util.GenUtility.formatImports(GenUtility.java:408)
+import java.io.Serializable;                                                   // Always required - (GenUtility.java:227)
+import java.util.*;                                                            // Always required if we have any MV attributes - (GenUtility.java:224)
+import org.dmd.dmc.DmcAttribute;                                               // Named object - (GenUtility.java:388)
+import org.dmd.dmc.DmcNamedObjectIF;                                           // Named object - (GenUtility.java:387)
+import org.dmd.dmc.DmcOmni;                                                    // Lazy resolution - (GenUtility.java:331)
+import org.dmd.dmc.DmcValueException;                                          // Any attributes - (GenUtility.java:249)
+import org.dmd.dmc.types.DefinitionName;                                       // Naming attribute type - (GenUtility.java:382)
+import org.dmd.dmc.types.DotName;                                              // Primitive type - (GenUtility.java:282)
+import org.dmd.dms.generated.dmo.DSDefinitionDMO;                              // Base class - (GenUtility.java:367)
+import org.dmd.dms.generated.dmo.MetaDMSAG;                                    // Attribute from meta schema - (GenUtility.java:197)
+import org.dmd.dms.generated.types.DmcTypeDefinitionNameSV;                    // Required type - (GenUtility.java:339)
+import org.dmd.dms.generated.types.DmcTypeDotNameSV;                           // Required type - (GenUtility.java:339)
+import org.dmd.dms.generated.types.DmcTypeStringMV;                            // Required type - (GenUtility.java:339)
+import org.dmd.templates.shared.generated.dmo.TdlModuleDMO;                    // Type specific set/add - (GenUtility.java:318)
+import org.dmd.templates.shared.generated.types.DmcTypeTdlModuleREFSV;         // Reference type - (GenUtility.java:311)
+import org.dmd.templates.shared.generated.types.TdlModuleREF;                  // Helper class - (GenUtility.java:346)
 
 // Generated from: org.dmd.dms.util.DmoFormatter.getClassHeader(DmoFormatter.java:678)
 /**
@@ -96,7 +96,7 @@ abstract public class TdlDefinitionDMO  extends DSDefinitionDMO  implements DmcN
      * @return An Iterator of String objects.
      */
     @SuppressWarnings("unchecked")
-    // org.dmd.dms.util.GenUtility.formatMV(GenUtility.java:1112)
+    // org.dmd.dms.util.GenUtility.formatMV(GenUtility.java:1278)
     public Iterator<String> getDescription(){
         DmcTypeStringMV attr = (DmcTypeStringMV) get(MetaDMSAG.__description);
         if (attr == null)
@@ -108,7 +108,7 @@ abstract public class TdlDefinitionDMO  extends DSDefinitionDMO  implements DmcN
     /**
      * @return The nth String value.
      */
-    // org.dmd.dms.util.GenUtility.formatMV(GenUtility.java:1124)
+    // org.dmd.dms.util.GenUtility.formatMV(GenUtility.java:1290)
     public String getNthDescription(int i){
         DmcTypeStringMV attr = (DmcTypeStringMV) get(MetaDMSAG.__description);
         if (attr == null)
@@ -121,7 +121,7 @@ abstract public class TdlDefinitionDMO  extends DSDefinitionDMO  implements DmcN
      * Adds another description to the specified value.
      * @param value String
      */
-    // org.dmd.dms.util.GenUtility.formatMV(GenUtility.java:1138)
+    // org.dmd.dms.util.GenUtility.formatMV(GenUtility.java:1304)
     public DmcAttribute<?> addDescription(String value) {
         DmcAttribute<?> attr = get(MetaDMSAG.__description);
         if (attr == null)
@@ -141,7 +141,7 @@ abstract public class TdlDefinitionDMO  extends DSDefinitionDMO  implements DmcN
      * Returns true if we contain a valued keyed by the specified String.
      * @param value String
      */
-    // org.dmd.dms.util.GenUtility.formatMV(GenUtility.java:1213)
+    // org.dmd.dms.util.GenUtility.formatMV(GenUtility.java:1379)
     public boolean descriptionContains(String value) {
         DmcAttribute<?> attr = get(MetaDMSAG.__description);
         if (attr == null)
@@ -153,7 +153,7 @@ abstract public class TdlDefinitionDMO  extends DSDefinitionDMO  implements DmcN
      * Adds another description value.
      * @param value A value compatible with String
      */
-    // org.dmd.dms.util.GenUtility.formatMV(GenUtility.java:1245)
+    // org.dmd.dms.util.GenUtility.formatMV(GenUtility.java:1411)
     public DmcAttribute<?> addDescription(Object value) throws DmcValueException {
         DmcAttribute<?> attr = get(MetaDMSAG.__description);
         if (attr == null)
@@ -167,7 +167,7 @@ abstract public class TdlDefinitionDMO  extends DSDefinitionDMO  implements DmcN
     /**
      * Returns the number of values in description
      */
-    // org.dmd.dms.util.GenUtility.formatMV(GenUtility.java:1262)
+    // org.dmd.dms.util.GenUtility.formatMV(GenUtility.java:1428)
     public int getDescriptionSize(){
         DmcAttribute<?> attr = get(MetaDMSAG.__description);
         if (attr == null){
@@ -183,7 +183,7 @@ abstract public class TdlDefinitionDMO  extends DSDefinitionDMO  implements DmcN
      * Deletes a description value.
      * @param value The String to be deleted from set of attribute values.
      */
-    // org.dmd.dms.util.GenUtility.formatMV(GenUtility.java:1320)
+    // org.dmd.dms.util.GenUtility.formatMV(GenUtility.java:1486)
     public DmcAttribute<?> delDescription(Object value) throws DmcValueException {
         DmcAttribute<?> attr = get(MetaDMSAG.__description);
         
@@ -199,7 +199,7 @@ abstract public class TdlDefinitionDMO  extends DSDefinitionDMO  implements DmcN
      * Deletes a description from the specified value.
      * @param value String
      */
-    // org.dmd.dms.util.GenUtility.formatMV(GenUtility.java:1336)
+    // org.dmd.dms.util.GenUtility.formatMV(GenUtility.java:1502)
     public DmcAttribute<?> delDescription(String value) {
         DmcAttribute<?> attr = get(MetaDMSAG.__description);
         
@@ -214,12 +214,12 @@ abstract public class TdlDefinitionDMO  extends DSDefinitionDMO  implements DmcN
     /**
      * Removes the description attribute value.
      */
-    // org.dmd.dms.util.GenUtility.formatMV(GenUtility.java:1355)
+    // org.dmd.dms.util.GenUtility.formatMV(GenUtility.java:1521)
     public void remDescription(){
          rem(MetaDMSAG.__description);
     }
 
-    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:784)
+    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:789)
     public DefinitionName getName(){
         DmcTypeDefinitionNameSV attr = (DmcTypeDefinitionNameSV) get(MetaDMSAG.__name);
         if (attr == null)
@@ -232,7 +232,7 @@ abstract public class TdlDefinitionDMO  extends DSDefinitionDMO  implements DmcN
      * Sets name to the specified value.
      * @param value DefinitionName
      */
-    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:824)
+    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:829)
     public void setName(DefinitionName value) {
         DmcAttribute<?> attr = get(MetaDMSAG.__name);
         if (attr == null)
@@ -251,7 +251,7 @@ abstract public class TdlDefinitionDMO  extends DSDefinitionDMO  implements DmcN
      * Sets name to the specified value.
      * @param value A value compatible with DmcTypeDefinitionNameSV
      */
-    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:877)
+    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:882)
     public void setName(Object value) throws DmcValueException {
         DmcTypeDefinitionNameSV attr  = (DmcTypeDefinitionNameSV) get(MetaDMSAG.__name);
         if (attr == null)
@@ -264,12 +264,12 @@ abstract public class TdlDefinitionDMO  extends DSDefinitionDMO  implements DmcN
     /**
      * Removes the name attribute value.
      */
-    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:897)
+    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:902)
     public void remName(){
          rem(MetaDMSAG.__name);
     }
 
-    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:784)
+    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:789)
     public DotName getDotName(){
         DmcTypeDotNameSV attr = (DmcTypeDotNameSV) get(MetaDMSAG.__dotName);
         if (attr == null)
@@ -282,7 +282,7 @@ abstract public class TdlDefinitionDMO  extends DSDefinitionDMO  implements DmcN
      * Sets dotName to the specified value.
      * @param value DotName
      */
-    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:824)
+    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:829)
     public void setDotName(DotName value) {
         DmcAttribute<?> attr = get(MetaDMSAG.__dotName);
         if (attr == null)
@@ -301,7 +301,7 @@ abstract public class TdlDefinitionDMO  extends DSDefinitionDMO  implements DmcN
      * Sets dotName to the specified value.
      * @param value A value compatible with DmcTypeDotNameSV
      */
-    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:877)
+    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:882)
     public void setDotName(Object value) throws DmcValueException {
         DmcTypeDotNameSV attr  = (DmcTypeDotNameSV) get(MetaDMSAG.__dotName);
         if (attr == null)
@@ -314,12 +314,12 @@ abstract public class TdlDefinitionDMO  extends DSDefinitionDMO  implements DmcN
     /**
      * Removes the dotName attribute value.
      */
-    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:897)
+    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:902)
     public void remDotName(){
          rem(MetaDMSAG.__dotName);
     }
 
-    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:655)
+    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:660)
     public TdlModuleREF getDefinedInTdlModule(){
         DmcTypeTdlModuleREFSV attr = (DmcTypeTdlModuleREFSV) get(DmtdlDMSAG.__definedInTdlModule);
         if (attr == null)
@@ -350,7 +350,7 @@ abstract public class TdlDefinitionDMO  extends DSDefinitionDMO  implements DmcN
      * Sets definedInTdlModule to the specified value.
      * @param value TdlModuleDMO
      */
-    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:709)
+    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:714)
     public void setDefinedInTdlModule(TdlModuleDMO value) {
         DmcAttribute<?> attr = get(DmtdlDMSAG.__definedInTdlModule);
         if (attr == null)
@@ -371,7 +371,7 @@ abstract public class TdlDefinitionDMO  extends DSDefinitionDMO  implements DmcN
      * Sets definedInTdlModule to the specified value.
      * @param value A value compatible with DmcTypeTdlModuleREFSV
      */
-    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:877)
+    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:882)
     public void setDefinedInTdlModule(Object value) throws DmcValueException {
         DmcTypeTdlModuleREFSV attr  = (DmcTypeTdlModuleREFSV) get(DmtdlDMSAG.__definedInTdlModule);
         if (attr == null)
@@ -386,7 +386,7 @@ abstract public class TdlDefinitionDMO  extends DSDefinitionDMO  implements DmcN
     /**
      * Removes the definedInTdlModule attribute value.
      */
-    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:897)
+    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:902)
     public void remDefinedInTdlModule(){
          rem(DmtdlDMSAG.__definedInTdlModule);
     }

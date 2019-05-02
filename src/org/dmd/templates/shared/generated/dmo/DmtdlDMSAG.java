@@ -1,28 +1,43 @@
+//	---------------------------------------------------------------------------
+//	dark-matter-data
+//	Copyright (c) 2014 dark-matter-data committers
+//	---------------------------------------------------------------------------
+//	This program is free software; you can redistribute it and/or modify it
+//	under the terms of the GNU Lesser General Public License as published by the
+//	Free Software Foundation; either version 3 of the License, or (at your
+//	option) any later version.
+//	This program is distributed in the hope that it will be useful, but WITHOUT
+//	ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+//	FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for
+//	more details.
+//	You should have received a copy of the GNU Lesser General Public License along
+//	with this program; if not, see <http://www.gnu.org/licenses/lgpl.html>.
+//	---------------------------------------------------------------------------
 package org.dmd.templates.shared.generated.dmo;
 
 // Generated from: org.dmd.util.codegen.ImportManager.getFormattedImports(ImportManager.java:82)
-// Called from: org.dmd.dms.util.DmoCompactSchemaFormatter.dumpHeaderDMSAG(DmoCompactSchemaFormatter.java:1080)
-import java.util.ArrayList;                                                                 // For storage of schema info - (DmoCompactSchemaFormatter.java:1014)
-import java.util.HashMap;                                                                   // For storage of schema info - (DmoCompactSchemaFormatter.java:1013)
-import java.util.Iterator;                                                                  // For access of schema info - (DmoCompactSchemaFormatter.java:1015)
-import org.dmd.dmc.*;                                                                       // Basic DMC stuff - (DmoCompactSchemaFormatter.java:1016)
-import org.dmd.dmc.rules.RuleIF;                                                            // For rule info - (DmoCompactSchemaFormatter.java:1017)
-import org.dmd.dms.generated.dmo.MetaDMSAG;                                                 // Required attribute from MetaDMSAG - (DmoCompactSchemaFormatter.java:1033)
-import org.dmd.dms.generated.enums.ClassTypeEnum;                                           // Have class definitions - (DmoCompactSchemaFormatter.java:1021)
-import org.dmd.dms.generated.enums.DataTypeEnum;                                            // Have class/attribute definitions - (DmoCompactSchemaFormatter.java:1022)
-import org.dmd.dms.generated.enums.OriginalTypeEnum;                                        // Have type/internal type definitions - (DmoCompactSchemaFormatter.java:1027)
-import org.dmd.dms.generated.enums.ValueTypeEnum;                                           // Have attribute definitions - (DmoCompactSchemaFormatter.java:1048)
-import org.dmd.dmv.shared.extended.rulesdmo.OnlyOneOfTheseAttributesAllowedRule;            // To instantiate rules of this type - (DmoCompactSchemaFormatter.java:1074)
-import org.dmd.dmv.shared.extended.rulesdmo.PatternMatchRule;                               // To instantiate rules of this type - (DmoCompactSchemaFormatter.java:1074)
-import org.dmd.dmv.shared.extended.rulesdmo.ValueLengthRule;                                // To instantiate rules of this type - (DmoCompactSchemaFormatter.java:1074)
-import org.dmd.dmv.shared.generated.dmo.OnlyOneOfTheseAttributesAllowedRuleDataDMO;         // To instantiate OnlyOneOfTheseAttributesAllowedRuleData rule data - (DmoCompactSchemaFormatter.java:1073)
-import org.dmd.dmv.shared.generated.dmo.PatternMatchRuleDataDMO;                            // To instantiate PatternMatchRuleData rule data - (DmoCompactSchemaFormatter.java:1073)
-import org.dmd.dmv.shared.generated.dmo.ValueLengthRuleDataDMO;                             // To instantiate ValueLengthRuleData rule data - (DmoCompactSchemaFormatter.java:1073)
+// Called from: org.dmd.dms.util.DmoCompactSchemaFormatter.dumpHeaderDMSAG(DmoCompactSchemaFormatter.java:1237)
+import java.util.ArrayList;                                                                 // For storage of schema info - (DmoCompactSchemaFormatter.java:1152)
+import java.util.HashMap;                                                                   // For storage of schema info - (DmoCompactSchemaFormatter.java:1151)
+import java.util.Iterator;                                                                  // For access of schema info - (DmoCompactSchemaFormatter.java:1153)
+import org.dmd.dmc.*;                                                                       // Basic DMC stuff - (DmoCompactSchemaFormatter.java:1154)
+import org.dmd.dmc.rules.RuleIF;                                                            // For rule info - (DmoCompactSchemaFormatter.java:1155)
+import org.dmd.dms.generated.dmo.MetaDMSAG;                                                 // Base class from MetaDMSAG - (DmoCompactSchemaFormatter.java:1190)
+import org.dmd.dms.generated.enums.ClassTypeEnum;                                           // Have class definitions - (DmoCompactSchemaFormatter.java:1159)
+import org.dmd.dms.generated.enums.DataTypeEnum;                                            // Have class/attribute definitions - (DmoCompactSchemaFormatter.java:1160)
+import org.dmd.dms.generated.enums.OriginalTypeEnum;                                        // Have type/internal type definitions - (DmoCompactSchemaFormatter.java:1165)
+import org.dmd.dms.generated.enums.ValueTypeEnum;                                           // Have attribute definitions - (DmoCompactSchemaFormatter.java:1205)
+import org.dmd.dmv.shared.extended.rulesdmo.OnlyOneOfTheseAttributesAllowedRule;            // To instantiate rules of this type - (DmoCompactSchemaFormatter.java:1231)
+import org.dmd.dmv.shared.extended.rulesdmo.PatternMatchRule;                               // To instantiate rules of this type - (DmoCompactSchemaFormatter.java:1231)
+import org.dmd.dmv.shared.extended.rulesdmo.ValueLengthRule;                                // To instantiate rules of this type - (DmoCompactSchemaFormatter.java:1231)
+import org.dmd.dmv.shared.generated.dmo.OnlyOneOfTheseAttributesAllowedRuleDataDMO;         // To instantiate OnlyOneOfTheseAttributesAllowedRuleData rule data - (DmoCompactSchemaFormatter.java:1230)
+import org.dmd.dmv.shared.generated.dmo.PatternMatchRuleDataDMO;                            // To instantiate PatternMatchRuleData rule data - (DmoCompactSchemaFormatter.java:1230)
+import org.dmd.dmv.shared.generated.dmo.ValueLengthRuleDataDMO;                             // To instantiate ValueLengthRuleData rule data - (DmoCompactSchemaFormatter.java:1230)
 
 
 
 
-// Generated from: org.dmd.dms.util.DmoCompactSchemaFormatter.dumpSchema(DmoCompactSchemaFormatter.java:138)
+// Generated from: org.dmd.dms.util.DmoCompactSchemaFormatter.dumpSchema(DmoCompactSchemaFormatter.java:145)
 public class DmtdlDMSAG implements DmcCompactSchemaIF {
 
 
@@ -58,7 +73,7 @@ public class DmtdlDMSAG implements DmcCompactSchemaIF {
     public final static DmcAttributeInfo __usesTemplate = new DmcAttributeInfo("dmtdl", "usesTemplate", -478595, "Boolean", ValueTypeEnum.SINGLE, DataTypeEnum.PERSISTENT, 0, false);
     public final static DmcAttributeInfo __value = new DmcAttributeInfo("dmtdl", "value", -478589, "Value", ValueTypeEnum.MULTI, DataTypeEnum.PERSISTENT, 0, false);
 
-    // Generated from: org.dmd.dms.util.DmoCompactSchemaFormatter.dumpSchema(DmoCompactSchemaFormatter.java:184)
+    // Generated from: org.dmd.dms.util.DmoCompactSchemaFormatter.dumpSchema(DmoCompactSchemaFormatter.java:191)
     public final static DmcTypeInfo __type_CardinalityEnum = new DmcTypeInfo("CardinalityEnum", OriginalTypeEnum.ENUM);
     public final static DmcTypeInfo __type_ContainedElement = new DmcTypeInfo("ContainedElement", OriginalTypeEnum.REFERENCE);
     public final static DmcTypeInfo __type_Contains = new DmcTypeInfo("Contains", OriginalTypeEnum.COMPLEXTYPE);
@@ -70,16 +85,16 @@ public class DmtdlDMSAG implements DmcCompactSchemaIF {
     public final static DmcTypeInfo __type_TextualArtifact = new DmcTypeInfo("TextualArtifact", OriginalTypeEnum.REFERENCE);
     public final static DmcTypeInfo __type_Value = new DmcTypeInfo("Value", OriginalTypeEnum.COMPLEXTYPE);
 
-    // Generated from: org.dmd.dms.util.DmoCompactSchemaFormatter.dumpSchema(DmoCompactSchemaFormatter.java:225)
-    public final static DmcClassInfo __TdlDefinition = new DmcClassInfo("TdlDefinition","org.dmd.templates.shared.generated.dmo.TdlDefinitionDMO", -478598, ClassTypeEnum.ABSTRACT, DataTypeEnum.PERSISTENT,MetaDMSAG.__DSDefinition,MetaDMSAG.__name);
-    public final static DmcClassInfo __ContainedElement = new DmcClassInfo("ContainedElement","org.dmd.templates.shared.generated.dmo.ContainedElementDMO", -478597, ClassTypeEnum.ABSTRACT, DataTypeEnum.PERSISTENT,__TdlDefinition,MetaDMSAG.__name);
-    public final static DmcClassInfo __ExtensionHook = new DmcClassInfo("ExtensionHook","org.dmd.templates.shared.generated.dmo.ExtensionHookDMO", -478594, ClassTypeEnum.STRUCTURAL, DataTypeEnum.PERSISTENT,__ContainedElement,MetaDMSAG.__name);
-    public final static DmcClassInfo __Section = new DmcClassInfo("Section","org.dmd.templates.shared.generated.dmo.SectionDMO", -478596, ClassTypeEnum.STRUCTURAL, DataTypeEnum.PERSISTENT,__ContainedElement,MetaDMSAG.__name);
-    public final static DmcClassInfo __TdlModule = new DmcClassInfo("TdlModule","org.dmd.templates.shared.generated.dmo.TdlModuleDMO", -478599, ClassTypeEnum.STRUCTURAL, DataTypeEnum.PERSISTENT,__TdlDefinition,MetaDMSAG.__name);
-    public final static DmcClassInfo __TextualArtifact = new DmcClassInfo("TextualArtifact","org.dmd.templates.shared.generated.dmo.TextualArtifactDMO", -478595, ClassTypeEnum.STRUCTURAL, DataTypeEnum.PERSISTENT,__TdlDefinition,MetaDMSAG.__name);
-    public final static DmcClassInfo __Template = new DmcClassInfo("Template","org.dmd.templates.shared.generated.dmo.TemplateDMO", -478593, ClassTypeEnum.STRUCTURAL, DataTypeEnum.PERSISTENT,null,MetaDMSAG.__name);
+    // Generated from: org.dmd.dms.util.DmoCompactSchemaFormatter.dumpSchema(DmoCompactSchemaFormatter.java:232)
+    public final static DmcClassInfo __TdlDefinition = new DmcClassInfo("TdlDefinition","org.dmd.templates.shared.generated.dmo.TdlDefinitionDMO", -957198, ClassTypeEnum.ABSTRACT, DataTypeEnum.PERSISTENT,MetaDMSAG.__DSDefinition,MetaDMSAG.__name);
+    public final static DmcClassInfo __ContainedElement = new DmcClassInfo("ContainedElement","org.dmd.templates.shared.generated.dmo.ContainedElementDMO", -957197, ClassTypeEnum.ABSTRACT, DataTypeEnum.PERSISTENT,__TdlDefinition,MetaDMSAG.__name);
+    public final static DmcClassInfo __ExtensionHook = new DmcClassInfo("ExtensionHook","org.dmd.templates.shared.generated.dmo.ExtensionHookDMO", -957194, ClassTypeEnum.STRUCTURAL, DataTypeEnum.PERSISTENT,__ContainedElement,MetaDMSAG.__name);
+    public final static DmcClassInfo __Section = new DmcClassInfo("Section","org.dmd.templates.shared.generated.dmo.SectionDMO", -957196, ClassTypeEnum.STRUCTURAL, DataTypeEnum.PERSISTENT,__ContainedElement,MetaDMSAG.__name);
+    public final static DmcClassInfo __TdlModule = new DmcClassInfo("TdlModule","org.dmd.templates.shared.generated.dmo.TdlModuleDMO", -957199, ClassTypeEnum.STRUCTURAL, DataTypeEnum.PERSISTENT,__TdlDefinition,MetaDMSAG.__name);
+    public final static DmcClassInfo __TextualArtifact = new DmcClassInfo("TextualArtifact","org.dmd.templates.shared.generated.dmo.TextualArtifactDMO", -957195, ClassTypeEnum.STRUCTURAL, DataTypeEnum.PERSISTENT,__TdlDefinition,MetaDMSAG.__name);
+    public final static DmcClassInfo __Template = new DmcClassInfo("Template","org.dmd.templates.shared.generated.dmo.TemplateDMO", -957193, ClassTypeEnum.STRUCTURAL, DataTypeEnum.PERSISTENT,null,MetaDMSAG.__name);
 
-    // Generated from: org.dmd.dms.util.DmoCompactSchemaFormatter.dumpSchema(DmoCompactSchemaFormatter.java:254)
+    // Generated from: org.dmd.dms.util.DmoCompactSchemaFormatter.dumpSchema(DmoCompactSchemaFormatter.java:261)
     public final static PatternMatchRule __dmtdlCommentFormat;
     public final static OnlyOneOfTheseAttributesAllowedRule __dmtdlEndsWith;
     public final static ValueLengthRule __dmtdlInsertMarkerLength;
@@ -121,121 +136,80 @@ public class DmtdlDMSAG implements DmcCompactSchemaIF {
 
     }
 
-    // Generated from: org.dmd.dms.util.DmoCompactSchemaFormatter.dumpSchema(DmoCompactSchemaFormatter.java:308)
+    // Generated from: org.dmd.dms.util.DmoCompactSchemaFormatter.dumpSchema(DmoCompactSchemaFormatter.java:315)
     static {
 
 
-        __TdlDefinition.addMust(MetaDMSAG.__name);
-        __TdlDefinition.addMust(MetaDMSAG.__dotName);
-        __TdlDefinition.addMust(__definedInTdlModule);
-        __TdlDefinition.addMay(MetaDMSAG.__description);
-
-        __ContainedElement.addMust(MetaDMSAG.__name);
-
-        __Section.addMust(MetaDMSAG.__name);
-        __Section.addMay(__contains);
-        __Section.addMay(__startsWith);
-        __Section.addMay(__endsWith);
-        __Section.addMay(__startsWithText);
-        __Section.addMay(__endsWithText);
-        __Section.addMay(__value);
-        __Section.addMay(__hasTemplate);
-        __Section.addMay(__usesTemplate);
-
-        __TextualArtifact.addMust(MetaDMSAG.__name);
-        __TextualArtifact.addMust(__contains);
-
-        __ExtensionHook.addMust(MetaDMSAG.__name);
-        __ExtensionHook.addMust(__usesSection);
-        __ExtensionHook.addMust(__targetObjectClass);
-
-        __Template.addMust(MetaDMSAG.__name);
-        __Template.addMust(__format);
-        __Template.addMay(MetaDMSAG.__file);
-        __Template.addMay(MetaDMSAG.__lineNumber);
-        __Template.addMay(__debugOn);
-        __Template.addMay(MetaDMSAG.__description);
-
-        __TdlModule.addMust(MetaDMSAG.__name);
-        __TdlModule.addMust(__package);
-        __TdlModule.addMust(__templateFile);
-        __TdlModule.addMay(MetaDMSAG.__description);
-        __TdlModule.addMay(MetaDMSAG.__defFiles);
-        __TdlModule.addMay(__templateFileSuffix);
-        __TdlModule.addMay(__maxFastAddValues);
-        __TdlModule.addMay(__insertMarker);
-        __TdlModule.addMay(__commentFormat);
-        __TdlModule.addMay(__dependsOnTdlModule);
-
+        DmtdlDMSAG_INIT_1.initDefinitions();
     }
 
-    // Generated from: org.dmd.dms.util.DmoCompactSchemaFormatter.dumpSchema(DmoCompactSchemaFormatter.java:352)
+    // Generated from: org.dmd.dms.util.DmoCompactSchemaFormatter.dumpSchema(DmoCompactSchemaFormatter.java:372)
     static {
 
 
-        // Generated from: org.dmd.dms.util.DmoCompactSchemaFormatter.dumpSchema(DmoCompactSchemaFormatter.java:371)
+        // Generated from: org.dmd.dms.util.DmoCompactSchemaFormatter.dumpSchema(DmoCompactSchemaFormatter.java:391)
         try{
             PatternMatchRuleDataDMO _dmtdlCommentFormatData = new PatternMatchRuleDataDMO();
-            _dmtdlCommentFormatData      .setRuleName("dmtdlCommentFormat");
-            _dmtdlCommentFormatData      .setRuleTitle("The commentFormat must contain the value insertion ::comment::");
             _dmtdlCommentFormatData      .setMatchesPattern(".*::comment::.*");
+            _dmtdlCommentFormatData      .setRuleName("dmtdlCommentFormat");
             _dmtdlCommentFormatData      .setFile("/src/org/dmd/templates/shared/dmdconfig/attributes.dmd");
-            _dmtdlCommentFormatData      .setDefinedIn("dmtdl");
+            _dmtdlCommentFormatData      .setRuleTitle("The commentFormat must contain the value insertion ::comment::");
             _dmtdlCommentFormatData      .setLineNumber("159");
+            _dmtdlCommentFormatData      .setDefinedIn("dmtdl");
 
             __dmtdlCommentFormat = new PatternMatchRule(_dmtdlCommentFormatData);
 
             _RmAp.add(__dmtdlCommentFormat);
 
             OnlyOneOfTheseAttributesAllowedRuleDataDMO _dmtdlEndsWithData = new OnlyOneOfTheseAttributesAllowedRuleDataDMO();
-            _dmtdlEndsWithData           .setRuleName("dmtdlEndsWith");
-            _dmtdlEndsWithData           .setApplyToClass("Section");
-            _dmtdlEndsWithData           .setRuleTitle("A Section can only endWith another Section or with a static piece of text.");
             _dmtdlEndsWithData           .addOnePossibility("endsWith");
             _dmtdlEndsWithData           .addOnePossibility("endsWithText");
+            _dmtdlEndsWithData           .setRuleName("dmtdlEndsWith");
+            _dmtdlEndsWithData           .setApplyToClass("Section");
             _dmtdlEndsWithData           .setFile("/src/org/dmd/templates/shared/dmdconfig/classes.dmd");
-            _dmtdlEndsWithData           .setDefinedIn("dmtdl");
+            _dmtdlEndsWithData           .setRuleTitle("A Section can only endWith another Section or with a static piece of text.");
             _dmtdlEndsWithData           .setLineNumber("84");
+            _dmtdlEndsWithData           .setDefinedIn("dmtdl");
 
             __dmtdlEndsWith = new OnlyOneOfTheseAttributesAllowedRule(_dmtdlEndsWithData);
 
             _RmAp.add(__dmtdlEndsWith);
 
             ValueLengthRuleDataDMO _dmtdlInsertMarkerLengthData = new ValueLengthRuleDataDMO();
-            _dmtdlInsertMarkerLengthData .setRuleName("dmtdlInsertMarkerLength");
-            _dmtdlInsertMarkerLengthData .setRuleTitle("The insert marker must be 2 - 3 characters long.");
-            _dmtdlInsertMarkerLengthData .setApplyToAttribute("insertMarker");
             _dmtdlInsertMarkerLengthData .setMaxLength("3");
             _dmtdlInsertMarkerLengthData .setMinLength("2");
+            _dmtdlInsertMarkerLengthData .setRuleName("dmtdlInsertMarkerLength");
             _dmtdlInsertMarkerLengthData .setFile("/src/org/dmd/templates/shared/dmdconfig/attributes.dmd");
-            _dmtdlInsertMarkerLengthData .setDefinedIn("dmtdl");
+            _dmtdlInsertMarkerLengthData .setRuleTitle("The insert marker must be 2 - 3 characters long.");
             _dmtdlInsertMarkerLengthData .setLineNumber("39");
+            _dmtdlInsertMarkerLengthData .setApplyToAttribute("insertMarker");
+            _dmtdlInsertMarkerLengthData .setDefinedIn("dmtdl");
 
             __dmtdlInsertMarkerLength = new ValueLengthRule(_dmtdlInsertMarkerLengthData);
 
             _RmAp.add(__dmtdlInsertMarkerLength);
 
             OnlyOneOfTheseAttributesAllowedRuleDataDMO _dmtdlStartsWithData = new OnlyOneOfTheseAttributesAllowedRuleDataDMO();
-            _dmtdlStartsWithData         .setRuleName("dmtdlStartsWith");
-            _dmtdlStartsWithData         .setApplyToClass("Section");
-            _dmtdlStartsWithData         .setRuleTitle("A Section can only startWith another Section or with a static piece of text.");
             _dmtdlStartsWithData         .addOnePossibility("startsWith");
             _dmtdlStartsWithData         .addOnePossibility("startsWithText");
+            _dmtdlStartsWithData         .setRuleName("dmtdlStartsWith");
+            _dmtdlStartsWithData         .setApplyToClass("Section");
             _dmtdlStartsWithData         .setFile("/src/org/dmd/templates/shared/dmdconfig/classes.dmd");
-            _dmtdlStartsWithData         .setDefinedIn("dmtdl");
+            _dmtdlStartsWithData         .setRuleTitle("A Section can only startWith another Section or with a static piece of text.");
             _dmtdlStartsWithData         .setLineNumber("65");
+            _dmtdlStartsWithData         .setDefinedIn("dmtdl");
 
             __dmtdlStartsWith = new OnlyOneOfTheseAttributesAllowedRule(_dmtdlStartsWithData);
 
             _RmAp.add(__dmtdlStartsWith);
 
             PatternMatchRuleDataDMO _dmtdlTargetObjectClassData = new PatternMatchRuleDataDMO();
-            _dmtdlTargetObjectClassData  .setRuleName("dmtdlTargetObjectClass");
-            _dmtdlTargetObjectClassData  .setRuleTitle("The targetObjectClass must be a valid, fully qualified, Java class name.");
             _dmtdlTargetObjectClassData  .setMatchesPattern("([a-zA-Z_$][a-zA-Z0-9_$]*.)*[a-zA-Z_$][a-zA-Z0-9_$]*");
+            _dmtdlTargetObjectClassData  .setRuleName("dmtdlTargetObjectClass");
             _dmtdlTargetObjectClassData  .setFile("/src/org/dmd/templates/shared/dmdconfig/attributes.dmd");
-            _dmtdlTargetObjectClassData  .setDefinedIn("dmtdl");
+            _dmtdlTargetObjectClassData  .setRuleTitle("The targetObjectClass must be a valid, fully qualified, Java class name.");
             _dmtdlTargetObjectClassData  .setLineNumber("193");
+            _dmtdlTargetObjectClassData  .setDefinedIn("dmtdl");
 
             __dmtdlTargetObjectClass = new PatternMatchRule(_dmtdlTargetObjectClassData);
 

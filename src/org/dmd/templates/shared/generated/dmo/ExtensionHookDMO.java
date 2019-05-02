@@ -15,22 +15,22 @@
 //	---------------------------------------------------------------------------
 package org.dmd.templates.shared.generated.dmo;
 
-// Generated from: org.dmd.dms.util.GenUtility.formatImports(GenUtility.java:396)
-import java.io.Serializable;                                                 // Always required - (GenUtility.java:224)
-import org.dmd.dmc.DmcAttribute;                                             // Named object - (GenUtility.java:376)
-import org.dmd.dmc.DmcNamedObjectIF;                                         // Named object - (GenUtility.java:375)
-import org.dmd.dmc.DmcOmni;                                                  // Lazy resolution - (GenUtility.java:320)
-import org.dmd.dmc.DmcSliceInfo;                                             // Required for object slicing - (GenUtility.java:229)
-import org.dmd.dmc.DmcValueException;                                        // Any attributes - (GenUtility.java:241)
-import org.dmd.dmc.types.DefinitionName;                                     // Naming attribute type - (GenUtility.java:370)
-import org.dmd.dms.generated.dmo.MetaDMSAG;                                  // Required for MODREC constructor - (GenUtility.java:228)
-import org.dmd.dms.generated.types.DmcTypeDefinitionNameSV;                  // Required type - (GenUtility.java:328)
-import org.dmd.dms.generated.types.DmcTypeModifierMV;                        // Required for MODREC constructor - (GenUtility.java:227)
-import org.dmd.dms.generated.types.DmcTypeStringSV;                          // Required type - (GenUtility.java:328)
-import org.dmd.templates.shared.generated.dmo.ContainedElementDMO;           // Base class - (GenUtility.java:355)
-import org.dmd.templates.shared.generated.dmo.SectionDMO;                    // Type specific set/add - (GenUtility.java:307)
-import org.dmd.templates.shared.generated.types.DmcTypeSectionREFSV;         // Reference type - (GenUtility.java:300)
-import org.dmd.templates.shared.generated.types.SectionREF;                  // Helper class - (GenUtility.java:335)
+// Generated from: org.dmd.dms.util.GenUtility.formatImports(GenUtility.java:408)
+import java.io.Serializable;                                                 // Always required - (GenUtility.java:227)
+import org.dmd.dmc.DmcAttribute;                                             // Named object - (GenUtility.java:388)
+import org.dmd.dmc.DmcNamedObjectIF;                                         // Named object - (GenUtility.java:387)
+import org.dmd.dmc.DmcOmni;                                                  // Lazy resolution - (GenUtility.java:331)
+import org.dmd.dmc.DmcSliceInfo;                                             // Required for object slicing - (GenUtility.java:232)
+import org.dmd.dmc.DmcValueException;                                        // Any attributes - (GenUtility.java:249)
+import org.dmd.dmc.types.DefinitionName;                                     // Naming attribute type - (GenUtility.java:382)
+import org.dmd.dms.generated.dmo.MetaDMSAG;                                  // Required for MODREC constructor - (GenUtility.java:231)
+import org.dmd.dms.generated.types.DmcTypeDefinitionNameSV;                  // Required type - (GenUtility.java:339)
+import org.dmd.dms.generated.types.DmcTypeModifierMV;                        // Required for MODREC constructor - (GenUtility.java:230)
+import org.dmd.dms.generated.types.DmcTypeStringSV;                          // Required type - (GenUtility.java:339)
+import org.dmd.templates.shared.generated.dmo.ContainedElementDMO;           // Base class - (GenUtility.java:367)
+import org.dmd.templates.shared.generated.dmo.SectionDMO;                    // Type specific set/add - (GenUtility.java:318)
+import org.dmd.templates.shared.generated.types.DmcTypeSectionREFSV;         // Reference type - (GenUtility.java:311)
+import org.dmd.templates.shared.generated.types.SectionREF;                  // Helper class - (GenUtility.java:346)
 
 // Generated from: org.dmd.dms.util.DmoFormatter.getClassHeader(DmoFormatter.java:678)
 /**
@@ -138,7 +138,7 @@ public class ExtensionHookDMO  extends ContainedElementDMO  implements DmcNamedO
         return(objn.hashCode());
     }
 
-    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:784)
+    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:789)
     public DefinitionName getName(){
         DmcTypeDefinitionNameSV attr = (DmcTypeDefinitionNameSV) get(MetaDMSAG.__name);
         if (attr == null)
@@ -151,7 +151,7 @@ public class ExtensionHookDMO  extends ContainedElementDMO  implements DmcNamedO
      * Sets name to the specified value.
      * @param value DefinitionName
      */
-    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:824)
+    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:829)
     public void setName(DefinitionName value) {
         DmcAttribute<?> attr = get(MetaDMSAG.__name);
         if (attr == null)
@@ -170,7 +170,7 @@ public class ExtensionHookDMO  extends ContainedElementDMO  implements DmcNamedO
      * Sets name to the specified value.
      * @param value A value compatible with DmcTypeDefinitionNameSV
      */
-    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:877)
+    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:882)
     public void setName(Object value) throws DmcValueException {
         DmcTypeDefinitionNameSV attr  = (DmcTypeDefinitionNameSV) get(MetaDMSAG.__name);
         if (attr == null)
@@ -183,12 +183,12 @@ public class ExtensionHookDMO  extends ContainedElementDMO  implements DmcNamedO
     /**
      * Removes the name attribute value.
      */
-    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:897)
+    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:902)
     public void remName(){
          rem(MetaDMSAG.__name);
     }
 
-    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:655)
+    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:660)
     public SectionREF getUsesSection(){
         DmcTypeSectionREFSV attr = (DmcTypeSectionREFSV) get(DmtdlDMSAG.__usesSection);
         if (attr == null)
@@ -219,7 +219,7 @@ public class ExtensionHookDMO  extends ContainedElementDMO  implements DmcNamedO
      * Sets usesSection to the specified value.
      * @param value SectionDMO
      */
-    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:709)
+    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:714)
     public void setUsesSection(SectionDMO value) {
         DmcAttribute<?> attr = get(DmtdlDMSAG.__usesSection);
         if (attr == null)
@@ -240,7 +240,7 @@ public class ExtensionHookDMO  extends ContainedElementDMO  implements DmcNamedO
      * Sets usesSection to the specified value.
      * @param value A value compatible with DmcTypeSectionREFSV
      */
-    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:877)
+    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:882)
     public void setUsesSection(Object value) throws DmcValueException {
         DmcTypeSectionREFSV attr  = (DmcTypeSectionREFSV) get(DmtdlDMSAG.__usesSection);
         if (attr == null)
@@ -255,12 +255,12 @@ public class ExtensionHookDMO  extends ContainedElementDMO  implements DmcNamedO
     /**
      * Removes the usesSection attribute value.
      */
-    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:897)
+    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:902)
     public void remUsesSection(){
          rem(DmtdlDMSAG.__usesSection);
     }
 
-    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:784)
+    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:789)
     public String getTargetObjectClass(){
         DmcTypeStringSV attr = (DmcTypeStringSV) get(DmtdlDMSAG.__targetObjectClass);
         if (attr == null)
@@ -273,7 +273,7 @@ public class ExtensionHookDMO  extends ContainedElementDMO  implements DmcNamedO
      * Sets targetObjectClass to the specified value.
      * @param value String
      */
-    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:824)
+    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:829)
     public void setTargetObjectClass(String value) {
         DmcAttribute<?> attr = get(DmtdlDMSAG.__targetObjectClass);
         if (attr == null)
@@ -292,7 +292,7 @@ public class ExtensionHookDMO  extends ContainedElementDMO  implements DmcNamedO
      * Sets targetObjectClass to the specified value.
      * @param value A value compatible with DmcTypeStringSV
      */
-    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:877)
+    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:882)
     public void setTargetObjectClass(Object value) throws DmcValueException {
         DmcTypeStringSV attr  = (DmcTypeStringSV) get(DmtdlDMSAG.__targetObjectClass);
         if (attr == null)
@@ -305,7 +305,7 @@ public class ExtensionHookDMO  extends ContainedElementDMO  implements DmcNamedO
     /**
      * Removes the targetObjectClass attribute value.
      */
-    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:897)
+    // org.dmd.dms.util.GenUtility.formatSV(GenUtility.java:902)
     public void remTargetObjectClass(){
          rem(DmtdlDMSAG.__targetObjectClass);
     }

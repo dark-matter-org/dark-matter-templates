@@ -13,6 +13,21 @@
 //	You should have received a copy of the GNU Lesser General Public License along
 //	with this program; if not, see <http://www.gnu.org/licenses/lgpl.html>.
 //	---------------------------------------------------------------------------
+//	---------------------------------------------------------------------------
+//	dark-matter-data
+//	Copyright (c) 2014 dark-matter-data committers
+//	---------------------------------------------------------------------------
+//	This program is free software; you can redistribute it and/or modify it
+//	under the terms of the GNU Lesser General Public License as published by the
+//	Free Software Foundation; either version 3 of the License, or (at your
+//	option) any later version.
+//	This program is distributed in the hope that it will be useful, but WITHOUT
+//	ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+//	FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for
+//	more details.
+//	You should have received a copy of the GNU Lesser General Public License along
+//	with this program; if not, see <http://www.gnu.org/licenses/lgpl.html>.
+//	---------------------------------------------------------------------------
 package org.dmd.templates.shared.generated.types;
 
 import java.io.Serializable;
@@ -26,7 +41,7 @@ import org.dmd.templates.shared.generated.enums.CardinalityEnum;    // DmcType i
  * The DmcTypeCardinalityEnumMV provides storage for a multi-valued CardinalityEnum
  * <P>
  * This code was auto-generated and shouldn't be altered manually!
- * Generated from: org.dmd.dms.util.GenUtility.dumpMVType(GenUtility.java:2329)
+ * Generated from: org.dmd.dms.util.GenUtility.dumpMVType(GenUtility.java:2495)
  *    Called from: org.dmd.dms.util.DmoTypeFormatter.dumpEnumType(DmoTypeFormatter.java:361)
  */
 @SuppressWarnings("serial")
@@ -50,7 +65,7 @@ public class DmcTypeCardinalityEnumMV extends DmcTypeCardinalityEnum implements 
     }
     
     @Override
-    // org.dmd.dms.util.GenUtility.dumpMVType(GenUtility.java:2360)
+    // org.dmd.dms.util.GenUtility.dumpMVType(GenUtility.java:2526)
     public DmcAttribute<CardinalityEnum> cloneIt(){
         synchronized(this){
             DmcTypeCardinalityEnumMV rc = getNew();
@@ -79,7 +94,7 @@ public class DmcTypeCardinalityEnumMV extends DmcTypeCardinalityEnum implements 
     }
     
     @Override
-    // org.dmd.dms.util.GenUtility.dumpMVType(GenUtility.java:2393)
+    // org.dmd.dms.util.GenUtility.dumpMVType(GenUtility.java:2559)
     public CardinalityEnum add(Object v) throws DmcValueException {
         synchronized(this){
             CardinalityEnum rc = typeCheck(v);
@@ -91,7 +106,7 @@ public class DmcTypeCardinalityEnumMV extends DmcTypeCardinalityEnum implements 
     }
     
     @Override
-    // org.dmd.dms.util.GenUtility.dumpMVType(GenUtility.java:2406)
+    // org.dmd.dms.util.GenUtility.dumpMVType(GenUtility.java:2572)
     public CardinalityEnum del(Object v){
         synchronized(this){
             if (value == null)
@@ -115,7 +130,7 @@ public class DmcTypeCardinalityEnumMV extends DmcTypeCardinalityEnum implements 
     }
     
     @Override
-    // org.dmd.dms.util.GenUtility.dumpMVType(GenUtility.java:2440)
+    // org.dmd.dms.util.GenUtility.dumpMVType(GenUtility.java:2606)
     public Iterator<CardinalityEnum> getMV(){
         synchronized(this){
             if (value == null)
@@ -126,7 +141,7 @@ public class DmcTypeCardinalityEnumMV extends DmcTypeCardinalityEnum implements 
         }
     }
     
-    // org.dmd.dms.util.GenUtility.dumpMVType(GenUtility.java:2452)
+    // org.dmd.dms.util.GenUtility.dumpMVType(GenUtility.java:2618)
     public ArrayList<CardinalityEnum> getMVCopy(){
         synchronized(this){
             if (value == null)
@@ -137,7 +152,7 @@ public class DmcTypeCardinalityEnumMV extends DmcTypeCardinalityEnum implements 
     }
     
     @Override
-    // org.dmd.dms.util.GenUtility.dumpMVType(GenUtility.java:2464)
+    // org.dmd.dms.util.GenUtility.dumpMVType(GenUtility.java:2630)
     public int getMVSize(){
         synchronized(this){
             if (getAttributeInfo().indexSize == 0){
@@ -151,7 +166,7 @@ public class DmcTypeCardinalityEnumMV extends DmcTypeCardinalityEnum implements 
     }
     
     @Override
-    // org.dmd.dms.util.GenUtility.dumpMVType(GenUtility.java:2479)
+    // org.dmd.dms.util.GenUtility.dumpMVType(GenUtility.java:2645)
     public CardinalityEnum getMVnth(int index){
         synchronized(this){
             if (value == null)
@@ -161,7 +176,7 @@ public class DmcTypeCardinalityEnumMV extends DmcTypeCardinalityEnum implements 
     }
     
     @Override
-    // org.dmd.dms.util.GenUtility.dumpMVType(GenUtility.java:2490)
+    // org.dmd.dms.util.GenUtility.dumpMVType(GenUtility.java:2656)
     public CardinalityEnum setMVnth(int index, Object v) throws DmcValueException {
         synchronized(this){
             if (getAttributeInfo().indexSize == 0)
@@ -188,7 +203,7 @@ public class DmcTypeCardinalityEnumMV extends DmcTypeCardinalityEnum implements 
     }
     
     @Override
-    // org.dmd.dms.util.GenUtility.dumpMVType(GenUtility.java:2518)
+    // org.dmd.dms.util.GenUtility.dumpMVType(GenUtility.java:2684)
     public boolean hasValue(){
         synchronized(this){
             boolean rc = false;
@@ -211,7 +226,7 @@ public class DmcTypeCardinalityEnumMV extends DmcTypeCardinalityEnum implements 
     }
     
     @Override
-    // org.dmd.dms.util.GenUtility.dumpMVType(GenUtility.java:2542)
+    // org.dmd.dms.util.GenUtility.dumpMVType(GenUtility.java:2708)
     public boolean contains(Object v){
         synchronized(this){
             if (value == null)

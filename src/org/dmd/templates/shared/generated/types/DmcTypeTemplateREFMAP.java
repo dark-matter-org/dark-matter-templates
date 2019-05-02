@@ -13,6 +13,21 @@
 //	You should have received a copy of the GNU Lesser General Public License along
 //	with this program; if not, see <http://www.gnu.org/licenses/lgpl.html>.
 //	---------------------------------------------------------------------------
+//	---------------------------------------------------------------------------
+//	dark-matter-data
+//	Copyright (c) 2014 dark-matter-data committers
+//	---------------------------------------------------------------------------
+//	This program is free software; you can redistribute it and/or modify it
+//	under the terms of the GNU Lesser General Public License as published by the
+//	Free Software Foundation; either version 3 of the License, or (at your
+//	option) any later version.
+//	This program is distributed in the hope that it will be useful, but WITHOUT
+//	ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+//	FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for
+//	more details.
+//	You should have received a copy of the GNU Lesser General Public License along
+//	with this program; if not, see <http://www.gnu.org/licenses/lgpl.html>.
+//	---------------------------------------------------------------------------
 package org.dmd.templates.shared.generated.types;
 
 import java.io.Serializable;
@@ -30,8 +45,8 @@ import org.dmd.dmc.types.DefinitionName;    // key type import
  * The DmcTypeTemplateREFMAP provides storage for a map of TemplateREF
  * <P>
  * This code was auto-generated and shouldn't be altered manually!
- * Generated from: org.dmd.dms.util.GenUtility.dumpMAPType(GenUtility.java:2858)
- *    Called from: org.dmd.dms.util.DmoTypeFormatter.dumpNamedREF(DmoTypeFormatter.java:540)
+ * Generated from: org.dmd.dms.util.GenUtility.dumpMAPType(GenUtility.java:3024)
+ *    Called from: org.dmd.dms.util.DmoTypeFormatter.dumpNamedREF(DmoTypeFormatter.java:538)
  */
 @SuppressWarnings("serial")
 // public class DmcTypeTemplateREFMAP extends DmcTypeTemplateREF<TemplateREF,DefinitionName> {
@@ -73,7 +88,7 @@ public class DmcTypeTemplateREFMAP extends DmcTypeTemplateREF implements Seriali
     }
     
     @Override
-    // org.dmd.dms.util.GenUtility.dumpMAPType(GenUtility.java:2915)
+    // org.dmd.dms.util.GenUtility.dumpMAPType(GenUtility.java:3081)
     public DmcAttribute<TemplateREF> cloneIt(){
         synchronized(this){
             DmcTypeTemplateREFMAP rc = getNew();
@@ -92,7 +107,7 @@ public class DmcTypeTemplateREFMAP extends DmcTypeTemplateREF implements Seriali
     }
     
     @Override
-    // org.dmd.dms.util.GenUtility.dumpMAPType(GenUtility.java:2935)
+    // org.dmd.dms.util.GenUtility.dumpMAPType(GenUtility.java:3101)
     public TemplateREF add(Object v) throws DmcValueException {
         synchronized(this){
             TemplateREF newval = typeCheck(v);
@@ -112,7 +127,7 @@ public class DmcTypeTemplateREFMAP extends DmcTypeTemplateREF implements Seriali
     }
     
     @Override
-    // org.dmd.dms.util.GenUtility.dumpMAPType(GenUtility.java:2956)
+    // org.dmd.dms.util.GenUtility.dumpMAPType(GenUtility.java:3122)
     public TemplateREF del(Object key){
         synchronized(this){
     
@@ -127,7 +142,7 @@ public class DmcTypeTemplateREFMAP extends DmcTypeTemplateREF implements Seriali
     }
     
     @Override
-    // org.dmd.dms.util.GenUtility.dumpMAPType(GenUtility.java:2972)
+    // org.dmd.dms.util.GenUtility.dumpMAPType(GenUtility.java:3138)
     public Iterator<TemplateREF> getMV(){
         synchronized(this){
     
@@ -143,7 +158,7 @@ public class DmcTypeTemplateREFMAP extends DmcTypeTemplateREF implements Seriali
         }
     }
     
-    // org.dmd.dms.util.GenUtility.dumpMAPType(GenUtility.java:2989)
+    // org.dmd.dms.util.GenUtility.dumpMAPType(GenUtility.java:3155)
     public Map<DefinitionName,TemplateREF> getMVCopy(){
         synchronized(this){
             Map<DefinitionName,TemplateREF> clone = null;
@@ -163,7 +178,7 @@ public class DmcTypeTemplateREFMAP extends DmcTypeTemplateREF implements Seriali
         }
     }
     
-    // org.dmd.dms.util.GenUtility.dumpMAPType(GenUtility.java:3010)
+    // org.dmd.dms.util.GenUtility.dumpMAPType(GenUtility.java:3176)
     @Override
     public int getMVSize(){
         synchronized(this){
@@ -174,7 +189,7 @@ public class DmcTypeTemplateREFMAP extends DmcTypeTemplateREF implements Seriali
     }
     
     @Override
-    // org.dmd.dms.util.GenUtility.dumpMAPType(GenUtility.java:3022)
+    // org.dmd.dms.util.GenUtility.dumpMAPType(GenUtility.java:3188)
     public TemplateREF getByKey(Object key){
         synchronized(this){
            if (value == null)
@@ -188,7 +203,7 @@ public class DmcTypeTemplateREFMAP extends DmcTypeTemplateREF implements Seriali
     }
     
     @Override
-    // org.dmd.dms.util.GenUtility.dumpMAPType(GenUtility.java:3037)
+    // org.dmd.dms.util.GenUtility.dumpMAPType(GenUtility.java:3203)
     public boolean contains(Object v){
         synchronized(this){
            if (value == null)
@@ -204,7 +219,7 @@ public class DmcTypeTemplateREFMAP extends DmcTypeTemplateREF implements Seriali
     }
     
     @Override
-    // org.dmd.dms.util.GenUtility.dumpMAPType(GenUtility.java:3054)
+    // org.dmd.dms.util.GenUtility.dumpMAPType(GenUtility.java:3220)
     public boolean containsKey(Object key){
         synchronized(this){
            if (value == null)

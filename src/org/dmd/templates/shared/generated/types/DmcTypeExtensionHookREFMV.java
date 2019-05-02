@@ -13,6 +13,21 @@
 //	You should have received a copy of the GNU Lesser General Public License along
 //	with this program; if not, see <http://www.gnu.org/licenses/lgpl.html>.
 //	---------------------------------------------------------------------------
+//	---------------------------------------------------------------------------
+//	dark-matter-data
+//	Copyright (c) 2014 dark-matter-data committers
+//	---------------------------------------------------------------------------
+//	This program is free software; you can redistribute it and/or modify it
+//	under the terms of the GNU Lesser General Public License as published by the
+//	Free Software Foundation; either version 3 of the License, or (at your
+//	option) any later version.
+//	This program is distributed in the hope that it will be useful, but WITHOUT
+//	ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+//	FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for
+//	more details.
+//	You should have received a copy of the GNU Lesser General Public License along
+//	with this program; if not, see <http://www.gnu.org/licenses/lgpl.html>.
+//	---------------------------------------------------------------------------
 package org.dmd.templates.shared.generated.types;
 
 import java.io.Serializable;
@@ -25,8 +40,8 @@ import org.dmd.dmc.DmcValueException;
  * The DmcTypeExtensionHookREFMV provides storage for a multi-valued ExtensionHookREF
  * <P>
  * This code was auto-generated and shouldn't be altered manually!
- * Generated from: org.dmd.dms.util.GenUtility.dumpMVType(GenUtility.java:2329)
- *    Called from: org.dmd.dms.util.DmoTypeFormatter.dumpNamedREF(DmoTypeFormatter.java:531)
+ * Generated from: org.dmd.dms.util.GenUtility.dumpMVType(GenUtility.java:2495)
+ *    Called from: org.dmd.dms.util.DmoTypeFormatter.dumpNamedREF(DmoTypeFormatter.java:529)
  */
 @SuppressWarnings("serial")
 public class DmcTypeExtensionHookREFMV extends DmcTypeExtensionHookREF implements Serializable {
@@ -49,7 +64,7 @@ public class DmcTypeExtensionHookREFMV extends DmcTypeExtensionHookREF implement
     }
     
     @Override
-    // org.dmd.dms.util.GenUtility.dumpMVType(GenUtility.java:2360)
+    // org.dmd.dms.util.GenUtility.dumpMVType(GenUtility.java:2526)
     public DmcAttribute<ExtensionHookREF> cloneIt(){
         synchronized(this){
             DmcTypeExtensionHookREFMV rc = getNew();
@@ -78,7 +93,7 @@ public class DmcTypeExtensionHookREFMV extends DmcTypeExtensionHookREF implement
     }
     
     @Override
-    // org.dmd.dms.util.GenUtility.dumpMVType(GenUtility.java:2393)
+    // org.dmd.dms.util.GenUtility.dumpMVType(GenUtility.java:2559)
     public ExtensionHookREF add(Object v) throws DmcValueException {
         synchronized(this){
             ExtensionHookREF rc = typeCheck(v);
@@ -90,7 +105,7 @@ public class DmcTypeExtensionHookREFMV extends DmcTypeExtensionHookREF implement
     }
     
     @Override
-    // org.dmd.dms.util.GenUtility.dumpMVType(GenUtility.java:2406)
+    // org.dmd.dms.util.GenUtility.dumpMVType(GenUtility.java:2572)
     public ExtensionHookREF del(Object v){
         synchronized(this){
             if (value == null)
@@ -114,7 +129,7 @@ public class DmcTypeExtensionHookREFMV extends DmcTypeExtensionHookREF implement
     }
     
     @Override
-    // org.dmd.dms.util.GenUtility.dumpMVType(GenUtility.java:2440)
+    // org.dmd.dms.util.GenUtility.dumpMVType(GenUtility.java:2606)
     public Iterator<ExtensionHookREF> getMV(){
         synchronized(this){
             if (value == null)
@@ -125,7 +140,7 @@ public class DmcTypeExtensionHookREFMV extends DmcTypeExtensionHookREF implement
         }
     }
     
-    // org.dmd.dms.util.GenUtility.dumpMVType(GenUtility.java:2452)
+    // org.dmd.dms.util.GenUtility.dumpMVType(GenUtility.java:2618)
     public ArrayList<ExtensionHookREF> getMVCopy(){
         synchronized(this){
             if (value == null)
@@ -136,7 +151,7 @@ public class DmcTypeExtensionHookREFMV extends DmcTypeExtensionHookREF implement
     }
     
     @Override
-    // org.dmd.dms.util.GenUtility.dumpMVType(GenUtility.java:2464)
+    // org.dmd.dms.util.GenUtility.dumpMVType(GenUtility.java:2630)
     public int getMVSize(){
         synchronized(this){
             if (getAttributeInfo().indexSize == 0){
@@ -150,7 +165,7 @@ public class DmcTypeExtensionHookREFMV extends DmcTypeExtensionHookREF implement
     }
     
     @Override
-    // org.dmd.dms.util.GenUtility.dumpMVType(GenUtility.java:2479)
+    // org.dmd.dms.util.GenUtility.dumpMVType(GenUtility.java:2645)
     public ExtensionHookREF getMVnth(int index){
         synchronized(this){
             if (value == null)
@@ -160,7 +175,7 @@ public class DmcTypeExtensionHookREFMV extends DmcTypeExtensionHookREF implement
     }
     
     @Override
-    // org.dmd.dms.util.GenUtility.dumpMVType(GenUtility.java:2490)
+    // org.dmd.dms.util.GenUtility.dumpMVType(GenUtility.java:2656)
     public ExtensionHookREF setMVnth(int index, Object v) throws DmcValueException {
         synchronized(this){
             if (getAttributeInfo().indexSize == 0)
@@ -187,7 +202,7 @@ public class DmcTypeExtensionHookREFMV extends DmcTypeExtensionHookREF implement
     }
     
     @Override
-    // org.dmd.dms.util.GenUtility.dumpMVType(GenUtility.java:2518)
+    // org.dmd.dms.util.GenUtility.dumpMVType(GenUtility.java:2684)
     public boolean hasValue(){
         synchronized(this){
             boolean rc = false;
@@ -210,7 +225,7 @@ public class DmcTypeExtensionHookREFMV extends DmcTypeExtensionHookREF implement
     }
     
     @Override
-    // org.dmd.dms.util.GenUtility.dumpMVType(GenUtility.java:2542)
+    // org.dmd.dms.util.GenUtility.dumpMVType(GenUtility.java:2708)
     public boolean contains(Object v){
         synchronized(this){
             if (value == null)

@@ -13,6 +13,21 @@
 //	You should have received a copy of the GNU Lesser General Public License along
 //	with this program; if not, see <http://www.gnu.org/licenses/lgpl.html>.
 //	---------------------------------------------------------------------------
+//	---------------------------------------------------------------------------
+//	dark-matter-data
+//	Copyright (c) 2014 dark-matter-data committers
+//	---------------------------------------------------------------------------
+//	This program is free software; you can redistribute it and/or modify it
+//	under the terms of the GNU Lesser General Public License as published by the
+//	Free Software Foundation; either version 3 of the License, or (at your
+//	option) any later version.
+//	This program is distributed in the hope that it will be useful, but WITHOUT
+//	ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+//	FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for
+//	more details.
+//	You should have received a copy of the GNU Lesser General Public License along
+//	with this program; if not, see <http://www.gnu.org/licenses/lgpl.html>.
+//	---------------------------------------------------------------------------
 package org.dmd.templates.shared.generated.types;
 
 import java.io.Serializable;
@@ -29,7 +44,7 @@ import org.dmd.templates.shared.generated.enums.CardinalityEnum;    // DmcType i
  * The DmcTypeCardinalityEnumSET provides storage for a set of CardinalityEnum
  * <P>
  * This code was auto-generated and shouldn't be altered manually!
- * Generated from: org.dmd.dms.util.GenUtility.dumpSETType(GenUtility.java:2625)
+ * Generated from: org.dmd.dms.util.GenUtility.dumpSETType(GenUtility.java:2791)
  *    Called from: org.dmd.dms.util.DmoTypeFormatter.dumpEnumType(DmoTypeFormatter.java:362)
  */
 @SuppressWarnings("serial")
@@ -62,7 +77,7 @@ public class DmcTypeCardinalityEnumSET extends DmcTypeCardinalityEnum implements
     }
     
     @Override
-    // org.dmd.dms.util.GenUtility.dumpSETType(GenUtility.java:2666)
+    // org.dmd.dms.util.GenUtility.dumpSETType(GenUtility.java:2832)
     public DmcAttribute<CardinalityEnum> cloneIt(){
         synchronized(this){
             DmcTypeCardinalityEnumSET rc = getNew();
@@ -81,7 +96,7 @@ public class DmcTypeCardinalityEnumSET extends DmcTypeCardinalityEnum implements
     }
     
     @Override
-    // org.dmd.dms.util.GenUtility.dumpSETType(GenUtility.java:2689)
+    // org.dmd.dms.util.GenUtility.dumpSETType(GenUtility.java:2855)
     public CardinalityEnum add(Object v) throws DmcValueException {
         synchronized(this){
             CardinalityEnum rc = typeCheck(v);
@@ -97,7 +112,7 @@ public class DmcTypeCardinalityEnumSET extends DmcTypeCardinalityEnum implements
     }
     
     @Override
-    // org.dmd.dms.util.GenUtility.dumpSETType(GenUtility.java:2706)
+    // org.dmd.dms.util.GenUtility.dumpSETType(GenUtility.java:2872)
     public CardinalityEnum del(Object v){
         synchronized(this){
             CardinalityEnum rc = null;
@@ -121,7 +136,7 @@ public class DmcTypeCardinalityEnumSET extends DmcTypeCardinalityEnum implements
     }
     
     @Override
-    // org.dmd.dms.util.GenUtility.dumpSETType(GenUtility.java:2731)
+    // org.dmd.dms.util.GenUtility.dumpSETType(GenUtility.java:2897)
     public Iterator<CardinalityEnum> getMV(){
         synchronized(this){
             if (value == null)
@@ -134,7 +149,7 @@ public class DmcTypeCardinalityEnumSET extends DmcTypeCardinalityEnum implements
         }
     }
     
-    // org.dmd.dms.util.GenUtility.dumpSETType(GenUtility.java:2745)
+    // org.dmd.dms.util.GenUtility.dumpSETType(GenUtility.java:2911)
     public Set<CardinalityEnum> getMVCopy(){
         synchronized(this){
             if (getAttributeInfo().valueType == ValueTypeEnum.HASHSET){
@@ -153,7 +168,7 @@ public class DmcTypeCardinalityEnumSET extends DmcTypeCardinalityEnum implements
     }
     
     @Override
-    // org.dmd.dms.util.GenUtility.dumpSETType(GenUtility.java:2765)
+    // org.dmd.dms.util.GenUtility.dumpSETType(GenUtility.java:2931)
     public int getMVSize(){
         synchronized(this){
             if (value == null)
@@ -163,7 +178,7 @@ public class DmcTypeCardinalityEnumSET extends DmcTypeCardinalityEnum implements
     }
     
     @Override
-    // org.dmd.dms.util.GenUtility.dumpSETType(GenUtility.java:2776)
+    // org.dmd.dms.util.GenUtility.dumpSETType(GenUtility.java:2942)
     public boolean contains(Object v){
         synchronized(this){
             if (value == null)
