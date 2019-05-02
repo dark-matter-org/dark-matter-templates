@@ -209,7 +209,7 @@ abstract public class ExtensionHookDMW extends ContainedElement implements DmcDe
         ((ExtensionHookDMO) core).remUsesSection();
     }
 
-    // Generated from: org.dmd.dmg.generators.DMWGenerator.dumpAdditionalWrapperFunctions(DMWGenerator.java:222)
+    // Generated from: org.dmd.dmg.generators.DMWGenerator.dumpAdditionalWrapperFunctions(DMWGenerator.java:234)
     /**
      * This method indicates the name of the module from which this definition was loaded.
      */

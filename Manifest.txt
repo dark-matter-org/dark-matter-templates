@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Name: dark-matter-templates
 Specification-Title: dark-matter-templates
-Specification-Version: 1.0.1
+Specification-Version: 1.0.2
 Specification-Vendor: dark-matter-templates committers
 Implementation-Title: org.dmd
 Implementation-Version: rev34
